@@ -1,0 +1,9 @@
+project:
+    name: Athena
+    package:
+        name:  Athena
+        api_version: '42.0'
+    dependencies:
+        - github: 'https://github.com/SalesforceFoundation/HEDAP'
+
+
