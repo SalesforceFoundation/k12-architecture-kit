@@ -32,9 +32,9 @@ IF(MONTH(Birthdate) &gt; MONTH(TODAY()),
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
-                    <fullName>Applied</fullName>
+                    <fullName>New</fullName>
                     <default>true</default>
-                    <label>Applied</label>
+                    <label>New</label>
                 </value>
                 <value>
                     <fullName>Under Review</fullName>
@@ -42,9 +42,9 @@ IF(MONTH(Birthdate) &gt; MONTH(TODAY()),
                     <label>Under Review</label>
                 </value>
                 <value>
-                    <fullName>Accepted</fullName>
+                    <fullName>Admitted</fullName>
                     <default>false</default>
-                    <label>Accepted</label>
+                    <label>Admitted</label>
                 </value>
                 <value>
                     <fullName>Denied</fullName>
@@ -52,9 +52,24 @@ IF(MONTH(Birthdate) &gt; MONTH(TODAY()),
                     <label>Denied</label>
                 </value>
                 <value>
-                    <fullName>Withdrawn</fullName>
+                    <fullName>Withdrawn_by_Student</fullName>
                     <default>false</default>
-                    <label>Withdrawn</label>
+                    <label>Withdrawn by Student</label>
+                </value>
+                <value>
+                    <fullName>Withdrawn by School</fullName>
+                    <default>false</default>
+                    <label>Withdrawn by School</label>
+                </value>
+                <value>
+                    <fullName>Enrolled</fullName>
+                    <default>false</default>
+                    <label>Enrolled</label>
+                </value>
+                <value>
+                    <fullName>Deferred</fullName>
+                    <default>false</default>
+                    <label>Deferred</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
