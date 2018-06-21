@@ -15,6 +15,10 @@
         <name>CustomField</name>
     </types>
     <types>
+        <members>Incident_Party__c</members>
+        <name>CustomObject</name>
+    </types>
+    <types>
         <members>hed__Term__c-K12 Term Layout</members>
         <name>Layout</name>
     </types>
