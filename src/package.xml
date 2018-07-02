@@ -5,6 +5,7 @@
         <members>Account.Agency_Id__c</members>
         <members>Contact.Age__c</members>
         <members>Contact.Enrollment_Status__c</members>
+        <members>Contact.Student_Id__c</members>
         <members>Incident_Party__c.Incident__c</members>
         <members>Incident_Party__c.Involved_Party__c</members>
         <members>Incident_Party__c.Role__c</members>

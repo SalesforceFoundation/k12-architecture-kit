@@ -74,4 +74,15 @@ IF(MONTH(Birthdate) &gt; MONTH(TODAY()),
             </valueSetDefinition>
         </valueSet>
     </fields>
+    <fields>
+        <fullName>Student_Id__c</fullName>
+        <description>A unique string identifier that is school/organization specific. this is not the database id/primary key and is usually assigned by the school.</description>
+        <externalId>false</externalId>
+        <label>Student Id</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
 </CustomObject>
