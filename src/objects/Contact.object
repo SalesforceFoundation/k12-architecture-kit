@@ -20,6 +20,29 @@ IF(MONTH(Birthdate) &gt; MONTH(TODAY()),
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Birth_City__c</fullName>
+        <description>The city in which this person was born</description>
+        <externalId>false</externalId>
+        <label>Birth City</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Birth_State__c</fullName>
+        <description>2 Character State abbreviation. The is a requirement of EdFi. International State/Province is an optional field and not included in the K12 architecture, however Country of Origin is included as part of the HEDA base upon which K12 is built.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter the 2 character State Abbrevation</inlineHelpText>
+        <label>Birth State</label>
+        <length>2</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Enrollment_Status__c</fullName>
         <description>Allows institutions to track a potential student through through the enrollment process.</description>
         <externalId>false</externalId>
@@ -80,6 +103,27 @@ IF(MONTH(Birthdate) &gt; MONTH(TODAY()),
         <externalId>false</externalId>
         <label>Student Id</label>
         <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Student_Identification_Code__c</fullName>
+        <externalId>false</externalId>
+        <label>Student Identification Code</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Student_Identification_System__c</fullName>
+        <description>The system providing the student identifcation system. (EdFi)</description>
+        <externalId>false</externalId>
+        <label>Student Identification System</label>
+        <length>255</length>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
         <type>Text</type>
