@@ -43,6 +43,40 @@ IF(MONTH(Birthdate) &gt; MONTH(TODAY()),
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Economically_Disadvantaged__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>tracks whether or not this student is classified as economically disadvantaged.</description>
+        <externalId>false</externalId>
+        <label>Economically Disadvantaged</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>English_Proficiency__c</fullName>
+        <description>This is an EdFi requirement</description>
+        <externalId>false</externalId>
+        <label>English Proficiency</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Limited</fullName>
+                    <default>false</default>
+                    <label>Limited</label>
+                </value>
+                <value>
+                    <fullName>NotLimited</fullName>
+                    <default>false</default>
+                    <label>NotLimited</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
         <fullName>Enrollment_Status__c</fullName>
         <description>Allows institutions to track a potential student through through the enrollment process.</description>
         <externalId>false</externalId>
@@ -96,6 +130,17 @@ IF(MONTH(Birthdate) &gt; MONTH(TODAY()),
                 </value>
             </valueSetDefinition>
         </valueSet>
+    </fields>
+    <fields>
+        <fullName>Preferred_Language__c</fullName>
+        <description>The preferred language of the student</description>
+        <externalId>false</externalId>
+        <label>Preferred Language</label>
+        <length>50</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Student_Id__c</fullName>

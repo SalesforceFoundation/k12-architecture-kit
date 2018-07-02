@@ -12,6 +12,17 @@
         <type>Text</type>
         <unique>false</unique>
     </fields>
+    <fields>
+        <fullName>Preferred_Language__c</fullName>
+        <description>The main language spoken at this household</description>
+        <externalId>false</externalId>
+        <label>Preferred Language</label>
+        <length>50</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
     <recordTypes>
         <fullName>Intervention_Program</fullName>
         <active>true</active>

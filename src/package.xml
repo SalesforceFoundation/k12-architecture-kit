@@ -3,10 +3,14 @@
     <fullName>Athena</fullName>
     <types>
         <members>Account.Agency_Id__c</members>
+        <members>Account.Preferred_Language__c</members>
         <members>Contact.Age__c</members>
         <members>Contact.Birth_City__c</members>
         <members>Contact.Birth_State__c</members>
+        <members>Contact.Economically_Disadvantaged__c</members>
+        <members>Contact.English_Proficiency__c</members>
         <members>Contact.Enrollment_Status__c</members>
+        <members>Contact.Preferred_Language__c</members>
         <members>Contact.Student_Id__c</members>
         <members>Contact.Student_Identification_Code__c</members>
         <members>Contact.Student_Identification_System__c</members>
