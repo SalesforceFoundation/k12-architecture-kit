@@ -11,6 +11,7 @@
         <members>Contact.English_Proficiency__c</members>
         <members>Contact.Enrollment_Status__c</members>
         <members>Contact.Preferred_Language__c</members>
+        <members>Contact.Student_Home_Descriptor__c</members>
         <members>Contact.Student_Id__c</members>
         <members>Contact.Student_Identification_Code__c</members>
         <members>Contact.Student_Identification_System__c</members>
@@ -26,11 +27,8 @@
         <name>CustomObject</name>
     </types>
     <types>
-        <members>hed__Term__c-K12 Term Layout</members>
-        <name>Layout</name>
-    </types>
-    <types>
         <members>Incident_Party__c-Incident Party Layout</members>
+        <members>hed__Term__c-K12 Term Layout</members>
         <name>Layout</name>
     </types>
     <types>
