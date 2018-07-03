@@ -18,9 +18,6 @@
         <members>Incident_Party__c.Involved_Party__c</members>
         <members>Incident_Party__c.Role__c</members>
         <members>hed__Term__c.Parent_Term__c</members>
-        <name>CustomField</name>
-    </types>
-    <types>
         <members>hed__Term__c.Type__c</members>
         <name>CustomField</name>
     </types>
@@ -30,6 +27,10 @@
     </types>
     <types>
         <members>hed__Term__c-K12 Term Layout</members>
+        <name>Layout</name>
+    </types>
+    <types>
+        <members>Incident_Party__c-Incident Party Layout</members>
         <name>Layout</name>
     </types>
     <types>
