@@ -10,6 +10,7 @@
         <members>Contact.Economically_Disadvantaged__c</members>
         <members>Contact.English_Proficiency__c</members>
         <members>Contact.Enrollment_Status__c</members>
+        <members>Contact.Highly_Qualified_Teacher__c</members>
         <members>Contact.Preferred_Language__c</members>
         <members>Contact.Student_Home_Descriptor__c</members>
         <members>Contact.Student_Id__c</members>
@@ -33,6 +34,9 @@
     </types>
     <types>
         <members>Account.Intervention_Program</members>
+        <members>Contact.Guardian</members>
+        <members>Contact.Staff</members>
+        <members>Contact.Student</members>
         <name>RecordType</name>
     </types>
     <version>42.0</version>
