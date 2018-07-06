@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>true</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Represents actions taken in response to student disciplinary incidents</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableChangeDataCapture>false</enableChangeDataCapture>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Discipline_End_Date__c</fullName>
+        <description>The date the the disciplinary action ends</description>
+        <externalId>false</externalId>
+        <label>Discipline End Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Discipline_Length__c</fullName>
+        <description>The length of time in which this discipline is in place, used in combination with the Length Unit picklist.</description>
+        <externalId>false</externalId>
+        <label>Discipline Length</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Discipline_Start_Date__c</fullName>
+        <description>The date the disciplinary action begins</description>
+        <externalId>false</externalId>
+        <label>Discipline Start Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Incident_Party__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Lookup to the record that ties a student/contact to an incident so the actions can be tracked.</description>
+        <externalId>false</externalId>
+        <label>Incident Party</label>
+        <referenceTo>Incident_Party__c</referenceTo>
+        <relationshipLabel>Disciplinary Actions</relationshipLabel>
+        <relationshipName>Disciplinary_Actions</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Length_Units__c</fullName>
+        <description>used in combination with discipline length</description>
+        <externalId>false</externalId>
+        <label>Length Units</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Days</fullName>
+                    <default>false</default>
+                    <label>Days</label>
+                </value>
+                <value>
+                    <fullName>Hours</fullName>
+                    <default>false</default>
+                    <label>Hours</label>
+                </value>
+                <value>
+                    <fullName>Minutes</fullName>
+                    <default>false</default>
+                    <label>Minutes</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Type__c</fullName>
+        <description>The type of action being taken</description>
+        <externalId>false</externalId>
+        <label>Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>In School Suspension</fullName>
+                    <default>false</default>
+                    <label>In School Suspension</label>
+                </value>
+                <value>
+                    <fullName>Out of School Suspension</fullName>
+                    <default>false</default>
+                    <label>Out of School Suspension</label>
+                </value>
+                <value>
+                    <fullName>Detention</fullName>
+                    <default>false</default>
+                    <label>Detention</label>
+                </value>
+                <value>
+                    <fullName>Community Service</fullName>
+                    <default>false</default>
+                    <label>Community Service</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <label>Disciplinary Action</label>
+    <nameField>
+        <displayFormat>DIA-{0000}</displayFormat>
+        <label>Disciplinary Action Name</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Disciplinary Actions</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

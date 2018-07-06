@@ -52,6 +52,41 @@ IF(MONTH(Birthdate) &gt; MONTH(TODAY()),
         <type>Checkbox</type>
     </fields>
     <fields>
+        <fullName>Education_Level__c</fullName>
+        <description>Intended for use with Staff records (EdFi req.)</description>
+        <externalId>false</externalId>
+        <label>Education Level</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Doctorate</fullName>
+                    <default>false</default>
+                    <label>Doctorate</label>
+                </value>
+                <value>
+                    <fullName>Master&apos;s</fullName>
+                    <default>false</default>
+                    <label>Master&apos;s</label>
+                </value>
+                <value>
+                    <fullName>Bachelor&apos;s</fullName>
+                    <default>false</default>
+                    <label>Bachelor&apos;s</label>
+                </value>
+                <value>
+                    <fullName>Associate</fullName>
+                    <default>false</default>
+                    <label>Associate</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
         <fullName>English_Proficiency__c</fullName>
         <description>This is an EdFi requirement</description>
         <externalId>false</externalId>
@@ -132,6 +167,26 @@ IF(MONTH(Birthdate) &gt; MONTH(TODAY()),
         </valueSet>
     </fields>
     <fields>
+        <fullName>Highly_Qualified_Teacher__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>It is unclear at this time from the EdFi requirement what this is acutally used for or how it is used, however it is a requirement for certification.</description>
+        <externalId>false</externalId>
+        <label>Highly Qualified Teacher</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Identification_Code__c</fullName>
+        <description>A unique string identifier that is school/organization specific. this is not the database id/primary key and is usually assigned by the school.</description>
+        <externalId>false</externalId>
+        <label>Identification Code</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Preferred_Language__c</fullName>
         <description>The preferred language of the student</description>
         <externalId>false</externalId>
@@ -154,27 +209,6 @@ IF(MONTH(Birthdate) &gt; MONTH(TODAY()),
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Student_Id__c</fullName>
-        <description>A unique string identifier that is school/organization specific. this is not the database id/primary key and is usually assigned by the school.</description>
-        <externalId>false</externalId>
-        <label>Student Id</label>
-        <length>100</length>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Student_Identification_Code__c</fullName>
-        <externalId>false</externalId>
-        <label>Student Identification Code</label>
-        <length>100</length>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Student_Identification_System__c</fullName>
         <description>The system providing the student identifcation system. (EdFi)</description>
         <externalId>false</externalId>
@@ -190,6 +224,25 @@ IF(MONTH(Birthdate) &gt; MONTH(TODAY()),
         <active>true</active>
         <description>A parent or guardian. choosing guardian here as its broader.</description>
         <label>Guardian</label>
+        <picklistValues>
+            <picklist>Education_Level__c</picklist>
+            <values>
+                <fullName>Associate</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Bachelor%27s</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Doctorate</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Master%27s</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
         <picklistValues>
             <picklist>English_Proficiency__c</picklist>
             <values>
@@ -289,6 +342,25 @@ IF(MONTH(Birthdate) &gt; MONTH(TODAY()),
         <description>An employee, contractor, etc working for the school</description>
         <label>Staff</label>
         <picklistValues>
+            <picklist>Education_Level__c</picklist>
+            <values>
+                <fullName>Associate</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Bachelor%27s</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Doctorate</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Master%27s</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>English_Proficiency__c</picklist>
             <values>
                 <fullName>Limited</fullName>
@@ -386,6 +458,25 @@ IF(MONTH(Birthdate) &gt; MONTH(TODAY()),
         <active>true</active>
         <description>Represents a student, either enrolled or otherwise.</description>
         <label>Student</label>
+        <picklistValues>
+            <picklist>Education_Level__c</picklist>
+            <values>
+                <fullName>Associate</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Bachelor%27s</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Doctorate</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Master%27s</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
         <picklistValues>
             <picklist>English_Proficiency__c</picklist>
             <values>
