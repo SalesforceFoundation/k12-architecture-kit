@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
     <fields>
+        <fullName>Grading_Period_Sequence__c</fullName>
+        <description>Such as 1 for the first six week, 2 for the second six weeks, etc.</description>
+        <externalId>false</externalId>
+        <label>Grading Period Sequence</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Instructional_Days__c</fullName>
+        <description>The total number of instructional days in this term</description>
+        <externalId>false</externalId>
+        <label>Instructional Days</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Parent_Term__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <description>Used to group terms together, such as 1st Quarter of 1st Semester of School Year.</description>

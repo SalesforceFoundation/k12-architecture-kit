@@ -26,6 +26,8 @@
         <members>Incident_Party__c.Incident__c</members>
         <members>Incident_Party__c.Involved_Party__c</members>
         <members>Incident_Party__c.Role__c</members>
+        <members>hed__Term__c.Grading_Period_Sequence__c</members>
+        <members>hed__Term__c.Instructional_Days__c</members>
         <members>hed__Term__c.Parent_Term__c</members>
         <members>hed__Term__c.Type__c</members>
         <name>CustomField</name>
@@ -43,6 +45,7 @@
     </types>
     <types>
         <members>Account.Intervention_Program</members>
+        <members>Case.Disciplinary_Incident</members>
         <members>Contact.Guardian</members>
         <members>Contact.Staff</members>
         <members>Contact.Student</members>
