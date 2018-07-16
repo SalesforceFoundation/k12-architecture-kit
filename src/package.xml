@@ -11,6 +11,7 @@
         <members>Account.Preschool__c</members>
         <members>Account.Short_Name__c</members>
         <members>Account.State_Organization_Id__c</members>
+        <members>Activity.Event_Duration__c</members>
         <members>Contact.Age__c</members>
         <members>Contact.Birth_City__c</members>
         <members>Contact.Birth_State__c</members>
@@ -26,6 +27,9 @@
         <members>Incident_Party__c.Incident__c</members>
         <members>Incident_Party__c.Involved_Party__c</members>
         <members>Incident_Party__c.Role__c</members>
+        <members>hed__Course__c.Course_Identification_System__c</members>
+        <members>hed__Course__c.Number_of_Parts__c</members>
+        <members>hed__Course__c.Type__c</members>
         <members>hed__Term__c.Grading_Period_Sequence__c</members>
         <members>hed__Term__c.Instructional_Days__c</members>
         <members>hed__Term__c.Parent_Term__c</members>
