@@ -50,6 +50,16 @@
         <type>Checkbox</type>
     </fields>
     <fields>
+        <fullName>Repeating_Grade_Level__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>When a student, likely K-5 is repeating a grade (not a specific class) this box should be checked.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>If student is repeating this grade, please check this box</inlineHelpText>
+        <label>Repeating Grade Level</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>Short_Name__c</fullName>
         <description>Short Name for a school (e.g. Bedford Senior High School, could be BHS) -- EdFi req.</description>
         <externalId>false</externalId>
