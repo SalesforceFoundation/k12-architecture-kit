@@ -40,16 +40,19 @@
     </types>
     <types>
         <members>Disciplinary_Action__c</members>
+        <members>Gradebook_Entry__c</members>
         <members>Incident_Party__c</members>
         <name>CustomObject</name>
     </types>
     <types>
         <members>Disciplinary_Action__c-Disciplinary Action Layout</members>
+        <members>Gradebook_Entry__c-Gradebook Entry Layout</members>
         <members>Incident_Party__c-Incident Party Layout</members>
         <members>hed__Term__c-K12 Term Layout</members>
         <name>Layout</name>
     </types>
     <types>
+        <members>Account.Grade_Level</members>
         <members>Account.Intervention_Program</members>
         <members>Case.Disciplinary_Incident</members>
         <members>Contact.Guardian</members>
