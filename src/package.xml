@@ -29,6 +29,7 @@
         <members>Incident_Party__c.Involved_Party__c</members>
         <members>Incident_Party__c.Role__c</members>
         <members>hed__Course_Enrollment__c.Repeating_Course__c</members>
+        <members>hed__Course_Offering__c.Class_Period__c</members>
         <members>hed__Course__c.Course_Identification_System__c</members>
         <members>hed__Course__c.Number_of_Parts__c</members>
         <members>hed__Course__c.Type__c</members>
@@ -39,6 +40,7 @@
         <name>CustomField</name>
     </types>
     <types>
+        <members>Class_Period__c</members>
         <members>Disciplinary_Action__c</members>
         <members>Gradebook_Entry__c</members>
         <members>Incident_Party__c</members>
