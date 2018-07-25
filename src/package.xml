@@ -42,6 +42,7 @@
         <name>CustomField</name>
     </types>
     <types>
+        <members>Attendance_Event__c</members>
         <members>Class_Period__c</members>
         <members>Disciplinary_Action__c</members>
         <members>Gradebook_Entry__c</members>

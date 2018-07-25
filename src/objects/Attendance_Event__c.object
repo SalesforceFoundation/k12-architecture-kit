@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>true</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Allows storage of absences and tardies from SIS or other systems.</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableChangeDataCapture>false</enableChangeDataCapture>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Arrival_Time__c</fullName>
+        <description>The time the student arrived (used for tardies)</description>
+        <externalId>false</externalId>
+        <label>Arrival Time</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Time</type>
+    </fields>
+    <fields>
+        <fullName>Class_Period__c</fullName>
+        <description>The name of the class period that this is related to.</description>
+        <externalId>false</externalId>
+        <formula>Course_Connection__r.hed__Course_Offering__r.Class_Period__r.Name</formula>
+        <label>Class Period</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Course_Connection__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Ties an absence or tarday event to a specific class</description>
+        <externalId>false</externalId>
+        <label>Course Connection</label>
+        <referenceTo>hed__Course_Enrollment__c</referenceTo>
+        <relationshipLabel>Attendance Events</relationshipLabel>
+        <relationshipName>Attendance_Events</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>End_Time__c</fullName>
+        <description>The time in which this absence will end</description>
+        <externalId>false</externalId>
+        <label>End Time</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Time</type>
+    </fields>
+    <fields>
+        <fullName>Reason__c</fullName>
+        <description>The reason for the absence or tardy. Likely used when the absence or tardy is excused but nothing in place to prevent a reason fo either excused or unexcused.</description>
+        <externalId>false</externalId>
+        <label>Reason</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Start_Time__c</fullName>
+        <description>The time at which the absence will start or was noted</description>
+        <externalId>false</externalId>
+        <label>Start Time</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Time</type>
+    </fields>
+    <fields>
+        <fullName>Type__c</fullName>
+        <description>Specifies if this is an all day absence, or just for a particular class or classes (one event for each class). Also tracks whether its a late arrival for a class or for the school day in general.</description>
+        <externalId>false</externalId>
+        <label>Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>All Day Absence</fullName>
+                    <default>false</default>
+                    <label>All Day Absence</label>
+                </value>
+                <value>
+                    <fullName>Class Absence</fullName>
+                    <default>false</default>
+                    <label>Class Absence</label>
+                </value>
+                <value>
+                    <fullName>School Tardy</fullName>
+                    <default>false</default>
+                    <label>School Tardy</label>
+                </value>
+                <value>
+                    <fullName>Class Tardy</fullName>
+                    <default>false</default>
+                    <label>Class Tardy</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Unexcused__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Checked if this tardy or absence is unexcused</description>
+        <externalId>false</externalId>
+        <label>Unexcused</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <label>Attendance Event</label>
+    <nameField>
+        <label>Attendance Event Name</label>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Attendance Events</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <startsWith>Vowel</startsWith>
+    <visibility>Public</visibility>
+</CustomObject>
