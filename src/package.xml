@@ -21,6 +21,7 @@
         <members>Contact.English_Proficiency__c</members>
         <members>Contact.Enrollment_Status__c</members>
         <members>Contact.Highly_Qualified_Teacher__c</members>
+        <members>Contact.Idea_Eligible__c</members>
         <members>Contact.Identification_Code__c</members>
         <members>Contact.Preferred_Language__c</members>
         <members>Contact.Student_Home_Descriptor__c</members>
@@ -33,6 +34,7 @@
         <members>hed__Course__c.Course_Identification_System__c</members>
         <members>hed__Course__c.Number_of_Parts__c</members>
         <members>hed__Course__c.Type__c</members>
+        <members>hed__Program_Enrollment__c.Idea_Eligible__c</members>
         <members>hed__Term__c.Grading_Period_Sequence__c</members>
         <members>hed__Term__c.Instructional_Days__c</members>
         <members>hed__Term__c.Parent_Term__c</members>

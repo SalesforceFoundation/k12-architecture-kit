@@ -176,6 +176,15 @@ IF(MONTH(Birthdate) &gt; MONTH(TODAY()),
         <type>Checkbox</type>
     </fields>
     <fields>
+        <fullName>IDEA_Eligible__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>signifies this student is eligilble to enroll in IDEA based programs</description>
+        <externalId>false</externalId>
+        <label>IDEA Eligible</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>Identification_Code__c</fullName>
         <description>A unique string identifier that is school/organization specific. this is not the database id/primary key and is usually assigned by the school.</description>
         <externalId>false</externalId>
