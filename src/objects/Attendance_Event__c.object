@@ -76,6 +76,20 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Contact__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Allows absences to be tracked directly at the student level. Used in cases where the student should be marked absence for an entire day, or late for the school day and not just a particular class.</description>
+        <externalId>false</externalId>
+        <label>Contact</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Attendance Events</relationshipLabel>
+        <relationshipName>Attendance_Events</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
         <fullName>Course_Connection__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <description>Ties an absence or tarday event to a specific class</description>
