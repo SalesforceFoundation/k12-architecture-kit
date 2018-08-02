@@ -21,9 +21,29 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Education_Identifcation_System__c</fullName>
+        <description>The system providing the identification for the school</description>
+        <externalId>false</externalId>
+        <label>Local Education Agency Id</label>
+        <length>50</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Middle_School__c</fullName>
         <defaultValue>false</defaultValue>
         <description>When checked signifies this school handles middle school grade levels.</description>
+        <externalId>false</externalId>
+        <label>Middle School</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Elementary_School__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>When checked signifies this school handles elementary school grade levels.</description>
         <externalId>false</externalId>
         <label>Middle School</label>
         <trackFeedHistory>false</trackFeedHistory>

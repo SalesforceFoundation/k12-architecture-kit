@@ -3,7 +3,7 @@
     <fullName>Athena</fullName>
     <types>
         <members>Account.Education_Identifcation_System__c</members>
-        <members>Account.Elemementary_School__c</members>
+        <members>Account.Elementary_School__c</members>
         <members>Account.High_School__c</members>
         <members>Account.Local_Education_Agency_Id__c</members>
         <members>Account.Middle_School__c</members>
@@ -13,6 +13,19 @@
         <members>Account.Short_Name__c</members>
         <members>Account.State_Organization_Id__c</members>
         <members>Activity.Event_Duration__c</members>
+        <members>Attendance_Event__c.Arrival_Time__c</members>
+        <members>Attendance_Event__c.Class_Period__c</members>
+        <members>Attendance_Event__c.Contact__c</members>
+        <members>Attendance_Event__c.Course_Connection__c</members>
+        <members>Attendance_Event__c.End_Time__c</members>
+        <members>Attendance_Event__c.Reason__c</members>
+        <members>Attendance_Event__c.Start_Time__c</members>
+        <members>Attendance_Event__c.Type__c</members>
+        <members>Attendance_Event__c.Unexcused__c</members>
+        <members>Class_Period__c.Education_Organization__c</members>
+        <members>Class_Period__c.End_time__c</members>
+        <members>Class_Period__c.Start_Time__c</members>
+        <members>Class_Period__c.Term__c</members>
         <members>Contact.Age__c</members>
         <members>Contact.Birth_City__c</members>
         <members>Contact.Birth_State__c</members>
@@ -21,24 +34,39 @@
         <members>Contact.English_Proficiency__c</members>
         <members>Contact.Enrollment_Status__c</members>
         <members>Contact.Highly_Qualified_Teacher__c</members>
-        <members>Contact.Idea_Eligible__c</members>
+        <members>Contact.IDEA_Eligible__c</members>
         <members>Contact.Identification_Code__c</members>
         <members>Contact.Preferred_Language__c</members>
         <members>Contact.Student_Home_Descriptor__c</members>
         <members>Contact.Student_Identification_System__c</members>
-        <members>Incident_Party__c.Incident__c</members>
-        <members>Incident_Party__c.Involved_Party__c</members>
-        <members>Incident_Party__c.Role__c</members>
+        <members>Disciplinary_Action__c.Discipline_End_Date__c</members>
+        <members>Disciplinary_Action__c.Discipline_Length__c</members>
+        <members>Disciplinary_Action__c.Discipline_Start_Date__c</members>
+        <members>Disciplinary_Action__c.Incident_Party__c</members>
+        <members>Disciplinary_Action__c.Length_Units__c</members>
+        <members>Disciplinary_Action__c.Type__c</members>
+        <members>Gradebook_Entry__c.Attempted_Credits__c</members>
+        <members>Gradebook_Entry__c.Course_Connection__c</members>
+        <members>Gradebook_Entry__c.Earned_Credits__c</members>
+        <members>Gradebook_Entry__c.Letter_Grade__c</members>
+        <members>Gradebook_Entry__c.Numerical_Grade__c</members>
+        <members>Gradebook_Entry__c.Result__c</members>
+        <members>Gradebook_Entry__c.Term__c</members>
+        <members>Gradebook_Entry__c.Type__c</members>
+        <members>hed__Program_Enrollment__c.IDEA_Eligible__c</members>
         <members>hed__Course_Enrollment__c.Repeating_Course__c</members>
         <members>hed__Course_Offering__c.Class_Period__c</members>
         <members>hed__Course__c.Course_Identification_System__c</members>
         <members>hed__Course__c.Number_of_Parts__c</members>
         <members>hed__Course__c.Type__c</members>
-        <members>hed__Program_Enrollment__c.Idea_Eligible__c</members>
+        <members>hed__Program_Enrollment__c.IDEA_Eligible__c</members>
         <members>hed__Term__c.Grading_Period_Sequence__c</members>
         <members>hed__Term__c.Instructional_Days__c</members>
         <members>hed__Term__c.Parent_Term__c</members>
         <members>hed__Term__c.Type__c</members>
+        <members>Incident_Party__c.Incident__c</members>
+        <members>Incident_Party__c.Involved_Party__c</members>
+        <members>Incident_Party__c.Role__c</members>
         <name>CustomField</name>
     </types>
     <types>
