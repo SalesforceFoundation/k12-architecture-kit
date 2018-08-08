@@ -53,7 +53,9 @@
         <members>Gradebook_Entry__c.Result__c</members>
         <members>Gradebook_Entry__c.Term__c</members>
         <members>Gradebook_Entry__c.Type__c</members>
-        <members>hed__Program_Enrollment__c.IDEA_Eligible__c</members>
+        <members>Incident_Party__c.Incident__c</members>
+        <members>Incident_Party__c.Involved_Party__c</members>
+        <members>Incident_Party__c.Role__c</members>
         <members>hed__Course_Enrollment__c.Repeating_Course__c</members>
         <members>hed__Course_Offering__c.Class_Period__c</members>
         <members>hed__Course__c.Course_Identification_System__c</members>
@@ -64,9 +66,6 @@
         <members>hed__Term__c.Instructional_Days__c</members>
         <members>hed__Term__c.Parent_Term__c</members>
         <members>hed__Term__c.Type__c</members>
-        <members>Incident_Party__c.Incident__c</members>
-        <members>Incident_Party__c.Involved_Party__c</members>
-        <members>Incident_Party__c.Role__c</members>
         <name>CustomField</name>
     </types>
     <types>
@@ -78,20 +77,13 @@
         <name>CustomObject</name>
     </types>
     <types>
+        <members>Attendance_Event__c-Attendance Event Layout</members>
+        <members>Class_Period__c-Class Period Layout</members>
         <members>Disciplinary_Action__c-Disciplinary Action Layout</members>
         <members>Gradebook_Entry__c-Gradebook Entry Layout</members>
         <members>Incident_Party__c-Incident Party Layout</members>
         <members>hed__Term__c-K12 Term Layout</members>
         <name>Layout</name>
-    </types>
-    <types>
-        <members>Account.Grade_Level</members>
-        <members>Account.Intervention_Program</members>
-        <members>Case.Disciplinary_Incident</members>
-        <members>Contact.Guardian</members>
-        <members>Contact.Staff</members>
-        <members>Contact.Student</members>
-        <name>RecordType</name>
     </types>
     <version>42.0</version>
 </Package>

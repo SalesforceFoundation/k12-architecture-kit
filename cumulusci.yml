@@ -3,6 +3,7 @@ project:
     package:
         name:  Athena
         api_version: '42.0'
+        namespace: k12alpha
     dependencies:
         - github: 'https://github.com/SalesforceFoundation/HEDAP'
 
