@@ -49,6 +49,11 @@
         <members>Disciplinary_Action__c.Incident_Party__c</members>
         <members>Disciplinary_Action__c.Length_Units__c</members>
         <members>Disciplinary_Action__c.Type__c</members>
+        <members>Facility__c.Account__c</members>
+        <members>Facility__c.Capacity__c</members>
+        <members>Facility__c.Description__c</members>
+        <members>Facility__c.Parent_Facility__c</members>
+        <members>Facility__c.Type__c</members>
         <members>Gradebook_Entry__c.Attempted_Credits__c</members>
         <members>Gradebook_Entry__c.Course_Connection__c</members>
         <members>Gradebook_Entry__c.Earned_Credits__c</members>
@@ -62,6 +67,7 @@
         <members>Incident_Party__c.Role__c</members>
         <members>hed__Course_Enrollment__c.Repeating_Course__c</members>
         <members>hed__Course_Offering__c.Class_Period__c</members>
+        <members>hed__Course_Offering__c.Facility__c</members>
         <members>hed__Course__c.Course_Identification_System__c</members>
         <members>hed__Course__c.Number_of_Parts__c</members>
         <members>hed__Course__c.Type__c</members>
@@ -76,14 +82,20 @@
         <members>Attendance_Event__c</members>
         <members>Class_Period__c</members>
         <members>Disciplinary_Action__c</members>
+        <members>Facility__c</members>
         <members>Gradebook_Entry__c</members>
         <members>Incident_Party__c</members>
         <name>CustomObject</name>
     </types>
     <types>
+        <members>Facility__c</members>
+        <name>CustomTab</name>
+    </types>
+    <types>
         <members>Attendance_Event__c-Attendance Event Layout</members>
         <members>Class_Period__c-Class Period Layout</members>
         <members>Disciplinary_Action__c-Disciplinary Action Layout</members>
+        <members>Facility__c-Facility Layout</members>
         <members>Gradebook_Entry__c-Gradebook Entry Layout</members>
         <members>Incident_Party__c-Incident Party Layout</members>
         <members>hed__Term__c-K12 Term Layout</members>
