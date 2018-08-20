@@ -92,7 +92,7 @@
         <name>CustomTab</name>
     </types>
     <types>
-        <members>Account-K-12 Houesehold Layout</members>
+        <members>Account-K-12 Household Layout</members>
         <members>Account-K-12 Organization Layout</members>
         <members>Attendance_Event__c-Attendance Event Layout</members>
         <members>Class_Period__c-Class Period Layout</members>
