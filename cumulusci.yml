@@ -4,6 +4,11 @@ project:
         name:  Athena
         api_version: '42.0'
         namespace: k12alpha
+    git:
+        default_branch: master
+        prefix_feature: feature
+        prefix_beta: beta-alpha/
+        prefix_release: release-alpha/
     dependencies:
         - github: 'https://github.com/SalesforceFoundation/HEDAP'
 
