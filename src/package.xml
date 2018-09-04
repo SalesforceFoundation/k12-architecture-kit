@@ -14,6 +14,7 @@
         <members>Account.Preferred_Language__c</members>
         <members>Account.Preschool__c</members>
         <members>Account.Repeating_Grade_Level__c</members>
+        <members>Account.Scope__c</members>
         <members>Account.Short_Name__c</members>
         <members>Account.State_Organization_Id__c</members>
         <members>Activity.Event_Duration__c</members>
