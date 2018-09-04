@@ -80,6 +80,36 @@
         <type>Checkbox</type>
     </fields>
     <fields>
+        <fullName>Scope__c</fullName>
+        <description>used for cohort groups, the scope to which this group applies. (District level, school leve, state level, etc)</description>
+        <externalId>false</externalId>
+        <label>Scope</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>District</fullName>
+                    <default>false</default>
+                    <label>District</label>
+                </value>
+                <value>
+                    <fullName>School</fullName>
+                    <default>false</default>
+                    <label>School</label>
+                </value>
+                <value>
+                    <fullName>State</fullName>
+                    <default>false</default>
+                    <label>State</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
         <fullName>Short_Name__c</fullName>
         <description>Short Name for a school (e.g. Bedford Senior High School, could be BHS) -- EdFi req.</description>
         <externalId>false</externalId>
