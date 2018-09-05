@@ -73,6 +73,8 @@
         <members>hed__Course__c.Number_of_Parts__c</members>
         <members>hed__Course__c.Type__c</members>
         <members>hed__Program_Enrollment__c.IDEA_Eligible__c</members>
+        <members>hed__Relationship__c.Has_Educational_Rights__c</members>
+        <members>hed__Relationship__c.Split_Custody__c</members>
         <members>hed__Term__c.Grading_Period_Sequence__c</members>
         <members>hed__Term__c.Instructional_Days__c</members>
         <members>hed__Term__c.Parent_Term__c</members>
