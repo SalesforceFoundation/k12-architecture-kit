@@ -66,6 +66,10 @@
         <members>Incident_Party__c.Incident__c</members>
         <members>Incident_Party__c.Involved_Party__c</members>
         <members>Incident_Party__c.Role__c</members>
+        <members>Language__c.Contact__c</members>
+        <members>Language.Fluency__c</members>
+        <members>Language.Primary_Language__c</members>
+        <members>Language.Where_Spoken__c</members>
         <members>hed__Course_Enrollment__c.Repeating_Course__c</members>
         <members>hed__Course_Offering__c.Class_Period__c</members>
         <members>hed__Course_Offering__c.Facility__c</members>
@@ -84,10 +88,12 @@
     <types>
         <members>Attendance_Event__c</members>
         <members>Class_Period__c</members>
+        <members>Credential__c</members>
         <members>Disciplinary_Action__c</members>
         <members>Facility__c</members>
         <members>Gradebook_Entry__c</members>
         <members>Incident_Party__c</members>
+        <members>Language__c</members>
         <name>CustomObject</name>
     </types>
     <types>
@@ -103,10 +109,12 @@
         <members>Contact-K-12 Guardian Contact Layout</members>
         <members>Contact-K-12 School Staff Contact Layout</members>
         <members>Contact-K-12 Student Contact Layout</members>
+        <members>Credential__c-Credential Layout</members>
         <members>Disciplinary_Action__c-Disciplinary Action Layout</members>
         <members>Facility__c-Facility Layout</members>
         <members>Gradebook_Entry__c-Gradebook Entry Layout</members>
         <members>Incident_Party__c-Incident Party Layout</members>
+        <members>Language__c-Language Layout</members>
         <members>hed__Course_Enrollment__c-K-12 Course Enrollment Layout</members>
         <members>hed__Course__c-K-12 Course Layout</members>
         <members>hed__Program_Plan__c-K-12 Program Plan Layout</members>
