@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Entry_Grade_Level__c</fullName>
+        <description>The grade the student was in when enrolling for the first time in this school</description>
+        <externalId>false</externalId>
+        <label>Entry Grade Level</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Pre-K</fullName>
+                    <default>false</default>
+                    <label>Pre-K</label>
+                </value>
+                <value>
+                    <fullName>Kindergarten</fullName>
+                    <default>false</default>
+                    <label>Kindergarten</label>
+                </value>
+                <value>
+                    <fullName>First Grade</fullName>
+                    <default>false</default>
+                    <label>First Grade</label>
+                </value>
+                <value>
+                    <fullName>Second Grade</fullName>
+                    <default>false</default>
+                    <label>Second Grade</label>
+                </value>
+                <value>
+                    <fullName>Third Grade</fullName>
+                    <default>false</default>
+                    <label>Third Grade</label>
+                </value>
+                <value>
+                    <fullName>Fourth Grade</fullName>
+                    <default>false</default>
+                    <label>Fourth Grade</label>
+                </value>
+                <value>
+                    <fullName>Fifth Grade</fullName>
+                    <default>false</default>
+                    <label>Fifth Grade</label>
+                </value>
+                <value>
+                    <fullName>Sixth Grade</fullName>
+                    <default>false</default>
+                    <label>Sixth Grade</label>
+                </value>
+                <value>
+                    <fullName>Seventh Grade</fullName>
+                    <default>false</default>
+                    <label>Seventh Grade</label>
+                </value>
+                <value>
+                    <fullName>Eighth Grade</fullName>
+                    <default>false</default>
+                    <label>Eighth Grade</label>
+                </value>
+                <value>
+                    <fullName>Ninth Grade</fullName>
+                    <default>false</default>
+                    <label>Ninth Grade</label>
+                </value>
+                <value>
+                    <fullName>Tenth Grade</fullName>
+                    <default>false</default>
+                    <label>Tenth Grade</label>
+                </value>
+                <value>
+                    <fullName>Eleventh Grade</fullName>
+                    <default>false</default>
+                    <label>Eleventh Grade</label>
+                </value>
+                <value>
+                    <fullName>Twelfth Grade</fullName>
+                    <default>false</default>
+                    <label>Twelfth Grade</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+</CustomObject>

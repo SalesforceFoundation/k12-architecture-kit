@@ -207,6 +207,18 @@ IF(MONTH(Birthdate) &gt; MONTH(TODAY()),
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Primary_Educational_Institution__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Primary Educational Institution</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Institution Members</relationshipLabel>
+        <relationshipName>Institution_Members</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
         <fullName>Student_Home_Descriptor__c</fullName>
         <description>Another EdFi requirment: Reflects important characteristics of the student&apos;s home situation: Displaced Homemaker, Immigrant, Migratory, Military Parent, Pregnant Teen, Single Parent, and Unaccompanied Youth.</description>
         <externalId>false</externalId>

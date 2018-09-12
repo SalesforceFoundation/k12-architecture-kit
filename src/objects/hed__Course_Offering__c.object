@@ -26,4 +26,16 @@
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
+    <fields>
+        <fullName>Sequence_of_Course__c</fullName>
+        <description>If the course has parts, this controls the order. (EdFi req.)</description>
+        <externalId>false</externalId>
+        <label>Sequence of Course</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
 </CustomObject>
