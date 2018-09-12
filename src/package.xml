@@ -45,6 +45,11 @@
         <members>Contact.Primary_Educational_Institution__c</members>
         <members>Contact.Student_Home_Descriptor__c</members>
         <members>Contact.Student_Identification_System__c</members>
+        <members>Credential__c.Expiration_Date__c</members>
+        <members>Credential__c.Grade_Level__c</members>
+        <members>Credential__c.Issuance_Date__c</members>
+        <members>Credential__c.Teaching_Credential_Description__c</members>
+        <members>Credential__c.Type__c</members>
         <members>Disciplinary_Action__c.Discipline_End_Date__c</members>
         <members>Disciplinary_Action__c.Discipline_Length__c</members>
         <members>Disciplinary_Action__c.Discipline_Start_Date__c</members>
@@ -92,6 +97,7 @@
     <types>
         <members>Attendance_Event__c</members>
         <members>Class_Period__c</members>
+        <members>Credential__c</members>
         <members>Disciplinary_Action__c</members>
         <members>Facility__c</members>
         <members>Gradebook_Entry__c</members>
@@ -112,6 +118,7 @@
         <members>Contact-K-12 Guardian Contact Layout</members>
         <members>Contact-K-12 School Staff Contact Layout</members>
         <members>Contact-K-12 Student Contact Layout</members>
+        <members>Credential__c-Credential Layout</members>
         <members>Disciplinary_Action__c-Disciplinary Action Layout</members>
         <members>Facility__c-Facility Layout</members>
         <members>Gradebook_Entry__c-Gradebook Entry Layout</members>
