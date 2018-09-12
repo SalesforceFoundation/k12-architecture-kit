@@ -42,6 +42,7 @@
         <members>Contact.IDEA_Eligible__c</members>
         <members>Contact.Identification_Code__c</members>
         <members>Contact.Preferred_Language__c</members>
+        <members>Contact.Primary_Educational_Institution__c</members>
         <members>Contact.Student_Home_Descriptor__c</members>
         <members>Contact.Student_Identification_System__c</members>
         <members>Disciplinary_Action__c.Discipline_End_Date__c</members>
@@ -67,12 +68,15 @@
         <members>Incident_Party__c.Involved_Party__c</members>
         <members>Incident_Party__c.Role__c</members>
         <members>Language__c.Contact__c</members>
-        <members>Language.Fluency__c</members>
-        <members>Language.Primary_Language__c</members>
-        <members>Language.Where_Spoken__c</members>
+        <members>Language__c.Fluency__c</members>
+        <members>Language__c.Primary_Language__c</members>
+        <members>Language__c.Where_Spoken__c</members>
+        <members>hed__Affiliation__c.Entry_Grade_Level__c</members>
+        <members>hed__Course_Connection__c.Homeroom__c</members>
         <members>hed__Course_Enrollment__c.Repeating_Course__c</members>
         <members>hed__Course_Offering__c.Class_Period__c</members>
         <members>hed__Course_Offering__c.Facility__c</members>
+        <memebers>hed__Course_Offering__c.Sequence_of_Course__c</members>
         <members>hed__Course__c.Course_Identification_System__c</members>
         <members>hed__Course__c.Number_of_Parts__c</members>
         <members>hed__Course__c.Type__c</members>
