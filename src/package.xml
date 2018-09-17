@@ -13,7 +13,6 @@
         <members>Account.Middle_School__c</members>
         <members>Account.Preferred_Language__c</members>
         <members>Account.Preschool__c</members>
-        <members>Account.Repeating_Grade_Level__c</members>
         <members>Account.Scope__c</members>
         <members>Account.Short_Name__c</members>
         <members>Account.State_Organization_Id__c</members>
@@ -43,7 +42,6 @@
         <members>Contact.Identification_Code__c</members>
         <members>Contact.Preferred_Language__c</members>
         <members>Contact.Primary_Educational_Institution__c</members>
-        <members>Contact.Student_Home_Descriptor__c</members>
         <members>Contact.Student_Identification_System__c</members>
         <members>Credential__c.Expiration_Date__c</members>
         <members>Credential__c.Grade_Level__c</members>
@@ -77,8 +75,13 @@
         <members>Language__c.Primary_Language__c</members>
         <members>Language__c.Where_Spoken__c</members>
         <members>hed__Affiliation__c.Entry_Grade_Level__c</members>
+        <members>hed__Affiliation__c.Repeating_Grade_Level__c</members>
+        <members>hed__Affiliation__c.Entry_Type__c</members>
+        <members>hed__Affiliation__c.Exit_Type__c</members>
+        <members>hed__Affiliation__c.School_Choice_Transfer__c</members>
         <members>hed__Course_Connection__c.Homeroom__c</members>
-        <members>hed__Course_Enrollment__c.Repeating_Course__c</members>
+        <members>hed__Course_Connection__c.Highly_Qualified_Teacher__c</members>
+        <members>hed__Course_Connection__c.Repeating_Course__c</members>
         <members>hed__Course_Offering__c.Class_Period__c</members>
         <members>hed__Course_Offering__c.Facility__c</members>
         <members>hed__Course_Offering__c.Sequence_of_Course__c</members>
