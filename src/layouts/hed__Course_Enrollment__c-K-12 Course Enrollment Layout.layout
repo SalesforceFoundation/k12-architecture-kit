@@ -34,6 +34,10 @@
                 <behavior>Edit</behavior>
                 <field>Homeroom__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Highly_Qualified_Teacher__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

@@ -74,13 +74,17 @@
         <members>Language__c.Fluency__c</members>
         <members>Language__c.Primary_Language__c</members>
         <members>Language__c.Where_Spoken__c</members>
+        <members>Student_Attribute__c.Designating_Account__c</members>
+        <members>Student_Attribute__c.Designating_Party__c</members>
+        <members>Student_Attribute__c.End_Date__c</members>
+        <members>Student_Attribute__c.Start_Date__c</members>
         <members>hed__Affiliation__c.Entry_Grade_Level__c</members>
-        <members>hed__Affiliation__c.Repeating_Grade_Level__c</members>
         <members>hed__Affiliation__c.Entry_Type__c</members>
         <members>hed__Affiliation__c.Exit_Type__c</members>
+        <members>hed__Affiliation__c.Repeating_Grade_Level__c</members>
         <members>hed__Affiliation__c.School_Choice_Transfer__c</members>
-        <members>hed__Course_Connection__c.Homeroom__c</members>
         <members>hed__Course_Connection__c.Highly_Qualified_Teacher__c</members>
+        <members>hed__Course_Connection__c.Homeroom__c</members>
         <members>hed__Course_Connection__c.Repeating_Course__c</members>
         <members>hed__Course_Offering__c.Class_Period__c</members>
         <members>hed__Course_Offering__c.Facility__c</members>

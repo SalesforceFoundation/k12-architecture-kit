@@ -86,4 +86,76 @@
             </valueSetDefinition>
         </valueSet>
     </fields>
+    <fields>
+        <fullName>Entry_Type__c</fullName>
+        <description>The type of enrollment for this student this academic year</description>
+        <externalId>false</externalId>
+        <label>Entry Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Next Year School</fullName>
+                    <default>false</default>
+                    <label>Next Year School</label>
+                </value>
+                <value>
+                    <fullName>Transfer</fullName>
+                    <default>false</default>
+                    <label>Transfer</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Exit_Type__c</fullName>
+        <description>The reason student is no longer enrolled</description>
+        <externalId>false</externalId>
+        <label>Exit Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Transfer</fullName>
+                    <default>false</default>
+                    <label>Transfer</label>
+                </value>
+                <value>
+                    <fullName>Graduation</fullName>
+                    <default>false</default>
+                    <label>Graduation</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Repeating_Grade_Level__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>If student is repeating this grade, this box should be checked.</description>
+        <externalId>false</externalId>
+        <label>Repeating Grade Level</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>School_Choice_Transfer__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>An indication of whether students transferred in or out of the school did so during the school year under the provisions for public school choice in accordance with Title I, Part A, Section 1116.</description>
+        <externalId>false</externalId>
+        <label>School Choice Transfer</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
 </CustomObject>
