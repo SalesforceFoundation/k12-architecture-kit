@@ -70,6 +70,20 @@
         <writeRequiresMasterRead>false</writeRequiresMasterRead>
     </fields>
     <fields>
+        <fullName>Address__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>The address for this facility, if applicable</description>
+        <externalId>false</externalId>
+        <label>Address</label>
+        <referenceTo>hed__Address__c</referenceTo>
+        <relationshipLabel>Facilities</relationshipLabel>
+        <relationshipName>Facilities</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
         <fullName>Capacity__c</fullName>
         <description>The max number of people this facility can manage</description>
         <externalId>false</externalId>
