@@ -55,6 +55,7 @@
         <members>Disciplinary_Action__c.Length_Units__c</members>
         <members>Disciplinary_Action__c.Type__c</members>
         <members>Facility__c.Account__c</members>
+        <members>Facility__c.Address__c</members>
         <members>Facility__c.Capacity__c</members>
         <members>Facility__c.Description__c</members>
         <members>Facility__c.Parent_Facility__c</members>
