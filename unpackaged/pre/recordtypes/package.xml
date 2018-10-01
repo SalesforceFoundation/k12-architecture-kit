@@ -5,6 +5,7 @@
         <name>BusinessProcess</name>
     </types>
     <types>
+        <members>Account.Cohort</members>
         <members>Account.Grade_Level</members>
         <members>Account.Intervention_Program</members>
         <members>Case.Disciplinary_Incident</members>

@@ -12,4 +12,11 @@ project:
     dependencies:
         - github: 'https://github.com/SalesforceFoundation/HEDAP'
 
+orgs:
+    scratch:
+        walkthrough:
+            config_file: orgs/walkthrough.json
+            days: 30
+            namespaced: False
+
 

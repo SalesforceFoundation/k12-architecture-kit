@@ -1,0 +1,10 @@
+{
+  "orgName": "Athena - Walkthrough Org",
+  "edition": "Developer",
+  "orgPreferences" : {
+    "enabled": [
+      "S1DesktopEnabled",
+      "ChatterEnabled"
+    ]
+  }
+}

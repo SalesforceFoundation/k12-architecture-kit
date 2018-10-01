@@ -43,6 +43,7 @@
         <members>Contact.Preferred_Language__c</members>
         <members>Contact.Primary_Educational_Institution__c</members>
         <members>Contact.Student_Identification_System__c</members>
+        <members>Credential__c.Contact__c</members>
         <members>Credential__c.Expiration_Date__c</members>
         <members>Credential__c.Grade_Level__c</members>
         <members>Credential__c.Issuance_Date__c</members>
@@ -84,9 +85,7 @@
         <members>hed__Affiliation__c.Exit_Type__c</members>
         <members>hed__Affiliation__c.Repeating_Grade_Level__c</members>
         <members>hed__Affiliation__c.School_Choice_Transfer__c</members>
-        <members>hed__Course_Connection__c.Highly_Qualified_Teacher__c</members>
-        <members>hed__Course_Connection__c.Homeroom__c</members>
-        <members>hed__Course_Connection__c.Repeating_Course__c</members>
+        <members>hed__Course_Enrollment__c.Repeating_Course__c</members>
         <members>hed__Course_Offering__c.Class_Period__c</members>
         <members>hed__Course_Offering__c.Facility__c</members>
         <members>hed__Course_Offering__c.Sequence_of_Course__c</members>
@@ -111,6 +110,7 @@
         <members>Gradebook_Entry__c</members>
         <members>Incident_Party__c</members>
         <members>Language__c</members>
+        <members>Student_Attribute__c</members>
         <name>CustomObject</name>
     </types>
     <types>
@@ -119,20 +119,16 @@
     </types>
     <types>
         <members>Account-K-12 Household Layout</members>
-        <members>Account-K-12 Organization Layout</members>
         <members>Attendance_Event__c-Attendance Event Layout</members>
         <members>Class_Period__c-Class Period Layout</members>
-        <members>Contact-K-12 General Contact Layout</members>
         <members>Contact-K-12 Guardian Contact Layout</members>
         <members>Contact-K-12 School Staff Contact Layout</members>
-        <members>Contact-K-12 Student Contact Layout</members>
         <members>Credential__c-Credential Layout</members>
         <members>Disciplinary_Action__c-Disciplinary Action Layout</members>
         <members>Facility__c-Facility Layout</members>
         <members>Gradebook_Entry__c-Gradebook Entry Layout</members>
         <members>Incident_Party__c-Incident Party Layout</members>
         <members>Language__c-Language Layout</members>
-        <members>hed__Course_Enrollment__c-K-12 Course Enrollment Layout</members>
         <members>hed__Course__c-K-12 Course Layout</members>
         <members>hed__Program_Plan__c-K-12 Program Plan Layout</members>
         <members>hed__Term__c-K12 Term Layout</members>
