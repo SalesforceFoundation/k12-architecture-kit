@@ -16,7 +16,7 @@
         <defaultValue>false</defaultValue>
         <description>When checked signifies this school handles elementary school grade levels.</description>
         <externalId>false</externalId>
-        <label>Middle School</label>
+        <label>Elementary School</label>
         <trackFeedHistory>false</trackFeedHistory>
         <type>Checkbox</type>
     </fields>

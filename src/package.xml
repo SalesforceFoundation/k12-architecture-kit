@@ -76,10 +76,6 @@
         <members>Language__c.Fluency__c</members>
         <members>Language__c.Primary_Language__c</members>
         <members>Language__c.Where_Spoken__c</members>
-        <members>Student_Attribute__c.Designating_Account__c</members>
-        <members>Student_Attribute__c.Designating_Party__c</members>
-        <members>Student_Attribute__c.End_Date__c</members>
-        <members>Student_Attribute__c.Start_Date__c</members>
         <members>hed__Affiliation__c.Entry_Grade_Level__c</members>
         <members>hed__Affiliation__c.Entry_Type__c</members>
         <members>hed__Affiliation__c.Exit_Type__c</members>
@@ -110,7 +106,6 @@
         <members>Gradebook_Entry__c</members>
         <members>Incident_Party__c</members>
         <members>Language__c</members>
-        <members>Student_Attribute__c</members>
         <name>CustomObject</name>
     </types>
     <types>
