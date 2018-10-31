@@ -3,7 +3,7 @@ project:
     package:
         name:  Athena
         api_version: '42.0'
-        namespace: k12alpha
+        namespace: k12alpha0
     git:
         default_branch: master
         prefix_feature: feature
