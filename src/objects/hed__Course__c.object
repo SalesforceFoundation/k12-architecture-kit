@@ -13,12 +13,12 @@
     </fields>
     <fields>
         <fullName>Number_of_Parts__c</fullName>
-        <description>EdFi requirement: The number of parts offered in this course (very unclear at this time what this refers to)</description>
+        <description>EdFi requirement: The number of parts offered in this course</description>
         <externalId>false</externalId>
         <label>Number of Parts</label>
         <precision>18</precision>
         <required>false</required>
-        <scale>2</scale>
+        <scale>0</scale>
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
