@@ -1,18 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
-        <members>Case.Student Discipline</members>
-        <name>BusinessProcess</name>
-    </types>
-    <types>
-        <members>Account.Cohort</members>
         <members>Account.Grade_Level</members>
-        <members>Account.Intervention_Program</members>
-        <members>Case.Disciplinary_Incident</members>
-        <members>Contact.Guardian</members>
-        <members>Contact.Staff</members>
-        <members>Contact.Student</members>
         <name>RecordType</name>
     </types>
-    <version>42.0</version>
+    <version>45.0</version>
 </Package>
