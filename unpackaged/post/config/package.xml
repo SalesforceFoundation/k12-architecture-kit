@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>Account.K12_Household_Compact_Layout</members>
+        <members>Contact.K12_Faculty_Contact_Compact_Layout</members>
+        <members>Contact.K12_Guardian_Contact_Compact_Layout</members>
+        <members>Contact.K12_Student_Contact_Compact_Layout</members>
+        <members>hed__Course_Enrollment__c.K12_Faculty_Course_Connection_Compact_Layout</members>
+        <members>hed__Course_Enrollment__c.K12_Student_Course_Connection_Compact_Layout</members>
+        <members>hed__Course_Offering_Schedule__c.K12_Course_Offering_Schedule_Compact_Layout</members>
+        <members>hed__Facility__c.K12_Facility_Compact_Layout</members>
+        <members>hed__Program_Enrollment__c.K12_Program_Enrollment_Compact_Layout</members>
+        <members>hed__Program_Plan__c.K12_Program_Plan_Compact_Layout</members>
+        <members>hed__Term_Grade__c.K12_Term_Grade_Compact_Layout</members>
+        <members>hed__Time_Block__c.K12_Time_Block_Compact_Layout</members>
+        <name>CompactLayout</name>
+    </types>
+    <types>
+        <members>Account-K12 Academic Program Layout</members>
+        <members>Account-K12 Department Layout</members>
+        <members>Account-K12 Educational Organization Layout</members>
+        <members>Account-K12 Household Layout</members>
+        <members>Account-K12 Sports Organization Layout</members>
+        <members>Contact-K12 Faculty Layout</members>
+        <members>Contact-K12 Guardian Layout</members>
+        <members>Contact-K12 Student Layout</members>
+        <members>hed__Affiliation__c-K12 Affiliation Layout</members>
+        <members>hed__Contact_Language__c-K12 Contact Language Layout</members>
+        <members>hed__Course_Enrollment__c-K12 Faculty Course Enrollment Layout</members>
+        <members>hed__Course_Enrollment__c-K12 Student Course Enrollment Layout</members>
+        <members>hed__Course_Offering_Schedule__c-K12 Course Offering Schedule Layout</members>
+        <members>hed__Course_Offering__c-K12 Course Offering Layout</members>
+        <members>hed__Course__c-K12 Course Layout</members>
+        <members>hed__Facility__c-K12 Facility Layout</members>
+        <members>hed__Language__c-K12 Language Layout</members>
+        <members>hed__Plan_Requirement__c-K12 Plan Requirement Layout</members>
+        <members>hed__Program_Enrollment__c-K12 Program Enrollment Layout</members>
+        <members>hed__Program_Plan__c-K12 Program Plan Layout</members>
+        <members>hed__Term_Grade__c-K12 Term Grade Layout</members>
+        <members>hed__Term__c-K12 Term Layout</members>
+        <members>hed__Time_Block__c-K12 Time Block Layout</members>
+        <name>Layout</name>
+    </types>
+    <types>
+        <members>hed__Course_Enrollment__c.Current_Student_Enrollments</members>
+        <name>ListView</name>
+    </types>
+    <version>45.0</version>
+</Package>
