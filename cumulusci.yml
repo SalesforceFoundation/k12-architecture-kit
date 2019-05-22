@@ -12,6 +12,15 @@ project:
     dependencies:
         - github: 'https://github.com/SalesforceFoundation/HEDAP'
 
+tasks:
+    deploy_k12_kit_settings:
+        description: Configure the default K12 Kit Settings
+        class_path: tasks.anon_apex.AnonymousApexFromFileTask
+        options:
+            path: scripts/configure_k12_kit.cls
+            method: initializeK12KitSettings();
+
+
 orgs:
     scratch:
         walkthrough:

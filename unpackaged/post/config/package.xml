@@ -16,6 +16,10 @@
         <name>CompactLayout</name>
     </types>
     <types>
+        <members>*</members>
+        <name>FlexiPage</name>
+    </types>
+    <types>
         <members>Account-K12 Academic Program Layout</members>
         <members>Account-K12 Department Layout</members>
         <members>Account-K12 Educational Organization Layout</members>
