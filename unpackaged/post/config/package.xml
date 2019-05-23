@@ -16,6 +16,11 @@
         <name>CompactLayout</name>
     </types>
     <types>
+        <members>Contact-en_US</members>
+        <members>hed__Course_Offering__c-en_US</members>
+        <name>CustomObjectTranslation</name>
+    </types>
+    <types>
         <members>*</members>
         <name>FlexiPage</name>
     </types>
@@ -48,6 +53,10 @@
     <types>
         <members>hed__Course_Enrollment__c.Current_Student_Enrollments</members>
         <name>ListView</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>Settings</name>
     </types>
     <version>45.0</version>
 </Package>
