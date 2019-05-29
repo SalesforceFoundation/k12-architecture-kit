@@ -16,7 +16,6 @@
         <name>CompactLayout</name>
     </types>
     <types>
-        <members>Contact-en_US</members>
         <members>hed__Course_Offering__c-en_US</members>
         <name>CustomObjectTranslation</name>
     </types>
