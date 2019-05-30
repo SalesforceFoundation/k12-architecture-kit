@@ -3,6 +3,7 @@
     <compactLayouts>
         <fullName>K12_Faculty_Contact_Compact_Layout</fullName>
         <fields>Name</fields>
+        <fields>RecordTypeId</fields>
         <fields>AccountId</fields>
         <fields>Email</fields>
         <label>K12 Faculty Contact Compact Layout</label>
@@ -10,6 +11,7 @@
     <compactLayouts>
         <fullName>K12_Guardian_Contact_Compact_Layout</fullName>
         <fields>Name</fields>
+        <fields>RecordTypeId</fields>
         <fields>AccountId</fields>
         <fields>hed__Gender__c</fields>
         <fields>Phone</fields>
@@ -20,6 +22,7 @@
     <compactLayouts>
         <fullName>K12_Student_Contact_Compact_Layout</fullName>
         <fields>Name</fields>
+        <fields>RecordTypeId</fields>
         <fields>AccountId</fields>
         <fields>Birthdate</fields>
         <fields>hed__Gender__c</fields>

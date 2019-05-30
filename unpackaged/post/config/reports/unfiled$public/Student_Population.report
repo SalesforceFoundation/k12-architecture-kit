@@ -15,6 +15,21 @@
     <columns>
         <field>Contact.hed__Primary_Language__c</field>
     </columns>
+    <columns>
+        <field>ADDRESS2_STREET</field>
+    </columns>
+    <columns>
+        <field>ADDRESS2_CITY</field>
+    </columns>
+    <columns>
+        <field>ADDRESS2_STATE</field>
+    </columns>
+    <columns>
+        <field>ADDRESS2_ZIP</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
     <description>This report shows the student population</description>
     <filter>
         <criteriaItems>

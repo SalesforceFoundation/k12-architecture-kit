@@ -16,8 +16,21 @@
         <name>CompactLayout</name>
     </types>
     <types>
+        <members>K12Kit1</members>
+        <name>ContentAsset</name>
+    </types>
+    <types>
+        <members>K12Kit</members>
+        <name>CustomApplication</name>
+    </types>
+    <types>
         <members>hed__Course_Offering__c-en_US</members>
         <name>CustomObjectTranslation</name>
+    </types>
+    <types>
+        <members>Sample_Dashboards</members>
+        <members>Sample_Dashboards/fPczBaMKgApKGhzefAcauJRBijCZvI</members>
+        <name>Dashboard</name>
     </types>
     <types>
         <members>*</members>
@@ -50,11 +63,29 @@
         <name>Layout</name>
     </types>
     <types>
+        <members>Account.K12_All_Academic_Departments</members>
+        <members>Account.K12_All_Academic_Programs</members>
+        <members>Account.K12_All_Educational_Institutions</members>
+        <members>Account.K12_All_Households</members>
         <members>hed__Course_Enrollment__c.Current_Student_Enrollments</members>
         <name>ListView</name>
     </types>
     <types>
-        <members>*</members>
+        <members>Admin</members>
+        <name>Profile</name>
+    </types>
+    <types>
+        <members>unfiled$public/Course_Offering_Roster</members>
+        <members>unfiled$public/Faculty_Grouped_by_School</members>
+        <members>unfiled$public/Student_Population</members>
+        <members>unfiled$public/Student_Population_by_Gender</members>
+        <members>unfiled$public/Student_Population_by_Race</members>
+        <members>unfiled$public/Students_Grouped_by_Households</members>
+        <members>unfiled$public/Term_Grades_Grouped_by_Student_and_Term</members>
+        <name>Report</name>
+    </types>
+    <types>
+        <members>OrgPreference</members>
         <name>Settings</name>
     </types>
     <version>45.0</version>
