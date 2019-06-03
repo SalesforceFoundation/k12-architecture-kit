@@ -15,7 +15,7 @@ project:
 tasks:
     deploy_k12_kit_settings:
         description: Configure the default K12 Kit Settings
-        class_path: tasks.anon_apex.AnonymousApexFromFileTask
+        class_path: tasks.anon_apex.AnonymousApexTask
         options:
             path: scripts/configure_k12_kit.cls
             method: initializeK12KitSettings();
