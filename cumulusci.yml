@@ -2,7 +2,7 @@ project:
     name: Athena
     package:
         name:  Athena
-        api_version: '42.0'
+        api_version: '45.0'
         namespace: k12alpha0
     git:
         default_branch: master
