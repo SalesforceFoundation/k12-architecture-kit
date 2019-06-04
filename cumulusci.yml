@@ -2,7 +2,7 @@ project:
     name: Athena
     package:
         name:  Athena
-        api_version: '42.0'
+        api_version: '45.0'
         namespace: k12alpha0
     git:
         default_branch: master
@@ -11,6 +11,15 @@ project:
         prefix_release: release-alpha/
     dependencies:
         - github: 'https://github.com/SalesforceFoundation/HEDAP'
+
+tasks:
+    deploy_k12_kit_settings:
+        description: Configure the default K12 Kit Settings
+        class_path: cumulusci.tasks.apex.anon.AnonymousApexTask
+        options:
+            path: scripts/configure_k12_kit.cls
+            method: initializeK12KitSettings();
+
 
 orgs:
     scratch:
