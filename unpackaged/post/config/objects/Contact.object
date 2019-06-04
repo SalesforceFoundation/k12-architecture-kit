@@ -28,4 +28,50 @@
         <fields>hed__Gender__c</fields>
         <label>K12 Student Contact Compact Layout</label>
     </compactLayouts>
+    <listViews>
+        <fullName>K12_All_Faculty</fullName>
+        <columns>FULL_NAME</columns>
+        <columns>ACCOUNT.NAME</columns>
+        <columns>hed__WorkEmail__c</columns>
+        <columns>hed__WorkPhone__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CONTACT.RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Contact.Faculty</value>
+        </filters>
+        <label>K12 All Faculty</label>
+    </listViews>
+    <listViews>
+        <fullName>K12_All_Guardians</fullName>
+        <columns>FULL_NAME</columns>
+        <columns>ACCOUNT.NAME</columns>
+        <columns>PARENT.NAME</columns>
+        <columns>CONTACT.PHONE1</columns>
+        <columns>CONTACT.EMAIL</columns>
+        <columns>hed__FERPA__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CONTACT.RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Contact.Guardian</value>
+        </filters>
+        <label>K12 All Guardians</label>
+    </listViews>
+    <listViews>
+        <fullName>K12_All_Students</fullName>
+        <columns>FULL_NAME</columns>
+        <columns>hed__Gender__c</columns>
+        <columns>CONTACT.BIRTHDATE</columns>
+        <columns>ACCOUNT.NAME</columns>
+        <columns>PARENT.NAME</columns>
+        <columns>CONTACT.EMAIL</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CONTACT.RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Contact.Student</value>
+        </filters>
+        <label>K12 All Students</label>
+    </listViews>
 </CustomObject>

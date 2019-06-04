@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Course_Offering_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <listViews>
+        <fullName>K12_All_Course_Offerings</fullName>
+        <columns>NAME</columns>
+        <columns>hed__Faculty__c</columns>
+        <columns>hed__Course__c</columns>
+        <columns>hed__Term__c</columns>
+        <columns>hed__Time_Block__c</columns>
+        <columns>hed__Capacity__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>K12 All Course Offerings</label>
+    </listViews>
+</CustomObject>
