@@ -37,8 +37,8 @@
         <name>FlexiPage</name>
     </types>
     <types>
-        <members>Account-K12 Academic Program Layout</members>
         <members>Account-K12 Department Layout</members>
+        <members>Account-K12 Academic Program Layout</members>
         <members>Account-K12 Educational Organization Layout</members>
         <members>Account-K12 Household Layout</members>
         <members>Account-K12 Sports Organization Layout</members>
@@ -72,7 +72,6 @@
         <members>Contact.K12_All_Students</members>
         <members>hed__Affiliation__c.K12_All_Affiliations</members>
         <members>hed__Contact_Language__c.K12_All_Contact_Languages</members>
-        <members>hed__Course_Enrollment__c.Current_Student_Enrollments</members>
         <members>hed__Course_Enrollment__c.K12_All_Course_Connections</members>
         <members>hed__Course_Enrollment__c.K12_All_Faculty_Course_Connections</members>
         <members>hed__Course_Enrollment__c.K12_All_Student_Course_Connections</members>
@@ -82,7 +81,7 @@
         <members>hed__Course__c.K12_All_Courses</members>
         <members>hed__Facility__c.K12_All_Facilities</members>
         <members>hed__Plan_Requirement__c.K12_All_Plan_Requirements</members>
-        <members>hed__Program_Enrollment__c.K12_Program_Enrollments</members>
+        <members>hed__Program_Enrollment__c.K12_All_Program_Enrollments</members>
         <members>hed__Program_Plan__c.K12_All_Program_Plans</members>
         <members>hed__Term_Grade__c.K12_All_Term_Grades</members>
         <members>hed__Term__c.K12_All_Terms</members>

@@ -19,7 +19,7 @@
         <label>K12 Program Enrollment Compact Layout</label>
     </compactLayouts>
     <listViews>
-        <fullName>K12_Program_Enrollments</fullName>
+        <fullName>K12_All_Program_Enrollments</fullName>
         <columns>NAME</columns>
         <columns>hed__Contact__c</columns>
         <columns>hed__Graduation_Year__c</columns>
@@ -27,6 +27,6 @@
         <columns>hed__Credits_Attempted__c</columns>
         <columns>hed__Credits_Earned__c</columns>
         <filterScope>Everything</filterScope>
-        <label>K12 Program Enrollments</label>
+        <label>K12 All Program Enrollments</label>
     </listViews>
 </CustomObject>
