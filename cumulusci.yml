@@ -21,6 +21,25 @@ tasks:
             path: scripts/configure_k12_kit.cls
             apex: initializeK12KitSettings();
 
+flows:
+    config_trial:
+        description: Trial org configuration.
+        steps:
+            1:
+                task: deploy_k12_kit_settings
+            2:
+                task: deploy_post
+
+    trial_org:
+        description: Deploy trial configuration to an org.
+        steps:
+            1:
+                flow: dependencies
+            2:
+                flow: None # install_prod here
+            3:
+                flow: config_trial
+
 plans:
     install:
         slug: install
