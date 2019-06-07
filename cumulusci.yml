@@ -28,6 +28,9 @@ tasks:
             path: scripts/configure_k12_kit.cls
             apex: initializeK12KitSettings();
 
+    update_admin_profile:
+        class_path: tasks.salesforce.UpdateAdminProfile
+
 flows:
     config_dev_namespaced:
         steps:
