@@ -18,7 +18,7 @@ tasks:
         class_path: cumulusci.tasks.apex.anon.AnonymousApexTask
         options:
             path: scripts/configure_k12_kit.cls
-            method: initializeK12KitSettings();
+            apex: initializeK12KitSettings();
 
 
 orgs:
