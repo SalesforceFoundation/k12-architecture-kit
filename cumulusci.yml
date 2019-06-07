@@ -13,6 +13,14 @@ project:
         - github: 'https://github.com/SalesforceFoundation/HEDAP'
 
 tasks:
+    deploy_dev_config:
+        description: Deploys configuration for Development. Assigns page layouts, compact layouts, and sets tab visibilities. Record type visibilities are set the update_admin_profile task
+        class_path: cumulusci.tasks.salesforce.Deploy
+        options:
+            namespace_inject: $project_config.project__package__namespace
+            path: unpackaged/config/dev
+            unmanaged: True
+
     deploy_k12_kit_settings:
         description: Configure the default K12 Kit Settings
         class_path: cumulusci.tasks.apex.anon.AnonymousApexTask
@@ -20,6 +28,32 @@ tasks:
             path: scripts/configure_k12_kit.cls
             method: initializeK12KitSettings();
 
+flows:
+    config_dev_namespaced:
+        steps:
+            1:
+                task: deploy_post
+                options:
+                    namespaced_org: True
+            2:
+                task: update_admin_profile
+                options:
+                    namespaced_org: True
+            3:
+                task: deploy_k12_kit_settings
+            4:
+                task: deploy_dev_config
+    
+    headley:
+        steps:
+            1:
+                task: deploy_post
+            2:
+                task: update_admin_profile
+            3:
+                task: deploy_k12_kit_settings
+            4:
+                task: deploy_dev_config
 
 orgs:
     scratch:

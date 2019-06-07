@@ -71,31 +71,47 @@ class UpdateAdminProfile(BaseUpdateAdminProfile):
         
         # Set record type visibilities for Accounts
         self._set_record_type(
-            'Account.{namespaced_org}Administrative'.format(**namespace_args),
+            'Account.Administrative'.format(**namespace_args),
             'true',
         )
         self._set_record_type(
-            'Account.{namespaced_org}Academic_Program'.format(**namespace_args),
+            'Account.Academic_Program'.format(**namespace_args),
             'false',
         )
         self._set_record_type(
-            'Account.{namespaced_org}Business_Organization'.format(**namespace_args),
+            'Account.Business_Organization'.format(**namespace_args),
             'false',
         )
         self._set_record_type(
-            'Account.{namespaced_org}Educational_Institution'.format(**namespace_args),
+            'Account.Educational_Institution'.format(**namespace_args),
             'false',
         )
         self._set_record_type(
-            'Account.{namespaced_org}HH_Account'.format(**namespace_args),
+            'Account.{namespaced_org}Grade_Level'.format(**namespace_args),
             'false',
         )
         self._set_record_type(
-            'Account.{namespaced_org}Sports_Organization'.format(**namespace_args),
+            'Account.HH_Account'.format(**namespace_args),
             'false',
         )
         self._set_record_type(
-            'Account.{namespaced_org}University_Department'.format(**namespace_args),
+            'Account.Sports_Organization'.format(**namespace_args),
+            'false',
+        )
+        self._set_record_type(
+            'Account.University_Department'.format(**namespace_args),
+            'false',
+        )
+        self._set_record_type(
+            '{managed}Contact.{namespaced_org}Faculty'.format(**namespace_args),
+            'false',
+        )
+        self._set_record_type(
+            '{managed}Contact.{namespaced_org}Guardian'.format(**namespace_args),
+            'false',
+        )
+        self._set_record_type(
+            '{managed}Contact.{namespaced_org}Student'.format(**namespace_args),
             'false',
         )
 
@@ -104,15 +120,15 @@ class UpdateAdminProfile(BaseUpdateAdminProfile):
  
         # Set record type visibilities for Course Connections
         self._set_record_type(
-            '{managed}Course_Enrollment__c.{namespaced_org}Default'.format(**namespace_args),
+            'hed__Course_Enrollment__c.Default'.format(**namespace_args),
             'false',
         )
         self._set_record_type(
-            '{managed}Course_Enrollment__c.{namespaced_org}Faculty'.format(**namespace_args),
+            'hed__Course_Enrollment__c.Faculty'.format(**namespace_args),
             'false',
         )
         self._set_record_type(
-            '{managed}Course_Enrollment__c.{namespaced_org}Student'.format(**namespace_args),
+            'hed__Course_Enrollment__c.Student'.format(**namespace_args),
             'true',
         )
 

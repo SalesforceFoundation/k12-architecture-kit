@@ -20,10 +20,6 @@
         <name>ContentAsset</name>
     </types>
     <types>
-        <members>K12Kit</members>
-        <name>CustomApplication</name>
-    </types>
-    <types>
         <members>hed__Course_Offering__c-en_US</members>
         <name>CustomObjectTranslation</name>
     </types>
@@ -87,10 +83,6 @@
         <members>hed__Term__c.K12_All_Terms</members>
         <members>hed__Time_Block__c.K12_All_Time_Block</members>
         <name>ListView</name>
-    </types>
-    <types>
-        <members>Admin</members>
-        <name>Profile</name>
     </types>
     <types>
         <members>unfiled$public/Course_Offering_Roster</members>
