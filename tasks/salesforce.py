@@ -82,7 +82,7 @@ class UpdateAdminProfile(BaseUpdateAdminProfile):
             "Account.Educational_Institution".format(**namespace_args), "false"
         )
         self._set_record_type(
-            "Account.{namespaced_org}Grade_Level".format(**namespace_args), "false"
+            "Account.Grade_Level".format(**namespace_args), "false"
         )
         self._set_record_type("Account.HH_Account".format(**namespace_args), "false")
         self._set_record_type(
@@ -92,13 +92,13 @@ class UpdateAdminProfile(BaseUpdateAdminProfile):
             "Account.University_Department".format(**namespace_args), "false"
         )
         self._set_record_type(
-            "Contact.{namespaced_org}Faculty".format(**namespace_args), "false"
+            "Contact.Faculty".format(**namespace_args), "false"
         )
         self._set_record_type(
-            "Contact.{namespaced_org}Guardian".format(**namespace_args), "false"
+            "Contact.Guardian".format(**namespace_args), "false"
         )
         self._set_record_type(
-            "Contact.{namespaced_org}Student".format(**namespace_args), "true"
+            "Contact.Student".format(**namespace_args), "true"
         )
 
         if self.options["skip_record_types"]:
