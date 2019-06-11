@@ -9,6 +9,7 @@ project:
         prefix_feature: feature
         prefix_beta: beta-alpha/
         prefix_release: release-alpha/
+        repo_url: https://github.com/SalesforceFoundation/Athena
     dependencies:
         - github: 'https://github.com/SalesforceFoundation/HEDAP'
 
