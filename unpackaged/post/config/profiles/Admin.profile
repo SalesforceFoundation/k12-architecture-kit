@@ -7,10 +7,57 @@
     </applicationVisibilities>
     <custom>false</custom>
     <layoutAssignments>
+        <layout>Account-K12 Academic Program Layout</layout>
+        <recordType>Account.Academic_Program</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Account-K12 Department Layout</layout>
+        <recordType>Account.University_Department</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Account-K12 Educational Organization Layout</layout>
+        <recordType>Account.Educational_Institution</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Account-K12 Household Layout</layout>
+        <recordType>Account.HH_Account</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Account-K12 Sports Organization Layout</layout>
+        <recordType>Account.Sports_Organization</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Contact-K12 Faculty Layout</layout>
+        <recordType>Contact.Faculty</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Contact-K12 Guardian Layout</layout>
+        <recordType>Contact.Guardian</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Contact-K12 Student Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Contact-K12 Student Layout</layout>
+        <recordType>Contact.Student</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>hed__Affiliation__c-K12 Affiliation Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>hed__Contact_Language__c-K12 Contact Language Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>hed__Course_Enrollment__c-K12 Faculty Course Enrollment Layout</layout>
+        <recordType>hed__Course_Enrollment__c.Faculty</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>hed__Course_Enrollment__c-K12 Student Course Enrollment Layout</layout>
+        <recordType>hed__Course_Enrollment__c.Default</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>hed__Course_Enrollment__c-K12 Student Course Enrollment Layout</layout>
+        <recordType>hed__Course_Enrollment__c.Student</recordType>
     </layoutAssignments>
     <layoutAssignments>
         <layout>hed__Course_Offering_Schedule__c-K12 Course Offering Schedule Layout</layout>
@@ -45,6 +92,42 @@
     <layoutAssignments>
         <layout>hed__Time_Block__c-K12 Time Block Layout</layout>
     </layoutAssignments>
+    <tabVisibilities>
+        <tab>hed__Course_Enrollment__c</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>hed__Course_Offering_Schedule__c</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>hed__Facility__c</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>hed__Program_Enrollment__c</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>hed__Program_Plan__c</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>hed__Term_Grade__c</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>hed__Time_Block__c</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>standard-Account</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>standard-Contact</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
     <userLicense>Salesforce</userLicense>
     <userPermissions>
         <enabled>true</enabled>
@@ -213,10 +296,6 @@
     <userPermissions>
         <enabled>true</enabled>
         <name>EditActivatedOrders</name>
-    </userPermissions>
-    <userPermissions>
-        <enabled>true</enabled>
-        <name>EditBillingInfo</name>
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>
@@ -452,15 +531,7 @@
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>
-        <name>ManagePropositions</name>
-    </userPermissions>
-    <userPermissions>
-        <enabled>true</enabled>
         <name>ManagePvtRptsAndDashbds</name>
-    </userPermissions>
-    <userPermissions>
-        <enabled>true</enabled>
-        <name>ManageRecommendationStrategies</name>
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>
@@ -533,10 +604,6 @@
     <userPermissions>
         <enabled>true</enabled>
         <name>PrivacyDataAccess</name>
-    </userPermissions>
-    <userPermissions>
-        <enabled>true</enabled>
-        <name>PublishPackaging</name>
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>

@@ -21,17 +21,39 @@ tasks:
             path: scripts/configure_k12_kit.cls
             apex: initializeK12KitSettings();
 
+    deploy_trial_config:
+        description: Deploys metadata for end user. Assigns page layouts and compact layouts.
+        class_path: cumulusci.tasks.salesforce.Deploy
+        ui_options:
+            name: Deploy Trial Metadata
+        options:
+            namespace_inject: $project_config.project__package__namespace
+            path: unpackaged/config/trial
+
     update_admin_profile:
         class_path: tasks.salesforce.UpdateAdminProfile
 
+    retrieve_postinstall_config:
+        description: Retrieves the current changes in a scratch org into unpackaged/post/config
+        class_path: cumulusci.tasks.salesforce.sourcetracking.RetrieveChanges
+        group: Salesforce Metadata
+        options:
+            path: unpackaged/post/config
+            namespace_tokenize: $project_config.project__package__namespace
+
+    retrieve_trial_config:
+        description: Retrieves the current changes in a scratch org into unpackaged/post/config
+        class_path: cumulusci.tasks.salesforce.sourcetracking.RetrieveChanges
+        group: Salesforce Metadata
+        options:
+            path: unpackaged/config/trial
+            namespace_tokenize: $project_config.project__package__namespace
+
 flows:
-    config_trial:
-        description: Trial org configuration.
+    config_managed:
         steps:
-            1:
+            3:
                 task: deploy_k12_kit_settings
-            2:
-                task: deploy_post
 
     trial_org:
         description: Deploy trial configuration to an org.
@@ -39,9 +61,11 @@ flows:
             1:
                 flow: dependencies
             2:
-                flow: None # install_prod here
+                flow: None # install_managed
             3:
-                flow: config_trial
+                flow: config_managed
+            4:
+                task: deploy_trial_config
 
 plans:
     install:

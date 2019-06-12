@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Plan_Requirement_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <listViews>
+        <fullName>K12_All_Plan_Requirements</fullName>
+        <columns>NAME</columns>
+        <columns>hed__Plan_Requirement__c</columns>
+        <columns>hed__Course__c</columns>
+        <columns>hed__Credits__c</columns>
+        <columns>hed__Category__c</columns>
+        <columns>hed__Program_Plan__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>K12 All Plan Requirements</label>
+    </listViews>
+</CustomObject>
