@@ -17,4 +17,26 @@
         <filterScope>Everything</filterScope>
         <label>K12 All Courses</label>
     </listViews>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Academic course that a Department or School (the degree-granting Account type for the educational institution) offers.</description>
+    <fields>
+        <fullName>hed__Account__c</fullName>
+        <externalId>false</externalId>
+        <label>Department</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Courses</relationshipLabel>
+        <relationshipName>Courses</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>true</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <label>Course</label>
+    <nameField>
+        <label>Course Name</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Courses</pluralLabel>
+    <sharingModel>ControlledByParent</sharingModel>
 </CustomObject>

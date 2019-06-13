@@ -32,4 +32,16 @@
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Stores student grades for a specific grading period within a Term.</description>
+    <enableActivities>true</enableActivities>
+    <enableReports>true</enableReports>
+    <label>Term Grade</label>
+    <nameField>
+        <displayFormat>TG-{0000}</displayFormat>
+        <label>Term Grade Name</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Term Grades</pluralLabel>
+    <sharingModel>ReadWrite</sharingModel>
 </CustomObject>

@@ -19,4 +19,13 @@
         <filterScope>Everything</filterScope>
         <label>K12 All Plan Requirements</label>
     </listViews>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>This object will be the various course requirements that would need to be met to achieve the particular Program Plan</description>
+    <label>Plan Requirement</label>
+    <nameField>
+        <label>Plan Requirement Name</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Plan Requirements</pluralLabel>
+    <sharingModel>ReadWrite</sharingModel>
 </CustomObject>

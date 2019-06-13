@@ -30,7 +30,11 @@
         <name>CustomApplication</name>
     </types>
     <types>
-        <members>hed__Course_Offering__c-en_US</members>
+        <members>*</members>
+        <name>CustomObject</name>
+    </types>
+    <types>
+        <members>*</members>
         <name>CustomObjectTranslation</name>
     </types>
     <types>

@@ -19,4 +19,15 @@
         <filterScope>Everything</filterScope>
         <label>K12 All Affiliations</label>
     </listViews>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Connection between a Contact and an Account.</description>
+    <label>Affiliation</label>
+    <pluralLabel>Affiliations</pluralLabel>
+    <nameField>
+        <displayFormat>AF-{000000}</displayFormat>
+        <label>Affiliation Key</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <sharingModel>ReadWrite</sharingModel>
 </CustomObject>

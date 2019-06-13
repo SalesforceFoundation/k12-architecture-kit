@@ -19,4 +19,27 @@
         <filterScope>Everything</filterScope>
         <label>K12 All Course Offerings</label>
     </listViews>
+    <fields>
+        <fullName>hed__Term__c</fullName>
+        <externalId>false</externalId>
+        <label>Term</label>
+        <referenceTo>hed__Term__c</referenceTo>
+        <relationshipLabel>Course Offerings</relationshipLabel>
+        <relationshipName>Course_Offerings</relationshipName>
+        <relationshipOrder>1</relationshipOrder>
+        <reparentableMasterDetail>true</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Joins Courses and Terms to contain information related to a single occurrence of a course.</description>
+    <label>Course Offering</label>
+    <nameField>
+        <label>Course Offering ID</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Course Offerings</pluralLabel>
+    <sharingModel>ControlledByParent</sharingModel>
+    <visibility>Public</visibility>
 </CustomObject>

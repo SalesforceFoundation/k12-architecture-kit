@@ -18,4 +18,29 @@
         <filterScope>Everything</filterScope>
         <label>K12 All Contact Languages</label>
     </listViews>
+    <fields>
+        <fullName>hed__Contact__c</fullName>
+        <description>The person who speaks this language.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The person who speaks this language.</inlineHelpText>
+        <label>Contact</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Contact Languages</relationshipLabel>
+        <relationshipName>Contact_Languages</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Joins a Language and a Contact to store details about a Contact&apos;s language fluency.</description>
+    <label>Contact Language</label>
+    <nameField>
+        <displayFormat>CL-{000000}</displayFormat>
+        <label>Contact Language Name</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Contact Languages</pluralLabel>
+    <sharingModel>ControlledByParent</sharingModel>
 </CustomObject>

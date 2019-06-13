@@ -125,4 +125,16 @@
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Represents a connection to a Course Offering.</description>
+    <enableReports>true</enableReports>
+    <label>Course Connection</label>
+    <nameField>
+        <displayFormat>CC-{0000}</displayFormat>
+        <label>Course Connection ID</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Course Connections</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
 </CustomObject>

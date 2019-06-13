@@ -31,4 +31,16 @@
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Joins Course Offering to Time Block and provides a way to specify the days and location for a Course.</description>
+    <enableActivities>true</enableActivities>
+    <label>Course Offering Schedule</label>
+    <nameField>
+        <displayFormat>CSH-{000000}</displayFormat>
+        <label>Course Offering Schedule Name</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Course Offering Schedules</pluralLabel>
+    <sharingModel>ReadWrite</sharingModel>
 </CustomObject>

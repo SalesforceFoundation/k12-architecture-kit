@@ -61,4 +61,13 @@
         <searchResultsAdditionalFields>hed__Is_Primary__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>hed__Status__c</searchResultsAdditionalFields>
     </searchLayouts>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Links Courses to an Academic Program to create a path for students to follow. An Academic Program can list multiple Courses, and a Course can be associated with multiple Academic Programs.</description>
+    <label>Program Plan</label>
+    <nameField>
+        <label>Program Plan Name</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Program Plans</pluralLabel>
+    <sharingModel>ReadWrite</sharingModel>
 </CustomObject>

@@ -47,4 +47,13 @@
         <searchResultsAdditionalFields>hed__Facility_Type__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>hed__Capacity__c</searchResultsAdditionalFields>
     </searchLayouts>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>A school property asset. For example, a classroom, lecture hall, or laboratory.</description>
+    <label>Facility</label>
+    <nameField>
+        <label>Facility Name</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Facilities</pluralLabel>
+    <sharingModel>ReadWrite</sharingModel>
 </CustomObject>

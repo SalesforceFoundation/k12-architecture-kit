@@ -8,4 +8,13 @@
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
     </actionOverrides>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Stores language information.</description>
+    <label>Language</label>
+    <nameField>
+        <label>Language Name</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Languages</pluralLabel>
+    <sharingModel>ReadWrite</sharingModel>
 </CustomObject>
