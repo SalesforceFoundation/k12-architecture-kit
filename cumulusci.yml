@@ -42,7 +42,7 @@ tasks:
             namespace_tokenize: $project_config.project__package__namespace
 
     retrieve_trial_config:
-        description: Retrieves the current changes in a scratch org into unpackaged/post/config
+        description: Retrieves the current changes in a scratch org into unpackaged/post/trial
         class_path: cumulusci.tasks.salesforce.sourcetracking.RetrieveChanges
         group: Salesforce Metadata
         options:
