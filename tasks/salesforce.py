@@ -70,7 +70,7 @@ class UpdateAdminProfile(BaseUpdateAdminProfile):
             "namespaced_org": self.namespaced_org_prefix,
         }
 
-        # Set record type visibilities for Accounts
+        # Set record type visibilities for Accounts & Contacts
         self._set_record_type(
             "Account.{namespaced_org}Administrative".format(**namespace_args), "true"
         )
@@ -78,23 +78,31 @@ class UpdateAdminProfile(BaseUpdateAdminProfile):
             "Account.{namespaced_org}Academic_Program".format(**namespace_args), "false"
         )
         self._set_record_type(
-            "Account.{namespaced_org}Business_Organization".format(**namespace_args),
-            "false",
+            "Account.{namespaced_org}Business_Organization".format(**namespace_args), "false"
         )
         self._set_record_type(
-            "Account.{namespaced_org}Educational_Institution".format(**namespace_args),
-            "false",
+            "Account.{namespaced_org}Educational_Institution".format(**namespace_args), "false"
+        )
+        self._set_record_type(
+            "Account.{namespaced_org}Grade_Level".format(**namespace_args), "false"
         )
         self._set_record_type(
             "Account.{namespaced_org}HH_Account".format(**namespace_args), "false"
         )
         self._set_record_type(
-            "Account.{namespaced_org}Sports_Organization".format(**namespace_args),
-            "false",
+            "Account.{namespaced_org}Sports_Organization".format(**namespace_args), "false"
         )
         self._set_record_type(
-            "Account.{namespaced_org}University_Department".format(**namespace_args),
-            "false",
+            "Account.{namespaced_org}University_Department".format(**namespace_args), "false"
+        )
+        self._set_record_type(
+            "Contact.{namespaced_org}Faculty".format(**namespace_args), "false"
+        )
+        self._set_record_type(
+            "Contact.{namespaced_org}Guardian".format(**namespace_args), "false"
+        )
+        self._set_record_type(
+            "Contact.{namespaced_org}Student".format(**namespace_args), "true"
         )
 
         if self.options["skip_record_types"]:

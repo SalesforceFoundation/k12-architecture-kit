@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
-        <members>*</members>
-        <name>CustomApplication</name>
-    </types>
-    <types>
         <members>Account.K12_Household_Compact_Layout</members>
         <members>Account.hed__HEDA_Account_Compact_Layout</members>
         <members>Contact.K12_Faculty_Contact_Compact_Layout</members>
@@ -30,6 +26,10 @@
         <name>ContentAsset</name>
     </types>
     <types>
+        <members>*</members>
+        <name>CustomApplication</name>
+    </types>
+    <types>
         <members>hed__Course_Offering__c-en_US</members>
         <name>CustomObjectTranslation</name>
     </types>
@@ -43,8 +43,8 @@
         <name>FlexiPage</name>
     </types>
     <types>
-        <members>Account-K12 Department Layout</members>
         <members>Account-K12 Academic Program Layout</members>
+        <members>Account-K12 Department Layout</members>
         <members>Account-K12 Educational Organization Layout</members>
         <members>Account-K12 Household Layout</members>
         <members>Account-K12 Sports Organization Layout</members>
