@@ -9,6 +9,7 @@ project:
         prefix_feature: feature
         prefix_beta: beta-alpha/
         prefix_release: release-alpha/
+        repo_url: https://github.com/SalesforceFoundation/Athena
     dependencies:
         - github: 'https://github.com/SalesforceFoundation/HEDAP'
 
@@ -18,9 +19,39 @@ tasks:
         class_path: cumulusci.tasks.apex.anon.AnonymousApexTask
         options:
             path: scripts/configure_k12_kit.cls
-            method: initializeK12KitSettings();
+            apex: initializeK12KitSettings();
 
-
+plans:
+    install:
+        slug: install
+        title: Install K12 Kit
+        tier: primary
+        steps:
+            1:
+                task: update_dependencies
+                ui_options:
+                    1:
+                        name: EDA - Account Record Types
+                    2:
+                        name: EDA - Contact Key Affiliation Fields
+                    4:
+                        name: EDA - Deploy Course Connection Record Types
+                    5:
+                        name: Facility Display Name Formula Field
+            2:
+                task: deploy_pre
+                ui_options:
+                    recordtypes:
+                        name: K12 - Account and Contact Record Types
+            3:
+                task: deploy_k12_kit_settings
+                ui_options:
+                    name: K12 - Default Kit Settings
+            4:
+                task: deploy_post
+                ui_options:
+                    config:
+                        name: K12 - Kit Metadata and Configuration
 orgs:
     scratch:
         walkthrough:
