@@ -99,7 +99,7 @@
         <members>hed__Term_Grade__c.K12_All_Term_Grades</members>
         <members>hed__Term_Grade__c.hed__All</members>
         <members>hed__Term__c.K12_All_Terms</members>
-        <members>hed__Time_Block__c.K12_All_Time_Block</members>
+        <members>hed__Time_Block__c.K12_All_Time_Blocks</members>
         <members>hed__Time_Block__c.hed__All</members>
         <name>ListView</name>
     </types>
