@@ -85,7 +85,7 @@
         <members>hed__Program_Plan__c.K12_All_Program_Plans</members>
         <members>hed__Term_Grade__c.K12_All_Term_Grades</members>
         <members>hed__Term__c.K12_All_Terms</members>
-        <members>hed__Time_Block__c.K12_All_Time_Block</members>
+        <members>hed__Time_Block__c.K12_All_Time_Blocks</members>
         <name>ListView</name>
     </types>
     <types>
