@@ -8,7 +8,7 @@ Try it out
 
 You can install EDA utilizing our custom application installer into any Developer Edition, Sandbox or Enterprise Edition Salesforce org.
 
-* K12 Installer Link coming soon!
+* K-12 Kit Installer Link coming soon!
 
 Resources
 
