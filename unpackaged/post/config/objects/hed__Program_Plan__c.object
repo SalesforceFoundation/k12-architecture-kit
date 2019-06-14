@@ -33,27 +33,6 @@
         <filterScope>Everything</filterScope>
         <label>K12 All Program Plans</label>
     </listViews>
-    <listViews>
-        <fullName>hed__All</fullName>
-        <filterScope>Everything</filterScope>
-        <label>All</label>
-    </listViews>
-    <listViews>
-        <fullName>hed__Primary_Program_Plan</fullName>
-        <columns>NAME</columns>
-        <columns>hed__Account__c</columns>
-        <columns>hed__Start_Date__c</columns>
-        <columns>hed__End_Date__c</columns>
-        <columns>hed__Is_Primary__c</columns>
-        <columns>hed__Status__c</columns>
-        <filterScope>Mine</filterScope>
-        <filters>
-            <field>hed__Is_Primary__c</field>
-            <operation>equals</operation>
-            <value>1</value>
-        </filters>
-        <label>Primary Program Plan</label>
-    </listViews>
     <searchLayouts>
         <searchResultsAdditionalFields>hed__Account__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>hed__Start_Date__c</searchResultsAdditionalFields>
