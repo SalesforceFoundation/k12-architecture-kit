@@ -26,11 +26,6 @@
         <filterScope>Everything</filterScope>
         <label>K12 All Course Offering Schedules</label>
     </listViews>
-    <listViews>
-        <fullName>hed__All</fullName>
-        <filterScope>Everything</filterScope>
-        <label>All</label>
-    </listViews>
     <deploymentStatus>Deployed</deploymentStatus>
     <description>Joins Course Offering to Time Block and provides a way to specify the days and location for a Course.</description>
     <enableActivities>true</enableActivities>

@@ -26,14 +26,6 @@
         <filterScope>Everything</filterScope>
         <label>K12 All Time Blocks</label>
     </listViews>
-    <listViews>
-        <fullName>hed__All</fullName>
-        <columns>NAME</columns>
-        <columns>hed__Start_Time__c</columns>
-        <columns>hed__End_Time__c</columns>
-        <filterScope>Everything</filterScope>
-        <label>All</label>
-    </listViews>
     <deploymentStatus>Deployed</deploymentStatus>
     <description>Represents a block of time in which classes are held.</description>
     <enableActivities>true</enableActivities>

@@ -99,11 +99,6 @@
         </filters>
         <label>K12 Current Student Course Connections</label>
     </listViews>
-    <listViews>
-        <fullName>hed__All</fullName>
-        <filterScope>Everything</filterScope>
-        <label>All</label>
-    </listViews>
     <deploymentStatus>Deployed</deploymentStatus>
     <description>Represents a connection to a Course Offering.</description>
     <enableReports>true</enableReports>

@@ -34,11 +34,6 @@
         <filterScope>Everything</filterScope>
         <label>K12 All Facilities</label>
     </listViews>
-    <listViews>
-        <fullName>hed__All</fullName>
-        <filterScope>Everything</filterScope>
-        <label>All</label>
-    </listViews>
     <searchLayouts>
         <customTabListAdditionalFields>hed__Facility_Type__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>hed__Capacity__c</customTabListAdditionalFields>

@@ -38,11 +38,6 @@
         <filterScope>Everything</filterScope>
         <label>K12 All Program Enrollments</label>
     </listViews>
-    <listViews>
-        <fullName>hed__All</fullName>
-        <filterScope>Everything</filterScope>
-        <label>All</label>
-    </listViews>
     <deploymentStatus>Deployed</deploymentStatus>
     <description>Contains details about the relationship a student Contact has with a Department or School (the degree-granting Account type for the educational institution).</description>
     <label>Program Enrollment</label>

@@ -27,11 +27,6 @@
         <filterScope>Everything</filterScope>
         <label>K12 All Term Grades</label>
     </listViews>
-    <listViews>
-        <fullName>hed__All</fullName>
-        <filterScope>Everything</filterScope>
-        <label>All</label>
-    </listViews>
     <deploymentStatus>Deployed</deploymentStatus>
     <description>Stores student grades for a specific grading period within a Term.</description>
     <enableActivities>true</enableActivities>

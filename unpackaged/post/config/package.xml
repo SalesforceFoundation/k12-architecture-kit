@@ -86,24 +86,16 @@
         <members>hed__Course_Enrollment__c.K12_All_Faculty_Course_Connections</members>
         <members>hed__Course_Enrollment__c.K12_All_Student_Course_Connections</members>
         <members>hed__Course_Enrollment__c.K12_Current_Student_Course_Connections</members>
-        <members>hed__Course_Enrollment__c.hed__All</members>
         <members>hed__Course_Offering_Schedule__c.K12_All_Course_Offering_Schedules</members>
-        <members>hed__Course_Offering_Schedule__c.hed__All</members>
         <members>hed__Course_Offering__c.K12_All_Course_Offerings</members>
         <members>hed__Course__c.K12_All_Courses</members>
         <members>hed__Facility__c.K12_All_Facilities</members>
-        <members>hed__Facility__c.hed__All</members>
         <members>hed__Plan_Requirement__c.K12_All_Plan_Requirements</members>
         <members>hed__Program_Enrollment__c.K12_All_Program_Enrollments</members>
-        <members>hed__Program_Enrollment__c.hed__All</members>
         <members>hed__Program_Plan__c.K12_All_Program_Plans</members>
-        <members>hed__Program_Plan__c.hed__All</members>
-        <members>hed__Program_Plan__c.hed__Primary_Program_Plan</members>
         <members>hed__Term_Grade__c.K12_All_Term_Grades</members>
-        <members>hed__Term_Grade__c.hed__All</members>
         <members>hed__Term__c.K12_All_Terms</members>
         <members>hed__Time_Block__c.K12_All_Time_Blocks</members>
-        <members>hed__Time_Block__c.hed__All</members>
         <name>ListView</name>
     </types>
     <types>
