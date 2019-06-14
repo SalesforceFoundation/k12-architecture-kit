@@ -1,4 +1,4 @@
-# K12KIT
+# K-12 Kit
 
 The Salesforce K-12 Kit provides a K-12 education-specific platform for growth for organizations utilizing Salesforce. K-12 Kit adds unmanaged meta data to Salesforce's Education Data Architecture (EDA) managed package to give K-12 Educational Institution users a familiar nomenclature and data model for many education applications. In addition, Education developers and administrators can utilize EDA's advanced trigger management capabilities, robust error handling and pluggable framework to better manage and coordinate the data in their Salesforce instance.
 
