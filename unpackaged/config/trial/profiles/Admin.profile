@@ -42,6 +42,18 @@
         <layout>hed__Contact_Language__c-K12 Contact Language Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>hed__Course_Enrollment__c-K12 Faculty Course Enrollment Layout</layout>
+        <recordType>hed__Course_Enrollment__c.Faculty</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>hed__Course_Enrollment__c-K12 Student Course Enrollment Layout</layout>
+        <recordType>hed__Course_Enrollment__c.Default</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>hed__Course_Enrollment__c-K12 Student Course Enrollment Layout</layout>
+        <recordType>hed__Course_Enrollment__c.Student</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>hed__Course_Offering_Schedule__c-K12 Course Offering Schedule Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
