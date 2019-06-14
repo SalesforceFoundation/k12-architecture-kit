@@ -8,7 +8,6 @@
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
     </actionOverrides>
-    <compactLayoutAssignment>hed__HEDA_Course_Enrollment_Compact_Layout</compactLayoutAssignment>
     <compactLayouts>
         <fullName>K12_Faculty_Course_Connection_Compact_Layout</fullName>
         <fields>Name</fields>
@@ -37,26 +36,6 @@
         <fields>hed__Primary__c</fields>
         <label>HEDA Course Connection Compact Layout</label>
     </compactLayouts>
-    <listViews>
-        <fullName>Current_Student_Enrollments</fullName>
-        <columns>NAME</columns>
-        <columns>hed__Contact__c</columns>
-        <columns>hed__Course_Offering__c</columns>
-        <columns>hed__Credits_Attempted__c</columns>
-        <columns>hed__Grade__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>RECORDTYPE</field>
-            <operation>equals</operation>
-            <value>hed__Course_Enrollment__c.Student</value>
-        </filters>
-        <filters>
-            <field>hed__Status__c</field>
-            <operation>equals</operation>
-            <value>Current</value>
-        </filters>
-        <label>Current Student Enrollments</label>
-    </listViews>
     <listViews>
         <fullName>K12_All_Course_Connections</fullName>
         <columns>NAME</columns>

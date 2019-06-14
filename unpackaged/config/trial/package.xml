@@ -10,6 +10,11 @@
     </types>
     <types>
         <members>Account.HH_Account</members>
+        <members>Contact.Faculty</members>
+        <members>Contact.Guardian</members>
+        <members>Contact.Student</members>
+        <members>hed__Course_Enrollment__c.Faculty</members>
+        <members>hed__Course_Enrollment__c.Student</members>
         <name>RecordType</name>
     </types>
     <version>45.0</version>
