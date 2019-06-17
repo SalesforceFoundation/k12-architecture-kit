@@ -17,13 +17,15 @@ tasks:
     deploy_k12_kit_settings:
         description: Configure the default K12 Kit Settings
         class_path: cumulusci.tasks.apex.anon.AnonymousApexTask
+        group: Project-specific
         options:
             path: scripts/configure_k12_kit.cls
             apex: initializeK12KitSettings();
 
     deploy_trial_config:
-        description: Deploys metadata for end user. Assigns page layouts and compact layouts.
+        description: Deploys metadata and configuration for TSOs.
         class_path: cumulusci.tasks.salesforce.Deploy
+        group: Project-specific
         ui_options:
             name: Deploy Trial Metadata
         options:
