@@ -8,6 +8,7 @@
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
     </actionOverrides>
+    <compactLayoutAssignment>hed__HEDA_Account_Compact_Layout</compactLayoutAssignment>
     <compactLayouts>
         <fullName>K12_Household_Compact_Layout</fullName>
         <fields>Name</fields>
@@ -85,6 +86,13 @@
         </filters>
         <label>K12 All Households</label>
     </listViews>
+    <recordTypes>
+        <fullName>HH_Account</fullName>
+        <active>true</active>
+        <compactLayoutAssignment>K12_Household_Compact_Layout</compactLayoutAssignment>
+        <description>A Household containing one or more individuals.</description>
+        <label>Household Account</label>
+    </recordTypes>
     <searchLayouts>
         <customTabListAdditionalFields>ACCOUNT.NAME</customTabListAdditionalFields>
         <customTabListAdditionalFields>ACCOUNT.ADDRESS1_CITY</customTabListAdditionalFields>

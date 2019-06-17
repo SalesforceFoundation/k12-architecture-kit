@@ -8,6 +8,7 @@
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
     </actionOverrides>
+    <compactLayoutAssignment>hed__HEDA_Course_Enrollment_Compact_Layout</compactLayoutAssignment>
     <compactLayouts>
         <fullName>K12_Faculty_Course_Connection_Compact_Layout</fullName>
         <fields>Name</fields>
@@ -99,6 +100,20 @@
         </filters>
         <label>K12 Current Student Course Connections</label>
     </listViews>
+    <recordTypes>
+        <fullName>Faculty</fullName>
+        <active>true</active>
+        <compactLayoutAssignment>K12_Faculty_Course_Connection_Compact_Layout</compactLayoutAssignment>
+        <description>A Faculty Course Connection</description>
+        <label>Faculty</label>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Student</fullName>
+        <active>true</active>
+        <compactLayoutAssignment>K12_Student_Course_Connection_Compact_Layout</compactLayoutAssignment>
+        <description>A Student Course Connection</description>
+        <label>Student</label>
+    </recordTypes>
     <deploymentStatus>Deployed</deploymentStatus>
     <description>Represents a connection to a Course Offering.</description>
     <enableReports>true</enableReports>
