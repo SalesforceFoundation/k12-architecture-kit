@@ -4,13 +4,13 @@ The Salesforce K-12 Kit provides a K-12 education-specific platform for growth f
 
 K-12 Kit is built from industry-wide best practices used across education institutions and the Salesforce ecosystem and we welcome feedback and contributions for the project. See below for more information on how to get involved.
 
-Try it out
+### Try it out
 
 You can install EDA utilizing our custom application installer into any Developer Edition, Sandbox or Enterprise Edition Salesforce org.
 
 * K-12 Kit Installer Link coming soon!
 
-Resources
+### Resources
 
 * <a href="http://developer.salesforce.org/EDA/ApexDocumentation/" target="_blank">K-12 Kit ApexDoc code documentation</a>
 * <a href="https://salesforce.quip.com/cAJzAnydf6gp" target="_blank">EDA Data Dictionary</a>
