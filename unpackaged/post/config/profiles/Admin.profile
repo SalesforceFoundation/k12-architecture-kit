@@ -37,12 +37,12 @@
     </applicationVisibilities>
     <custom>false</custom>
     <layoutAssignments>
-        <layout>Account-HEDA Organization Layout</layout>
-        <recordType>Account.Business_Organization</recordType>
+        <layout>Account-hed__HEDA Organization Layout</layout>
+        <recordType>Account.Administrative</recordType>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Account-HEDA Organization Layout</layout>
-        <recordType>Account.Administrative</recordType>
+        <layout>Account-hed__HEDA Organization Layout</layout>
+        <recordType>Account.Business_Organization</recordType>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Account-K12 Academic Program Layout</layout>
