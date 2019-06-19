@@ -37,8 +37,20 @@
     </applicationVisibilities>
     <custom>false</custom>
     <layoutAssignments>
+        <layout>Account-HEDA Organization Layout</layout>
+        <recordType>Account.Business_Organization</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Account-HEDA Organization Layout</layout>
+        <recordType>Account.Administrative</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>Account-K12 Academic Program Layout</layout>
         <recordType>Account.Academic_Program</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Account-K12 Department Layout</layout>
+        <recordType>Account.Grade_Level</recordType>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Account-K12 Department Layout</layout>
