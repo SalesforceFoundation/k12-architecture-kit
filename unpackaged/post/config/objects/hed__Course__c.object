@@ -8,6 +8,15 @@
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
     </actionOverrides>
+    <compactLayoutAssignment>hed__HEDA_Course_Compact_Layout</compactLayoutAssignment>
+    <compactLayouts>
+        <fullName>hed__HEDA_Course_Compact_Layout</fullName>
+        <fields>Name</fields>
+        <fields>hed__Course_Id__c</fields>
+        <fields>hed__Account__c</fields>
+        <fields>hed__Credit_Hours__c</fields>
+        <label>HEDA Course Compact Layout</label>
+    </compactLayouts>
     <listViews>
         <fullName>K12_All_Courses</fullName>
         <columns>NAME</columns>
