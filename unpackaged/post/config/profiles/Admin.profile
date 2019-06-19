@@ -114,6 +114,9 @@
         <layout>hed__Program_Plan__c-K12 Program Plan Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>hed__Relationship__c-K12 Relationship Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>hed__Term_Grade__c-K12 Term Grade Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
