@@ -72,6 +72,9 @@
         <recordType>Contact.Student</recordType>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>hed__Address__c-K12 Address Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>hed__Affiliation__c-K12 Affiliation Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
