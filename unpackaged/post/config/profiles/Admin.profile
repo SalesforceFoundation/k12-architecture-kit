@@ -41,7 +41,7 @@
         <recordType>Account.Academic_Program</recordType>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Account-K12 Department Layout</layout>
+        <layout>Account-K12 Academic Department Layout</layout>
         <recordType>Account.University_Department</recordType>
     </layoutAssignments>
     <layoutAssignments>
