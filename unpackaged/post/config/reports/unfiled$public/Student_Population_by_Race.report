@@ -9,7 +9,7 @@
     <columns>
         <field>Contact.hed__Ethnicity__c</field>
     </columns>
-    <description>Student Population grouped by race</description>
+    <description>All student contacts, grouped by race.</description>
     <filter>
         <criteriaItems>
             <column>CONTACT_RECORDTYPE</column>

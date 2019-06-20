@@ -2,8 +2,8 @@
 <DashboardFolder xmlns="http://soap.sforce.com/2006/04/metadata">
     <folderShares>
         <accessLevel>Manage</accessLevel>
-        <sharedTo>allInternalUsers</sharedTo>
-        <sharedToType>Organization</sharedToType>
+        <sharedTo>jason.fitzpatrick+k12kit@salesforce.com</sharedTo>
+        <sharedToType>User</sharedToType>
     </folderShares>
     <name>Sample Dashboards</name>
 </DashboardFolder>

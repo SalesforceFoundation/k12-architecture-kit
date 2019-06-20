@@ -104,16 +104,6 @@
         <name>Profile</name>
     </types>
     <types>
-        <members>unfiled$public/Course_Offering_Roster</members>
-        <members>unfiled$public/Faculty_Grouped_by_School</members>
-        <members>unfiled$public/Student_Population</members>
-        <members>unfiled$public/Student_Population_by_Gender</members>
-        <members>unfiled$public/Student_Population_by_Race</members>
-        <members>unfiled$public/Students_Grouped_by_Households</members>
-        <members>unfiled$public/Term_Grades_Grouped_by_Student_and_Term</members>
-        <name>Report</name>
-    </types>
-    <types>
         <members>Account.HH_Account</members>
         <members>Contact.Faculty</members>
         <members>Contact.Guardian</members>
@@ -121,6 +111,16 @@
         <members>hed__Course_Enrollment__c.Faculty</members>
         <members>hed__Course_Enrollment__c.Student</members>
         <name>RecordType</name>
+    </types>
+    <types>
+        <members>unfiled$public/Course_Offering_Roster</members>
+        <members>unfiled$public/Faculty_Grouped_by_School</members>
+        <members>unfiled$public/Student_Population</members>
+        <members>unfiled$public/Student_Population_by_Gender</members>
+        <members>unfiled$public/Student_Population_by_Race</members>
+        <members>unfiled$public/Students_and_Guardians_By_Household</members>
+        <members>unfiled$public/Term_Grades_Grouped_by_Student_and_Term</members>
+        <name>Report</name>
     </types>
     <types>
         <members>OrgPreference</members>
