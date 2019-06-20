@@ -81,7 +81,7 @@
         <label>K12 All Student Course Connections</label>
     </listViews>
     <listViews>
-        <fullName>K12_Current_Student_Course_Connections</fullName>
+        <fullName>K12_Students_Current_Course_Connections</fullName>
         <columns>NAME</columns>
         <columns>hed__Contact__c</columns>
         <columns>hed__Course_Offering__c</columns>
@@ -98,7 +98,7 @@
             <operation>equals</operation>
             <value>Current</value>
         </filters>
-        <label>K12 Current Student Course Connections</label>
+        <label>K12 Students Current Course Connections</label>
     </listViews>
     <recordTypes>
         <fullName>Faculty</fullName>
