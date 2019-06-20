@@ -7,6 +7,7 @@
         <members>Contact.K12_Guardian_Contact_Compact_Layout</members>
         <members>Contact.K12_Student_Contact_Compact_Layout</members>
         <members>Contact.hed__HEDA_Contact_Compact_Layout</members>
+        <members>hed__Course__c.hed__HEDA_Course_Compact_Layout</members>
         <members>hed__Affiliation__c.hed__HEDA_Affiliation_Compact_Layout</members>
         <members>hed__Course_Enrollment__c.K12_Faculty_Course_Connection_Compact_Layout</members>
         <members>hed__Course_Enrollment__c.K12_Student_Course_Connection_Compact_Layout</members>
