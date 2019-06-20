@@ -8,6 +8,15 @@
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
     </actionOverrides>
+     <compactLayoutAssignment>hed__HEDA_Term_Compact_Layout</compactLayoutAssignment>
+    <compactLayouts>
+        <fullName>hed__HEDA_Term_Compact_Layout</fullName>
+        <fields>Name</fields>
+        <fields>hed__Account__c</fields>
+        <fields>hed__Start_Date__c</fields>
+        <fields>hed__End_Date__c</fields>
+        <label>HEDA Term Compact Layout</label>
+    </compactLayouts>
     <listViews>
         <fullName>K12_All_Terms</fullName>
         <columns>NAME</columns>
