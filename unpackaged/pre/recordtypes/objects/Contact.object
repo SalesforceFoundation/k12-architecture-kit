@@ -5,23 +5,20 @@
         <active>true</active>
         <compactLayoutAssignment>K12_Faculty_Contact_Compact_Layout</compactLayoutAssignment>
         <description>A faculty member at the school (for example, a teacher or a counselor).</description>
-        <label>Faculty</label>
-        
+        <label>Faculty</label>  
     </recordTypes>
     <recordTypes>
         <fullName>Guardian</fullName>
         <active>true</active>
         <compactLayoutAssignment>K12_Guardian_Contact_Compact_Layout</compactLayoutAssignment>
         <description>A person who is a parent or legal guardian of a student.</description>
-        <label>Guardian</label>
-        
+        <label>Guardian</label>      
     </recordTypes>
     <recordTypes>
         <fullName>Student</fullName>
         <active>true</active>
         <compactLayoutAssignment>K12_Student_Contact_Compact_Layout</compactLayoutAssignment>
         <description>A student who is affiliated with the school.</description>
-        <label>Student</label>
-        
+        <label>Student</label>       
     </recordTypes>
 </CustomObject>
