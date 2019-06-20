@@ -8,6 +8,16 @@
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
     </actionOverrides>
+    <compactLayoutAssignment>hed__HEDA_Contact_Language_Compact_Layout</compactLayoutAssignment>
+    <compactLayouts>
+        <fullName>hed__HEDA_Contact_Language_Compact_Layout</fullName>
+        <fields>Name</fields>
+        <fields>hed__Contact__c</fields>
+        <fields>hed__Language__c</fields>
+        <fields>hed__Fluency__c</fields>
+        <fields>hed__Primary_Language__c</fields>
+        <label>HEDA Contact Language Compact Layout</label>
+    </compactLayouts>
     <listViews>
         <fullName>K12_All_Contact_Languages</fullName>
         <columns>NAME</columns>
