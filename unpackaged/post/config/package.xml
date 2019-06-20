@@ -61,6 +61,7 @@
         <members>Contact-K12 Faculty Layout</members>
         <members>Contact-K12 Guardian Layout</members>
         <members>Contact-K12 Student Layout</members>
+        <members>hed__Address__c-K12 Address Layout</members>
         <members>hed__Affiliation__c-K12 Affiliation Layout</members>
         <members>hed__Contact_Language__c-K12 Contact Language Layout</members>
         <members>hed__Course_Enrollment__c-K12 Faculty Course Enrollment Layout</members>
