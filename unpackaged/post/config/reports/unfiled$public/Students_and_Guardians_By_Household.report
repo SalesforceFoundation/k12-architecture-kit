@@ -1,63 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <columns>
-        <field>FK_CNTC_FIRST_NAME</field>
+        <field>SALUTATION</field>
     </columns>
     <columns>
-        <field>FK_NAME</field>
+        <field>FIRST_NAME</field>
     </columns>
     <columns>
-        <field>CUST_RECORDTYPE</field>
+        <field>LAST_NAME</field>
     </columns>
     <columns>
-        <field>Attribute__c.Start_Date__c</field>
+        <field>CONTACT_RECORDTYPE</field>
     </columns>
     <columns>
-        <field>Attribute__c.End_Date__c</field>
+        <field>Contact.hed__Gender__c</field>
     </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Attribute__c.Expired__c</field>
-    </columns>
-    <description>Students and their guardians grouped by Household Account.</description>
+    <description>This reports shows students and their guardians grouped by their Household Account</description>
     <filter>
         <criteriaItems>
-            <column>CUST_RECORDTYPE</column>
+            <column>ACCOUNT_RECORDTYPE</column>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Attribute__c.Student_Characteristics</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Attribute__c.Expired__c</column>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>0</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>FK_CNTC_RECORDTYPE</column>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Contact.Student,Contact.Guardian</value>
+            <value>Account.HH_Account</value>
         </criteriaItems>
     </filter>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>Attribute__c.Attribute_Type__c</field>
+        <field>ACCOUNT.NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Students and Guardians by Household</name>
+    <name>Students and Guardians by Households</name>
     <params>
         <name>co</name>
         <value>1</value>
     </params>
-    <reportType>CustomEntity$Attribute__c@Attribute__c.Contact__c</reportType>
+    <reportType>ContactList</reportType>
     <scope>organization</scope>
     <showDetails>true</showDetails>
-    <showGrandTotal>true</showGrandTotal>
+    <showGrandTotal>false</showGrandTotal>
     <showSubTotals>false</showSubTotals>
+    <sortColumn>CONTACT_RECORDTYPE</sortColumn>
+    <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
-        <dateColumn>Attribute__c.End_Date__c</dateColumn>
+        <dateColumn>CREATED_DATE</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>
     </timeFrameFilter>
 </Report>
