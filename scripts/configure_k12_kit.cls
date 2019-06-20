@@ -9,25 +9,15 @@ public static void initializeK12KitSettings() {
 //enables course connections (should be called by trail org flows only from cci)
 //and sets the record types for Student and Faculty
 public static void enableCourseConnections() {
-    hed__Hierarchy_Settings__c settings = hed.UTIL_CustomSettings_API.getSettings();
-    settings.hed__Enable_Course_Connections__c = true;
-    List<RecordType> courseConnectionRecordTypes = [SELECT Id, DeveloperName, SObjectType
-                                            FROM RecordType
-                                            WHERE (DeveloperName = 'Faculty'
-                                            OR DeveloperName = 'Student') 
-                                            AND SObjectType = 'hed__Course_Enrollment__c'];
+    Schema.DescribeSObjectResult r = Schema.SObjectType.hed__Course_Enrollment__c;
+    Map<String,Schema.RecordTypeInfo> rtInfosByName = r.getRecordTypeInfosByName();
 
-    if(!courseConnectionRecordTypes.isEmpty()) {
-        
-        for(RecordType rt : courseConnectionRecordTypes) {
-            if(rt.DeveloperName == 'Faculty') {
-                settings.hed__Faculty_RecType__c = rt.Id;
-            } else if(rt.DeveloperName == 'Student') {
-                settings.hed__Student_RecType__c = rt.Id;
-            }
-        }
+    hed__Hierarchy_Settings__c settings = hed__Hierarchy_Settings__c.getOrgDefaults();
 
-        update settings;
-    }
+    settings.put('hed__Enable_Course_Connections__c', true);
+    settings.put('hed__Student_RecType__c', rtInfosByName.get('Student').getRecordTypeId());
+    settings.put('hed__Faculty_RecType__c', rtInfosByName.get('Faculty').getRecordTypeId());
+
+    upsert settings;
     
 }
