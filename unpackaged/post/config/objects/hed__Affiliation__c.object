@@ -8,6 +8,17 @@
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
     </actionOverrides>
+    <compactLayoutAssignment>hed__HEDA_Affiliation_Compact_Layout</compactLayoutAssignment>
+    <compactLayouts>
+        <fullName>hed__HEDA_Affiliation_Compact_Layout</fullName>
+        <fields>Name</fields>
+        <fields>hed__Contact__c</fields>
+        <fields>hed__Account__c</fields>
+        <fields>hed__Primary__c</fields>
+        <fields>hed__Status__c</fields>
+        <fields>hed__Role__c</fields>
+        <label>HEDA Affiliation Compact Layout</label>
+    </compactLayouts>
     <listViews>
         <fullName>K12_All_Affiliations</fullName>
         <columns>NAME</columns>
