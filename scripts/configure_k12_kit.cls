@@ -5,3 +5,24 @@ public static void initializeK12KitSettings() {
     settings.hed__Account_Processor__c = settings.hed__Household_Addresses_RecType__c;
     update settings;
 }
+
+//enables course connections (should be called by trail org flows only from cci)
+//and sets the record types for Student and Faculty
+public static void enableCourseConnections() {
+    hed__Hierarchy_Settings__c settings = hed.UTIL_CustomSettings_API.getSettings();
+    settings.hed__Enable_Course_Connections__c = true;
+    List<RecordType> courseConnections = [SELECT Id, DeveloperName, SObjectType
+                                            FROM RecordType
+                                            WHERE (DeveloperName = 'Faculty'
+                                            OR DeveloperName = 'Student') 
+                                            AND SObjectType = 'hed__Course_Enrollment__c'];
+
+    for(RecordType rt : courseConnections) {
+        if(rt.DeveloperName == 'Faculty') {
+            settings.hed__Faculty_RecType__c = rt.Id;
+        } else if(rt.DeveloperName == 'Student') {
+            settings.hed__Student_RecType__c = rt.Id;
+        }
+    }
+    update settings;
+}
