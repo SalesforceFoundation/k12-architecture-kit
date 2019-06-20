@@ -17,12 +17,17 @@ public static void enableCourseConnections() {
                                             OR DeveloperName = 'Student') 
                                             AND SObjectType = 'hed__Course_Enrollment__c'];
 
-    for(RecordType rt : courseConnections) {
-        if(rt.DeveloperName == 'Faculty') {
-            settings.hed__Faculty_RecType__c = rt.Id;
-        } else if(rt.DeveloperName == 'Student') {
-            settings.hed__Student_RecType__c = rt.Id;
+    if(!courseConnections.isEmpty()) {
+        
+        for(RecordType rt : courseConnections) {
+            if(rt.DeveloperName == 'Faculty') {
+                settings.hed__Faculty_RecType__c = rt.Id;
+            } else if(rt.DeveloperName == 'Student') {
+                settings.hed__Student_RecType__c = rt.Id;
+            }
         }
+
+        update settings;
     }
-    update settings;
+    
 }
