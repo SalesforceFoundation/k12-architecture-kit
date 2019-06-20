@@ -188,10 +188,10 @@
         <numberOfColumns>12</numberOfColumns>
         <rowHeight>36</rowHeight>
     </dashboardGridLayout>
-    <dashboardType>SpecifiedUser</dashboardType>
+    <dashboardType>LoggedInUser</dashboardType>
     <description>Information about the student population like gender and race.</description>
     <isGridLayout>true</isGridLayout>
-    <runningUser>jason.fitzpatrick+k12kit@salesforce.com</runningUser>
+    <runningUser></runningUser>
     <textColor>#000000</textColor>
     <title>Sample Student Demographics</title>
     <titleColor>#000000</titleColor>
