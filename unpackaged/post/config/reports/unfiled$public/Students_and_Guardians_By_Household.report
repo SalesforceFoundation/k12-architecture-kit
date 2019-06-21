@@ -15,13 +15,19 @@
     <columns>
         <field>Contact.hed__Gender__c</field>
     </columns>
-    <description>This reports shows students and their guardians grouped by their Household Account</description>
+    <description>Students and their guardians grouped by Household Account.</description>
     <filter>
         <criteriaItems>
             <column>ACCOUNT_RECORDTYPE</column>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Account.HH_Account</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CONTACT_RECORDTYPE</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Contact.Guardian,Contact.Student</value>
         </criteriaItems>
     </filter>
     <format>Summary</format>
@@ -30,7 +36,7 @@
         <field>ACCOUNT.NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Students Grouped by Households</name>
+    <name>Students and Guardians by Household</name>
     <params>
         <name>co</name>
         <value>1</value>

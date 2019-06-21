@@ -6,7 +6,7 @@
     <columns>
         <field>LAST_NAME</field>
     </columns>
-    <description>This report shows the student population grouped by gender</description>
+    <description>All student Contacts, grouped by gender.</description>
     <filter>
         <criteriaItems>
             <column>CONTACT_RECORDTYPE</column>

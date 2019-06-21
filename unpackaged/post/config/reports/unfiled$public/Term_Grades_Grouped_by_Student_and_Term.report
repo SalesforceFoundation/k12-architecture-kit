@@ -25,7 +25,15 @@
         <aggregateTypes>Sum</aggregateTypes>
         <field>FK_$hed__Course_Enrollment__c.hed__Grade__c</field>
     </columns>
-    <description>This report shows student Term Grades grouped by Term and by Course Offering</description>
+    <description>Student Term Grades grouped by Term and by Course Offering.</description>
+    <filter>
+        <criteriaItems>
+            <column>FK_CUST_RECORDTYPE</column>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>hed__Course_Enrollment__c.Student</value>
+        </criteriaItems>
+    </filter>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>

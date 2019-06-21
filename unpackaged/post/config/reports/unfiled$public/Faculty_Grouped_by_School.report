@@ -24,7 +24,7 @@
     <columns>
         <field>PHONE1</field>
     </columns>
-    <description>This reports shows faculty grouped by their Educational Institution</description>
+    <description>Faculty contacts grouped by educational institution.</description>
     <filter>
         <criteriaItems>
             <column>ACCOUNT_RECORDTYPE</column>
