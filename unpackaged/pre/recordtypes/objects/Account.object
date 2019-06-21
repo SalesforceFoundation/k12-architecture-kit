@@ -3,7 +3,7 @@
     <recordTypes>
         <fullName>Grade_Level</fullName>
         <active>true</active>
-        <description>A grade level at the educational institution (for example, Second Grade, Sixth Grade, Ninth Grade).</description>
+        <description>A grade level in the educational institution (for example, Second Grade).</description>
         <label>Grade Level</label>        
     </recordTypes>
 </CustomObject>
