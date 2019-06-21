@@ -53,7 +53,7 @@
         <recordType>Account.Grade_Level</recordType>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Account-K12 Acadmeic Department Layout</layout>
+        <layout>Account-K12 Academic Department Layout</layout>
         <recordType>Account.University_Department</recordType>
     </layoutAssignments>
     <layoutAssignments>
