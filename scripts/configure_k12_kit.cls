@@ -9,8 +9,8 @@ public static void initializeK12KitSettings() {
 //enables course connections (should be called by trial org flows only from cci)
 //and sets the record types for Student and Faculty
 public static void enableCourseConnections() {
-    Schema.DescribeSObjectResult r = Schema.SObjectType.hed__Course_Enrollment__c;
-    Map<String,Schema.RecordTypeInfo> rtInfosByName = r.getRecordTypeInfosByName();
+    Schema.DescribeSObjectResult courseEnrollmentSchema = Schema.SObjectType.hed__Course_Enrollment__c;
+    Map<String,Schema.RecordTypeInfo> rtInfosByName = courseEnrollmentSchema.getRecordTypeInfosByName();
 
     hed__Hierarchy_Settings__c settings = hed__Hierarchy_Settings__c.getOrgDefaults();
 
