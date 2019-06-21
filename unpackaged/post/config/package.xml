@@ -75,6 +75,7 @@
         <members>hed__Plan_Requirement__c-K12 Plan Requirement Layout</members>
         <members>hed__Program_Enrollment__c-K12 Program Enrollment Layout</members>
         <members>hed__Program_Plan__c-K12 Program Plan Layout</members>
+        <members>hed__Relationship__c-K12 Relationship Layout</members>
         <members>hed__Term_Grade__c-K12 Term Grade Layout</members>
         <members>hed__Term__c-K12 Term Layout</members>
         <members>hed__Time_Block__c-K12 Time Block Layout</members>
