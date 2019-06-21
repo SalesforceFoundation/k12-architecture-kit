@@ -36,7 +36,7 @@
         <field>ACCOUNT.NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Students and Guardians by Households</name>
+    <name>Students and Guardians by Household</name>
     <params>
         <name>co</name>
         <value>1</value>
