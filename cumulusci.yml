@@ -23,7 +23,7 @@ tasks:
             apex: initializeK12KitSettings();
 
     enable_course_connections:
-        description: Enables course connects and sets default record types
+        description: Enables course connections and sets default record types
         class_path: cumulusci.tasks.apex.anon.AnonymousApexTask
         group: Project-specific
         options:
