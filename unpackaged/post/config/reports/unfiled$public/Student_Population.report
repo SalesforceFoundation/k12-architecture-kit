@@ -30,7 +30,7 @@
     <columns>
         <field>ACCOUNT.NAME</field>
     </columns>
-    <description>This report shows the student population</description>
+    <description>All student Contact records.</description>
     <filter>
         <criteriaItems>
             <column>CONTACT_RECORDTYPE</column>

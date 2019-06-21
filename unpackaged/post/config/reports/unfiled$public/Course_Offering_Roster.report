@@ -13,7 +13,7 @@
         <aggregateTypes>Sum</aggregateTypes>
         <field>hed__Course_Enrollment__c.hed__Grade__c</field>
     </columns>
-    <description>This report shows the Contacts within a Course Connection (teacher and students) creating a class roster view</description>
+    <description>Contacts associated with a Course Offering. These faculty and student connections create a class roster view.</description>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
