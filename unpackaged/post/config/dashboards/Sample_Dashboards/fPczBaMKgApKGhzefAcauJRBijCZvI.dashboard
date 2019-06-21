@@ -153,7 +153,7 @@
         <rowHeight>36</rowHeight>
     </dashboardGridLayout>
     <dashboardType>LoggedInUser</dashboardType>
-    <description>This dashboard shows various student population information such as gender, race, and economically disadvantaged</description>
+    <description>Information about the student population like gender and race.</description>
     <isGridLayout>true</isGridLayout>
     <runningUser></runningUser>
     <textColor>#000000</textColor>
