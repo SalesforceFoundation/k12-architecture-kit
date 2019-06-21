@@ -65,8 +65,8 @@
         <members>hed__Address__c-K12 Address Layout</members>
         <members>hed__Affiliation__c-K12 Affiliation Layout</members>
         <members>hed__Contact_Language__c-K12 Contact Language Layout</members>
-        <members>hed__Course_Enrollment__c-K12 Faculty Course Enrollment Layout</members>
-        <members>hed__Course_Enrollment__c-K12 Student Course Enrollment Layout</members>
+        <members>hed__Course_Enrollment__c-K12 Faculty Course Connection Layout</members>
+        <members>hed__Course_Enrollment__c-K12 Student Course Connection Layout</members>
         <members>hed__Course_Offering_Schedule__c-K12 Course Offering Schedule Layout</members>
         <members>hed__Course_Offering__c-K12 Course Offering Layout</members>
         <members>hed__Course__c-K12 Course Layout</members>

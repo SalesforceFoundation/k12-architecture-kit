@@ -22,6 +22,14 @@ tasks:
             path: scripts/configure_k12_kit.cls
             apex: initializeK12KitSettings();
 
+    enable_course_connections:
+        description: Enables course connections and sets default record types
+        class_path: cumulusci.tasks.apex.anon.AnonymousApexTask
+        group: Project-specific
+        options:
+            path: scripts/configure_k12_kit.cls
+            apex: enableCourseConnections();
+
     deploy_trial_config:
         description: Deploys metadata and configuration for TSOs.
         class_path: cumulusci.tasks.salesforce.Deploy
@@ -67,6 +75,8 @@ flows:
             3:
                 flow: config_managed
             4:
+                task: enable_course_connections
+            5:
                 task: deploy_trial_config
 
 plans:
