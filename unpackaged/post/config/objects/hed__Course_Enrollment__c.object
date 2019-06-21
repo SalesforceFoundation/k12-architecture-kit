@@ -104,8 +104,8 @@
         <fullName>Faculty</fullName>
         <active>true</active>
         <compactLayoutAssignment>K12_Faculty_Course_Connection_Compact_Layout</compactLayoutAssignment>
-        <description>A Faculty Course Connection</description>
-        <label>Faculty</label>
+        <description>A Teacher Course Connection</description>
+        <label>Teacher</label>
     </recordTypes>
     <recordTypes>
         <fullName>Student</fullName>

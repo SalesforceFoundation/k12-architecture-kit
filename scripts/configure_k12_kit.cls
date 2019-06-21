@@ -16,7 +16,7 @@ public static void enableCourseConnections() {
 
     settings.put('hed__Enable_Course_Connections__c', true);
     settings.put('hed__Student_RecType__c', rtInfosByName.get('Student').getRecordTypeId());
-    settings.put('hed__Faculty_RecType__c', rtInfosByName.get('Faculty').getRecordTypeId());
+    settings.put('hed__Faculty_RecType__c', rtInfosByName.get('Teacher').getRecordTypeId());
 
     upsert settings;
     
