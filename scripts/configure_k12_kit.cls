@@ -10,13 +10,13 @@ public static void initializeK12KitSettings() {
 //and sets the record types for Student and Faculty
 public static void enableCourseConnections() {
     Schema.DescribeSObjectResult courseEnrollmentSchema = Schema.SObjectType.hed__Course_Enrollment__c;
-    Map<String,Schema.RecordTypeInfo> rtInfosByName = courseEnrollmentSchema.getRecordTypeInfosByName();
+    Map<String,Schema.RecordTypeInfo> rtInfosByDeveloperName = courseEnrollmentSchema.getRecordTypeInfosByDeveloperName();
 
     hed__Hierarchy_Settings__c settings = hed__Hierarchy_Settings__c.getOrgDefaults();
 
     settings.put('hed__Enable_Course_Connections__c', true);
-    settings.put('hed__Student_RecType__c', rtInfosByName.get('Student').getRecordTypeId());
-    settings.put('hed__Faculty_RecType__c', rtInfosByName.get('Teacher').getRecordTypeId());
+    settings.put('hed__Student_RecType__c', rtInfosByDeveloperName.get('Student').getRecordTypeId());
+    settings.put('hed__Faculty_RecType__c', rtInfosByDeveloperName.get('Faculty').getRecordTypeId());
 
     upsert settings;
     
