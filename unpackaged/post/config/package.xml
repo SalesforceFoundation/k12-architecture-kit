@@ -53,6 +53,7 @@
         <name>FlexiPage</name>
     </types>
     <types>
+        <members>Account-hed__HEDA Organization Layout</members>
         <members>Account-K12 Academic Program Layout</members>
         <members>Account-K12 Department Layout</members>
         <members>Account-K12 Educational Organization Layout</members>
@@ -61,6 +62,7 @@
         <members>Contact-K12 Faculty Layout</members>
         <members>Contact-K12 Guardian Layout</members>
         <members>Contact-K12 Student Layout</members>
+        <members>hed__Address__c-K12 Address Layout</members>
         <members>hed__Affiliation__c-K12 Affiliation Layout</members>
         <members>hed__Contact_Language__c-K12 Contact Language Layout</members>
         <members>hed__Course_Enrollment__c-K12 Faculty Course Connection Layout</members>
