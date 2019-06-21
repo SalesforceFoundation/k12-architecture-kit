@@ -57,7 +57,7 @@
         <recordType>Account.University_Department</recordType>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Account-K12 Educational Organization Layout</layout>
+        <layout>Account-K12 Educational Institution Layout</layout>
         <recordType>Account.Educational_Institution</recordType>
     </layoutAssignments>
     <layoutAssignments>
