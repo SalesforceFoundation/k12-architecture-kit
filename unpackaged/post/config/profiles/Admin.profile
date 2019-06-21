@@ -57,7 +57,7 @@
         <recordType>Account.University_Department</recordType>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Account-K12 Educational Organization Layout</layout>
+        <layout>Account-K12 Educational Institution Layout</layout>
         <recordType>Account.Educational_Institution</recordType>
     </layoutAssignments>
     <layoutAssignments>
@@ -127,6 +127,9 @@
     </layoutAssignments>
     <layoutAssignments>
         <layout>hed__Program_Plan__c-K12 Program Plan Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>hed__Relationship__c-K12 Relationship Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>hed__Term_Grade__c-K12 Term Grade Layout</layout>
