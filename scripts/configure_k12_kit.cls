@@ -6,7 +6,7 @@ public static void initializeK12KitSettings() {
     update settings;
 }
 
-//enables course connections (should be called by trail org flows only from cci)
+//enables course connections (should be called by trial org flows only from cci)
 //and sets the record types for Student and Faculty
 public static void enableCourseConnections() {
     Schema.DescribeSObjectResult r = Schema.SObjectType.hed__Course_Enrollment__c;
