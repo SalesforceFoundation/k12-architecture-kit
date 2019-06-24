@@ -6,4 +6,10 @@
         <description>A grade level in the educational institution (for example, Second Grade).</description>
         <label>Grade Level</label>        
     </recordTypes>
+    <recordTypes>
+        <fullName>University_Department</fullName>
+        <active>true</active>
+        <description>A department in the educational institution.</description>
+        <label>Academic Department</label>
+    </recordTypes>
 </CustomObject>
