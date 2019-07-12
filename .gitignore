@@ -23,6 +23,7 @@ __pycache__/
 *.py[cod]
 
 # Salesforce
+.cci
 .sfdx
 .vscode
 force.json
