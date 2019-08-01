@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>K12_Relationship_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>hed__HEDA_Relationship_Compact_Layout</compactLayoutAssignment>
+    <compactLayouts>
+        <fullName>hed__HEDA_Relationship_Compact_Layout</fullName>
+        <fields>Name</fields>
+        <fields>hed__Contact__c</fields>
+        <fields>hed__RelatedContact__c</fields>
+        <fields>hed__Type__c</fields>
+        <fields>hed__Status__c</fields>
+        <label>HEDA Relationship Compact Layout</label>
+    </compactLayouts>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
+    <description>Connection between two Contacts.</description>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>FERPA_Approved__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Indicates that the related Contact has been cleared per FERPA and other privacy laws, regulations, and policies.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Indicates that the related Contact has been cleared per FERPA and other privacy laws, regulations, and policies.</inlineHelpText>
+        <label>FERPA Approved</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>HIPPA_Approved__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Indicates that the related Contact has been cleared per HIPPA and other privacy laws, regulations, and policies.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Indicates that the related Contact has been cleared per HIPPA and other privacy laws, regulations, and policies.</inlineHelpText>
+        <label>HIPPA Approved</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>hed__Contact__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>Related Contact is this Contact&apos;s ______.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Related Contact is this Contact&apos;s ______.</inlineHelpText>
+        <label>Contact</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Relationships</relationshipLabel>
+        <relationshipName>Relationships</relationshipName>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>hed__Description__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Additional information about this Relationship</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Additional information about this Relationship</inlineHelpText>
+        <label>Description</label>
+        <length>32000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>6</visibleLines>
+    </fields>
+    <fields>
+        <fullName>hed__Emergency_Contact__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>Is this an emergency contact.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Is this an emergency contact.</inlineHelpText>
+        <label>Emergency Contact</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>hed__ReciprocalRelationship__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <description>System field that links to the two sides of the Relationship together.  This field should not be modified directly.  The Reciprocal Relationship will have the opposite type, if available, of this Relationship.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>System field that links to the two sides of the Relationship together.  This field should not be modified directly.  The Reciprocal Relationship will have the opposite type, if available, of this Relationship.</inlineHelpText>
+        <label>Reciprocal Relationship</label>
+        <referenceTo>hed__Relationship__c</referenceTo>
+        <relationshipLabel>Relationships</relationshipLabel>
+        <relationshipName>Relationships</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>hed__RelatedContact__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Related Contact</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Hidden Relationships List</relationshipLabel>
+        <relationshipName>Relationships1</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>hed__Relationship_Explanation__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Text formula that constructs a sentence explaining the relationship between the two Contacts</description>
+        <externalId>false</externalId>
+        <formula>TEXT(hed__RelatedContact__r.Salutation) + &quot; &quot; + hed__RelatedContact__r.FirstName + &quot; &quot; + hed__RelatedContact__r.LastName
++ &quot;  &quot;  +  $Label.hed__relationship_explanation_connector + &quot; &quot; + 
+TEXT(hed__Contact__r.Salutation) + &quot; &quot; + hed__Contact__r.FirstName + &quot; &quot; + hed__Contact__r.LastName + &quot;&apos;s &quot; + TEXT(hed__Type__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Text formula that constructs a sentence explaining the relationship between the two Contacts</inlineHelpText>
+        <label>Relationship Explanation</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>hed__SYSTEM_SystemCreated__c</fullName>
+        <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
+        <description>System field that indicates if this Relationship was created automatically as the reciprocal to another Relationships.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>System field that indicates if this Relationship was created automatically as the reciprocal to another Relationships.</inlineHelpText>
+        <label>_SYSTEM: SystemCreated</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>hed__Status__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Status of the Relationship.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Status of the Relationship.</inlineHelpText>
+        <label>Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Current</fullName>
+                    <default>true</default>
+                    <label>Current</label>
+                </value>
+                <value>
+                    <fullName>Former</fullName>
+                    <default>false</default>
+                    <label>Former</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>hed__Type__c</fullName>
+        <deprecated>false</deprecated>
+        <description>Field that describes how the Related Contact is connected to the Contact.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Field that describes how the Related Contact is connected to the Contact.</inlineHelpText>
+        <label>Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Friend</fullName>
+                    <default>false</default>
+                    <label>Friend</label>
+                </value>
+                <value>
+                    <fullName>Family</fullName>
+                    <default>false</default>
+                    <label>Family</label>
+                </value>
+                <value>
+                    <fullName>Coworker</fullName>
+                    <default>false</default>
+                    <label>Coworker</label>
+                </value>
+                <value>
+                    <fullName>Father</fullName>
+                    <default>false</default>
+                    <label>Father</label>
+                </value>
+                <value>
+                    <fullName>Mother</fullName>
+                    <default>false</default>
+                    <label>Mother</label>
+                </value>
+                <value>
+                    <fullName>Parent</fullName>
+                    <default>false</default>
+                    <label>Parent</label>
+                </value>
+                <value>
+                    <fullName>Son</fullName>
+                    <default>false</default>
+                    <label>Son</label>
+                </value>
+                <value>
+                    <fullName>Daughter</fullName>
+                    <default>false</default>
+                    <label>Daughter</label>
+                </value>
+                <value>
+                    <fullName>Child</fullName>
+                    <default>false</default>
+                    <label>Child</label>
+                </value>
+                <value>
+                    <fullName>Aunt</fullName>
+                    <default>false</default>
+                    <label>Aunt</label>
+                </value>
+                <value>
+                    <fullName>Uncle</fullName>
+                    <default>false</default>
+                    <label>Uncle</label>
+                </value>
+                <value>
+                    <fullName>Husband</fullName>
+                    <default>false</default>
+                    <label>Husband</label>
+                </value>
+                <value>
+                    <fullName>Wife</fullName>
+                    <default>false</default>
+                    <label>Wife</label>
+                </value>
+                <value>
+                    <fullName>Partner</fullName>
+                    <default>false</default>
+                    <label>Partner</label>
+                </value>
+                <value>
+                    <fullName>Cousin</fullName>
+                    <default>false</default>
+                    <label>Cousin</label>
+                </value>
+                <value>
+                    <fullName>Grandmother</fullName>
+                    <default>false</default>
+                    <label>Grandmother</label>
+                </value>
+                <value>
+                    <fullName>Grandfather</fullName>
+                    <default>false</default>
+                    <label>Grandfather</label>
+                </value>
+                <value>
+                    <fullName>Grandparent</fullName>
+                    <default>false</default>
+                    <label>Grandparent</label>
+                </value>
+                <value>
+                    <fullName>Grandson</fullName>
+                    <default>false</default>
+                    <label>Grandson</label>
+                </value>
+                <value>
+                    <fullName>Granddaughter</fullName>
+                    <default>false</default>
+                    <label>Granddaughter</label>
+                </value>
+                <value>
+                    <fullName>Grandchild</fullName>
+                    <default>false</default>
+                    <label>Grandchild</label>
+                </value>
+                <value>
+                    <fullName>Employer</fullName>
+                    <default>false</default>
+                    <label>Employer</label>
+                </value>
+                <value>
+                    <fullName>Employee</fullName>
+                    <default>false</default>
+                    <label>Employee</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <label>Relationship</label>
+    <listViews>
+        <fullName>hed__All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>R-{000000}</displayFormat>
+        <label>Relationship Key</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Relationships</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>hed__Related_Contact_Do_Not_Change</fullName>
+        <active>true</active>
+        <description>Do not allow user to change Related Contact value as it damages the paired relationship data</description>
+        <errorConditionFormula>and(not( ISNEW()), ISCHANGED( hed__RelatedContact__c ))</errorConditionFormula>
+        <errorDisplayField>hed__RelatedContact__c</errorDisplayField>
+        <errorMessage>Rather than change the contacts in an existing relationship, delete this relationship and create a new on between the new contacts</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>
