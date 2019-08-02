@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Relació</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Relacions</value>
+    </caseValues>
+    <fields>
+        <help><!-- Indicates that the related Contact has been cleared per FERPA and other privacy laws, regulations, and policies. --></help>
+        <label><!-- FERPA Approved --></label>
+        <name>FERPA_Approved__c</name>
+    </fields>
+    <fields>
+        <help><!-- Indicates that the related Contact has been cleared per HIPPA and other privacy laws, regulations, and policies. --></help>
+        <label><!-- HIPPA Approved --></label>
+        <name>HIPPA_Approved__c</name>
+    </fields>
+    <fields>
+        <help>El contacte relacionat és ______ d&apos;aquest contacte.</help>
+        <label><!-- Contact --></label>
+        <name>hed__Contact__c</name>
+        <relationshipLabel><!-- Relationships --></relationshipLabel>
+    </fields>
+    <fields>
+        <help>Informació addicional sobre aquesta relació</help>
+        <label><!-- Description --></label>
+        <name>hed__Description__c</name>
+    </fields>
+    <fields>
+        <help>És un contacte d&apos;emergència?</help>
+        <label><!-- Emergency Contact --></label>
+        <name>hed__Emergency_Contact__c</name>
+    </fields>
+    <fields>
+        <help>Camp de sistema que uneix els dos costats de la relació junts. Aquest camp no s&apos;ha de modificar directament. La relació recíproca tindrà el tipus contrari, si està disponible, d&apos;aquesta relació.</help>
+        <label><!-- Reciprocal Relationship --></label>
+        <name>hed__ReciprocalRelationship__c</name>
+        <relationshipLabel><!-- Relationships --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Related Contact --></label>
+        <name>hed__RelatedContact__c</name>
+        <relationshipLabel><!-- Hidden Relationships List --></relationshipLabel>
+    </fields>
+    <fields>
+        <help>Fórmula de text que construeix una frase que explica la relació entre els dos contactes.</help>
+        <label><!-- Relationship Explanation --></label>
+        <name>hed__Relationship_Explanation__c</name>
+    </fields>
+    <fields>
+        <help>Camp del sistema que indica si aquesta relació es va crear automàticament com a recíproca a altres relacions.</help>
+        <label><!-- _SYSTEM: SystemCreated --></label>
+        <name>hed__SYSTEM_SystemCreated__c</name>
+    </fields>
+    <fields>
+        <help>Estat de la relació.</help>
+        <label><!-- Status --></label>
+        <name>hed__Status__c</name>
+        <picklistValues>
+            <masterLabel>Current</masterLabel>
+            <translation>Actual</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Former</masterLabel>
+            <translation>Antic</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help>Camp que descriu com el contacte relacionat està connectat al contacte.</help>
+        <label><!-- Type --></label>
+        <name>hed__Type__c</name>
+        <picklistValues>
+            <masterLabel>Aunt</masterLabel>
+            <translation>Tia</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Child</masterLabel>
+            <translation>Nen</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cousin</masterLabel>
+            <translation>Cosí/na</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Coworker</masterLabel>
+            <translation>Company de feina</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Daughter</masterLabel>
+            <translation>Filla</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Employee</masterLabel>
+            <translation>Empleat</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Employer</masterLabel>
+            <translation>Empresari</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Family</masterLabel>
+            <translation>Família</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Father</masterLabel>
+            <translation>Pare</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Friend</masterLabel>
+            <translation>Amic</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Grandchild</masterLabel>
+            <translation>Net/a</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Granddaughter</masterLabel>
+            <translation>Neta</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Grandfather</masterLabel>
+            <translation>Avi</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Grandmother</masterLabel>
+            <translation>Àvia</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Grandparent</masterLabel>
+            <translation>Avi</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Grandson</masterLabel>
+            <translation>Net</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Husband</masterLabel>
+            <translation>Marit</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mother</masterLabel>
+            <translation>Mare</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Parent</masterLabel>
+            <translation>Pare</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner</masterLabel>
+            <translation>Company</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Son</masterLabel>
+            <translation>Fill</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Uncle</masterLabel>
+            <translation>Oncle</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wife</masterLabel>
+            <translation>Dona</translation>
+        </picklistValues>
+    </fields>
+    <gender>Feminine</gender>
+    <layouts>
+        <layout>HEDA Relationship Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label>Informació de la relació</label>
+            <section>Relationship Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>K12 Relationship Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Relationship Information --></label>
+            <section>Relationship Information</section>
+        </sections>
+    </layouts>
+    <nameFieldLabel>Clau de relació</nameFieldLabel>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Rather than change the contacts in an existing relationship, delete this relationship and create a new on between the new contacts --></errorMessage>
+        <name>hed__Related_Contact_Do_Not_Change</name>
+    </validationRules>
+</CustomObjectTranslation>
