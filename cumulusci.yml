@@ -1,9 +1,9 @@
 project:
     name: Athena
     package:
-        name:  Athena
+        name:  K-12 Kit
         api_version: '45.0'
-        namespace: k12alpha0
+        namespace: k12
     git:
         default_branch: master
         prefix_feature: feature
