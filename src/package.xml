@@ -2,10 +2,6 @@
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>K12 Kit</fullName>
     <types>
-        <members>hed__Relationship__c.hed__HEDA_Relationship_Compact_Layout</members>
-        <name>CompactLayout</name>
-    </types>
-    <types>
         <members>hed__Relationship__c.FERPA_Approved__c</members>
         <members>hed__Relationship__c.HIPPA_Approved__c</members>
         <name>CustomField</name>
