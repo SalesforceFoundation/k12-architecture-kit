@@ -6,5 +6,9 @@
         <members>hed__Relationship__c.HIPPA_Approved__c</members>
         <name>CustomField</name>
     </types>
+    <types>
+        <members>*</members>
+        <name>CustomObjectTranslations</name>
+    </types>
     <version>45.0</version>
 </Package>
