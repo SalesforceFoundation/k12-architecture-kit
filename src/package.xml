@@ -5,5 +5,9 @@
         <members>Contact.Years_of_Experience__c</members>
         <name>CustomField</name>
     </types>
+    <types>
+        <members>*</members>
+        <name>CustomObjectTranslations</name>
+    </types>
     <version>45.0</version>
 </Package>
