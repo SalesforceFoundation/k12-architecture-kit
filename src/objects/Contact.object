@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Highly_Qualified__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Indicates that a teacher is classified as highly qualified as defined by state guidelines.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Indicates that a teacher is classified as highly qualified as defined by state guidelines.</inlineHelpText>
+        <label>Highly Qualified</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Checkbox</type>
+</fields>
+</CustomObject>
