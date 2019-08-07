@@ -3,7 +3,7 @@ project:
     package:
         name: K-12 Kit
         api_version: '45.0'
-        namespace: k12
+        namespace: k12alpha0
     git:
         default_branch: master
         prefix_feature: feature
@@ -78,6 +78,47 @@ flows:
                 task: enable_course_connections
             5:
                 task: deploy_trial_config
+
+    dev_org:
+        description: Deploy development configuration to an org.
+        steps:
+            1:
+                flow: dependencies
+            2:
+                flow: deploy_unmanaged
+            3:
+                flow: config_managed
+            4:
+                task: enable_course_connections
+            5:
+                task: deploy_trial_config
+
+# TODO: perhaps breakdown these individuals tasks in steps 3-7 into perhaps another flow that we can just call?    
+#        dev_org_namespaced:
+#        description: Deploy into a namespaced org.
+#        steps:
+#            1: 
+#                flow: dependencies
+#            2:
+#                flow: deploy_unmanaged
+#            3:
+#                task: deploy_post
+#                options:
+#                    namespaced_org: True
+#            4:
+#                task: update_admin_profile
+#                options:
+#                    namespaced_org: True
+#            5:
+#                task: deploy_k12_kit_settings
+#            6:
+#                task: enable_course_connections
+#                options:
+#                    namespaced_org: True
+#            7:
+#                task: deploy_trial_config
+#                options:
+#                    namespaced_org: True
 
 plans:
     install:
