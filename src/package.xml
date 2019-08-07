@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Athena</fullName>
+    <fullName>K-12 Kit</fullName>
+    <types>
+        <members>Contact.Highest_Level_of_Education__c</members>
+        <name>CustomField</name>
+    </types>
+    <types>
+        <members>Contact-ca</members>
+        <members>Contact-es</members>
+        <members>Contact-fr</members>
+        <name>CustomObjectTranslation</name>
+    </types>
     <version>45.0</version>
 </Package>

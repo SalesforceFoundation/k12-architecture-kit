@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Highest_Level_of_Education__c</fullName>
+        <description>The highest level of education completed by a Contact.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The highest level of education completed by a Contact.</inlineHelpText>
+        <label>Highest Level of Education</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Associate&apos;s Degree</fullName>
+                    <default>false</default>
+                    <label>Associate&apos;s Degree</label>
+                </value>
+                <value>
+                    <fullName>Bachelor&apos;s Degree</fullName>
+                    <default>false</default>
+                    <label>Bachelor&apos;s Degree</label>
+                </value>
+                <value>
+                    <fullName>Doctorate</fullName>
+                    <default>false</default>
+                    <label>Doctorate</label>
+                </value>
+                <value>
+                    <fullName>High School Diploma</fullName>
+                    <default>false</default>
+                    <label>High School Diploma</label>
+                </value>
+                <value>
+                    <fullName>Master&apos;s Degree</fullName>
+                    <default>false</default>
+                    <label>Master&apos;s Degree</label>
+                </value>
+                <value>
+                    <fullName>Some College No Degree</fullName>
+                    <default>false</default>
+                    <label>Some College No Degree</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+</CustomObject>
