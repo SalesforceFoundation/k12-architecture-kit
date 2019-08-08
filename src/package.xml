@@ -3,12 +3,18 @@
     <fullName>K-12 Kit</fullName>
     <types>
         <members>Contact.Highest_Level_of_Education__c</members>
+        <members>hed__Relationship__c.FERPA_Approved__c</members>
+        <members>hed__Relationship__c.HIPPA_Approved__c</members>
         <name>CustomField</name>
     </types>
     <types>
         <members>Contact-ca</members>
         <members>Contact-es</members>
         <members>Contact-fr</members>
+        <members>hed__Relationship__c-ca</members>
+        <members>hed__Relationship__c-en_US</members>
+        <members>hed__Relationship__c-es</members>
+        <members>hed__Relationship__c-fr</members>
         <name>CustomObjectTranslation</name>
     </types>
     <version>45.0</version>
