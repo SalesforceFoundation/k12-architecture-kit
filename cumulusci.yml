@@ -1,7 +1,7 @@
 project:
     name: Athena
     package:
-        name:  Athena
+        name: K-12 Kit
         api_version: '45.0'
         namespace: k12alpha0
     git:
@@ -78,6 +78,28 @@ flows:
                 task: enable_course_connections
             5:
                 task: deploy_trial_config
+
+    dev_org:
+        steps:
+            4:
+                task: enable_course_connections
+            5:
+                task: deploy_trial_config
+            6:
+                task: snapshot_changes
+
+    dev_org_namespaced:
+        steps:
+            4:
+                task: enable_course_connections
+                options:
+                    namespaced: True
+            5:
+                task: deploy_trial_config
+                options:
+                    namespaced_org: True
+            6:
+                task: snapshot_changes
 
 plans:
     install:
