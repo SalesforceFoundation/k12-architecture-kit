@@ -17,6 +17,5 @@
         <members>hed__Relationship__c-fr</members>
         <name>CustomObjectTranslation</name>
     </types>
-        <members>Account-K12 Educational Institution Layout</members>
     <version>45.0</version>
 </Package>
