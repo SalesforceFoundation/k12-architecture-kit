@@ -8,6 +8,7 @@
         <members>Contact.K12_Student_Contact_Compact_Layout</members>
         <members>Contact.hed__HEDA_Contact_Compact_Layout</members>
         <members>hed__Affiliation__c.hed__HEDA_Affiliation_Compact_Layout</members>
+        <members>hed__Attendance_Event__c.K12_Attendance_Event_Compact_Layout</members>
         <members>hed__Contact_Language__c.hed__HEDA_Contact_Language_Compact_Layout</members>
         <members>hed__Course_Enrollment__c.K12_Faculty_Course_Connection_Compact_Layout</members>
         <members>hed__Course_Enrollment__c.K12_Student_Course_Connection_Compact_Layout</members>
@@ -64,6 +65,7 @@
         <members>Contact-K12 Student Layout</members>
         <members>hed__Address__c-K12 Address Layout</members>
         <members>hed__Affiliation__c-K12 Affiliation Layout</members>
+        <members>hed__Attendance_Event__c-K12 Attendance Event Layout</members>
         <members>hed__Contact_Language__c-K12 Contact Language Layout</members>
         <members>hed__Course_Enrollment__c-K12 Faculty Course Connection Layout</members>
         <members>hed__Course_Enrollment__c-K12 Student Course Connection Layout</members>

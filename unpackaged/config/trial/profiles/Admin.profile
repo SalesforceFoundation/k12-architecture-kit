@@ -39,6 +39,9 @@
         <layout>hed__Affiliation__c-K12 Affiliation Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>hed__Attendance_Event__c-K12 Attendance Event Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>hed__Contact_Language__c-K12 Contact Language Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
