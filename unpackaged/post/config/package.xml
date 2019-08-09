@@ -9,6 +9,7 @@
         <members>Contact.hed__HEDA_Contact_Compact_Layout</members>
         <members>hed__Affiliation__c.hed__HEDA_Affiliation_Compact_Layout</members>
         <members>hed__Attendance_Event__c.K12_Attendance_Event_Compact_Layout</members>
+        <members>hed__Attribute__c.K12_Attribute_Compact_Layout</members>
         <members>hed__Contact_Language__c.hed__HEDA_Contact_Language_Compact_Layout</members>
         <members>hed__Course_Enrollment__c.K12_Faculty_Course_Connection_Compact_Layout</members>
         <members>hed__Course_Enrollment__c.K12_Student_Course_Connection_Compact_Layout</members>
@@ -54,18 +55,20 @@
         <name>FlexiPage</name>
     </types>
     <types>
-        <members>Account-hed__HEDA Organization Layout</members>
-        <members>Account-K12 Academic Program Layout</members>
         <members>Account-K12 Academic Department Layout</members>
+        <members>Account-K12 Academic Program Layout</members>
         <members>Account-K12 Educational Institution Layout</members>
         <members>Account-K12 Household Layout</members>
         <members>Account-K12 Sports Organization Layout</members>
+        <members>Account-hed__HEDA Organization Layout</members>
         <members>Contact-K12 Faculty Layout</members>
         <members>Contact-K12 Guardian Layout</members>
         <members>Contact-K12 Student Layout</members>
         <members>hed__Address__c-K12 Address Layout</members>
         <members>hed__Affiliation__c-K12 Affiliation Layout</members>
         <members>hed__Attendance_Event__c-K12 Attendance Event Layout</members>
+        <members>hed__Attribute__c-K12 Credential Layout</members>
+        <members>hed__Attribute__c-K12 Student Characteristic Layout</members>
         <members>hed__Contact_Language__c-K12 Contact Language Layout</members>
         <members>hed__Course_Enrollment__c-K12 Faculty Course Connection Layout</members>
         <members>hed__Course_Enrollment__c-K12 Student Course Connection Layout</members>

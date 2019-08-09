@@ -128,6 +128,16 @@ class UpdateAdminProfile(BaseUpdateAdminProfile):
             "true",
         )
 
+        # Set record type visibilities for Attribute
+        self._set_record_type(
+            'hed__Attribute__c.hed__Credential'.format(**namespace_args),
+            'true',
+        )
+        self._set_record_type(
+            'hed__Attribute__c.hed__Student_Characteristic'.format(**namespace_args),
+            'false',
+        )
+
     def _set_record_type(self, name, default):
         rt = rt_visibility_template.format(default, name)
         findReplace(

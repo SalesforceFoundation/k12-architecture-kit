@@ -301,6 +301,13 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
+        <fields>RECORDTYPE</fields>
+        <fields>hed__Attribute_Type__c</fields>
+        <fields>hed__Start_Date__c</fields>
+        <relatedList>hed__Attribute__c.hed__Contact__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
         <fields>hed__Language__c</fields>
         <fields>hed__Fluency__c</fields>
         <fields>hed__Primary_Language__c</fields>
