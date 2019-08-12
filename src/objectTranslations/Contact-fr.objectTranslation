@@ -5,4 +5,14 @@
         <label><!-- Highly Qualified --></label>
         <name>Highly_Qualified__c</name>
     </fields>
+    <fields>
+        <help><!-- The highest level of education completed by a Contact. --></help>
+        <label><!-- Highest Level of Education --></label>
+        <name>Highest_Level_of_Education__c</name>
+    </fields>
+    <fields>
+        <help><!-- Total number of years of experience for this teacher/staff member. --></help>
+        <label><!-- Years of Experience --></label>
+        <name>Years_of_Experience__c</name>
+    </fields>
 </CustomObjectTranslation>

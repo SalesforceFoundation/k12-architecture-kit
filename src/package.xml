@@ -3,6 +3,8 @@
     <fullName>K-12 Kit</fullName>
     <types>
         <members>Contact.Highly_Qualified__c</members>
+        <members>Contact.Highest_Level_of_Education__c</members>
+        <members>Contact.Years_of_Experience__c</members>
         <members>hed__Relationship__c.FERPA_Approved__c</members>
         <members>hed__Relationship__c.HIPPA_Approved__c</members>
         <name>CustomField</name>

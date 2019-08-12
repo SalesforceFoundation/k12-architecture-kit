@@ -9,5 +9,65 @@
         <label>Highly Qualified</label>
         <trackFeedHistory>false</trackFeedHistory>
         <type>Checkbox</type>
-</fields>
+    </fields>
+    <fields>
+        <fullName>Highest_Level_of_Education__c</fullName>
+        <description>The highest level of education completed by a Contact.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The highest level of education completed by a Contact.</inlineHelpText>
+        <label>Highest Level of Education</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Associate&apos;s Degree</fullName>
+                    <default>false</default>
+                    <label>Associate&apos;s Degree</label>
+                </value>
+                <value>
+                    <fullName>Bachelor&apos;s Degree</fullName>
+                    <default>false</default>
+                    <label>Bachelor&apos;s Degree</label>
+                </value>
+                <value>
+                    <fullName>Doctorate</fullName>
+                    <default>false</default>
+                    <label>Doctorate</label>
+                </value>
+                <value>
+                    <fullName>High School Diploma</fullName>
+                    <default>false</default>
+                    <label>High School Diploma</label>
+                </value>
+                <value>
+                    <fullName>Master&apos;s Degree</fullName>
+                    <default>false</default>
+                    <label>Master&apos;s Degree</label>
+                </value>
+                <value>
+                    <fullName>Some College No Degree</fullName>
+                    <default>false</default>
+                    <label>Some College No Degree</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Years_of_Experience__c</fullName>
+        <description>Total number of years of experience for this teacher/staff member.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Total number of years of experience for this teacher/staff member.</inlineHelpText>
+        <label>Years of Experience</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
 </CustomObject>
