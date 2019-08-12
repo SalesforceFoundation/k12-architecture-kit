@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Years_of_Experience__c</fullName>
+        <description>Total number of years of experience for this teacher/staff member.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Total number of years of experience for this teacher/staff member.</inlineHelpText>
+        <label>Years of Experience</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+</CustomObject>
