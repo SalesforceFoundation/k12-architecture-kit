@@ -46,4 +46,18 @@
             </valueSetDefinition>
         </valueSet>
     </fields>
+    <fields>
+        <fullName>Years_of_Experience__c</fullName>
+        <description>Total number of years of experience for this teacher/staff member.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Total number of years of experience for this teacher/staff member.</inlineHelpText>
+        <label>Years of Experience</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
 </CustomObject>
