@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
-        <fields>
-        <help><!-- Total number of years of experience for this teacher/staff member. --></help>
-        <label><!-- Years of Experience --></label>
-        <name>Years_of_Experience__c</name>
-    </fields>
+  <fields>
+      <help><!-- The highest level of education completed by a Contact. --></help>
+      <label><!-- Highest Level of Education --></label>
+      <name>Highest_Level_of_Education__c</name>
+  </fields>
+  <fields>
+      <help><!-- Total number of years of experience for this teacher/staff member. --></help>
+      <label><!-- Years of Experience --></label>
+      <name>Years_of_Experience__c</name>
+  </fields>
 </CustomObjectTranslation>
