@@ -2,9 +2,10 @@
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>K-12 Kit</fullName>
     <types>
-        <members>Contact.Highly_Qualified__c</members>
         <members>Contact.Highest_Level_of_Education__c</members>
+        <members>Contact.Highly_Qualified__c</members>
         <members>Contact.Years_of_Experience__c</members>
+        <members>hed__Attribute__c.hed__Attribute_Type__c</members>
         <members>hed__Relationship__c.FERPA_Approved__c</members>
         <members>hed__Relationship__c.HIPPA_Approved__c</members>
         <name>CustomField</name>
@@ -18,6 +19,10 @@
         <members>hed__Relationship__c-es</members>
         <members>hed__Relationship__c-fr</members>
         <name>CustomObjectTranslation</name>
+    </types>
+    <types>
+        <members>hed__Attribute__c.hed__Student_Characteristic</members>
+        <name>RecordType</name>
     </types>
     <version>45.0</version>
 </Package>
