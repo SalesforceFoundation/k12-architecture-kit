@@ -155,7 +155,6 @@
     <dashboardType>LoggedInUser</dashboardType>
     <description>Information about the student population like gender and race.</description>
     <isGridLayout>true</isGridLayout>
-    <runningUser></runningUser>
     <textColor>#000000</textColor>
     <title>Sample Student Demographics</title>
     <titleColor>#000000</titleColor>
