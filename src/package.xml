@@ -3,6 +3,10 @@
     <fullName>K-12 Kit</fullName>
     <types>
         <members>Contact.Highly_Qualified__c</members>
+        <members>Account.Elementary_School__c</members>
+        <members>Account.High_School__c</members>
+        <members>Account.Middle_School__c</members>
+        <members>Account.Pre_school__c</members>
         <members>Contact.Highest_Level_of_Education__c</members>
         <members>Contact.Years_of_Experience__c</members>
         <members>hed__Attribute__c.Grade_Level__c</members>
@@ -11,6 +15,10 @@
         <name>CustomField</name>
     </types>
     <types>
+        <members>Account-ca</members>
+        <members>Account-en_US</members>
+        <members>Account-es</members>
+        <members>Account-fr</members>
         <members>Contact-ca</members>
         <members>Contact-es</members>
         <members>Contact-fr</members>
