@@ -2,8 +2,8 @@
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>K-12 Kit</fullName>
     <types>
-        <members>Contact.Highly_Qualified__c</members>
         <members>Contact.Highest_Level_of_Education__c</members>
+        <members>Contact.Highly_Qualified__c</members>
         <members>Contact.Years_of_Experience__c</members>
         <members>hed__Attribute__c.Grade_Level__c</members>
         <members>hed__Relationship__c.FERPA_Approved__c</members>
@@ -14,6 +14,10 @@
         <members>Contact-ca</members>
         <members>Contact-es</members>
         <members>Contact-fr</members>
+        <members>hed__Attribute__c-ca</members>
+        <members>hed__Attribute__c-en_US</members>
+        <members>hed__Attribute__c-es</members>
+        <members>hed__Attribute__c-fr</members>
         <members>hed__Relationship__c-ca</members>
         <members>hed__Relationship__c-en_US</members>
         <members>hed__Relationship__c-es</members>
