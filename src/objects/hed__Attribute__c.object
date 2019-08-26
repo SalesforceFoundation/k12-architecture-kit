@@ -2,7 +2,7 @@
 <CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
     <fields>
         <fullName>Grade_Level__c</fullName>
-        <description>Indicates the Grade Levels in which the Credential Attribute applies.</description>
+        <description>Indicates the Grade Levels the Credential Attribute applies to.</description>
         <externalId>false</externalId>
         <label>Grade Level</label>
         <required>false</required>
