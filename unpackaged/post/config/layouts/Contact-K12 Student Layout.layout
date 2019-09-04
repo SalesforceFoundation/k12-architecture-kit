@@ -279,6 +279,13 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
+        <fields>RECORDTYPE</fields>
+        <fields>hed__Attribute_Type__c</fields>
+        <fields>hed__Start_Date__c</fields>
+        <relatedList>hed__Attribute__c.hed__Contact__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
         <fields>hed__RelatedContact__c</fields>
         <fields>hed__Relationship_Explanation__c</fields>
         <fields>hed__Emergency_Contact__c</fields>
