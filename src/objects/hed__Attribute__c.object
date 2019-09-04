@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Grade_Level__c</fullName>
+        <description>Indicates the Grade Levels the Credential Attribute applies to.</description>
+        <externalId>false</externalId>
+        <label>Grade Level</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>PK-3</fullName>
+                    <default>false</default>
+                    <label>PK-3</label>
+                </value>
+                <value>
+                    <fullName>K-5</fullName>
+                    <default>false</default>
+                    <label>K-5</label>
+                </value>
+                <value>
+                    <fullName>K-8</fullName>
+                    <default>false</default>
+                    <label>K-8</label>
+                </value>
+                <value>
+                    <fullName>K-12</fullName>
+                    <default>false</default>
+                    <label>K-12</label>
+                </value>
+                <value>
+                    <fullName>6-8</fullName>
+                    <default>false</default>
+                    <label>6-8</label>
+                </value>
+                <value>
+                    <fullName>7-12</fullName>
+                    <default>false</default>
+                    <label>7-12</label>
+                </value>
+                <value>
+                    <fullName>9-12</fullName>
+                    <default>false</default>
+                    <label>9-12</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+</CustomObject>
