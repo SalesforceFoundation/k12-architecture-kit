@@ -5,7 +5,6 @@
   "settings" : {
     "orgPreferenceSettings": {
         "s1DesktopEnabled": true,
-        "translation": true,
         "chatterEnabled": true
     }
   }
