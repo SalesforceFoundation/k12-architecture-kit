@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>K12_Attribute_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <compactLayoutAssignment>K12_Attribute_Compact_Layout</compactLayoutAssignment>
+    <compactLayouts>
+        <fullName>K12_Attribute_Compact_Layout</fullName>
+        <fields>Name</fields>
+        <fields>RecordTypeId</fields>
+        <fields>hed__Contact__c</fields>
+        <fields>hed__Attribute_Type__c</fields>
+        <label>K12 Attribute Compact Layout</label>
+    </compactLayouts>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>A characteristic of or a credential held by the associated Contact. For example, an Attribute record with a Credential record type can indicate that a faculty member has a Multiple Subject Teaching Credential.</description>
+    <enableActivities>true</enableActivities>
+    <enableReports>true</enableReports>
+    <label>Attribute</label>
+    <nameField>
+        <label>Attribute Name</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Attributes</pluralLabel>
+    <sharingModel>ReadWrite</sharingModel>
+</CustomObject>
