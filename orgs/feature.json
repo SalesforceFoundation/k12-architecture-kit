@@ -1,6 +1,6 @@
 {
-  "orgName": "Athena - Feature Test Org",
-  "edition": "Developer",
+  "orgName": "K12 - Feature Test Org",
+  "edition": "Enterprise",
   "settings" : {
     "orgPreferenceSettings": {
         "s1DesktopEnabled": true,

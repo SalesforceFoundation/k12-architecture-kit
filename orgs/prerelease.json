@@ -1,9 +1,11 @@
 {
-  "orgName": "K12 - Walkthrough Org",
+  "orgName": "K12 - Prerelease Dev Workspace",
   "edition": "Developer",
+  "instance": "CS46",
   "settings" : {
     "orgPreferenceSettings": {
         "s1DesktopEnabled": true,
+        "translation": true,
         "chatterEnabled": true
     }
   }
