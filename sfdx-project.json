@@ -1,1 +1,10 @@
-{"sourceApiVersion": "45.0", "packageDirectories": [{"default": true, "path": "force-app"}], "namespace": "k12alpha0"}
+{
+  "sourceApiVersion": "45.0",
+  "packageDirectories": [
+    {
+      "default": true,
+      "path": "force-app"
+    }
+  ],
+  "namespace": "k12kit"
+}

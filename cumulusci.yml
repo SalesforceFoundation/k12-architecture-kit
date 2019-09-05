@@ -3,12 +3,12 @@ project:
     package:
         name: K-12 Kit
         api_version: '45.0'
-        namespace: k12alpha0
+        namespace: k12kit
     git:
         default_branch: master
         prefix_feature: feature
-        prefix_beta: beta-alpha/
-        prefix_release: release-alpha/
+        prefix_beta: beta/
+        prefix_release: release/
         repo_url: https://github.com/SalesforceFoundation/Athena
     dependencies:
         - github: 'https://github.com/SalesforceFoundation/HEDAP'
