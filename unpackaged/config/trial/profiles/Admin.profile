@@ -39,6 +39,17 @@
         <layout>hed__Affiliation__c-K12 Affiliation Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>hed__Attendance_Event__c-K12 Attendance Event Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>hed__Attribute__c-K12 Credential Layout</layout>
+        <recordType>hed__Attribute__c.hed__Credential</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>hed__Attribute__c-K12 Student Characteristic Layout</layout>
+        <recordType>hed__Attribute__c.hed__Student_Characteristic</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>hed__Contact_Language__c-K12 Contact Language Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
