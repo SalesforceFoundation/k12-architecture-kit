@@ -1,10 +1,9 @@
-# Python
-*.py                  @SalesforceFoundation/release-engineering-reviewers
-
 # CumulusCI
 /cumulusci.yml        @SalesforceFoundation/release-engineering-reviewers
 /tasks/               @SalesforceFoundation/release-engineering-reviewers
-/unpackaged/config    @SalesforceFoundation/release-engineering-reviewers
 
 # Github
 /.github    @SalesforceFoundation/release-engineering-reviewers
+
+# SFDX
+/sfdx-project.json        @SalesforceFoundation/release-engineering-reviewers
