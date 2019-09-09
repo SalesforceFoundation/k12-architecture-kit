@@ -1,6 +1,6 @@
 {
   "orgName": "K12 - Feature Test Org",
-  "edition": "Enterprise",
+  "edition": "Developer",
   "settings" : {
     "orgPreferenceSettings": {
         "s1DesktopEnabled": true,
