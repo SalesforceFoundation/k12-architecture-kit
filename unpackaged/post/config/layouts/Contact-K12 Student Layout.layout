@@ -29,7 +29,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>hed__FERPA__c</field>
+                <field>Student_ID__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
