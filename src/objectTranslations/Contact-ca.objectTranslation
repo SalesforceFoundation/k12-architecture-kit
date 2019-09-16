@@ -11,6 +11,11 @@
         <name>Highest_Level_of_Education__c</name>
     </fields>
     <fields>
+        <help><!-- ID that you can use to manage student information. Typically formatted as a unique alphanumeric value. --></help>
+        <label><!-- Student ID --></label>
+        <name>Student_ID__c</name>
+    </fields>
+    <fields>
         <help><!-- Total number of years of experience for this teacher/staff member. --></help>
         <label><!-- Years of Experience --></label>
         <name>Years_of_Experience__c</name>
