@@ -86,6 +86,10 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
+                <field>hed__Citizenship__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
                 <field>hed__Social_Security_Number__c</field>
             </layoutItems>
             <layoutItems>
