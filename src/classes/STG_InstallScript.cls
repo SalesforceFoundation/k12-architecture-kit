@@ -55,10 +55,8 @@ global without sharing class STG_InstallScript implements InstallHandler {
     * @return void
     */
     global static void insertMappings() {
-        List<hed__Affl_Mappings__c> mappings = [select ID from hed__Affl_Mappings__c where hed__Account_Record_Type__c != null AND hed__Primary_Affl_Field__c != null];
-        if(mappings.size() == 0) {
-            mappings.add(new hed__Affl_Mappings__c(Name = 'Grade Level', hed__Account_Record_Type__c = 'Grade Level', hed__Primary_Affl_Field__c = 'Current Grade Level', hed__Auto_Program_Enrollment_Status__c = 'Current', hed__Auto_Program_Enrollment_Role__c = 'Student'));
-            insert mappings;
-        }
+        List<hed__Affl_Mappings__c> mappings = new List<hed__Affl_Mappings__c>();
+		mappings.add(new hed__Affl_Mappings__c(Name = 'Grade Level', hed__Account_Record_Type__c = 'Grade Level', hed__Primary_Affl_Field__c = 'Current Grade Level', hed__Auto_Program_Enrollment_Status__c = 'Current', hed__Auto_Program_Enrollment_Role__c = 'Student'));
+		insert mappings;
     }
 }

@@ -4,6 +4,7 @@ project:
         name: K-12 Kit
         api_version: '45.0'
         namespace: k12kit
+        install_class: STG_InstallScript
     git:
         default_branch: master
         prefix_feature: feature
