@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
     <fields>
-        <fullName>Highly_Qualified__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>Indicates that a teacher is classified as highly qualified as defined by state guidelines.</description>
+        <fullName>Current_Grade_Level__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <description>The grade level associated with this Contact through the Grade Level record type on Account.</description>
         <externalId>false</externalId>
-        <inlineHelpText>Indicates that a teacher is classified as highly qualified as defined by state guidelines.</inlineHelpText>
-        <label>Highly Qualified</label>
+        <inlineHelpText>The grade level associated with this Contact through the Grade Level record type on Account.</inlineHelpText>
+        <label>Current Grade Level</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Contacts (Current Grade Level)</relationshipLabel>
+        <relationshipName>Contacts</relationshipName>
+        <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
-        <type>Checkbox</type>
+        <type>Lookup</type>
     </fields>
     <fields>
         <fullName>Highest_Level_of_Education__c</fullName>
@@ -55,6 +59,16 @@
                 </value>
             </valueSetDefinition>
         </valueSet>
+    </fields>
+    <fields>
+        <fullName>Highly_Qualified__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Indicates that a teacher is classified as highly qualified as defined by state guidelines.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Indicates that a teacher is classified as highly qualified as defined by state guidelines.</inlineHelpText>
+        <label>Highly Qualified</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>Years_of_Experience__c</fullName>
