@@ -42,7 +42,8 @@ global without sharing class STG_InstallScript implements InstallHandler {
 
         //Initial installation.
         if(context.previousVersion() == null) {
-
+			insertMappings();
+				
         //Updates, manual or pushed by publisher.
         } else if(context.isUpgrade() || context.isPush()) {
 
@@ -54,9 +55,9 @@ global without sharing class STG_InstallScript implements InstallHandler {
     * @return void
     */
     global static void insertMappings() {
-        List<Affl_Mappings__c> mappings = [select ID from Affl_Mappings__c where Account_Record_Type__c != null AND Primary_Affl_Field__c != null];
+        List<hed__Affl_Mappings__c> mappings = [select ID from hed__Affl_Mappings__c where hed__Account_Record_Type__c != null AND hed__Primary_Affl_Field__c != null];
         if(mappings.size() == 0) {
-            mappings.add(new Affl_Mappings__c(Name = 'Academic Program', Account_Record_Type__c = 'Academic Program', Primary_Affl_Field__c = 'Primary Academic Program', Auto_Program_Enrollment__c = true, Auto_Program_Enrollment_Status__c = 'Current', Auto_Program_Enrollment_Role__c = 'Student'));
+            mappings.add(new hed__Affl_Mappings__c(Name = 'Grade Level', hed__Account_Record_Type__c = 'Grade Level', hed__Primary_Affl_Field__c = 'Current Grade Level', hed__Auto_Program_Enrollment_Status__c = 'Current', hed__Auto_Program_Enrollment_Role__c = 'Student'));
             insert mappings;
         }
     }
