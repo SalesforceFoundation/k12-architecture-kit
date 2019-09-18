@@ -34,6 +34,7 @@
         <fields>RecordTypeId</fields>
         <fields>AccountId</fields>
         <fields>Birthdate</fields>
+        <fields>Student_ID__c</fields>
         <label>K12 Student Contact Compact Layout</label>
     </compactLayouts>
     <compactLayouts>
