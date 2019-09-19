@@ -34,8 +34,8 @@
 @isTest
 public with sharing class STG_InstallScript_TEST {
 
-  @isTest
-  public static void installAfflMappings() {
+    @isTest
+    public static void installAfflMappings() {
         Test.startTest();
         //Run the install script
         Test.testInstall(new STG_InstallScript(), null);
@@ -43,5 +43,5 @@ public with sharing class STG_InstallScript_TEST {
 
         List<hed__Affl_Mappings__c> newMappings = [SELECT ID FROM hed__Affl_Mappings__c];
         System.assertEquals(7, newMappings.size());
-  }
+    }
 }

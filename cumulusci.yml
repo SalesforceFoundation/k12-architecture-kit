@@ -60,6 +60,13 @@ tasks:
             path: unpackaged/config/trial
             namespace_tokenize: $project_config.project__package__namespace
 
+    execute_install_apex:
+        description: Runs most of the install script methods from STG_InstallScript class
+        class_path: cumulusci.tasks.apex.anon.AnonymousApexTask
+        options:
+            apex:
+                STG_InstallScript.insertMappings();
+
 flows:
     config_managed:
         steps:
@@ -88,6 +95,8 @@ flows:
                 task: deploy_trial_config
             6:
                 task: snapshot_changes
+            7:
+                task: execute_install_apex
 
     dev_org_namespaced:
         steps:
@@ -101,6 +110,8 @@ flows:
                     namespaced_org: True
             6:
                 task: snapshot_changes
+            7:
+                task: execute_install_apex
 
 plans:
     install:
