@@ -42,6 +42,6 @@ public with sharing class STG_InstallScript_TEST {
         Test.stopTest();
 
         List<hed__Affl_Mappings__c> newMappings = [SELECT ID FROM hed__Affl_Mappings__c];
-        System.assertEquals(7, newMappings.size());
+        System.assertEquals(1, newMappings.size());
     }
 }
