@@ -3,7 +3,8 @@
     <fullName>K-12 Kit</fullName>
     <types>
         <members>STG_InstallScript</members>
-        <name>ApexClass</name>    
+        <members>STG_InstallScript_TEST</members>
+        <name>ApexClass</name>
     </types>
     <types>
         <members>Account.Elementary_School__c</members>
