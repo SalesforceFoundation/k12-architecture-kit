@@ -36,15 +36,15 @@ public with sharing class STG_InstallScript_TEST {
 
 	@isTest
 	public static void installAfflMappings() {
-        List<Affl_Mappings__c> oldAfflMappings = [SELECT Account_Record_Type__c, Primary_Affl_Field__c FROM Affl_Mappings__c];
-        System.assertEquals(6, mappings.size());
+        List<hed__Affl_Mappings__c> oldAfflMappings = [SELECT ID FROM hed__Affl_Mappings__c];
+        System.assertEquals(6, oldAfflMappings.size());
 
         Test.startTest();
 		//Run the install script
         Test.testInstall(new STG_InstallScript(), null);
         Test.stopTest();
 
-        List<Affl_Mappings__c> mappings = [SELECT Account_Record_Type__c, Primary_Affl_Field__c FROM Affl_Mappings__c];
-        System.assertEquals(7, mappings.size());
+        List<hed__Affl_Mappings__c> newMappings = [SELECT ID FROM hed__Affl_Mappings__c];
+        System.assertEquals(7, newMappings.size());
 	}
 }
