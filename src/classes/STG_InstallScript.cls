@@ -33,30 +33,30 @@
 */
 global without sharing class STG_InstallScript implements InstallHandler {
 
-    /*******************************************************************************************************
-    * @description Runs on package install.
-    * @param context The install context.
-    * @return void
-    */
-    global void onInstall(InstallContext context) {
+		/*******************************************************************************************************
+		* @description Runs on package install.
+		* @param context The install context.
+		* @return void
+		*/
+		global void onInstall(InstallContext context) {
 
-        //Initial installation.
-        if(context.previousVersion() == null) {
-			insertMappings();
+				//Initial installation.
+				if(context.previousVersion() == null) {
+					insertMappings();
 				
-        //Updates, manual or pushed by publisher.
-        } else if(context.isUpgrade() || context.isPush()) {
+				//Updates, manual or pushed by publisher.
+				} else if(context.isUpgrade() || context.isPush()) {
 
-        }
-    }
+				}
+		}
 
-    /*******************************************************************************************************
-    * @description Inserts the default Affiliation Mappings.
-    * @return void
-    */
-    global static void insertMappings() {
-        List<hed__Affl_Mappings__c> mappings = new List<hed__Affl_Mappings__c>();
-		mappings.add(new hed__Affl_Mappings__c(Name = 'Grade Level', hed__Account_Record_Type__c = 'Grade Level', hed__Primary_Affl_Field__c = 'Current Grade Level', hed__Auto_Program_Enrollment_Status__c = 'Current', hed__Auto_Program_Enrollment_Role__c = 'Student'));
-		insert mappings;
-    }
+		/*******************************************************************************************************
+		* @description Inserts the default Affiliation Mappings.
+		* @return void
+		*/
+		global static void insertMappings() {
+			List<hed__Affl_Mappings__c> mappings = new List<hed__Affl_Mappings__c>();
+			mappings.add(new hed__Affl_Mappings__c(Name = 'Grade Level', hed__Account_Record_Type__c = 'Grade Level', hed__Primary_Affl_Field__c = 'Current Grade Level', hed__Auto_Program_Enrollment_Status__c = 'Current', hed__Auto_Program_Enrollment_Role__c = 'Student'));
+			insert mappings;
+		}
 }
