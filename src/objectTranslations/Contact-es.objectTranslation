@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>   
+        <help><!-- The grade level associated with this Contact through the Grade Level record type on Account. --></help>
+        <label><!-- Current Grade Level --></label>
+        <name>Current_Grade_Level__c</name>
+        <relationshipLabel><!-- Contacts (Current Grade Level) --></relationshipLabel>
+    </fields>
     <fields>
         <help><!-- Indicates that a teacher is classified as highly qualified as defined by state guidelines. --></help>
         <label><!-- Highly Qualified --></label>
