@@ -71,7 +71,7 @@ flows:
             1:
                 flow: dependencies
             2:
-                flow: None # install_managed
+                flow: install_managed
             3:
                 flow: config_managed
             4:
@@ -124,10 +124,12 @@ plans:
                     recordtypes:
                         name: K12 - Account and Contact Record Types
             3:
+                task: install_managed
+            4:
                 task: deploy_k12_kit_settings
                 ui_options:
                     name: K12 - Default Kit Settings
-            4:
+            5:
                 task: deploy_post
                 ui_options:
                     config:
