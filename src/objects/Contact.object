@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
     <fields>
+        <fullName>Student_ID__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <description>ID that you can use to manage student information. Typically formatted as a unique alphanumeric value.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>ID that you can use to manage student information. Typically formatted as a unique alphanumeric value.</inlineHelpText>
+        <label>Student ID</label>
+        <length>60</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
         <fullName>Highest_Level_of_Education__c</fullName>
         <description>The highest level of education completed by a Contact.</description>
         <externalId>false</externalId>
