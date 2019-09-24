@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
     <fields>
+        <fullName>Current_Grade_Level__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <description>The grade level associated with this Contact through the Grade Level record type on Account.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The grade level associated with this Contact through the Grade Level record type on Account.</inlineHelpText>
+        <label>Current Grade Level</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Contacts (Current Grade Level)</relationshipLabel>
+        <relationshipName>Contacts</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
         <fullName>Highest_Level_of_Education__c</fullName>
         <description>The highest level of education completed by a Contact.</description>
         <externalId>false</externalId>
