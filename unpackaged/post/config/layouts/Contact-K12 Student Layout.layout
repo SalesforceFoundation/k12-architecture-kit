@@ -279,6 +279,19 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
+        <fields>hed__Attendance_Type__c</fields>
+        <fields>hed__Date__c</fields>
+        <fields>hed__Unexcused__c</fields>
+        <relatedList>hed__Attendance_Event__c.hed__Contact__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>hed__Case__c</fields>
+        <fields>hed__Role__c</fields>
+        <relatedList>hed__Behavior_Involvement__c.hed__Contact__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
         <fields>RECORDTYPE</fields>
         <fields>hed__Attribute_Type__c</fields>
         <fields>hed__Start_Date__c</fields>
