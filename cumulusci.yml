@@ -59,6 +59,11 @@ tasks:
             path: unpackaged/config/trial
             namespace_tokenize: $project_config.project__package__namespace
 
+    add_picklist_values:
+        description: Adds picklist values to the given field, if they don't already exist.
+        class_path: tasks.add_picklist_values.AddPicklistValues
+        group: Custom Tasks
+
 flows:
     config_managed:
         steps:
