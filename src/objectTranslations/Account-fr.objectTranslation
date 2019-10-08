@@ -1,22 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
     <fields>
-        <help><!-- Indicates that this Educational Institution provides elementary school services and curriculum. --></help>
         <label><!-- Elementary School --></label>
         <name>Elementary_School__c</name>
     </fields>
     <fields>
-        <help><!-- Indicates that this Educational Institution provides high school services and curriculum. --></help>
         <label><!-- High School --></label>
         <name>High_School__c</name>
     </fields>
     <fields>
-        <help><!-- Indicates that this Educational Institution provides middle school services and curriculum. --></help>
         <label><!-- Middle School --></label>
         <name>Middle_School__c</name>
     </fields>
     <fields>
-        <help><!-- Indicates that this Educational Institution provides Pre-K services and curriculum. --></help>
         <label><!-- Pre-school --></label>
         <name>Pre_school__c</name>
     </fields>
