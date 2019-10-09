@@ -50,6 +50,9 @@
         <recordType>hed__Attribute__c.hed__Student_Characteristic</recordType>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>hed__Behavior_Response__c-K12 Behavior Response Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>hed__Contact_Language__c-K12 Contact Language Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
