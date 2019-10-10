@@ -22,6 +22,8 @@
     </layoutAssignments>
     <layoutAssignments>
         <layout>Case-K12 Incident Layout</layout>
+        <recordType>Case.Incident</recordType>
+    </layoutAssignments>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Contact-K12 Faculty Layout</layout>
