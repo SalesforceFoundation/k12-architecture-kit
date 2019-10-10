@@ -21,6 +21,9 @@
         <recordType>Account.Sports_Organization</recordType>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>Case-K12 Incident Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>Contact-K12 Faculty Layout</layout>
         <recordType>Contact.Faculty</recordType>
     </layoutAssignments>
