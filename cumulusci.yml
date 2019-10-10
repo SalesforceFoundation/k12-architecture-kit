@@ -71,7 +71,7 @@ flows:
             1:
                 flow: dependencies
             2:
-                flow: install_managed
+                task: install_managed
             3:
                 flow: config_managed
             4:
