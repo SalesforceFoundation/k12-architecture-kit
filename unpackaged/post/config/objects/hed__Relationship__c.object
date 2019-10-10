@@ -15,7 +15,7 @@
         <fields>hed__Contact__c</fields>
         <fields>hed__RelatedContact__c</fields>
         <fields>hed__Relationship_Explanation__c</fields>
-        <fields>FERPA_Approved__c</fields>
+        <fields>%%%NAMESPACE%%%FERPA_Approved__c</fields>
         <fields>hed__Status__c</fields>
         <label>K12 Relationship Compact Layout</label>
     </compactLayouts>
