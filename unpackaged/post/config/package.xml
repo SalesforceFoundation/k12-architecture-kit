@@ -11,7 +11,6 @@
         <members>hed__Attendance_Event__c.K12_Attendance_Event_Compact_Layout</members>
         <members>hed__Attribute__c.K12_Attribute_Compact_Layout</members>
         <members>hed__Contact_Language__c.hed__HEDA_Contact_Language_Compact_Layout</members>
-        <members>Case-K12 Incident Layout</members>
         <members>hed__Course_Enrollment__c.K12_Faculty_Course_Connection_Compact_Layout</members>
         <members>hed__Course_Enrollment__c.K12_Student_Course_Connection_Compact_Layout</members>
         <members>hed__Course_Enrollment__c.hed__HEDA_Course_Enrollment_Compact_Layout</members>
@@ -63,6 +62,7 @@
         <members>Account-K12 Household Layout</members>
         <members>Account-K12 Sports Organization Layout</members>
         <members>Account-hed__HEDA Organization Layout</members>
+        <members>Case-K12 Incident Layout</members>
         <members>Contact-K12 Faculty Layout</members>
         <members>Contact-K12 Guardian Layout</members>
         <members>Contact-K12 Student Layout</members>
