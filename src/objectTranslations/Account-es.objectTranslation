@@ -5,6 +5,11 @@
         <name>Elementary_School__c</name>
     </fields>
     <fields>
+        <help><!-- The Grade Levels offered by this Educational Institution. --></help>
+        <label><!-- Grade Levels --></label>
+        <name>Grade_Levels__c</name>
+    </fields>
+    <fields>
         <label><!-- High School --></label>
         <name>High_School__c</name>
     </fields>
@@ -16,4 +21,192 @@
         <label><!-- Pre-school --></label>
         <name>Pre_school__c</name>
     </fields>
+    <fields>
+        <help>La dirección actual con la que se completan campos de facturación de la Cuenta.</help>
+        <label><!-- Current Address --></label>
+        <name>hed__Current_Address__c</name>
+        <relationshipLabel><!-- Accounts (Current Address) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- _SYSTEM: One2OneContact --></label>
+        <name>hed__Primary_Contact__c</name>
+        <relationshipLabel><!-- Account --></relationshipLabel>
+    </fields>
+    <layouts>
+        <layout>HEDA Household Layout</layout>
+        <sections>
+            <label>Dirección</label>
+            <section>Address</section>
+        </sections>
+        <sections>
+            <label>Vínculos personalizados</label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label>Descripción</label>
+            <section>Description</section>
+        </sections>
+        <sections>
+            <label>Campos</label>
+            <section>Fields</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>HEDA Organization Layout</layout>
+        <sections>
+            <label>Dirección</label>
+            <section>Address</section>
+        </sections>
+        <sections>
+            <label>Vínculos personalizados</label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label>Descripción</label>
+            <section>Description</section>
+        </sections>
+        <sections>
+            <label>Campos</label>
+            <section>Fields</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>K12 Academic Department Layout</layout>
+        <sections>
+            <label><!-- Address --></label>
+            <section>Address</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Description --></label>
+            <section>Description</section>
+        </sections>
+        <sections>
+            <label><!-- Fields --></label>
+            <section>Fields</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>K12 Academic Program Layout</layout>
+        <sections>
+            <label><!-- Address --></label>
+            <section>Address</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Description --></label>
+            <section>Description</section>
+        </sections>
+        <sections>
+            <label><!-- Fields --></label>
+            <section>Fields</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>K12 Educational Institution Layout</layout>
+        <sections>
+            <label><!-- Address --></label>
+            <section>Address</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Description --></label>
+            <section>Description</section>
+        </sections>
+        <sections>
+            <label><!-- Fields --></label>
+            <section>Fields</section>
+        </sections>
+        <sections>
+            <label><!-- Type of School --></label>
+            <section>Type of School</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>K12 Household Layout</layout>
+        <sections>
+            <label><!-- Address --></label>
+            <section>Address</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Description --></label>
+            <section>Description</section>
+        </sections>
+        <sections>
+            <label><!-- Fields --></label>
+            <section>Fields</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>K12 Sports Organization Layout</layout>
+        <sections>
+            <label><!-- Address --></label>
+            <section>Address</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Description --></label>
+            <section>Description</section>
+        </sections>
+        <sections>
+            <label><!-- Fields --></label>
+            <section>Fields</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <description><!-- An Academic Program offered at the educational institution. --></description>
+        <label><!-- Academic Program --></label>
+        <name>Academic_Program</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- An administrative account. --></description>
+        <label><!-- Administrative --></label>
+        <name>Administrative</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- A business organization. --></description>
+        <label><!-- Business Organization --></label>
+        <name>Business_Organization</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- An educational institution. --></description>
+        <label><!-- Educational Institution --></label>
+        <name>Educational_Institution</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- A grade level in the educational institution (for example, Second Grade). --></description>
+        <label><!-- Grade Level --></label>
+        <name>Grade_Level</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- A Household containing one or more individuals. --></description>
+        <label><!-- Household Account --></label>
+        <name>HH_Account</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- A sports organization. --></description>
+        <label><!-- Sports Organization --></label>
+        <name>Sports_Organization</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- A department in the educational institution. --></description>
+        <label><!-- Academic Department --></label>
+        <name>University_Department</name>
+    </recordTypes>
 </CustomObjectTranslation>

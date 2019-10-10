@@ -3,17 +3,33 @@
     <fullName>K-12 Kit</fullName>
     <types>
         <members>Account.Elementary_School__c</members>
+        <members>Account.Grade_Levels__c</members>
         <members>Account.High_School__c</members>
         <members>Account.Middle_School__c</members>
         <members>Account.Pre_school__c</members>
+        <members>Contact.Current_Grade_Level__c</members>
         <members>Contact.Highest_Level_of_Education__c</members>
         <members>Contact.Highly_Qualified__c</members>
         <members>Contact.Student_ID__c</members>
         <members>Contact.Years_of_Experience__c</members>
+        <members>Grade_Enrollment__c.Contact__c</members>
+        <members>Grade_Enrollment__c.Educational_Institution__c</members>
+        <members>Grade_Enrollment__c.End_Date__c</members>
+        <members>Grade_Enrollment__c.Entry_Conditions__c</members>
+        <members>Grade_Enrollment__c.Entry_Conditions__c</members>
+        <members>Grade_Enrollment__c.Exit_Conditions__c</members>
+        <members>Grade_Enrollment__c.Grade_Level__c</members>
+        <members>Grade_Enrollment__c.Start_Date__c</members>
+        <members>Grade_Enrollment__c.Status__c</members>
+        <members>Grade_Enrollment__c.Term__c</members>
         <members>hed__Attribute__c.Grade_Level__c</members>
         <members>hed__Relationship__c.FERPA_Approved__c</members>
         <members>hed__Relationship__c.HIPPA_Approved__c</members>
         <name>CustomField</name>
+    </types>
+    <types>
+        <members>Grade_Enrollment__c</members>
+        <name>CustomObject</name>
     </types>
     <types>
         <members>Account-ca</members>
@@ -32,6 +48,10 @@
         <members>hed__Relationship__c-es</members>
         <members>hed__Relationship__c-fr</members>
         <name>CustomObjectTranslation</name>
+    </types>
+    <types>
+        <members>Grade_Levels</members>
+        <name>GlobalValueSet</name>
     </types>
     <version>45.0</version>
 </Package>
