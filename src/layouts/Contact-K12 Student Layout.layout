@@ -29,7 +29,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>%%%NAMESPACE%%%Student_ID__c</field>
+                <field>Student_ID__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -301,7 +301,7 @@
         <fields>NAME</fields>
         <fields>hed__RelatedContact__c</fields>
         <fields>hed__Relationship_Explanation__c</fields>
-        <fields>%%%NAMESPACE%%%FERPA_Approved__c</fields>
+        <fields>FERPA_Approved__c</fields>
         <fields>hed__Emergency_Contact__c</fields>
         <fields>hed__Type__c</fields>
         <fields>hed__Status__c</fields>
