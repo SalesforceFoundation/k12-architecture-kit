@@ -16,7 +16,7 @@
         <fields>hed__Course_Offering__c</fields>
         <fields>RecordTypeId</fields>
         <fields>hed__Primary__c</fields>
-        <label>K12 Faculty Course Connection Compact Layout</label>
+        <label>K12 Teacher Course Connection Compact Layout</label>
     </compactLayouts>
     <compactLayouts>
         <fullName>K12_Student_Course_Connection_Compact_Layout</fullName>
@@ -61,7 +61,7 @@
             <operation>equals</operation>
             <value>hed__Course_Enrollment__c.Faculty</value>
         </filters>
-        <label>K12 All Faculty Course Connections</label>
+        <label>K12 All Teacher Course Connections</label>
     </listViews>
     <listViews>
         <fullName>K12_All_Student_Course_Connections</fullName>
@@ -104,8 +104,8 @@
         <fullName>Faculty</fullName>
         <active>true</active>
         <compactLayoutAssignment>K12_Faculty_Course_Connection_Compact_Layout</compactLayoutAssignment>
-        <description>A Faculty Course Connection</description>
-        <label>Faculty</label>
+        <description>A Teacher Course Connection</description>
+        <label>Teacher</label>
     </recordTypes>
     <recordTypes>
         <fullName>Student</fullName>
