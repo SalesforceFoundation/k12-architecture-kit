@@ -72,7 +72,7 @@
         <members>hed__Attribute__c-K12 Student Characteristic Layout</members>
         <members>hed__Behavior_Involvement__c-K12 Behavior Involvement Layout</members>
         <members>hed__Contact_Language__c-K12 Contact Language Layout</members>
-        <members>hed__Course_Enrollment__c-K12 Faculty Course Connection Layout</members>
+        <members>hed__Course_Enrollment__c-K12 Teacher Course Connection Layout</members>
         <members>hed__Course_Enrollment__c-K12 Student Course Connection Layout</members>
         <members>hed__Course_Offering_Schedule__c-K12 Course Offering Schedule Layout</members>
         <members>hed__Course_Offering__c-K12 Course Offering Layout</members>
