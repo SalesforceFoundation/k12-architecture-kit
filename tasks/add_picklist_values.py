@@ -5,24 +5,20 @@ package_xml_template = """
 <?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
-        <members>{field}</members>
+        <members>{object}.{field}</members>
         <name>CustomField</name>
-    </types>
-    {record_types}
+    </types>{record_types_block}
     <version>45.0</version>
 </Package>
 """
 
 package_xml_record_types_block_template = """
-    <types>
-        {record_types}
+    <types>{record_types}
         <name>RecordType</name>
-    </types>
-"""
+    </types>"""
 
 package_xml_record_type_template = """
-        <members>{object}.{record_type_name}</members>
-"""
+        <members>{object}.{record_type_name}</members>"""
 
 object_template = """
 <?xml version="1.0" encoding="UTF-8"?>
@@ -37,14 +33,11 @@ object_template = """
         <trackFeedHistory>false</trackFeedHistory>
         <type>Picklist</type>-->
         <valueSet>
-            <restricted>{restricted}</restricted>
             <valueSetDefinition>
-                <sorted>{sorted}</sorted>
-                {picklist_value}
+                <sorted>{sorted}</sorted>{picklist_values}
             </valueSetDefinition>
         </valueSet>
-    </fields>
-    {record_types}
+    </fields>{record_types}
 </CustomObject>
 """
 
@@ -52,28 +45,24 @@ picklist_value_template = """
                 <value>
                     <fullName>{name}</fullName>
                     <default>{default}</default>
-                    <label>{name}</label>
-                </value>
-"""
+                    <label>{label}</label>
+                </value>"""
 
 record_type_picklist_template = """
     <recordTypes>
-        <fullName>{fullName}</fullName>
+        <fullName>{name}</fullName>
         <active>true</active>
         <label>{label}</label>
         <picklistValues>
-            <picklist>{field}</picklist>
-            {picklist_value}
+            <picklist>{field}</picklist>{picklist_values}
         </picklistValues>
-    </recordTypes>
-"""
+    </recordTypes>"""
 
 record_type_picklist_value_template = """
             <values>
                 <fullName>{name}</fullName>
                 <default>{default}</default>
-            </values>
-"""
+            </values>"""
 
 # Adds picklist values to the given field, if they don't already exist.
 # Optionally adds the picklist values for the specified record types, if the record types exist.
@@ -122,7 +111,6 @@ class AddPicklistValues(BaseSalesforceApiTask):
 
         # build up a list of active record types
         picklist_record_types = self._get_active_record_types(describe_results)
-        print('Record types for the picklist: {}'.format(picklist_record_types)) # temporary
 
         if field_describe["type"] == "picklist":
             active_picklist_values = [
@@ -137,30 +125,90 @@ class AddPicklistValues(BaseSalesforceApiTask):
                 print('{} is already a picklist value on {}. Skipping...'.format(active_picklist_value["value"], field))
                 values.remove(active_picklist_value["value"])
 
-        print('Validated new picklist values: {}'.format(values))
-
-        # to-do: build XML...
-        # build package.xml:
-        package_xml = ""
-
+        # build the package.xml:
+        # to-do: move this into its own method
+        
+        # include the record types, if any were specified
+        package_xml_record_types = ""
         if picklist_record_types:
-            package_xml_record_types = ""
             for rt in picklist_record_types:
-                package_xml_record_types += package_xml_record_type_template.format(object = sobject, record_type_name = rt["developerName"])
+                package_xml_record_types += package_xml_record_type_template.format(
+                    object = sobject, 
+                    record_type_name = rt["developerName"]
+                )
             
             package_xml_record_types_block = package_xml_record_types_block_template.format(record_types = package_xml_record_types)
-            print(package_xml_record_types_block) # temporary
-            # to-do: append to package.xml
 
-        # build object xml:
-        # using record types?
+        # combine it all together
+        package_xml = package_xml_template.format(
+            object = sobject, 
+            field = field, 
+            record_types_block = package_xml_record_types_block
+        )
+        print(package_xml) # temporary
 
+        # build the object XML:
+        # to-do: move this into its own method
+        # to-do: "Other" should always be at the bottom?
+
+        picklist_values_xml = ""
+        record_type_picklist_xml = ""
+        record_type_picklist_values_xml = ""
+
+        # add the existing picklist values
+        for active_picklist_value in active_picklist_values:
+            picklist_values_xml += picklist_value_template.format(
+                name = active_picklist_value["value"], 
+                default = active_picklist_value["defaultValue"], 
+                label = active_picklist_value["label"]
+            )
+
+            if picklist_record_types:
+                record_type_picklist_values_xml += record_type_picklist_value_template.format(
+                    name = active_picklist_value["value"], 
+                    default = active_picklist_value["defaultValue"]
+                    # to-do: I don't think this is right. Can we look at the record type XML describe?
+                )
+        
+        # add the new picklist values
+        for value in values:
+            picklist_values_xml += picklist_value_template.format(
+                name = value, 
+                default = False, 
+                label = value
+            )
+
+            if picklist_record_types:
+                record_type_picklist_values_xml += record_type_picklist_value_template.format(
+                    name = value,
+                    default = False
+                )
+
+        # add the picklist values to the record types, if any were specified
+        if picklist_record_types:
+            for rt in picklist_record_types:
+                record_type_picklist_xml += record_type_picklist_template.format(
+                    name = rt["developerName"], 
+                    label = rt["name"], 
+                    field = field,
+                    picklist_values = record_type_picklist_values_xml
+                )
+
+        sorted_picklist = False
         if "alphabetical" in self.options:
-            print("Not yet implemented")
-
             if self.options["alphabetical"] == "True":
-                print("Set the picklist values to alphabetical")
-                # to-do: set alphabetical (sorted = true in the XML)
+                sorted_picklist = True
+
+        # combine it all together
+        object_xml = object_template.format(
+            field = field,
+            sorted = sorted_picklist,
+            picklist_values = picklist_values_xml,
+            record_types = record_type_picklist_xml
+        )
+
+        print(object_xml) # temporary
+        # to-do: deploy!
 
     def _get_active_record_types(self, describe_results):
         picklist_record_types = []
@@ -174,12 +222,13 @@ class AddPicklistValues(BaseSalesforceApiTask):
 
             # validate record_types against active_record_types
             for active_record_type in active_record_types:
-                if active_record_type["name"] in record_types:
+                if active_record_type["developerName"] in record_types:
                     picklist_record_types.append(active_record_type)
-                    picklist_record_type_names.append(active_record_type["name"])
+                    picklist_record_type_names.append(active_record_type["developerName"])
 
             for rt in record_types:
                 if rt not in picklist_record_type_names:
+                    # to-do: should we throw an exception here instead? A customer might have deactivated a record type, which might be okay...
                     print('{} is not an active record type for the {} object.'.format(rt, describe_results["name"]))
 
         return picklist_record_types
