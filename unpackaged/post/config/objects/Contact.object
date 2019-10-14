@@ -24,7 +24,6 @@
         <fields>AccountId</fields>
         <fields>hed__Gender__c</fields>
         <fields>Phone</fields>
-        <fields>hed__FERPA__c</fields>
         <fields>Email</fields>
         <label>K12 Guardian Contact Compact Layout</label>
     </compactLayouts>
@@ -34,7 +33,7 @@
         <fields>RecordTypeId</fields>
         <fields>AccountId</fields>
         <fields>Birthdate</fields>
-        <fields>hed__Gender__c</fields>
+        <fields>%%%NAMESPACE%%%Student_ID__c</fields>
         <label>K12 Student Contact Compact Layout</label>
     </compactLayouts>
     <compactLayouts>

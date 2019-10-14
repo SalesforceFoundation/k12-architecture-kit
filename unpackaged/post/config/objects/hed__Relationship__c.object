@@ -8,7 +8,17 @@
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
     </actionOverrides>
-    <compactLayoutAssignment>hed__HEDA_Relationship_Compact_Layout</compactLayoutAssignment>
+    <compactLayoutAssignment>K12_Relationship_Compact_Layout</compactLayoutAssignment>
+    <compactLayouts>
+        <fullName>K12_Relationship_Compact_Layout</fullName>
+        <fields>Name</fields>
+        <fields>hed__Contact__c</fields>
+        <fields>hed__RelatedContact__c</fields>
+        <fields>hed__Relationship_Explanation__c</fields>
+        <fields>%%%NAMESPACE%%%FERPA_Approved__c</fields>
+        <fields>hed__Status__c</fields>
+        <label>K12 Relationship Compact Layout</label>
+    </compactLayouts>
     <compactLayouts>
         <fullName>hed__HEDA_Relationship_Compact_Layout</fullName>
         <fields>Name</fields>

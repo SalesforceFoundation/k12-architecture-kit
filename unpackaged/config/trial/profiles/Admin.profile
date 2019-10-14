@@ -53,7 +53,7 @@
         <layout>hed__Contact_Language__c-K12 Contact Language Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>hed__Course_Enrollment__c-K12 Faculty Course Connection Layout</layout>
+        <layout>hed__Course_Enrollment__c-K12 Teacher Course Connection Layout</layout>
         <recordType>hed__Course_Enrollment__c.Faculty</recordType>
     </layoutAssignments>
     <layoutAssignments>
@@ -87,6 +87,9 @@
     </layoutAssignments>
     <layoutAssignments>
         <layout>hed__Program_Plan__c-K12 Program Plan Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>hed__Relationship__c-K12 Relationship Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>hed__Term_Grade__c-K12 Term Grade Layout</layout>

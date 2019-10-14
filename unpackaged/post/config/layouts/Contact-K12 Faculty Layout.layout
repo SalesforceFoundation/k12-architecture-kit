@@ -29,28 +29,24 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>hed__Gender__c</field>
+                <field>%%%NAMESPACE%%%Highest_Level_of_Education__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>hed__Gender__c</field>
+            </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Birthdate</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>hed__Citizenship__c</field>
+                <field>%%%NAMESPACE%%%Years_of_Experience__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
-    </layoutSections>
-    <layoutSections>
-        <customLabel>false</customLabel>
-        <detailHeading>true</detailHeading>
-        <editHeading>true</editHeading>
-        <label>Description Information</label>
-        <layoutColumns/>
-        <style>OneColumn</style>
     </layoutSections>
     <layoutSections>
         <customLabel>true</customLabel>
@@ -87,6 +83,10 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>hed__Race__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>hed__Citizenship__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -329,6 +329,7 @@
         <fields>NAME</fields>
         <fields>hed__RelatedContact__c</fields>
         <fields>hed__Relationship_Explanation__c</fields>
+        <fields>%%%NAMESPACE%%%FERPA_Approved__c</fields>
         <fields>hed__Emergency_Contact__c</fields>
         <fields>hed__Type__c</fields>
         <fields>hed__Status__c</fields>

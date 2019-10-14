@@ -8,6 +8,7 @@
         <members>Account.Pre_school__c</members>
         <members>Contact.Highest_Level_of_Education__c</members>
         <members>Contact.Highly_Qualified__c</members>
+        <members>Contact.Student_ID__c</members>
         <members>Contact.Years_of_Experience__c</members>
         <members>hed__Attribute__c.Grade_Level__c</members>
         <members>hed__Relationship__c.FERPA_Approved__c</members>

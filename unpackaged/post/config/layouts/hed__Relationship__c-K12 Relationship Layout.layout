@@ -12,12 +12,24 @@
                 <field>hed__Contact__c</field>
             </layoutItems>
             <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>hed__Relationship_Explanation__c</field>
+            </layoutItems>
+            <layoutItems>
                 <behavior>Required</behavior>
                 <field>hed__Status__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>hed__Relationship_Explanation__c</field>
+                <behavior>Edit</behavior>
+                <field>%%%NAMESPACE%%%FERPA_Approved__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>%%%NAMESPACE%%%HIPPA_Approved__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>hed__Emergency_Contact__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -28,10 +40,6 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>hed__Type__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>hed__Emergency_Contact__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>

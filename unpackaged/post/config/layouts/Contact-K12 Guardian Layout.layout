@@ -71,10 +71,6 @@
         <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>hed__FERPA__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
                 <field>hed__Military_Service__c</field>
             </layoutItems>
             <layoutItems>
@@ -300,6 +296,7 @@
         <fields>NAME</fields>
         <fields>hed__RelatedContact__c</fields>
         <fields>hed__Relationship_Explanation__c</fields>
+        <fields>%%%NAMESPACE%%%FERPA_Approved__c</fields>
         <fields>hed__Emergency_Contact__c</fields>
         <fields>hed__Type__c</fields>
         <fields>hed__Status__c</fields>
