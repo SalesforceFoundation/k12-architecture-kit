@@ -1,9 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <customValue>
-        <fullName>Pre-K</fullName>
+        <fullName>Infant/Toddler</fullName>
         <default>false</default>
-        <label>Pre-K</label>
+        <label>Infant/Toddler</label>
+    </customValue>
+    <customValue>
+        <fullName>Preschool</fullName>
+        <default>false</default>
+        <label>Preschool</label>
+    </customValue>
+    <customValue>
+        <fullName>Prekindergarten</fullName>
+        <default>false</default>
+        <label>Prekindergarten</label>
+    </customValue>
+    <customValue>
+        <fullName>Transitional Kindergarten</fullName>
+        <default>false</default>
+        <label>Transitional Kindergarten</label>
     </customValue>
     <customValue>
         <fullName>Kindergarten</fullName>
@@ -69,6 +84,11 @@
         <fullName>Twelfth Grade</fullName>
         <default>false</default>
         <label>Twelfth Grade</label>
+    </customValue>
+    <customValue>
+        <fullName>NotApplicable</fullName>
+        <default>false</default>
+        <label>N/A</label>
     </customValue>
     <masterLabel>Grade Levels</masterLabel>
     <sorted>false</sorted>

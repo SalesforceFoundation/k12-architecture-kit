@@ -15,10 +15,10 @@
         <members>Grade_Enrollment__c.Contact__c</members>
         <members>Grade_Enrollment__c.Educational_Institution__c</members>
         <members>Grade_Enrollment__c.End_Date__c</members>
-        <members>Grade_Enrollment__c.Entry_Conditions__c</members>
-        <members>Grade_Enrollment__c.Entry_Conditions__c</members>
-        <members>Grade_Enrollment__c.Exit_Conditions__c</members>
+        <members>Grade_Enrollment__c.Entry_Reason__c</members>
+        <members>Grade_Enrollment__c.Exit_Reason__c</members>
         <members>Grade_Enrollment__c.Grade_Level__c</members>
+        <members>Grade_Enrollment__c.Grade_Number__c</members>
         <members>Grade_Enrollment__c.Start_Date__c</members>
         <members>Grade_Enrollment__c.Status__c</members>
         <members>Grade_Enrollment__c.Term__c</members>
@@ -52,6 +52,10 @@
     <types>
         <members>Grade_Levels</members>
         <name>GlobalValueSet</name>
+    </types>
+    <types>
+        <members>Grade_Enrollment__c-Grade Enrollment Layout</members>
+        <name>Layout</name>
     </types>
     <version>45.0</version>
 </Package>
