@@ -120,9 +120,11 @@ plans:
                     2:
                         name: EDA - Contact Key Affiliation Fields
                     4:
-                        name: EDA - Deploy Course Connection Record Types
+                        name: EDA - Deploy Case Behavior Record Types
                     5:
-                        name: Facility Display Name Formula Field
+                        name: EDA - Deploy Course Connection Record Types
+                    6:
+                        name: EDA - Facility Display Name Formula Field
             2:
                 task: deploy_pre
                 ui_options:
