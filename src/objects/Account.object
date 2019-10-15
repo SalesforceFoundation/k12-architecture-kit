@@ -11,7 +11,7 @@
     </fields>
     <fields>
         <fullName>Grade_Levels__c</fullName>
-        <description>The Grade Levels offered by this Educational Institution.</description>
+        <description>The Grade Levels currently offered by this school.</description>
         <externalId>false</externalId>
         <inlineHelpText>The Grade Levels offered by this Educational Institution.</inlineHelpText>
         <label>Grade Levels</label>

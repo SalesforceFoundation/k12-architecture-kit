@@ -54,7 +54,7 @@
     <enableStreamingApi>true</enableStreamingApi>
     <fields>
         <fullName>Grade_Number__c</fullName>
-        <description>A numerical representation of Grade Levels for reporting purposes.</description>
+        <description>The selected Grade Level reflected as a numerical value.</description>
         <externalId>false</externalId>
         <formula>CASE(TEXT(%%%NAMESPACE%%%Grade_Level__c),
     &quot;Infant/Toddler&quot;, -4,

@@ -54,6 +54,7 @@
     <enableStreamingApi>true</enableStreamingApi>
     <fields>
         <fullName>Contact__c</fullName>
+        <description>The student enrolled in the given grade, school, or term.</description>
         <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
         <label>Contact</label>
@@ -66,6 +67,7 @@
     </fields>
     <fields>
         <fullName>Educational_Institution__c</fullName>
+        <description>The school this student is enrolled in.</description>
         <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
         <label>Educational Institution</label>
@@ -78,6 +80,7 @@
     </fields>
     <fields>
         <fullName>End_Date__c</fullName>
+        <description>The expected End Date for this Grade Level enrollment.</description>
         <externalId>false</externalId>
         <label>End Date</label>
         <required>false</required>
@@ -87,6 +90,7 @@
     </fields>
     <fields>
         <fullName>Entry_Reason__c</fullName>
+        <description>The reason a student enrolled in this Grade Level or school.</description>
         <externalId>false</externalId>
         <label>Entry Reason</label>
         <required>false</required>
@@ -98,35 +102,31 @@
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
-                    <fullName>Open Enrollment</fullName>
+                    <fullName>Promoted</fullName>
                     <default>false</default>
-                    <label>Open Enrollment</label>
+                    <label>Promoted</label>
                 </value>
                 <value>
-                    <fullName>Repeating Grade</fullName>
+                    <fullName>Transferred In</fullName>
                     <default>false</default>
-                    <label>Repeating Grade</label>
+                    <label>Transferred In</label>
                 </value>
                 <value>
+                    <fullName>Repeated Grade</fullName>
+                    <default>false</default>
+                    <label>Repeated Grade</label>
+                </value>
+                <value>   
                     <fullName>Skipped Grade</fullName>
                     <default>false</default>
                     <label>Skipped Grade</label>
-                </value>
-                <value>
-                    <fullName>Standard Advancement</fullName>
-                    <default>false</default>
-                    <label>Standard Advancement</label>
-                </value>
-                <value>
-                    <fullName>Transfer</fullName>
-                    <default>false</default>
-                    <label>Transfer</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
     <fields>
         <fullName>Exit_Reason__c</fullName>
+        <description>The reason a student has exited this Grade Level or school.</description>
         <externalId>false</externalId>
         <label>Exit Reason</label>
         <required>false</required>
@@ -138,30 +138,36 @@
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
-                    <fullName>Pass</fullName>
+                    <fullName>Promoted</fullName>
                     <default>false</default>
-                    <label>Pass</label>
+                    <label>Promoted</label>
                 </value>
                 <value>
-                    <fullName>Repeat</fullName>
+                    <fullName>Transferred Out</fullName>
                     <default>false</default>
-                    <label>Repeat</label>
+                    <label>Transferred Out</label>
                 </value>
                 <value>
-                    <fullName>Transfer</fullName>
+                    <fullName>Expelled</fullName>
                     <default>false</default>
-                    <label>Transfer</label>
+                    <label>Expelled</label>
                 </value>
                 <value>
-                    <fullName>Skip</fullName>
+                    <fullName>No Show</fullName>
                     <default>false</default>
-                    <label>Skip</label>
+                    <label>No Show</label>
+                </value>
+                <value>
+                    <fullName>Deceased</fullName>
+                    <default>false</default>
+                    <label>Deceased</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
     <fields>
         <fullName>Grade_Level__c</fullName>
+        <description>The Grade Level for this enrollment.</description>
         <externalId>false</externalId>
         <label>Grade Level</label>
         <required>false</required>
@@ -175,6 +181,7 @@
     </fields>
     <fields>
         <fullName>Start_Date__c</fullName>
+        <description>The date this Grade Level enrollment is expected to start or has started.</description>
         <externalId>false</externalId>
         <label>Start Date</label>
         <required>false</required>
@@ -184,6 +191,7 @@
     </fields>
     <fields>
         <fullName>Status__c</fullName>
+        <description>The status of this Grade Level enrollment.</description>
         <externalId>false</externalId>
         <label>Status</label>
         <required>false</required>
@@ -195,30 +203,36 @@
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
-                    <fullName>Enrolled</fullName>
+                    <fullName>Active</fullName>
                     <default>false</default>
-                    <label>Enrolled</label>
+                    <label>Active</label>
                 </value>
                 <value>
-                    <fullName>Former</fullName>
+                    <fullName>Inactive</fullName>
                     <default>false</default>
-                    <label>Former</label>
+                    <label>Inactive</label>
                 </value>
                 <value>
-                    <fullName>Unenrolled</fullName>
+                    <fullName>Pre-Registered</fullName>
                     <default>false</default>
-                    <label>Unenrolled</label>
+                    <label>Pre-Registered</label>
                 </value>
                 <value>
-                    <fullName>Expelled</fullName>
+                    <fullName>Transferred Out</fullName>
                     <default>false</default>
-                    <label>Expelled</label>
+                    <label>Transferred Out</label>
+                </value>
+                <value>
+                    <fullName>Graduated</fullName>
+                    <default>false</default>
+                    <label>Graduated</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
     <fields>
         <fullName>Term__c</fullName>
+        <description>The Term associated with this Grade Level enrollment.</description>
         <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
         <label>Term</label>
