@@ -8,4 +8,15 @@
         <fields>hed__Case__c</fields>
         <label>K12 Behavior Involvement Compact Layout</label>
     </compactLayouts>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Stores information about the people involved in a Case that represents a behavior event.</description>
+    <enableReports>true</enableReports>
+    <label>Behavior Involvement</label>
+    <nameField>
+        <displayFormat>BI-{0000}</displayFormat>
+        <label>Behavior Involvement Name</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Behavior Involvements</pluralLabel>
+    <sharingModel>ReadWrite</sharingModel>
 </CustomObject>
