@@ -21,7 +21,7 @@
         <recordType>Account.Sports_Organization</recordType>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Contact-K12 Faculty Layout</layout>
+        <layout>Contact-K12 Faculty Staff Layout</layout>
         <recordType>Contact.Faculty</recordType>
     </layoutAssignments>
     <layoutAssignments>
