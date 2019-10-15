@@ -10,10 +10,6 @@
                 <behavior>Readonly</behavior>
                 <field>Name</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Grade_Number__c</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
