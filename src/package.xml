@@ -34,35 +34,35 @@
         <name>CustomObjectTranslation</name>
     </types>
     <types>
-        <members>Account-K12 Academic Department Layout</members>
-        <members>Account-K12 Academic Program Layout</members>
-        <members>Account-K12 Educational Institution Layout</members>
-        <members>Account-K12 Household Layout</members>
-        <members>Account-K12 Sports Organization Layout</members>
-        <members>Account-hed__HEDA Organization Layout</members>
-        <members>Contact-K12 Faculty Layout</members>
-        <members>Contact-K12 Guardian Layout</members>
-        <members>Contact-K12 Student Layout</members>
-        <members>hed__Address__c-K12 Address Layout</members>
-        <members>hed__Affiliation__c-K12 Affiliation Layout</members>
-        <members>hed__Attendance_Event__c-K12 Attendance Event Layout</members>
-        <members>hed__Attribute__c-K12 Credential Layout</members>
-        <members>hed__Attribute__c-K12 Student Characteristic Layout</members>
-        <members>hed__Contact_Language__c-K12 Contact Language Layout</members>
-        <members>hed__Course_Enrollment__c-K12 Teacher Course Connection Layout</members>
-        <members>hed__Course_Enrollment__c-K12 Student Course Connection Layout</members>
-        <members>hed__Course_Offering_Schedule__c-K12 Course Offering Schedule Layout</members>
-        <members>hed__Course_Offering__c-K12 Course Offering Layout</members>
-        <members>hed__Course__c-K12 Course Layout</members>
-        <members>hed__Facility__c-K12 Facility Layout</members>
-        <members>hed__Language__c-K12 Language Layout</members>
-        <members>hed__Plan_Requirement__c-K12 Plan Requirement Layout</members>
-        <members>hed__Program_Enrollment__c-K12 Program Enrollment Layout</members>
-        <members>hed__Program_Plan__c-K12 Program Plan Layout</members>
-        <members>hed__Relationship__c-K12 Relationship Layout</members>
-        <members>hed__Term_Grade__c-K12 Term Grade Layout</members>
-        <members>hed__Term__c-K12 Term Layout</members>
-        <members>hed__Time_Block__c-K12 Time Block Layout</members>
+        <members>Account-K12 Kit Academic Department Layout</members>
+        <members>Account-K12 Kit Academic Program Layout</members>
+        <members>Account-K12 Kit Educational Institution Layout</members>
+        <members>Account-K12 Kit Household Layout</members>
+        <members>Account-K12 Kit Sports Organization Layout</members>
+        <members>Account-K12 Kit Organization Layout</members>
+        <members>Contact-K12 Kit Faculty Layout</members>
+        <members>Contact-K12 Kit Guardian Layout</members>
+        <members>Contact-K12 Kit Student Layout</members>
+        <members>hed__Address__c-K12 Kit Address Layout</members>
+        <members>hed__Affiliation__c-K12 Kit Affiliation Layout</members>
+        <members>hed__Attendance_Event__c-K12 Kit Attendance Event Layout</members>
+        <members>hed__Attribute__c-K12 Kit Credential Layout</members>
+        <members>hed__Attribute__c-K12 Kit Student Characteristic Layout</members>
+        <members>hed__Contact_Language__c-K12 Kit Contact Language Layout</members>
+        <members>hed__Course_Enrollment__c-K12 Kit Teacher Course Connection Layout</members>
+        <members>hed__Course_Enrollment__c-K12 Kit Student Course Connection Layout</members>
+        <members>hed__Course_Offering_Schedule__c-K12 Kit Course Offering Schedule Layout</members>
+        <members>hed__Course_Offering__c-K12 Kit Course Offering Layout</members>
+        <members>hed__Course__c-K12 Kit Course Layout</members>
+        <members>hed__Facility__c-K12 Kit Facility Layout</members>
+        <members>hed__Language__c-K12 Kit Language Layout</members>
+        <members>hed__Plan_Requirement__c-K12 Kit Plan Requirement Layout</members>
+        <members>hed__Program_Enrollment__c-K12 Kit Program Enrollment Layout</members>
+        <members>hed__Program_Plan__c-K12 Kit Program Plan Layout</members>
+        <members>hed__Relationship__c-K12 Kit Relationship Layout</members>
+        <members>hed__Term_Grade__c-K12 Kit Term Grade Layout</members>
+        <members>hed__Term__c-K12 Kit Term Layout</members>
+        <members>hed__Time_Block__c-K12 Kit Time Block Layout</members>
         <name>Layout</name>
     </types>
     <version>45.0</version>
