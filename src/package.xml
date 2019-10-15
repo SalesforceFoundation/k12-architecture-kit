@@ -49,6 +49,10 @@
         <name>CustomObjectTranslation</name>
     </types>
     <types>
+        <members>Grade_Enrollment__c</members>
+        <name>CustomTab</name>
+    </types>
+    <types>
         <members>Grade_Levels</members>
         <name>GlobalValueSet</name>
     </types>
