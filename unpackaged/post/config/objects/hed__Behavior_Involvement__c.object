@@ -10,6 +10,7 @@
     </compactLayouts>
     <deploymentStatus>Deployed</deploymentStatus>
     <description>Stores information about the people involved in a Case that represents a behavior event.</description>
+    <enableActivities>true</enableActivities>
     <enableReports>true</enableReports>
     <label>Behavior Involvement</label>
     <nameField>
