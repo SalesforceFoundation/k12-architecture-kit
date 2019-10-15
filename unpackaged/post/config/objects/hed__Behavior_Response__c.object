@@ -8,4 +8,17 @@
         <fields>hed__Status__c</fields>
         <label>K12 Behavior Response Compact Layout</label>
     </compactLayouts>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Stores information about the response to a behavior event.</description>
+    <enableActivities>true</enableActivities>
+    <enableReports>true</enableReports>
+    <label>Behavior Response</label>
+    <nameField>
+        <displayFormat>BR-{0000}</displayFormat>
+        <label>Behavior Response Name</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Behavior Responses</pluralLabel>
+    <sharingModel>ReadWrite</sharingModel>
 </CustomObject>
