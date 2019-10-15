@@ -48,6 +48,10 @@
                 <behavior>Edit</behavior>
                 <field>%%%NAMESPACE%%%Middle_School__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Grade_Levels__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
