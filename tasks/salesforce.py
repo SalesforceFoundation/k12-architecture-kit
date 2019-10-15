@@ -84,9 +84,6 @@ class UpdateAdminProfile(BaseUpdateAdminProfile):
             "Account.{namespaced_org}Educational_Institution".format(**namespace_args), "false"
         )
         self._set_record_type(
-            "Account.{namespaced_org}Grade_Level".format(**namespace_args), "false"
-        )
-        self._set_record_type(
             "Account.{namespaced_org}HH_Account".format(**namespace_args), "false"
         )
         self._set_record_type(
