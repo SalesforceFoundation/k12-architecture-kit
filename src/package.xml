@@ -38,6 +38,9 @@
         <members>Contact-ca</members>
         <members>Contact-es</members>
         <members>Contact-fr</members>
+        <members>Grade_Enrollment__c-ca</members>
+        <members>Grade_Enrollment__c-es</members>
+        <members>Grade_Enrollment__c-fr</members>
         <members>hed__Attribute__c-ca</members>
         <members>hed__Attribute__c-en_US</members>
         <members>hed__Attribute__c-es</members>
