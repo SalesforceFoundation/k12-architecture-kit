@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- Grade Enrollment --></value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value><!-- Grade Enrollment --></value>
+    </caseValues>
+    <fields>
+        <help><!-- The student enrolled in the given grade level. --></help>
+        <label><!-- Contact --></label>
+        <name>Contact__c</name>
+        <relationshipLabel><!-- Grade Enrollments --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- The school this student is enrolled in. --></help>
+        <label><!-- Educational Institution --></label>
+        <name>Educational_Institution__c</name>
+        <relationshipLabel><!-- Grade Enrollments --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- The expected End Date for this Grade Level enrollment. --></help>
+        <label><!-- End Date --></label>
+        <name>End_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- The reason a student enrolled in this Grade Level or school. --></help>
+        <label><!-- Entry Reason --></label>
+        <name>Entry_Reason__c</name>
+        <picklistValues>
+            <masterLabel>Promoted</masterLabel>
+            <translation><!-- Promoted --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Repeated Grade</masterLabel>
+            <translation><!-- Repeated Grade --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Skipped Grade</masterLabel>
+            <translation><!-- Skipped Grade --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transferred In</masterLabel>
+            <translation><!-- Transferred In --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- The reason a student has exited this Grade Level or school. --></help>
+        <label><!-- Exit Reason --></label>
+        <name>Exit_Reason__c</name>
+        <picklistValues>
+            <masterLabel>Deceased</masterLabel>
+            <translation><!-- Deceased --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Expelled</masterLabel>
+            <translation><!-- Expelled --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>No Show</masterLabel>
+            <translation><!-- No Show --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Promoted</masterLabel>
+            <translation><!-- Promoted --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transferred Out</masterLabel>
+            <translation><!-- Transferred Out --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- The Grade Level for this enrollment. --></help>
+        <label><!-- Grade Level --></label>
+        <name>Grade_Level__c</name>
+    </fields>
+    <fields>
+        <label><!-- Grade Number --></label>
+        <name>Grade_Number__c</name>
+    </fields>
+    <fields>
+        <help><!-- The date this Grade Level enrollment is expected to start or has started. --></help>
+        <label><!-- Start Date --></label>
+        <name>Start_Date__c</name>
+    </fields>
+    <fields>
+        <help><!-- The status of this Grade Level enrollment. --></help>
+        <label><!-- Status --></label>
+        <name>Status__c</name>
+        <picklistValues>
+            <masterLabel>Active</masterLabel>
+            <translation><!-- Active --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Graduated</masterLabel>
+            <translation><!-- Graduated --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Inactive</masterLabel>
+            <translation><!-- Inactive --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pre-Registered</masterLabel>
+            <translation><!-- Pre-Registered --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Transferred Out</masterLabel>
+            <translation><!-- Transferred Out --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- The Term associated with this Grade Level enrollment. --></help>
+        <label><!-- Term --></label>
+        <name>Term__c</name>
+        <relationshipLabel><!-- Grade Enrollments --></relationshipLabel>
+    </fields>
+    <gender><!-- Masculine --></gender>
+    <nameFieldLabel><!-- Grade Enrollment Name --></nameFieldLabel>
+    <startsWith><!-- Consonant --></startsWith>
+</CustomObjectTranslation>
