@@ -34,7 +34,7 @@
         <name>CustomObjectTranslation</name>
     </types>
     <types>
-        <members>hed__Attribute__c-K12 Credential Layout</members>
+        <members>hed__Attribute__c-K12 Kit Credential Layout</members>
         <name>Layout</name>
     </types>
     <version>45.0</version>

@@ -68,7 +68,6 @@
         <members>hed__Address__c-K12 Address Layout</members>
         <members>hed__Affiliation__c-K12 Affiliation Layout</members>
         <members>hed__Attendance_Event__c-K12 Attendance Event Layout</members>
-        <members>hed__Attribute__c-K12 Credential Layout</members>
         <members>hed__Attribute__c-K12 Student Characteristic Layout</members>
         <members>hed__Contact_Language__c-K12 Contact Language Layout</members>
         <members>hed__Course_Enrollment__c-K12 Teacher Course Connection Layout</members>

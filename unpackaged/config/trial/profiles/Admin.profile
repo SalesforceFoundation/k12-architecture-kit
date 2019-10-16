@@ -42,7 +42,7 @@
         <layout>hed__Attendance_Event__c-K12 Attendance Event Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>hed__Attribute__c-K12 Credential Layout</layout>
+        <layout>hed__Attribute__c-K12 Kit Credential Layout</layout>
         <recordType>hed__Attribute__c.hed__Credential</recordType>
     </layoutAssignments>
     <layoutAssignments>
