@@ -50,7 +50,7 @@
         <recordType>hed__Attribute__c.hed__Student_Characteristic</recordType>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>hed__Behavior_Involvement__c-K12 Behavior Involvement Layout</layout>
+        <layout>hed__Behavior_Involvement__c-K12 Kit Behavior Involvement Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>hed__Contact_Language__c-K12 Contact Language Layout</layout>
