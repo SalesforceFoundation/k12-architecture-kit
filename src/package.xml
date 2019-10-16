@@ -33,5 +33,9 @@
         <members>hed__Relationship__c-fr</members>
         <name>CustomObjectTranslation</name>
     </types>
+    <types>
+        <members>Case-K12 Kit Incident Layout</members>
+        <name>Layout</name>    
+    </types>
     <version>45.0</version>
 </Package>
