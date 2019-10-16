@@ -39,26 +39,6 @@
         <name>Highly_Qualified__c</name>
     </fields>
     <fields>
-        <label><!-- Primary Academic Program --></label>
-        <name>Primary_Academic_Program__c</name>
-        <relationshipLabel><!-- Students --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Primary Department --></label>
-        <name>Primary_Department__c</name>
-        <relationshipLabel><!-- Department Members --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Primary Educational Institution --></label>
-        <name>Primary_Educational_Institution__c</name>
-        <relationshipLabel><!-- Institution Members --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Primary Sports Organization --></label>
-        <name>Primary_Sports_Organization__c</name>
-        <relationshipLabel><!-- Organization Members --></relationshipLabel>
-    </fields>
-    <fields>
         <help><!-- ID that you can use to manage student information. Typically formatted as a unique alphanumeric value. --></help>
         <label><!-- Student ID --></label>
         <name>Student_ID__c</name>
