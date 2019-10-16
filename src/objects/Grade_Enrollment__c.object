@@ -43,6 +43,7 @@
     <allowInChatterGroups>true</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
+    <description>A student's enrollment in a particular grade at a given educational institution.</description>
     <enableActivities>true</enableActivities>
     <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>
@@ -56,10 +57,11 @@
         <fullName>Contact__c</fullName>
         <description>The student enrolled in the given grade, school, or term.</description>
         <deleteConstraint>SetNull</deleteConstraint>
+        <inlineHelpText>The student enrolled in the given grade, school, or term.</inlineHelpText>
         <externalId>false</externalId>
         <label>Contact</label>
         <referenceTo>Contact</referenceTo>
-        <relationshipName>Enrollments</relationshipName>
+        <relationshipName>Grade_Enrollments</relationshipName>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -69,10 +71,11 @@
         <fullName>Educational_Institution__c</fullName>
         <description>The school this student is enrolled in.</description>
         <deleteConstraint>SetNull</deleteConstraint>
+        <inlineHelpText>The school this student is enrolled in.</inlineHelpText>
         <externalId>false</externalId>
         <label>Educational Institution</label>
         <referenceTo>Account</referenceTo>
-        <relationshipName>Enrollments</relationshipName>
+        <relationshipName>Grade_Enrollments</relationshipName>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -82,6 +85,7 @@
         <fullName>End_Date__c</fullName>
         <description>The expected End Date for this Grade Level enrollment.</description>
         <externalId>false</externalId>
+        <inlineHelpText>The expected End Date for this Grade Level enrollment.</inlineHelpText>
         <label>End Date</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -92,6 +96,7 @@
         <fullName>Entry_Reason__c</fullName>
         <description>The reason a student enrolled in this Grade Level or school.</description>
         <externalId>false</externalId>
+        <inlineHelpText>The reason a student enrolled in this Grade Level or school.</inlineHelpText>
         <label>Entry Reason</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -128,6 +133,7 @@
         <fullName>Exit_Reason__c</fullName>
         <description>The reason a student has exited this Grade Level or school.</description>
         <externalId>false</externalId>
+        <inlineHelpText>The reason a student has exited this Grade Level or school.</inlineHelpText>
         <label>Exit Reason</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -169,6 +175,7 @@
         <fullName>Grade_Level__c</fullName>
         <description>The Grade Level for this enrollment.</description>
         <externalId>false</externalId>
+        <inlineHelpText>The Grade Level for this enrollment.</inlineHelpText>
         <label>Grade Level</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -183,6 +190,7 @@
         <fullName>Start_Date__c</fullName>
         <description>The date this Grade Level enrollment is expected to start or has started.</description>
         <externalId>false</externalId>
+        <inlineHelpText>The date this Grade Level enrollment is expected to start or has started.</inlineHelpText>
         <label>Start Date</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -193,6 +201,7 @@
         <fullName>Status__c</fullName>
         <description>The status of this Grade Level enrollment.</description>
         <externalId>false</externalId>
+        <inlineHelpText>The status of this Grade Level enrollment.</inlineHelpText>
         <label>Status</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -234,6 +243,7 @@
         <fullName>Term__c</fullName>
         <description>The Term associated with this Grade Level enrollment.</description>
         <deleteConstraint>SetNull</deleteConstraint>
+        <inlineHelpText>The Term associated with this Grade Level enrollment.</inlineHelpText>
         <externalId>false</externalId>
         <label>Term</label>
         <referenceTo>hed__Term__c</referenceTo>

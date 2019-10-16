@@ -13,7 +13,7 @@
         <fullName>Grade_Levels__c</fullName>
         <description>The Grade Levels currently offered by this school.</description>
         <externalId>false</externalId>
-        <inlineHelpText>The Grade Levels offered by this Educational Institution.</inlineHelpText>
+        <inlineHelpText>The Grade Levels currently offered by this school.</inlineHelpText>
         <label>Grade Levels</label>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>

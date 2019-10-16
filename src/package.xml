@@ -57,7 +57,7 @@
         <name>GlobalValueSet</name>
     </types>
     <types>
-        <members>Grade_Enrollment__c-Grade Enrollment Layout</members>
+        <members>Grade_Enrollment__c-K12 Kit Grade Enrollment Layout</members>
         <name>Layout</name>
     </types>
     <version>45.0</version>
