@@ -55,9 +55,9 @@
     <enableStreamingApi>true</enableStreamingApi>
     <fields>
         <fullName>Contact__c</fullName>
-        <description>The student enrolled in the given grade, school, or term.</description>
+        <description>The student enrolled in the given grade level.</description>
         <deleteConstraint>SetNull</deleteConstraint>
-        <inlineHelpText>The student enrolled in the given grade, school, or term.</inlineHelpText>
+        <inlineHelpText>The student enrolled in the given grade level.</inlineHelpText>
         <externalId>false</externalId>
         <label>Contact</label>
         <referenceTo>Contact</referenceTo>
