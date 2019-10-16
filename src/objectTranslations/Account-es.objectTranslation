@@ -190,11 +190,6 @@
         <name>Educational_Institution</name>
     </recordTypes>
     <recordTypes>
-        <description><!-- A grade level in the educational institution (for example, Second Grade). --></description>
-        <label><!-- Grade Level --></label>
-        <name>Grade_Level</name>
-    </recordTypes>
-    <recordTypes>
         <description><!-- A Household containing one or more individuals. --></description>
         <label><!-- Household Account --></label>
         <name>HH_Account</name>

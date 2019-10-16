@@ -2,6 +2,7 @@
 <CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
     <fields>
         <fullName>Current_Grade_Level__c</fullName>
+        <description>The Grade Level the student is currently enrolled in. Updated when a Grade Enrollment is set to Enrolled.</description>
         <externalId>false</externalId>
         <label>Current Grade Level</label>
         <required>false</required>
