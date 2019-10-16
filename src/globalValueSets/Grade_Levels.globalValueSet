@@ -61,9 +61,9 @@
         <label>Seventh Grade</label>
     </customValue>
     <customValue>
-        <fullName>Eight Grade</fullName>
+        <fullName>Eighth Grade</fullName>
         <default>false</default>
-        <label>Eight Grade</label>
+        <label>Eighth Grade</label>
     </customValue>
     <customValue>
         <fullName>Ninth Grade</fullName>
