@@ -33,9 +33,5 @@
         <members>hed__Relationship__c-fr</members>
         <name>CustomObjectTranslation</name>
     </types>
-    <types>
-        <members>hed__Behavior_Involvement__c-K12 Kit Behavior Involvement Layout</members>
-        <name>Layout</name>
-    </types>
     <version>45.0</version>
 </Package>
