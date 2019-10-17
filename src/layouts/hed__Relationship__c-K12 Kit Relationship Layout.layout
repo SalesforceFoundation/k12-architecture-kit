@@ -21,11 +21,11 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>%%%NAMESPACE%%%FERPA_Approved__c</field>
+                <field>FERPA_Approved__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>%%%NAMESPACE%%%HIPPA_Approved__c</field>
+                <field>HIPPA_Approved__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
