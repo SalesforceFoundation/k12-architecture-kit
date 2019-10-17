@@ -1,106 +1,106 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Profile xmlns="http://soap.sforce.com/2006/04/metadata">
     <layoutAssignments>
-        <layout>Account-K12 Academic Program Layout</layout>
+        <layout>Account-%%%NAMESPACE%%%K12 Kit Academic Program Layout</layout>
         <recordType>Account.Academic_Program</recordType>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Account-K12 Academic Department Layout</layout>
-        <recordType>Account.University_Department</recordType>
+        <layout>Account-%%%NAMESPACE%%%K12 Kit Academic Department Layout</layout>
+        <recordType>Account.%%%NAMESPACED_ORG%%%University_Department</recordType>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Account-K12 Educational Institution Layout</layout>
+        <layout>Account-%%%NAMESPACE%%%K12 Kit Educational Institution Layout</layout>
         <recordType>Account.Educational_Institution</recordType>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Account-K12 Household Layout</layout>
+        <layout>Account-%%%NAMESPACE%%%K12 Kit Household Layout</layout>
         <recordType>Account.HH_Account</recordType>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Account-K12 Sports Organization Layout</layout>
+        <layout>Account-%%%NAMESPACE%%%K12 Kit Sports Organization Layout</layout>
         <recordType>Account.Sports_Organization</recordType>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Contact-K12 Faculty Layout</layout>
-        <recordType>Contact.Faculty</recordType>
+        <layout>Contact-%%%NAMESPACE%%%K12 Kit Faculty Layout</layout>
+        <recordType>Contact.%%%NAMESPACED_ORG%%%Faculty</recordType>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Contact-K12 Guardian Layout</layout>
-        <recordType>Contact.Guardian</recordType>
+        <layout>Contact-%%%NAMESPACE%%%K12 Kit Guardian Layout</layout>
+        <recordType>Contact.%%%NAMESPACED_ORG%%%Guardian</recordType>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Contact-K12 Student Layout</layout>
+        <layout>Contact-%%%NAMESPACE%%%K12 Kit Student Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Contact-K12 Student Layout</layout>
-        <recordType>Contact.Student</recordType>
+        <layout>Contact-%%%NAMESPACE%%%K12 Kit Student Layout</layout>
+        <recordType>Contact.%%%NAMESPACED_ORG%%%Student</recordType>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>hed__Affiliation__c-K12 Affiliation Layout</layout>
+        <layout>hed__Affiliation__c-%%%NAMESPACE%%%K12 Kit Affiliation Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>hed__Attendance_Event__c-K12 Attendance Event Layout</layout>
+        <layout>hed__Attendance_Event__c-%%%NAMESPACE%%%K12 Kit Attendance Event Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>hed__Attribute__c-K12 Credential Layout</layout>
+        <layout>hed__Attribute__c-%%%NAMESPACE%%%K12 Kit Credential Layout</layout>
         <recordType>hed__Attribute__c.hed__Credential</recordType>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>hed__Attribute__c-K12 Student Characteristic Layout</layout>
+        <layout>hed__Attribute__c-%%%NAMESPACE%%%K12 Kit Student Characteristic Layout</layout>
         <recordType>hed__Attribute__c.hed__Student_Characteristic</recordType>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>hed__Behavior_Involvement__c-K12 Kit Behavior Involvement Layout</layout>
+        <layout>hed__Behavior_Involvement__c-%%%NAMESPACE%%%K12 Kit Behavior Involvement Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>hed__Contact_Language__c-K12 Contact Language Layout</layout>
+        <layout>hed__Contact_Language__c-%%%NAMESPACE%%%K12 Kit Contact Language Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>hed__Course_Enrollment__c-K12 Teacher Course Connection Layout</layout>
+        <layout>hed__Course_Enrollment__c-%%%NAMESPACE%%%K12 Kit Teacher Course Connection Layout</layout>
         <recordType>hed__Course_Enrollment__c.Faculty</recordType>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>hed__Course_Enrollment__c-K12 Student Course Connection Layout</layout>
+        <layout>hed__Course_Enrollment__c-%%%NAMESPACE%%%K12 Kit Student Course Connection Layout</layout>
         <recordType>hed__Course_Enrollment__c.Default</recordType>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>hed__Course_Enrollment__c-K12 Student Course Connection Layout</layout>
+        <layout>hed__Course_Enrollment__c-%%%NAMESPACE%%%K12 Kit Student Course Connection Layout</layout>
         <recordType>hed__Course_Enrollment__c.Student</recordType>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>hed__Course_Offering_Schedule__c-K12 Course Offering Schedule Layout</layout>
+        <layout>hed__Course_Offering_Schedule__c-%%%NAMESPACE%%%K12 Kit Course Offering Schedule Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>hed__Course_Offering__c-K12 Course Offering Layout</layout>
+        <layout>hed__Course_Offering__c-%%%NAMESPACE%%%K12 Kit Course Offering Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>hed__Course__c-K12 Course Layout</layout>
+        <layout>hed__Course__c-%%%NAMESPACE%%%K12 Kit Course Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>hed__Facility__c-K12 Facility Layout</layout>
+        <layout>hed__Facility__c-%%%NAMESPACE%%%K12 Kit Facility Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>hed__Language__c-K12 Language Layout</layout>
+        <layout>hed__Language__c-%%%NAMESPACE%%%K12 Kit Language Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>hed__Plan_Requirement__c-K12 Plan Requirement Layout</layout>
+        <layout>hed__Plan_Requirement__c-%%%NAMESPACE%%%K12 Kit Plan Requirement Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>hed__Program_Enrollment__c-K12 Program Enrollment Layout</layout>
+        <layout>hed__Program_Enrollment__c-%%%NAMESPACE%%%K12 Kit Program Enrollment Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>hed__Program_Plan__c-K12 Program Plan Layout</layout>
+        <layout>hed__Program_Plan__c-%%%NAMESPACE%%%K12 Kit Program Plan Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>hed__Relationship__c-K12 Relationship Layout</layout>
+        <layout>hed__Relationship__c-%%%NAMESPACE%%%K12 Kit Relationship Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>hed__Term_Grade__c-K12 Term Grade Layout</layout>
+        <layout>hed__Term_Grade__c-%%%NAMESPACE%%%K12 Kit Term Grade Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>hed__Term__c-K12 Term Layout</layout>
+        <layout>hed__Term__c-%%%NAMESPACE%%%K12 Kit Term Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>hed__Time_Block__c-K12 Time Block Layout</layout>
+        <layout>hed__Time_Block__c-%%%NAMESPACE%%%K12 Kit Time Block Layout</layout>
     </layoutAssignments>
 </Profile>
