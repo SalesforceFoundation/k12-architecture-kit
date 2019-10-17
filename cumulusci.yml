@@ -59,6 +59,20 @@ tasks:
             path: unpackaged/config/trial
             namespace_tokenize: $project_config.project__package__namespace
 
+    uninstall_packaged_incremental:
+        class_path: cumulusci.tasks.salesforce.UninstallPackagedIncremental
+        options:
+            ignore:
+                QuickAction:
+                    - LogACall
+                    - NewCase
+                    - NewContact
+                    - NewEvent
+                    - NewLead
+                    - NewNote
+                    - NewTask
+                    - SendEmail
+
 flows:
     config_managed:
         steps:
@@ -100,12 +114,6 @@ flows:
                     namespaced_org: True
             6:
                 task: snapshot_changes
-
-    deploy_unmanaged:
-        steps:
-            4:
-                # Disable uninstall_packaged_incremental
-                task: None
 
 plans:
     install:
