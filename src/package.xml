@@ -38,8 +38,8 @@
         <members>Account-K12 Kit Academic Program Layout</members>
         <members>Account-K12 Kit Educational Institution Layout</members>
         <members>Account-K12 Kit Household Layout</members>
-        <members>Account-K12 Kit Sports Organization Layout</members>
         <members>Account-K12 Kit Organization Layout</members>
+        <members>Account-K12 Kit Sports Organization Layout</members>
         <members>Contact-K12 Kit Faculty Layout</members>
         <members>Contact-K12 Kit Guardian Layout</members>
         <members>Contact-K12 Kit Student Layout</members>
@@ -49,8 +49,8 @@
         <members>hed__Attribute__c-K12 Kit Credential Layout</members>
         <members>hed__Attribute__c-K12 Kit Student Characteristic Layout</members>
         <members>hed__Contact_Language__c-K12 Kit Contact Language Layout</members>
-        <members>hed__Course_Enrollment__c-K12 Kit Teacher Course Connection Layout</members>
         <members>hed__Course_Enrollment__c-K12 Kit Student Course Connection Layout</members>
+        <members>hed__Course_Enrollment__c-K12 Kit Teacher Course Connection Layout</members>
         <members>hed__Course_Offering_Schedule__c-K12 Kit Course Offering Schedule Layout</members>
         <members>hed__Course_Offering__c-K12 Kit Course Offering Layout</members>
         <members>hed__Course__c-K12 Kit Course Layout</members>
