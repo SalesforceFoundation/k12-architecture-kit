@@ -33,7 +33,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Current_Grade_Level__c</field>
+                <field>%%%NAMESPACE%%%Current_Grade_Level__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
