@@ -101,6 +101,12 @@ flows:
             6:
                 task: snapshot_changes
 
+    deploy_unmanaged:
+        steps:
+            4:
+                # Disable uninstall_packaged_incremental
+                task: None
+
 plans:
     install:
         slug: install
