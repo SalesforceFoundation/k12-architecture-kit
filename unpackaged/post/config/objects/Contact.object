@@ -33,7 +33,7 @@
         <fields>RecordTypeId</fields>
         <fields>AccountId</fields>
         <fields>%%%NAMESPACE%%%Student_ID__c</fields>
-        <fields>Current_Grade_Level__c</fields>
+        <fields>%%%NAMESPACE%%%Current_Grade_Level__c</fields>
         <fields>Birthdate</fields>
         <label>K12 Student Contact Compact Layout</label>
     </compactLayouts>
@@ -78,7 +78,7 @@
     <listViews>
         <fullName>K12_All_Students</fullName>
         <columns>FULL_NAME</columns>
-        <columns>Current_Grade_Level__c</columns>
+        <columns>%%%NAMESPACE%%%Current_Grade_Level__c</columns>
         <columns>hed__Gender__c</columns>
         <columns>CONTACT.BIRTHDATE</columns>
         <columns>ACCOUNT.NAME</columns>
