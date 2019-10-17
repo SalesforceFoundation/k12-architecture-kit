@@ -1,5 +1,10 @@
+import os
 import json
+import shutil
+import tempfile
+
 from cumulusci.tasks.salesforce import BaseSalesforceApiTask
+from cumulusci.tasks.salesforce import Deploy
 
 package_xml_template = """
 <?xml version="1.0" encoding="UTF-8"?>
@@ -67,7 +72,7 @@ record_type_picklist_value_template = """
 # Adds picklist values to the given field, if they don't already exist.
 # Optionally adds the picklist values for the specified record types, if the record types exist.
 # Optionally updates the picklist values to be alphabetical.
-class AddPicklistValues(BaseSalesforceApiTask):
+class AddPicklistValues(BaseSalesforceApiTask, Deploy):
     task_options = {
         "sobject": {
             "description": "SObject of the picklist being modified",
@@ -208,7 +213,25 @@ class AddPicklistValues(BaseSalesforceApiTask):
         )
 
         print(object_xml) # temporary
-        # to-do: deploy!
+
+        # deploy back to Salesforce
+        self.tempdir = tempfile.mkdtemp()
+        package_xml_file = os.path.join(self.tempdir, "package.xml")
+        with open(package_xml_file, "w") as f:
+            f.write(package_xml)
+
+        print(self.tempdir) # temporary
+        print(package_xml_file) # temporary
+
+        object_folder = os.mkdir("{}/{}".format(self.tempdir, "objects"))
+        object_xml_file = os.path.join(self.tempdir, "objects", "{}.object".format(sobject))
+        with open(object_xml_file, "w") as f:
+            f.write(object_xml)
+
+        print(object_xml_file) # temporary
+        
+        self._deploy_metadata()
+        shutil.rmtree(self.tempdir)
 
     def _get_active_record_types(self, describe_results):
         picklist_record_types = []
@@ -232,3 +255,8 @@ class AddPicklistValues(BaseSalesforceApiTask):
                     print('{} is not an active record type for the {} object.'.format(rt, describe_results["name"]))
 
         return picklist_record_types
+
+    def _deploy_metadata(self):
+        self.logger.info("Deploying updated picklist values...")
+        api = self._get_api(path=self.tempdir)
+        return api()
