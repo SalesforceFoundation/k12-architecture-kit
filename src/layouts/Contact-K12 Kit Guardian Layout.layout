@@ -27,26 +27,22 @@
                 <behavior>Edit</behavior>
                 <field>AccountId</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>%%%NAMESPACE%%%Highest_Level_of_Education__c</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>hed__Gender__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Birthdate</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>%%%NAMESPACE%%%Years_of_Experience__c</field>
-            </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
+    </layoutSections>
+    <layoutSections>
+        <customLabel>false</customLabel>
+        <detailHeading>true</detailHeading>
+        <editHeading>true</editHeading>
+        <label>Description Information</label>
+        <layoutColumns/>
+        <style>OneColumn</style>
     </layoutSections>
     <layoutSections>
         <customLabel>true</customLabel>
@@ -56,10 +52,15 @@
         <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
+                <field>hed__Primary_Household__c</field>
+            </layoutItems>
+        </layoutColumns>
+        <layoutColumns>
+            <layoutItems>
+                <behavior>Edit</behavior>
                 <field>hed__Primary_Language__c</field>
             </layoutItems>
         </layoutColumns>
-        <layoutColumns/>
         <style>TwoColumnsLeftToRight</style>
     </layoutSections>
     <layoutSections>
@@ -86,14 +87,6 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>hed__Citizenship__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>hed__Social_Security_Number__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
                 <field>hed__Deceased__c</field>
             </layoutItems>
         </layoutColumns>
@@ -115,17 +108,21 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>OtherPhone</field>
+                <field>MobilePhone</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Email</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>DoNotCall</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>MobilePhone</field>
+                <field>OtherPhone</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -136,8 +133,11 @@
                 <field>hed__WorkEmail__c</field>
             </layoutItems>
             <layoutItems>
+                <emptySpace>true</emptySpace>
+            </layoutItems>
+            <layoutItems>
                 <behavior>Edit</behavior>
-                <field>hed__AlternateEmail__c</field>
+                <field>HasOptedOutOfEmail</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
@@ -294,17 +294,13 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
-        <fields>hed__Course_Offering__c</fields>
+        <fields>hed__RelatedContact__c</fields>
+        <fields>hed__Relationship_Explanation__c</fields>
+        <fields>FERPA_Approved__c</fields>
+        <fields>hed__Emergency_Contact__c</fields>
+        <fields>hed__Type__c</fields>
         <fields>hed__Status__c</fields>
-        <fields>hed__Primary__c</fields>
-        <relatedList>hed__Course_Enrollment__c.hed__Contact__c</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <fields>NAME</fields>
-        <fields>RECORDTYPE</fields>
-        <fields>hed__Attribute_Type__c</fields>
-        <fields>hed__Start_Date__c</fields>
-        <relatedList>hed__Attribute__c.hed__Contact__c</relatedList>
+        <relatedList>hed__Relationship__c.hed__Contact__c</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
@@ -314,26 +310,6 @@
         <relatedList>hed__Contact_Language__c.hed__Contact__c</relatedList>
         <sortField>hed__Primary_Language__c</sortField>
         <sortOrder>Desc</sortOrder>
-    </relatedLists>
-    <relatedLists>
-        <fields>NAME</fields>
-        <fields>hed__Account__c</fields>
-        <fields>hed__Graduation_Year__c</fields>
-        <fields>hed__GPA__c</fields>
-        <fields>hed__Credits_Earned__c</fields>
-        <fields>hed__Enrollment_Status__c</fields>
-        <fields>hed__Start_Date__c</fields>
-        <relatedList>hed__Program_Enrollment__c.hed__Contact__c</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <fields>NAME</fields>
-        <fields>hed__RelatedContact__c</fields>
-        <fields>hed__Relationship_Explanation__c</fields>
-        <fields>%%%NAMESPACE%%%FERPA_Approved__c</fields>
-        <fields>hed__Emergency_Contact__c</fields>
-        <fields>hed__Type__c</fields>
-        <fields>hed__Status__c</fields>
-        <relatedList>hed__Relationship__c.hed__Contact__c</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
@@ -370,7 +346,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h2E00000cdUnr</masterLabel>
+        <masterLabel>00h2E00000cdUoL</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
