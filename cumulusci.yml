@@ -63,6 +63,20 @@ tasks:
         description: Adds picklist values to the given field, if they don't already exist.
         class_path: tasks.add_picklist_values.AddPicklistValues
         group: Custom Tasks
+        
+    uninstall_packaged_incremental:
+        class_path: cumulusci.tasks.salesforce.UninstallPackagedIncremental
+        options:
+            ignore:
+                QuickAction:
+                    - LogACall
+                    - NewCase
+                    - NewContact
+                    - NewEvent
+                    - NewLead
+                    - NewNote
+                    - NewTask
+                    - SendEmail
 
 flows:
     config_managed:
