@@ -50,6 +50,9 @@
         <recordType>hed__Attribute__c.hed__Student_Characteristic</recordType>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>hed__Behavior_Involvement__c-%%%NAMESPACE%%%K12 Kit Behavior Involvement Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>hed__Behavior_Response__c-%%%NAMESPACE%%%K12 Kit Behavior Response Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
