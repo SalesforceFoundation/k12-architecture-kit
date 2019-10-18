@@ -15,7 +15,7 @@
         <fields>RecordTypeId</fields>
         <fields>AccountId</fields>
         <fields>Email</fields>
-        <label>K12 Faculty Contact Compact Layout</label>
+        <label>K12 Faculty/Staff Contact Compact Layout</label>
     </compactLayouts>
     <compactLayouts>
         <fullName>K12_Guardian_Contact_Compact_Layout</fullName>
@@ -57,7 +57,7 @@
             <operation>equals</operation>
             <value>Contact.Faculty</value>
         </filters>
-        <label>K12 All Faculty</label>
+        <label>K12 All Faculty/Staff</label>
     </listViews>
     <listViews>
         <fullName>K12_All_Guardians</fullName>
@@ -96,8 +96,8 @@
         <fullName>Faculty</fullName>
         <active>true</active>
         <compactLayoutAssignment>K12_Faculty_Contact_Compact_Layout</compactLayoutAssignment>
-        <description>A faculty member at the school (for example, a teacher or a counselor).</description>
-        <label>Faculty</label>
+        <description>A faculty or staff member at the school or district (for example, a teacher or a counselor).</description>
+        <label>Faculty/Staff</label>
     </recordTypes>
     <recordTypes>
         <fullName>Guardian</fullName>
