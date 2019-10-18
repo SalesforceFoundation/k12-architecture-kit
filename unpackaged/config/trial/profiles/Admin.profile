@@ -21,7 +21,7 @@
         <recordType>Account.Sports_Organization</recordType>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Contact-%%%NAMESPACE%%%K12 Kit Faculty Layout</layout>
+        <layout>Contact-%%%NAMESPACE%%%K12 Kit Faculty Staff Layout</layout>
         <recordType>Contact.%%%NAMESPACED_ORG%%%Faculty</recordType>
     </layoutAssignments>
     <layoutAssignments>
