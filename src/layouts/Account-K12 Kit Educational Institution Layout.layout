@@ -50,7 +50,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>%%%NAMESPACE%%%Grade_Levels__c</field>
+                <field>Grade_Levels__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
