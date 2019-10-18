@@ -25,7 +25,7 @@
         <recordType>Case.%%%NAMESPACED_ORG%%%Incident</recordType>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Contact-%%%NAMESPACE%%%K12 Kit Faculty Layout</layout>
+        <layout>Contact-%%%NAMESPACE%%%K12 Kit Faculty Staff Layout</layout>
         <recordType>Contact.%%%NAMESPACED_ORG%%%Faculty</recordType>
     </layoutAssignments>
     <layoutAssignments>
@@ -52,6 +52,9 @@
     <layoutAssignments>
         <layout>hed__Attribute__c-%%%NAMESPACE%%%K12 Kit Student Characteristic Layout</layout>
         <recordType>hed__Attribute__c.hed__Student_Characteristic</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>hed__Behavior_Involvement__c-%%%NAMESPACE%%%K12 Kit Behavior Involvement Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>hed__Contact_Language__c-%%%NAMESPACE%%%K12 Kit Contact Language Layout</layout>
