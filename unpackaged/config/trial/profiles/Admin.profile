@@ -22,7 +22,7 @@
     </layoutAssignments>
     <layoutAssignments>
         <layout>Case-%%%NAMESPACE%%%K12 Kit Incident Layout</layout>
-        <recordType>Case.hed__Incident</recordType>
+        <recordType>Case.%%%NAMESPACED_ORG%%%Incident</recordType>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Contact-%%%NAMESPACE%%%K12 Kit Faculty Layout</layout>
