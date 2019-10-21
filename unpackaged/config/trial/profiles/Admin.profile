@@ -53,6 +53,9 @@
         <layout>hed__Behavior_Involvement__c-%%%NAMESPACE%%%K12 Kit Behavior Involvement Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>hed__Behavior_Response__c-%%%NAMESPACE%%%K12 Kit Behavior Response Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>hed__Contact_Language__c-%%%NAMESPACE%%%K12 Kit Contact Language Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
