@@ -283,6 +283,15 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
+        <fields>hed__Term__c</fields>
+        <fields>hed__Term_Grade_Type__c</fields>
+        <fields>hed__Percent_Grade__c</fields>
+        <fields>hed__Letter_Grade__c</fields>
+        <fields>hed__Result__c</fields>
+        <relatedList>hed__Term_Grade__c.hed__Contact__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
         <fields>hed__Attendance_Type__c</fields>
         <fields>hed__Date__c</fields>
         <fields>hed__Unexcused__c</fields>
