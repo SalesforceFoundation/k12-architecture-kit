@@ -1,0 +1,12 @@
+{
+  "orgName": "K12 - Trial Org",
+  "template": "0TT4P000003qX0Q",
+  "settings": {
+    "lightningExperienceSettings": {
+      "enableS1DesktopEnabled": true
+    },
+    "chatterSettings": {
+      "enableChatter": true
+    }
+  }
+}

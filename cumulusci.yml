@@ -165,9 +165,5 @@ orgs:
         prerelease_namespaced:
             config_file: orgs/prerelease.json
             namespaced: True
-        walkthrough:
-            config_file: orgs/walkthrough.json
-            days: 30
-            namespaced: False
-
-
+        trial:
+            config_file: orgs/trial.json
