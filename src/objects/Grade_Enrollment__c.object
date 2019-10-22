@@ -212,14 +212,19 @@
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
-                    <fullName>Active</fullName>
+                    <fullName>Current</fullName>
                     <default>false</default>
-                    <label>Active</label>
+                    <label>Current</label>
                 </value>
                 <value>
-                    <fullName>Inactive</fullName>
+                    <fullName>Former</fullName>
                     <default>false</default>
-                    <label>Inactive</label>
+                    <label>Former</label>
+                </value>
+                <value>
+                    <fullName>Graduated</fullName>
+                    <default>false</default>
+                    <label>Graduated</label>
                 </value>
                 <value>
                     <fullName>Pre-Registered</fullName>
@@ -230,11 +235,6 @@
                     <fullName>Transferred Out</fullName>
                     <default>false</default>
                     <label>Transferred Out</label>
-                </value>
-                <value>
-                    <fullName>Graduated</fullName>
-                    <default>false</default>
-                    <label>Graduated</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
