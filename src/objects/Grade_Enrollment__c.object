@@ -83,9 +83,9 @@
     </fields>
     <fields>
         <fullName>End_Date__c</fullName>
-        <description>The expected End Date for this Grade Level enrollment.</description>
+        <description>The End Date for this Grade Level enrollment.</description>
         <externalId>false</externalId>
-        <inlineHelpText>The expected End Date for this Grade Level enrollment.</inlineHelpText>
+        <inlineHelpText>The End Date for this Grade Level enrollment.</inlineHelpText>
         <label>End Date</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -94,9 +94,9 @@
     </fields>
     <fields>
         <fullName>Entry_Reason__c</fullName>
-        <description>The reason a student enrolled in this Grade Level or school.</description>
+        <description>The reason a student enrolled in this Grade Level.</description>
         <externalId>false</externalId>
-        <inlineHelpText>The reason a student enrolled in this Grade Level or school.</inlineHelpText>
+        <inlineHelpText>The reason a student enrolled in this Grade Level.</inlineHelpText>
         <label>Entry Reason</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -112,11 +112,6 @@
                     <label>Promoted</label>
                 </value>
                 <value>
-                    <fullName>Transferred In</fullName>
-                    <default>false</default>
-                    <label>Transferred In</label>
-                </value>
-                <value>
                     <fullName>Repeated Grade</fullName>
                     <default>false</default>
                     <label>Repeated Grade</label>
@@ -126,14 +121,19 @@
                     <default>false</default>
                     <label>Skipped Grade</label>
                 </value>
+                <value>
+                    <fullName>Transferred In</fullName>
+                    <default>false</default>
+                    <label>Transferred In</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
     <fields>
         <fullName>Exit_Reason__c</fullName>
-        <description>The reason a student has exited this Grade Level or school.</description>
+        <description>The reason a student exited this Grade Level.</description>
         <externalId>false</externalId>
-        <inlineHelpText>The reason a student has exited this Grade Level or school.</inlineHelpText>
+        <inlineHelpText>The reason a student exited this Grade Level.</inlineHelpText>
         <label>Exit Reason</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -144,14 +144,9 @@
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
-                    <fullName>Promoted</fullName>
+                    <fullName>Deceased</fullName>
                     <default>false</default>
-                    <label>Promoted</label>
-                </value>
-                <value>
-                    <fullName>Transferred Out</fullName>
-                    <default>false</default>
-                    <label>Transferred Out</label>
+                    <label>Deceased</label>
                 </value>
                 <value>
                     <fullName>Expelled</fullName>
@@ -164,9 +159,14 @@
                     <label>No Show</label>
                 </value>
                 <value>
-                    <fullName>Deceased</fullName>
+                    <fullName>Promoted</fullName>
                     <default>false</default>
-                    <label>Deceased</label>
+                    <label>Promoted</label>
+                </value>
+                <value>
+                    <fullName>Transferred Out</fullName>
+                    <default>false</default>
+                    <label>Transferred Out</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
