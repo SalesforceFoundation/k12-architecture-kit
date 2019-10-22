@@ -39,6 +39,10 @@
         <name>CustomApplication</name>
     </types>
     <types>
+        <members>%%%NAMESPACE%%%Grade_Enrollment__c.Grade_Number__c</members>
+        <name>CustomField</name>
+    </types>
+    <types>
         <members>*</members>
         <name>CustomObject</name>
     </types>
