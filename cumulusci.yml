@@ -97,6 +97,8 @@ flows:
                 task: enable_course_connections
             5:
                 task: deploy_trial_config
+                options:
+                    unmanaged: False
 
     dev_org:
         steps:
