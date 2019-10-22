@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Infant/Toddler</fullName>
+        <default>false</default>
+        <label>Infant/Toddler</label>
+    </customValue>
+    <customValue>
+        <fullName>Preschool</fullName>
+        <default>false</default>
+        <label>Preschool</label>
+    </customValue>
+    <customValue>
+        <fullName>Prekindergarten</fullName>
+        <default>false</default>
+        <label>Prekindergarten</label>
+    </customValue>
+    <customValue>
+        <fullName>Transitional Kindergarten</fullName>
+        <default>false</default>
+        <label>Transitional Kindergarten</label>
+    </customValue>
+    <customValue>
+        <fullName>Kindergarten</fullName>
+        <default>false</default>
+        <label>Kindergarten</label>
+    </customValue>
+    <customValue>
+        <fullName>First Grade</fullName>
+        <default>false</default>
+        <label>First Grade</label>
+    </customValue>
+    <customValue>
+        <fullName>Second Grade</fullName>
+        <default>false</default>
+        <label>Second Grade</label>
+    </customValue>
+    <customValue>
+        <fullName>Third Grade</fullName>
+        <default>false</default>
+        <label>Third Grade</label>
+    </customValue>
+    <customValue>
+        <fullName>Fourth Grade</fullName>
+        <default>false</default>
+        <label>Fourth Grade</label>
+    </customValue>
+    <customValue>
+        <fullName>Fifth Grade</fullName>
+        <default>false</default>
+        <label>Fifth Grade</label>
+    </customValue>
+    <customValue>
+        <fullName>Sixth Grade</fullName>
+        <default>false</default>
+        <label>Sixth Grade</label>
+    </customValue>
+    <customValue>
+        <fullName>Seventh Grade</fullName>
+        <default>false</default>
+        <label>Seventh Grade</label>
+    </customValue>
+    <customValue>
+        <fullName>Eighth Grade</fullName>
+        <default>false</default>
+        <label>Eighth Grade</label>
+    </customValue>
+    <customValue>
+        <fullName>Ninth Grade</fullName>
+        <default>false</default>
+        <label>Ninth Grade</label>
+    </customValue>
+    <customValue>
+        <fullName>Tenth Grade</fullName>
+        <default>false</default>
+        <label>Tenth Grade</label>
+    </customValue>
+    <customValue>
+        <fullName>Eleventh Grade</fullName>
+        <default>false</default>
+        <label>Eleventh Grade</label>
+    </customValue>
+    <customValue>
+        <fullName>Twelfth Grade</fullName>
+        <default>false</default>
+        <label>Twelfth Grade</label>
+    </customValue>
+    <customValue>
+        <fullName>NotApplicable</fullName>
+        <default>false</default>
+        <label>Not Applicable</label>
+    </customValue>
+    <masterLabel>Grade Levels</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>
