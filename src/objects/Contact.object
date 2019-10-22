@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
     <fields>
+        <fullName>Current_Grade_Level__c</fullName>
+        <description>The Grade Level the student is currently enrolled in. Updated when a Grade Enrollment is set to Current.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The Grade Level the student is currently enrolled in. Updated when a Grade Enrollment is set to Current.</inlineHelpText>
+        <label>Current Grade Level</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Grade_Levels</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
         <fullName>Highest_Level_of_Education__c</fullName>
         <description>The highest level of education completed by a Contact.</description>
         <externalId>false</externalId>
@@ -78,8 +92,7 @@
         <precision>5</precision>
         <required>false</required>
         <scale>2</scale>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
+        <trackFeedHistory>false</trackFeedHistory>
         <type>Number</type>
         <unique>false</unique>
     </fields>

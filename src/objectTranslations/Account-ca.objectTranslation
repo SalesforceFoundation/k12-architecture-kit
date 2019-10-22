@@ -5,6 +5,11 @@
         <name>Elementary_School__c</name>
     </fields>
     <fields>
+        <help><!-- The Grade Levels offered by this Educational Institution. --></help>
+        <label><!-- Grade Levels --></label>
+        <name>Grade_Levels__c</name>
+    </fields>
+    <fields>
         <label><!-- High School --></label>
         <name>High_School__c</name>
     </fields>
