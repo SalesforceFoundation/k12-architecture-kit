@@ -3,9 +3,9 @@
     <fullName>K-12 Kit</fullName>
     <types>
         <members>GRER_SyncGradeLevel_TDTM</members>
-        <members>STG_InstallScript</members> 
+        <members>STG_InstallScript</members>
         <members>TDTM_DefaultConfig</members>
-        <name>ApexClass</name>   
+        <name>ApexClass</name>
     </types>
     <types>
         <members>Account.Elementary_School__c</members>
