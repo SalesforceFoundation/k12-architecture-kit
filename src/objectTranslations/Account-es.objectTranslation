@@ -5,7 +5,7 @@
         <name>Elementary_School__c</name>
     </fields>
     <fields>
-        <help><!-- The Grade Levels offered by this Educational Institution. --></help>
+        <help><!-- The Grade Levels currently offered by this school. --></help>
         <label><!-- Grade Levels --></label>
         <name>Grade_Levels__c</name>
     </fields>
