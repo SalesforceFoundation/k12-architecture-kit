@@ -42,15 +42,24 @@ global without sharing class STG_InstallScript implements InstallHandler {
 
         //Initial installation.
         if(context.previousVersion() == null) {
-            // Install K12 Kit TDTM Configuration
-            List<hed.TDTM_Global_API.TdtmToken> defaultTokens = TDTM_DefaultConfig.getDefaultTokens();
-            hed.TDTM_Global_API.setTdtmConfig(defaultTokens, 'k12kit');
-
+            //Install K12 Kit TDTM Configuration
+            upsertDefaultTriggerHandlers();
+            
         //Updates, manual or pushed by publisher.
         } else if(context.isUpgrade() || context.isPush()) {
-            // Upgrade K12 Kit TDTM Configuration
-            List<hed.TDTM_Global_API.TdtmToken> defaultTokens = TDTM_DefaultConfig.getDefaultTokens();
-            hed.TDTM_Global_API.setTdtmConfig(defaultTokens, 'k12kit');
+            //Update K12 Kit TDTM Configuration
+            upsertDefaultTriggerHandlers();
         }
     }
+
+    /*******************************************************************************************************
+    * @description upsert default trigger handlers
+    * @return void
+    */
+    public void upsertDefaultTriggerHandlers() {
+        List<hed.TDTM_Global_API.TdtmToken> defaultTokens = TDTM_DefaultConfig.getDefaultTokens();
+        hed.TDTM_Global_API.setTdtmConfig(defaultTokens, 'k12kit');
+    }
+
+
 }
