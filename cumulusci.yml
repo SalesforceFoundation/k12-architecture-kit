@@ -15,7 +15,7 @@ project:
 
 tasks:
     deploy_k12_kit_settings:
-        description: Configure the default K12 Kit Settings
+        description: Configure the default K12 Architecture Kit Settings
         class_path: cumulusci.tasks.apex.anon.AnonymousApexTask
         group: Project-specific
         options:
@@ -120,7 +120,7 @@ flows:
 plans:
     install:
         slug: install
-        title: Install K12 Kit
+        title: Install K-12 Architecture Kit
         tier: primary
         steps:
             1:
@@ -146,12 +146,12 @@ plans:
             4:
                 task: deploy_k12_kit_settings
                 ui_options:
-                    name: K12 - Default Kit Settings
+                    name: K12 - Default Architecture Kit Settings
             5:
                 task: deploy_post
                 ui_options:
                     config:
-                        name: K12 - Kit Metadata and Configuration
+                        name: K12 - Architecture Kit Metadata and Configuration
 orgs:
     scratch:
         dev_namespaced:
