@@ -30,6 +30,6 @@
 trigger TDTM_GradeEnrollment on Grade_Enrollment__c (after delete, after insert, after undelete, 
 after update, before delete, before insert, before update) {
 
-    TDTM_Global_API.run(Trigger.isBefore, Trigger.isAfter, Trigger.isInsert, Trigger.isUpdate, Trigger.isDelete, 
+    hed.TDTM_Global_API.run(Trigger.isBefore, Trigger.isAfter, Trigger.isInsert, Trigger.isUpdate, Trigger.isDelete, 
         Trigger.isUnDelete, Trigger.new, Trigger.old, Schema.Sobjecttype.Grade_Enrollment__c);
 }
