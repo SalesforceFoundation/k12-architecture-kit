@@ -6,16 +6,14 @@ import tempfile
 from cumulusci.tasks.salesforce import BaseSalesforceApiTask
 from cumulusci.tasks.salesforce import Deploy
 
-package_xml_template = """
-<?xml version="1.0" encoding="UTF-8"?>
+package_xml_template = """<?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
         <members>{object}.{field}</members>
         <name>CustomField</name>
     </types>{record_types_block}
     <version>45.0</version>
-</Package>
-"""
+</Package>"""
 
 package_xml_record_types_block_template = """
     <types>{record_types}
@@ -25,26 +23,21 @@ package_xml_record_types_block_template = """
 package_xml_record_type_template = """
         <members>{object}.{record_type_name}</members>"""
 
-object_template = """
-<?xml version="1.0" encoding="UTF-8"?>
+object_template = """<?xml version="1.0" encoding="UTF-8"?>
 <CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
     <fields>
         <fullName>{field}</fullName>
-        <!--<description></description>
-        <externalId>false</externalId>
-        <inlineHelpText></inlineHelpText>
-        <label></label>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <type>Picklist</type>-->
+        <description>The type of credential or Attribute.</description><!-- to-do: update this -->
+        <inlineHelpText>The type of credential or Attribute.</inlineHelpText><!-- to-do: update this -->
+        <label>Attribute Type</label><!-- to-do: update this -->
+        <type>Picklist</type>
         <valueSet>
             <valueSetDefinition>
                 <sorted>{sorted}</sorted>{picklist_values}
             </valueSetDefinition>
         </valueSet>
     </fields>{record_types}
-</CustomObject>
-"""
+</CustomObject>"""
 
 picklist_value_template = """
                 <value>
@@ -115,6 +108,7 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
             raise Exception('{} field not found on {}'.format(field, sobject))
 
         # build up a list of active record types
+        # to-do: issue when the record type has a namespace... duplicate is created without a namespace
         picklist_record_types = self._get_active_record_types(describe_results)
 
         if field_describe["type"] == "picklist":
@@ -131,11 +125,63 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
                 values.remove(active_picklist_value["value"])
 
         # build the package.xml:
-        # to-do: move this into its own method
+        package_xml = self._build_package_xml(picklist_record_types, sobject, field)
+        print(package_xml) # temporary
+
+        # build the object XML:
+        object_xml = self._build_object_xml(picklist_record_types, active_picklist_values, values, field)
+        print(object_xml) # temporary
+
+        # deploy back to Salesforce
+        self.tempdir = tempfile.mkdtemp()
+        package_xml_file = os.path.join(self.tempdir, "package.xml")
+        with open(package_xml_file, "w") as f:
+            f.write(package_xml)
+
+        print(self.tempdir) # temporary
+        print(package_xml_file) # temporary
+
+        object_folder = os.mkdir("{}/{}".format(self.tempdir, "objects"))
+        object_xml_file = os.path.join(self.tempdir, "objects", "{}.object".format(sobject))
+        with open(object_xml_file, "w") as f:
+            f.write(object_xml)
+
+        print(object_xml_file) # temporary
         
+        self._deploy_metadata()
+        shutil.rmtree(self.tempdir)
+
+    def _get_active_record_types(self, describe_results):
+        picklist_record_types = []
+        picklist_record_type_names = []
+        if "recordtypes" in self.options:
+            record_types = self.options["recordtypes"].split(',')
+
+            active_record_types = [
+                rt for rt in describe_results["recordTypeInfos"] if not rt["master"] and rt["active"] is True
+            ]
+
+            print(active_record_types)
+
+            # validate record_types against active_record_types
+            for active_record_type in active_record_types:
+                if active_record_type["developerName"] in record_types:
+                    picklist_record_types.append(active_record_type)
+                    picklist_record_type_names.append(active_record_type["developerName"])
+                    # to-do: The describe doesn't include the namespace, which is necessary otherwise duplicate record types are created. WHY???
+
+            for rt in record_types:
+                if rt not in picklist_record_type_names:
+                    # Choosing to not throw an exception here since a customer might have deactivated or deleted a record type.
+                    print('{} is not an active record type for the {} object.'.format(rt, describe_results["name"]))
+
+        return picklist_record_types
+
+    def _build_package_xml(self, picklist_record_types, sobject, field):
         # include the record types, if any were specified
-        package_xml_record_types = ""
+        package_xml_record_types_block = ""
         if picklist_record_types:
+            package_xml_record_types = ""
             for rt in picklist_record_types:
                 package_xml_record_types += package_xml_record_type_template.format(
                     object = sobject, 
@@ -150,11 +196,11 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
             field = field, 
             record_types_block = package_xml_record_types_block
         )
-        print(package_xml) # temporary
 
-        # build the object XML:
-        # to-do: move this into its own method
-        # to-do: "Other" should always be at the bottom?
+        return package_xml
+
+    def _build_object_xml(self, picklist_record_types, active_picklist_values, values, field):
+        # to-do: "Other" should always be at the bottom? (if it's already there)
 
         picklist_values_xml = ""
         record_type_picklist_xml = ""
@@ -170,9 +216,9 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
 
             if picklist_record_types:
                 record_type_picklist_values_xml += record_type_picklist_value_template.format(
+                    # to-do: Not all picklist values should be available for the record type... it will be dependent on how its configured in the org.
                     name = active_picklist_value["value"], 
-                    default = active_picklist_value["defaultValue"]
-                    # to-do: I don't think this is right. Can we look at the record type XML describe?
+                    default = active_picklist_value["defaultValue"] # to-do: I don't think this is right. Can we look at the record type XML describe?
                 )
         
         # add the new picklist values
@@ -212,49 +258,7 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
             record_types = record_type_picklist_xml
         )
 
-        print(object_xml) # temporary
-
-        # deploy back to Salesforce
-        self.tempdir = tempfile.mkdtemp()
-        package_xml_file = os.path.join(self.tempdir, "package.xml")
-        with open(package_xml_file, "w") as f:
-            f.write(package_xml)
-
-        print(self.tempdir) # temporary
-        print(package_xml_file) # temporary
-
-        object_folder = os.mkdir("{}/{}".format(self.tempdir, "objects"))
-        object_xml_file = os.path.join(self.tempdir, "objects", "{}.object".format(sobject))
-        with open(object_xml_file, "w") as f:
-            f.write(object_xml)
-
-        print(object_xml_file) # temporary
-        
-        self._deploy_metadata()
-        shutil.rmtree(self.tempdir)
-
-    def _get_active_record_types(self, describe_results):
-        picklist_record_types = []
-        picklist_record_type_names = []
-        if "recordtypes" in self.options:
-            record_types = self.options["recordtypes"].split(',')
-
-            active_record_types = [
-                rt for rt in describe_results["recordTypeInfos"] if not rt["master"] and rt["active"] is True
-            ]
-
-            # validate record_types against active_record_types
-            for active_record_type in active_record_types:
-                if active_record_type["developerName"] in record_types:
-                    picklist_record_types.append(active_record_type)
-                    picklist_record_type_names.append(active_record_type["developerName"])
-
-            for rt in record_types:
-                if rt not in picklist_record_type_names:
-                    # to-do: should we throw an exception here instead? A customer might have deactivated a record type, which might be okay...
-                    print('{} is not an active record type for the {} object.'.format(rt, describe_results["name"]))
-
-        return picklist_record_types
+        return object_xml
 
     def _deploy_metadata(self):
         self.logger.info("Deploying updated picklist values...")
