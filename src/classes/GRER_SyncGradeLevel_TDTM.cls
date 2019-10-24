@@ -34,7 +34,7 @@
 * @group-content ../../ApexDocContent/GradeEnrollments.htm
 * @description This class matches the Contact's Current Grade Level picklist value to the Grade Level set on the Grade Enrollment record when that record's status is “Current.”
 */
-public with sharing class GRER_SyncGradeLevel_TDTM extends hed.TDTM_Runnable {
+global with sharing class GRER_SyncGradeLevel_TDTM extends hed.TDTM_Runnable {
     /*******************************************************************************************************
     * @description Matches the Contact's Current Grade Level picklist value to the Grade Level set on the Grade Enrollment record. 
     * @param listNew the list of Course Enrollments from trigger new. 
@@ -43,7 +43,7 @@ public with sharing class GRER_SyncGradeLevel_TDTM extends hed.TDTM_Runnable {
     * @param objResult the describe for Course Enrollments.
     * @return dmlWrapper
     ********************************************************************************************************/
-    public override DmlWrapper run(List<SObject> listNew, List<SObject> listOld, 
+    global override DmlWrapper run(List<SObject> listNew, List<SObject> listOld, 
         hed.TDTM_Runnable.Action triggerAction, Schema.DescribeSObjectResult objResult) {
         //Declare and initate dmlWrapper    
         DmlWrapper dmlWrapper = new DmlWrapper();
