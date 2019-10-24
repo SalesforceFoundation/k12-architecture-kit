@@ -77,11 +77,6 @@
         <name>Grade_Level__c</name>
     </fields>
     <fields>
-        <help><!-- The selected Grade Level reflected as a numerical value. --></help>
-        <label><!-- Grade Number --></label>
-        <name>Grade_Number__c</name>
-    </fields>
-    <fields>
         <help><!-- The date this Grade Level enrollment is expected to start or has started. --></help>
         <label><!-- Start Date --></label>
         <name>Start_Date__c</name>
