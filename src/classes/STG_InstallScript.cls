@@ -56,7 +56,7 @@ global without sharing class STG_InstallScript implements InstallHandler {
     * @description upsert default trigger handlers
     * @return void
     */
-    public void upsertDefaultTriggerHandlers() {
+    global static void upsertDefaultTriggerHandlers() {
         List<hed.TDTM_Global_API.TdtmToken> defaultTokens = TDTM_DefaultConfig.getDefaultTokens();
         hed.TDTM_Global_API.setTdtmConfig(defaultTokens, 'k12kit');
     }
