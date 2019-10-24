@@ -49,7 +49,7 @@ public with sharing class GRER_SyncGradeLevel_TDTM extends hed.TDTM_Runnable {
         DmlWrapper dmlWrapper = new DmlWrapper();
         
         //Set of related contact ids
-
+        Set<Id> setRelatedContactIds = new Set<Id>();
         //If listNew not empty
         if (listNew != null && listNew.size() > 0) {
             for (Integer i = 0; i < listNew.size(); i++) {
@@ -58,15 +58,29 @@ public with sharing class GRER_SyncGradeLevel_TDTM extends hed.TDTM_Runnable {
                 //BEFORE INSERT AND BEFORE UPDATE
                 if(triggerAction == hed.TDTM_Runnable.Action.BeforeInsert 
                 || triggerAction == hed.TDTM_Runnable.Action.BeforeUpdate) {
-                    //Get the ID of each parent Program Enrollment
+                    //Update the current grade level with current grade enrollment
                     if(gradeErol.Status__c != null 
                     && gradeErol.Status__c == 'Current') {
                         gradeErol.Contact__r.Current_Grade_Level__c = gradeErol.Grade_Level__c;
                     }
+                    //Collect Ids of related contacts
+                    setRelatedContactIds.add(gradeErol.Contact__c);
                 }
             }
         }
         
+        //Query and loop through related contacts and their grade enrollment
+        for (Contact relatedContact : [SELECT Id, 
+                                            (SELECT Id, 
+                                                    Status__c 
+                                            FROM Grade_Enrollments__r
+                                            WHERE Status__c = 'Current') 
+                                        FROM Contact
+                                        WHERE Id in :setRelatedContactIds]) {
+            for (Grade_Enrollment__c gradeErol : relatedContact.Grade_Enrollments__r) {
+                system.debug(gradeErol);
+            }  
+        }
 
         
         return dmlWrapper;
