@@ -61,7 +61,7 @@ public without sharing class TDTM_DefaultConfig {
                         hed__Load_Order__c = 1,
                         hed__Object__c = 'Grade_Enrollment__c',
                         hed__Owned_by_Namespace__c = 'k12kit',
-                        hed__Trigger_Action__c = 'BeforeInsert;BeforeUpdate'));
+                        hed__Trigger_Action__c = 'AfterInsert;AfterUpdate'));
         return handlers;
     }
 }
