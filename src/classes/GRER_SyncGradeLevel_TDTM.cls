@@ -93,7 +93,7 @@ global with sharing class GRER_SyncGradeLevel_TDTM extends hed.TDTM_Runnable {
         }
 
         //Add toupdate lists to dmlWrapper
-		dmlWrapper.objectsToUpdate.addAll((List<SObject>)listContactsToUpdate);
+        dmlWrapper.objectsToUpdate.addAll((List<SObject>)listContactsToUpdate);
         dmlWrapper.objectsToUpdate.addAll((List<SObject>)listGradeEnrolsToUpdate);
 
         return dmlWrapper;
