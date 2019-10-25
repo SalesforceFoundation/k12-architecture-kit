@@ -6,10 +6,10 @@
     </caseValues>
     <caseValues>
         <plural>true</plural>
-        <value><!-- Grade Enrollment --></value>
+        <value><!-- Grade Enrollments --></value>
     </caseValues>
     <fields>
-        <help><!-- The student enrolled in the given grade level. --></help>
+        <help><!-- The student enrolled in the given Grade Level. --></help>
         <label><!-- Contact --></label>
         <name>Contact__c</name>
         <relationshipLabel><!-- Grade Enrollments --></relationshipLabel>
@@ -21,12 +21,12 @@
         <relationshipLabel><!-- Grade Enrollments --></relationshipLabel>
     </fields>
     <fields>
-        <help><!-- The expected End Date for this Grade Level enrollment. --></help>
+        <help><!-- The End Date for this Grade Level enrollment. --></help>
         <label><!-- End Date --></label>
         <name>End_Date__c</name>
     </fields>
     <fields>
-        <help><!-- The reason a student enrolled in this Grade Level or school. --></help>
+        <help><!-- The reason a student enrolled in this Grade Level. --></help>
         <label><!-- Entry Reason --></label>
         <name>Entry_Reason__c</name>
         <picklistValues>
@@ -47,7 +47,7 @@
         </picklistValues>
     </fields>
     <fields>
-        <help><!-- The reason a student has exited this Grade Level or school. --></help>
+        <help><!-- The reason a student exited this Grade Level. --></help>
         <label><!-- Exit Reason --></label>
         <name>Exit_Reason__c</name>
         <picklistValues>
@@ -86,16 +86,16 @@
         <label><!-- Status --></label>
         <name>Status__c</name>
         <picklistValues>
-            <masterLabel>Active</masterLabel>
-            <translation><!-- Active --></translation>
+            <masterLabel>Current</masterLabel>
+            <translation><!-- Current --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Former</masterLabel>
+            <translation><!-- Former --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Graduated</masterLabel>
             <translation><!-- Graduated --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Inactive</masterLabel>
-            <translation><!-- Inactive --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Pre-Registered</masterLabel>
@@ -113,6 +113,21 @@
         <relationshipLabel><!-- Grade Enrollments --></relationshipLabel>
     </fields>
     <gender><!-- Masculine --></gender>
+    <layouts>
+        <layout>K12 Kit Grade Enrollment Layout</layout>
+        <sections>
+            <label><!-- Additional Enrollment Information --></label>
+            <section>Additional Enrollment Information</section>
+        </sections>
+        <sections>
+            <label><!-- Grade Enrollment Details --></label>
+            <section>Grade Enrollment Details</section>
+        </sections>
+        <sections>
+            <label><!-- System Information --></label>
+            <section>System Information</section>
+        </sections>
+    </layouts>
     <nameFieldLabel><!-- Grade Enrollment Name --></nameFieldLabel>
     <startsWith><!-- Consonant --></startsWith>
 </CustomObjectTranslation>
