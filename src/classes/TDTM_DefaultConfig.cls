@@ -33,7 +33,7 @@ public without sharing class TDTM_DefaultConfig {
     public static List<hed.TDTM_Global_API.TdtmToken> getDefaultTokens() {
         List<hed.TDTM_Global_API.TdtmToken> tokens = new List<hed.TDTM_Global_API.TdtmToken>();
 
-        for(hed__Trigger_Handler__c handler : TDTM_DefaultConfig.getDefaultHandlers()) {
+        for (hed__Trigger_Handler__c handler : TDTM_DefaultConfig.getDefaultHandlers()) {
             tokens.add(new hed.TDTM_Global_API.TdtmToken(
                         handler.hed__Class__c,
                         handler.hed__Object__c,
