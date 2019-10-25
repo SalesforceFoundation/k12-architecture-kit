@@ -3,6 +3,7 @@
     <fullName>K-12 Kit</fullName>
     <types>
         <members>GRER_SyncGradeLevel_TDTM</members>
+        <members>GRER_SyncGradeLevel_TEST</members>
         <members>STG_InstallScript</members>
         <members>TDTM_DefaultConfig</members>
         <name>ApexClass</name>
