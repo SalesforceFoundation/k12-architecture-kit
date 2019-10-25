@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <help><!-- The selected Grade Level reflected as a numerical value. --></help>
+        <label><!-- Grade Number --></label>
+        <name>Grade_Number__c</name>
+    </fields>
+</CustomObjectTranslation>
