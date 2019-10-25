@@ -221,8 +221,6 @@
         <fields>FULL_NAME</fields>
         <fields>CONTACT.PHONE1</fields>
         <fields>CONTACT.EMAIL</fields>
-        <fields>Primary_Department__c</fields>
-        <fields>Primary_Educational_Institution__c</fields>
         <fields>hed__Gender__c</fields>
         <fields>CONTACT.BIRTHDATE</fields>
         <relatedList>RelatedContactList</relatedList>
