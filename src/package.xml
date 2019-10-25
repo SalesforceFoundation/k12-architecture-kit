@@ -5,6 +5,7 @@
         <members>GRER_SyncGradeLevel_TDTM</members>
         <members>GRER_SyncGradeLevel_TEST</members>
         <members>STG_InstallScript</members>
+        <members>STG_InstallScript_TEST</members>
         <members>TDTM_DefaultConfig</members>
         <name>ApexClass</name>
     </types>

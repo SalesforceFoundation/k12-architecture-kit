@@ -56,7 +56,7 @@ private class GRER_SyncGradeLevel_TEST {
 
         Grade_Enrollment__c testGradeEnroll = new Grade_Enrollment__c(Status__c = 'Current', Grade_Level__c = 'Prekindergarten', Contact__c = testContact.Id);
 
-        //Test the code
+        //Run the code
         Test.startTest();
         insert testGradeEnroll;          
         Test.stopTest();
@@ -82,7 +82,7 @@ private class GRER_SyncGradeLevel_TEST {
 
         Grade_Enrollment__c testNewGradeEnroll = new Grade_Enrollment__c(Status__c = 'Current', Grade_Level__c = 'Transitional Kindergarten', Contact__c = testContact.Id);
 
-        //Test the code
+        //Run the code
         Test.startTest();
         insert testNewGradeEnroll;          
         Test.stopTest();
@@ -118,7 +118,7 @@ private class GRER_SyncGradeLevel_TEST {
 
         Grade_Enrollment__c testNewGradeEnroll = new Grade_Enrollment__c(Status__c = 'Current', Grade_Level__c = 'Transitional Kindergarten', Contact__c = testContact.Id);
 
-        //Test the code
+        //Run the code
         Test.startTest();
         insert testNewGradeEnroll;
         testGradeEnroll.Status__c = 'Current';
@@ -156,7 +156,7 @@ private class GRER_SyncGradeLevel_TEST {
 
         Grade_Enrollment__c testNewGradeEnroll = new Grade_Enrollment__c(Status__c = 'Current', Grade_Level__c = 'Transitional Kindergarten', Contact__c = testContact.Id);
 
-        //Test the code
+        //Run the code
         Test.startTest();
         insert testNewGradeEnroll;
         testNewGradeEnroll.Grade_Level__c = 'Preschool';
@@ -195,7 +195,7 @@ private class GRER_SyncGradeLevel_TEST {
         Grade_Enrollment__c testNewGradeEnroll = new Grade_Enrollment__c(Status__c = 'Current', Grade_Level__c = 'Transitional Kindergarten', Contact__c = testContact.Id);
         insert testNewGradeEnroll;
 
-        //Test the code
+        //Run the code
         Test.startTest();
         testGradeEnroll.Grade_Level__c = 'Preschool';
         update testGradeEnroll;        
