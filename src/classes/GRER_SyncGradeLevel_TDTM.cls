@@ -50,11 +50,11 @@ global with sharing class GRER_SyncGradeLevel_TDTM extends hed.TDTM_Runnable {
         DmlWrapper dmlWrapper = new DmlWrapper();
 
         //Declare and initiate set of related contact ids
-        Set<Id> setRelatedContactsIds = new Set<Id>();
+        Set<Id> relatedContactsIds = new Set<Id>();
         
         //Declare and initiate lists to update
-        List<Contact> listContactsToUpdate = new List<Contact>();
-        List<Grade_Enrollment__c> listGradeEnrolsToUpdate = new List<Grade_Enrollment__c>();
+        List<Contact> contactsToUpdate = new List<Contact>();
+        List<Grade_Enrollment__c> gradeEnrolsToUpdate = new List<Grade_Enrollment__c>();
 
         //After INSERT and After UPDATE
         if(triggerAction == hed.TDTM_Runnable.Action.AfterInsert 
@@ -65,7 +65,7 @@ global with sharing class GRER_SyncGradeLevel_TDTM extends hed.TDTM_Runnable {
                     if(gradeErol.Status__c != null 
                     && gradeErol.Status__c == 'Current') {
                         //Collect Ids of related contacts
-                        setRelatedContactsIds.add(gradeErol.Contact__c);
+                        relatedContactsIds.add(gradeErol.Contact__c);
                     }
                 }
             }
@@ -79,22 +79,22 @@ global with sharing class GRER_SyncGradeLevel_TDTM extends hed.TDTM_Runnable {
                                             	    FROM Grade_Enrollments__r
                                             	    WHERE Status__c = 'Current') 
                                             FROM Contact
-                                            WHERE Id in :setRelatedContactsIds]) {
+                                            WHERE Id in :relatedContactsIds]) {
                 for (Grade_Enrollment__c gradeErol : relatedContact.Grade_Enrollments__r) {
                     if (Trigger.newMap.keySet().contains(gradeErol.Id)) {
                         relatedContact.Current_Grade_Level__c = gradeErol.Grade_Level__c;
-                        listContactsToUpdate.add(relatedContact);
+                        contactsToUpdate.add(relatedContact);
                     } else {
                     	gradeErol.Status__c = 'Former';
-                    	listGradeEnrolsToUpdate.add(gradeErol);    
+                    	gradeEnrolsToUpdate.add(gradeErol);    
                     }
                 }
             }  
         }
 
         //Add toupdate lists to dmlWrapper
-        dmlWrapper.objectsToUpdate.addAll((List<SObject>)listContactsToUpdate);
-        dmlWrapper.objectsToUpdate.addAll((List<SObject>)listGradeEnrolsToUpdate);
+        dmlWrapper.objectsToUpdate.addAll((List<SObject>)contactsToUpdate);
+        dmlWrapper.objectsToUpdate.addAll((List<SObject>)gradeEnrolsToUpdate);
 
         return dmlWrapper;
     }
