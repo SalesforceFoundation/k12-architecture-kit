@@ -51,6 +51,9 @@ global with sharing class GRER_SyncGradeLevel_TDTM extends hed.TDTM_Runnable {
 
         //Declare and initiate set of related contact ids
         Set<Id> relatedContactsIds = new Set<Id>();
+
+        //Declare and initiate set of current grade enrollment ids
+        Set<Id> currentGradeEnrolsIds = new Set<Id>();
         
         //Declare and initiate lists to update
         List<Contact> contactsToUpdate = new List<Contact>();
@@ -58,14 +61,15 @@ global with sharing class GRER_SyncGradeLevel_TDTM extends hed.TDTM_Runnable {
 
         //After INSERT and After UPDATE
         if(triggerAction == hed.TDTM_Runnable.Action.AfterInsert 
-        || triggerAction == hed.TDTM_Runnable.Action.AfterUpdate) {
+            || triggerAction == hed.TDTM_Runnable.Action.AfterUpdate) {
             if (listNew != null && listNew.size() > 0) {
                 for (Integer i = 0; i < listNew.size(); i++) {
                     Grade_Enrollment__c gradeErol = (Grade_Enrollment__c)listNew[i];
-                    if(gradeErol.Status__c != null 
-                    && gradeErol.Status__c == 'Current') {
+                    if (gradeErol.Status__c != null 
+                        && gradeErol.Status__c == 'Current') {
                         //Collect Ids of related contacts
                         relatedContactsIds.add(gradeErol.Contact__c);
+                        currentGradeEnrolsIds.add(gradeErol.Id);
                     }
                 }
             }
@@ -81,7 +85,7 @@ global with sharing class GRER_SyncGradeLevel_TDTM extends hed.TDTM_Runnable {
                                             FROM Contact
                                             WHERE Id in :relatedContactsIds]) {
                 for (Grade_Enrollment__c gradeErol : relatedContact.Grade_Enrollments__r) {
-                    if (Trigger.newMap.keySet().contains(gradeErol.Id)) {
+                    if (currentGradeEnrolsIds.contains(gradeErol.Id)) {
                         relatedContact.Current_Grade_Level__c = gradeErol.Grade_Level__c;
                         contactsToUpdate.add(relatedContact);
                     } else {

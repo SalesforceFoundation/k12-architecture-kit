@@ -60,6 +60,4 @@ global without sharing class STG_InstallScript implements InstallHandler {
         List<hed.TDTM_Global_API.TdtmToken> defaultTokens = TDTM_DefaultConfig.getDefaultTokens();
         hed.TDTM_Global_API.setTdtmConfig(defaultTokens, 'k12kit');
     }
-
-
 }
