@@ -9,6 +9,7 @@
     <excludeButtons>EnablePrmSuperUser</excludeButtons>
     <excludeButtons>EnableSelfService</excludeButtons>
     <excludeButtons>RequestUpdate</excludeButtons>
+    <excludeButtons>RequestUseSfdc</excludeButtons>
     <excludeButtons>Share</excludeButtons>
     <excludeButtons>Submit</excludeButtons>
     <excludeButtons>ViewPartnerPortalUser</excludeButtons>
@@ -283,6 +284,13 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
+        <fields>Grade_Level__c</fields>
+        <fields>Status__c</fields>
+        <fields>Educational_Institution__c</fields>
+        <relatedList>Grade_Enrollment__c.Contact__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
         <fields>hed__Term__c</fields>
         <fields>hed__Term_Grade_Type__c</fields>
         <fields>hed__Percent_Grade__c</fields>
@@ -375,7 +383,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h2E00000cdUoB</masterLabel>
+        <masterLabel>00h4F000000GHcg</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
