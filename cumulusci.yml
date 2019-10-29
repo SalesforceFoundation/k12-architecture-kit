@@ -79,7 +79,7 @@ tasks:
         class_path: cumulusci.tasks.apex.anon.AnonymousApexTask
         options:
             apex:
-                STG_InstallScript.upsertDefaultTriggerHandlers();
+                STG_InstallScript.setK12kitDefaultTriggerHandlers();
 
 flows:
     config_managed:

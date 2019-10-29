@@ -50,10 +50,10 @@ global with sharing class GRER_SyncGradeLevel_TDTM extends hed.TDTM_Runnable {
         DmlWrapper dmlWrapper = new DmlWrapper();
 
         //Declare and initiate set of related contact ids
-        Set<Id> relatedContactsIds = new Set<Id>();
+        Set<Id> relatedContactIds = new Set<Id>();
 
         //Declare and initiate set of current grade enrollment ids
-        Set<Id> currentGradeEnrolsIds = new Set<Id>();
+        Set<Id> currentGradeEnrolIds = new Set<Id>();
         
         //Declare and initiate lists to update
         List<Contact> contactsToUpdate = new List<Contact>();
@@ -68,8 +68,8 @@ global with sharing class GRER_SyncGradeLevel_TDTM extends hed.TDTM_Runnable {
                     if (gradeErol.Status__c != null 
                         && gradeErol.Status__c == 'Current') {
                         //Collect Ids of related contacts
-                        relatedContactsIds.add(gradeErol.Contact__c);
-                        currentGradeEnrolsIds.add(gradeErol.Id);
+                        relatedContactIds.add(gradeErol.Contact__c);
+                        currentGradeEnrolIds.add(gradeErol.Id);
                     }
                 }
             }
@@ -83,9 +83,9 @@ global with sharing class GRER_SyncGradeLevel_TDTM extends hed.TDTM_Runnable {
                                             	    FROM Grade_Enrollments__r
                                             	    WHERE Status__c = 'Current') 
                                             FROM Contact
-                                            WHERE Id in :relatedContactsIds]) {
+                                            WHERE Id in :relatedContactIds]) {
                 for (Grade_Enrollment__c gradeErol : relatedContact.Grade_Enrollments__r) {
-                    if (currentGradeEnrolsIds.contains(gradeErol.Id)) {
+                    if (currentGradeEnrolIds.contains(gradeErol.Id)) {
                         relatedContact.Current_Grade_Level__c = gradeErol.Grade_Level__c;
                         contactsToUpdate.add(relatedContact);
                     } else {

@@ -40,8 +40,7 @@ private class GRER_SyncGradeLevel_TEST {
         hed.TDTM_Global_API.setTdtmConfig(hedaTokens);
 
         //Insert K12 trigger handlers
-        List<hed.TDTM_Global_API.TdtmToken> k12Tokens = TDTM_DefaultConfig.getDefaultTokens();
-        hed.TDTM_Global_API.setTdtmConfig(k12Tokens);
+        STG_InstallScript.setK12kitDefaultTriggerHandlers();
     }
 
     /*********************************************************************************************************
