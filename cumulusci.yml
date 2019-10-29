@@ -1,7 +1,7 @@
 project:
     name: Athena
     package:
-        name: K-12 Kit
+        name: K-12 Architecture Kit
         api_version: '45.0'
         namespace: k12kit
     git:
@@ -140,18 +140,18 @@ plans:
                 task: deploy_pre
                 ui_options:
                     recordtypes:
-                        name: K12 - Account and Contact Record Types
+                        name: K-12 Architecture Kit - Account and Contact Record Types
             3:
                 task: install_managed
             4:
                 task: deploy_k12_kit_settings
                 ui_options:
-                    name: K12 - Default Architecture Kit Settings
+                    name: K-12 Architecture Kit - Default Architecture Kit Settings
             5:
                 task: deploy_post
                 ui_options:
                     config:
-                        name: K12 - Architecture Kit Metadata and Configuration
+                        name: K-12 Architecture Kit Metadata and Configuration
 orgs:
     scratch:
         dev_namespaced:
