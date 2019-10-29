@@ -41,9 +41,8 @@
         <type>Default</type>
     </actionOverrides>
     <allowInChatterGroups>true</allowInChatterGroups>
-    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
-    <description>A student's enrollment in a particular grade at a given educational institution.</description>
+    <description>A student&apos;s enrollment in a particular grade at a given educational institution.</description>
     <enableActivities>true</enableActivities>
     <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>
@@ -55,10 +54,10 @@
     <enableStreamingApi>true</enableStreamingApi>
     <fields>
         <fullName>Contact__c</fullName>
-        <description>The student enrolled in the given grade level.</description>
         <deleteConstraint>SetNull</deleteConstraint>
-        <inlineHelpText>The student enrolled in the given grade level.</inlineHelpText>
+        <description>The student enrolled in the given Grade Level.</description>
         <externalId>false</externalId>
+        <inlineHelpText>The student enrolled in the given Grade Level.</inlineHelpText>
         <label>Contact</label>
         <referenceTo>Contact</referenceTo>
         <relationshipName>Grade_Enrollments</relationshipName>
@@ -69,10 +68,10 @@
     </fields>
     <fields>
         <fullName>Educational_Institution__c</fullName>
-        <description>The school this student is enrolled in.</description>
         <deleteConstraint>SetNull</deleteConstraint>
-        <inlineHelpText>The school this student is enrolled in.</inlineHelpText>
+        <description>The school this student is enrolled in.</description>
         <externalId>false</externalId>
+        <inlineHelpText>The school this student is enrolled in.</inlineHelpText>
         <label>Educational Institution</label>
         <referenceTo>Account</referenceTo>
         <relationshipName>Grade_Enrollments</relationshipName>
@@ -116,7 +115,7 @@
                     <default>false</default>
                     <label>Repeated Grade</label>
                 </value>
-                <value>   
+                <value>
                     <fullName>Skipped Grade</fullName>
                     <default>false</default>
                     <label>Skipped Grade</label>
@@ -241,10 +240,10 @@
     </fields>
     <fields>
         <fullName>Term__c</fullName>
-        <description>The Term associated with this Grade Level enrollment.</description>
         <deleteConstraint>SetNull</deleteConstraint>
-        <inlineHelpText>The Term associated with this Grade Level enrollment.</inlineHelpText>
+        <description>The Term associated with this Grade Level enrollment.</description>
         <externalId>false</externalId>
+        <inlineHelpText>The Term associated with this Grade Level enrollment.</inlineHelpText>
         <label>Term</label>
         <referenceTo>hed__Term__c</referenceTo>
         <relationshipLabel>Grade Enrollments</relationshipLabel>
@@ -262,7 +261,6 @@
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Grade Enrollments</pluralLabel>
-    <searchLayouts/>
     <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>
