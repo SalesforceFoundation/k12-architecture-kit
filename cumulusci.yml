@@ -144,10 +144,6 @@ plans:
             3:
                 task: install_managed
             4:
-                task: deploy_k12_kit_settings
-                ui_options:
-                    name: K12 - Default Kit Settings
-            5:
                 task: deploy_post
                 ui_options:
                     config:
