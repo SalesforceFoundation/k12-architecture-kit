@@ -15,7 +15,7 @@ project:
 
 tasks:
     deploy_k12_kit_settings:
-        description: Configure the default K12 Architecture Kit Settings
+        description: Configure the default K-12 Architecture Kit Settings
         class_path: cumulusci.tasks.apex.anon.AnonymousApexTask
         group: Project-specific
         options:

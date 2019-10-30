@@ -1,5 +1,5 @@
-//set the configuration for K12 Architecture Kit
-//once K12 has a managed package, this code should move
+//set the configuration for K-12 Architecture Kit
+//once K-12 has a managed package, this code should move
 public static void initializeK12KitSettings() {
     hed__Hierarchy_Settings__c settings = hed.UTIL_CustomSettings_API.getSettings();
     settings.hed__Account_Processor__c = settings.hed__Household_Addresses_RecType__c;
