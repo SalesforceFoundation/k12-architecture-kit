@@ -76,12 +76,12 @@ global with sharing class GRER_SyncGradeLevel_TDTM extends hed.TDTM_Runnable {
 
             //Query and loop through related contacts and their grade enrollment
             for (Contact relatedContact :   [SELECT Id,
-                                           		    Current_Grade_Level__c,
-                                            	    (SELECT Id, 
-                                                    	    Status__c,
-                                                 		    Grade_Level__c
-                                            	    FROM Grade_Enrollments__r
-                                            	    WHERE Status__c = 'Current') 
+                                                       Current_Grade_Level__c,
+                                                    (SELECT Id, 
+                                                            Status__c,
+                                                            Grade_Level__c
+                                                    FROM Grade_Enrollments__r
+                                                    WHERE Status__c = 'Current') 
                                             FROM Contact
                                             WHERE Id in :relatedContactIds]) {
                 for (Grade_Enrollment__c gradeErol : relatedContact.Grade_Enrollments__r) {
@@ -89,8 +89,8 @@ global with sharing class GRER_SyncGradeLevel_TDTM extends hed.TDTM_Runnable {
                         relatedContact.Current_Grade_Level__c = gradeErol.Grade_Level__c;
                         contactsToUpdate.add(relatedContact);
                     } else {
-                    	gradeErol.Status__c = 'Former';
-                    	gradeEnrolsToUpdate.add(gradeErol);    
+                        gradeErol.Status__c = 'Former';
+                        gradeEnrolsToUpdate.add(gradeErol);    
                     }
                 }
             }  
