@@ -45,7 +45,7 @@ public without sharing class TDTM_DefaultConfig {
                         handler.hed__Filter_Value__c,
                         handler.hed__User_Managed__c,
                         handler.hed__Owned_by_Namespace__c,
-                        null));
+                        handler.hed__Usernames_to_Exclude__c));
         }
         return tokens;
     }
