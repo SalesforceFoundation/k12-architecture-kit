@@ -2,6 +2,18 @@
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>K-12 Kit</fullName>
     <types>
+        <members>GRER_SyncGradeLevel_TDTM</members>
+        <members>GRER_SyncGradeLevel_TEST</members>
+        <members>STG_InstallScript</members>
+        <members>STG_InstallScript_TEST</members>
+        <members>TDTM_DefaultConfig</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>TDTM_GradeEnrollment</members>
+        <name>ApexTrigger</name>
+    </types>
+    <types>
         <members>Account.Elementary_School__c</members>
         <members>Account.Grade_Levels__c</members>
         <members>Account.High_School__c</members>
