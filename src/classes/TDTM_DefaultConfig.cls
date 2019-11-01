@@ -59,7 +59,7 @@ public without sharing class TDTM_DefaultConfig {
                         hed__Asynchronous__c = false,
                         hed__Class__c = GRER_SyncGradeLevel_TDTM.class.toString(),
                         hed__Load_Order__c = 1,
-                        hed__Object__c = 'Grade_Enrollment__c',
+                        hed__Object__c = Grade_Enrollment__c.SObjectType.getDescribe().getName(),
                         hed__Owned_by_Namespace__c = 'k12kit',
                         hed__Trigger_Action__c = 'AfterInsert;AfterUpdate'));
         return handlers;
