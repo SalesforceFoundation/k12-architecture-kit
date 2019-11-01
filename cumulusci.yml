@@ -4,6 +4,7 @@ project:
         name: K-12 Architecture Kit
         api_version: '45.0'
         namespace: k12kit
+        install_class: STG_InstallScript
     git:
         default_branch: master
         prefix_feature: feature
@@ -72,6 +73,13 @@ tasks:
                     - NewNote
                     - NewTask
                     - SendEmail
+    
+    execute_install_apex:
+        description: Runs most of the install script methods from STG_InstallScript class
+        class_path: cumulusci.tasks.apex.anon.AnonymousApexTask
+        options:
+            apex:
+                STG_InstallScript.setK12kitDefaultTriggerHandlers();
 
 flows:
     config_managed:
@@ -103,6 +111,8 @@ flows:
                 task: deploy_trial_config
             6:
                 task: snapshot_changes
+            7:
+                task: execute_install_apex
 
     dev_org_namespaced:
         steps:
@@ -116,6 +126,8 @@ flows:
                     namespaced_org: True
             6:
                 task: snapshot_changes
+            7:
+                task: execute_install_apex
 
 plans:
     install:
