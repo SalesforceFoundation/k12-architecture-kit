@@ -9,7 +9,8 @@
         <members>Contact.hed__HEDA_Contact_Compact_Layout</members>
         <members>hed__Affiliation__c.hed__HEDA_Affiliation_Compact_Layout</members>
         <members>hed__Attendance_Event__c.K12_Attendance_Event_Compact_Layout</members>
-        <members>hed__Attribute__c.K12_Attribute_Compact_Layout</members>
+        <members>hed__Attribute__c.K12_Credential_Compact_Layout</members>
+        <members>hed__Attribute__c.K12_Student_Characteristic_Compact_Layout</members>
         <members>hed__Contact_Language__c.hed__HEDA_Contact_Language_Compact_Layout</members>
         <members>hed__Course_Enrollment__c.K12_Faculty_Course_Connection_Compact_Layout</members>
         <members>hed__Course_Enrollment__c.K12_Student_Course_Connection_Compact_Layout</members>
@@ -94,6 +95,8 @@
         <members>Contact.Faculty</members>
         <members>Contact.Guardian</members>
         <members>Contact.Student</members>
+        <members>hed__Attribute__c.hed__Credential</members>
+        <members>hed__Attribute__c.hed__Student_Characteristic</members>
         <members>hed__Course_Enrollment__c.Faculty</members>
         <members>hed__Course_Enrollment__c.Student</members>
         <name>RecordType</name>
