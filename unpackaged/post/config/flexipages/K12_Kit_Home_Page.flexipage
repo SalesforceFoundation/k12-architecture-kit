@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <FlexiPage xmlns="http://soap.sforce.com/2006/04/metadata">
-    <description>Default Home Page for K-12 Kit</description>
+    <description>Default Home Page for K-12 Architecture Kit</description>
     <flexiPageRegions>
         <componentInstances>
             <componentInstanceProperties>
@@ -40,7 +40,7 @@
         <name>sidebar</name>
         <type>Region</type>
     </flexiPageRegions>
-    <masterLabel>K12 Kit Home Page</masterLabel>
+    <masterLabel>K-12 Architecture Kit Home Page</masterLabel>
     <template>
         <name>home:desktopTemplate</name>
     </template>
