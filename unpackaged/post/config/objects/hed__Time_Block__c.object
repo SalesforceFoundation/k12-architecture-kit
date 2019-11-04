@@ -24,7 +24,7 @@
         <columns>hed__End_Time__c</columns>
         <columns>hed__Educational_Institution__c</columns>
         <filterScope>Everything</filterScope>
-        <label>K12 All Time Blocks</label>
+        <label>K-12 All Time Blocks</label>
     </listViews>
     <deploymentStatus>Deployed</deploymentStatus>
     <description>Represents a block of time in which classes are held.</description>
