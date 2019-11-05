@@ -46,7 +46,7 @@
         <columns>hed__Credits_Attempted__c</columns>
         <columns>hed__Grade__c</columns>
         <filterScope>Everything</filterScope>
-        <label>K12 All Course Connections</label>
+        <label>K-12 All Course Connections</label>
     </listViews>
     <listViews>
         <fullName>K12_All_Faculty_Course_Connections</fullName>
@@ -61,7 +61,7 @@
             <operation>equals</operation>
             <value>hed__Course_Enrollment__c.Faculty</value>
         </filters>
-        <label>K12 All Teacher Course Connections</label>
+        <label>K-12 All Teacher Course Connections</label>
     </listViews>
     <listViews>
         <fullName>K12_All_Student_Course_Connections</fullName>
@@ -78,7 +78,7 @@
             <operation>equals</operation>
             <value>hed__Course_Enrollment__c.Student</value>
         </filters>
-        <label>K12 All Student Course Connections</label>
+        <label>K-12 All Student Course Connections</label>
     </listViews>
     <listViews>
         <fullName>K12_Students_Current_Course_Connections</fullName>
