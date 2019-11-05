@@ -2,10 +2,15 @@
   "orgName": "K12 - Prerelease Dev Workspace",
   "edition": "Developer",
   "instance": "CS46",
-  "settings" : {
-    "orgPreferenceSettings": {
-        "s1DesktopEnabled": true,
-        "chatterEnabled": true
+  "settings": {
+    "chatterSettings": {
+      "enableChatter": true
+    },
+    "languageSettings": {
+      "enableTranslationWorkbench": true
+    },
+    "lightningExperienceSettings": {
+      "enableS1DesktopEnabled": true
     }
   }
 }
