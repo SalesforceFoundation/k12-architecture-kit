@@ -17,7 +17,7 @@
         <columns>hed__Time_Block__c</columns>
         <columns>hed__Capacity__c</columns>
         <filterScope>Everything</filterScope>
-        <label>K12 All Course Offerings</label>
+        <label>K-12 All Course Offerings</label>
     </listViews>
     <fields>
         <fullName>hed__Term__c</fullName>

@@ -31,7 +31,7 @@
         <columns>hed__Is_Primary__c</columns>
         <columns>hed__Status__c</columns>
         <filterScope>Everything</filterScope>
-        <label>K12 All Program Plans</label>
+        <label>K-12 All Program Plans</label>
     </listViews>
     <searchLayouts>
         <searchResultsAdditionalFields>hed__Account__c</searchResultsAdditionalFields>

@@ -25,7 +25,7 @@
         <columns>hed__Category__c</columns>
         <columns>hed__Program_Plan__c</columns>
         <filterScope>Everything</filterScope>
-        <label>K12 All Plan Requirements</label>
+        <label>K-12 All Plan Requirements</label>
     </listViews>
     <deploymentStatus>Deployed</deploymentStatus>
     <description>This object will be the various course requirements that would need to be met to achieve the particular Program Plan</description>

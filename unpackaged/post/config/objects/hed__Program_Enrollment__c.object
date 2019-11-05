@@ -36,7 +36,7 @@
         <columns>hed__Credits_Attempted__c</columns>
         <columns>hed__Credits_Earned__c</columns>
         <filterScope>Everything</filterScope>
-        <label>K12 All Program Enrollments</label>
+        <label>K-12 All Program Enrollments</label>
     </listViews>
     <deploymentStatus>Deployed</deploymentStatus>
     <description>Contains details about the relationship a student Contact has with a Department or School (the degree-granting Account type for the educational institution).</description>

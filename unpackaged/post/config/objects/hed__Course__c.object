@@ -24,7 +24,7 @@
         <columns>hed__Course_ID__c</columns>
         <columns>hed__Credit_Hours__c</columns>
         <filterScope>Everything</filterScope>
-        <label>K12 All Courses</label>
+        <label>K-12 All Courses</label>
     </listViews>
     <deploymentStatus>Deployed</deploymentStatus>
     <description>Academic course that a Department or School (the degree-granting Account type for the educational institution) offers.</description>
