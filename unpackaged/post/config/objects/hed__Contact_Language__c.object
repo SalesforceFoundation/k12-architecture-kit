@@ -26,7 +26,7 @@
         <columns>hed__Fluency__c</columns>
         <columns>hed__Primary_Language__c</columns>
         <filterScope>Everything</filterScope>
-        <label>K12 All Contact Languages</label>
+        <label>K-12 All Contact Languages</label>
     </listViews>
     <fields>
         <fullName>hed__Contact__c</fullName>

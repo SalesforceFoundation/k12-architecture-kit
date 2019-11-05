@@ -24,7 +24,7 @@
         <columns>hed__Time_Block__c</columns>
         <columns>hed__Facility__c</columns>
         <filterScope>Everything</filterScope>
-        <label>K12 All Course Offering Schedules</label>
+        <label>K-12 All Course Offering Schedules</label>
     </listViews>
     <deploymentStatus>Deployed</deploymentStatus>
     <description>Joins Course Offering to Time Block and provides a way to specify the days and location for a Course.</description>

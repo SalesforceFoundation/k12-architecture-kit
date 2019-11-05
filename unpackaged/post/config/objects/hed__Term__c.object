@@ -25,7 +25,7 @@
         <columns>hed__Start_Date__c</columns>
         <columns>hed__End_Date__c</columns>
         <filterScope>Everything</filterScope>
-        <label>K12 All Terms</label>
+        <label>K-12 All Terms</label>
     </listViews>
     <deploymentStatus>Deployed</deploymentStatus>
     <description>Unit of time in which academic activities are taking place.</description>
