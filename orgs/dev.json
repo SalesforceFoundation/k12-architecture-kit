@@ -1,10 +1,15 @@
 {
   "orgName": "K12 - Dev Org",
   "edition": "Developer",
-  "settings" : {
-    "orgPreferenceSettings": {
-        "s1DesktopEnabled": true,
-        "chatterEnabled": true
+  "settings": {
+    "chatterSettings": {
+      "enableChatter": true
+    },
+    "languageSettings": {
+      "enableTranslationWorkbench": true
+    },
+    "lightningExperienceSettings": {
+      "enableS1DesktopEnabled": true
     }
   }
 }
