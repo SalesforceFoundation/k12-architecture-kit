@@ -32,7 +32,7 @@
         <columns>hed__Parent_Facility__c</columns>
         <columns>hed__Capacity__c</columns>
         <filterScope>Everything</filterScope>
-        <label>K12 All Facilities</label>
+        <label>K-12 All Facilities</label>
     </listViews>
     <searchLayouts>
         <customTabListAdditionalFields>hed__Facility_Type__c</customTabListAdditionalFields>

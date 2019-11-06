@@ -27,7 +27,7 @@
         <columns>hed__Letter_Grade__c</columns>
         <columns>hed__Result__c</columns>
         <filterScope>Everything</filterScope>
-        <label>K12 All Term Grades</label>
+        <label>K-12 All Term Grades</label>
     </listViews>
     <deploymentStatus>Deployed</deploymentStatus>
     <description>Stores student grades for a specific grading period within a Term.</description>
