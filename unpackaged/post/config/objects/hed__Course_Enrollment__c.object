@@ -98,7 +98,7 @@
             <operation>equals</operation>
             <value>Current</value>
         </filters>
-        <label>K12 Students Current Course Connections</label>
+        <label>K-12 Students Current Course Connections</label>
     </listViews>
     <recordTypes>
         <fullName>Faculty</fullName>
