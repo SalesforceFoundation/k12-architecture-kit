@@ -10,7 +10,7 @@ project:
         prefix_feature: feature
         prefix_beta: beta/
         prefix_release: release/
-        repo_url: https://github.com/SalesforceFoundation/Athena
+        repo_url: https://github.com/SalesforceFoundation/k12-architecture-kit
     dependencies:
         - github: 'https://github.com/SalesforceFoundation/HEDAP'
 
