@@ -28,7 +28,7 @@
         <columns>hed__Affiliation_Type__c</columns>
         <columns>hed__Status__c</columns>
         <filterScope>Everything</filterScope>
-        <label>K12 All Affiliations</label>
+        <label>K-12 All Affiliations</label>
     </listViews>
     <deploymentStatus>Deployed</deploymentStatus>
     <description>Connection between a Contact and an Account.</description>

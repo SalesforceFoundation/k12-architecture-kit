@@ -5,16 +5,17 @@
         <comment>K12 Home tab replacement for K12 Architecture Kit App</comment>
         <content>K12_Kit_Home_Page</content>
         <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
         <pageOrSobjectType>standard-home</pageOrSobjectType>
-        <type>flexipage</type>
     </actionOverrides>
     <brand>
         <headerColor>#0070D2</headerColor>
-        <logo>K12Kit1</logo>
+        <logo>k12_architecture_kit_1_lines_2</logo>
         <logoVersion>1</logoVersion>
         <shouldOverrideOrgTheme>false</shouldOverrideOrgTheme>
     </brand>
-    <description>K-12 Education Data Architecture</description>
+    <description>Education Cloud</description>
     <formFactors>Large</formFactors>
     <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
     <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>

@@ -36,7 +36,7 @@
             <operation>equals</operation>
             <value>Account.University_Department</value>
         </filters>
-        <label>K12 All Academic Departments</label>
+        <label>K-12 All Academic Departments</label>
     </listViews>
     <listViews>
         <fullName>K12_All_Academic_Programs</fullName>
@@ -49,7 +49,7 @@
             <operation>equals</operation>
             <value>Account.Academic_Program</value>
         </filters>
-        <label>K12 All Academic Programs</label>
+        <label>K-12 All Academic Programs</label>
     </listViews>
     <listViews>
         <fullName>K12_All_Educational_Institutions</fullName>
@@ -67,7 +67,7 @@
             <operation>equals</operation>
             <value>Account.Educational_Institution</value>
         </filters>
-        <label>K12 All Educational Institutions</label>
+        <label>K-12 All Educational Institutions</label>
     </listViews>
     <listViews>
         <fullName>K12_All_Households</fullName>
@@ -84,7 +84,7 @@
             <operation>equals</operation>
             <value>Account.HH_Account</value>
         </filters>
-        <label>K12 All Households</label>
+        <label>K-12 All Households</label>
     </listViews>
     <recordTypes>
         <fullName>HH_Account</fullName>

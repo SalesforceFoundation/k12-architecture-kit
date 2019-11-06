@@ -57,7 +57,7 @@
             <operation>equals</operation>
             <value>Contact.Faculty</value>
         </filters>
-        <label>K12 All Faculty/Staff</label>
+        <label>K-12 All Faculty/Staff</label>
     </listViews>
     <listViews>
         <fullName>K12_All_Guardians</fullName>
@@ -73,7 +73,7 @@
             <operation>equals</operation>
             <value>Contact.Guardian</value>
         </filters>
-        <label>K12 All Guardians</label>
+        <label>K-12 All Guardians</label>
     </listViews>
     <listViews>
         <fullName>K12_All_Students</fullName>
@@ -90,7 +90,7 @@
             <operation>equals</operation>
             <value>Contact.Student</value>
         </filters>
-        <label>K12 All Students</label>
+        <label>K-12 All Students</label>
     </listViews>
     <recordTypes>
         <fullName>Faculty</fullName>
