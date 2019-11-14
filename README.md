@@ -8,7 +8,7 @@ K-12 Architecture Kit is built from industry-wide best practices used across edu
 
 You can install EDA utilizing our custom application installer into any Developer Edition, Sandbox or Enterprise Edition Salesforce org.
 
-* K-12 Architecture Kit Installer Link coming soon!
+* <a href="https://install.salesforce.org/products/k12" target="_blank">K-12 Architecture Kit Installer</a>
 
 ### Resources
 
