@@ -42,7 +42,7 @@ tasks:
             path: unpackaged/config/trial
 
     update_admin_profile:
-        description: Retrieves, edits, and redeploys the Admin.profile with full FLS perms for all objects/fields
+        #description: Retrieves, edits, and redeploys the Admin.profile with full FLS perms for all objects/fields
         class_path: tasks.salesforce.UpdateAdminProfile
 
     retrieve_postinstall_config:
@@ -62,7 +62,7 @@ tasks:
             namespace_tokenize: $project_config.project__package__namespace
 
     uninstall_packaged_incremental:
-        description: Deletes any metadata from the package in the target org not in the local workspace
+        #description: Deletes any metadata from the package in the target org not in the local workspace
         class_path: cumulusci.tasks.salesforce.UninstallPackagedIncremental
         options:
             ignore:
@@ -85,7 +85,7 @@ tasks:
 
 flows:
     config_managed:
-        description: Configure an org for use as a dev org after package metadata is deployed
+        #description: Configure an org for use as a dev org after package metadata is deployed
         steps:
             3:
                 task: deploy_k12_kit_settings
@@ -106,7 +106,7 @@ flows:
                 options:
                     unmanaged: False
     qa_org:
-        description: Set up an org as a QA environment for unmanaged metadata
+        #description: Set up an org as a QA environment for unmanaged metadata
         steps:
             4:
                 task: enable_course_connections
@@ -120,7 +120,7 @@ flows:
                 task: snapshot_changes
 
     dev_org:
-        description: Set up an org as a development environment for unmanaged metadata
+        #description: Set up an org as a development environment for unmanaged metadata
         steps:
             4:
                 task: enable_course_connections
@@ -134,7 +134,7 @@ flows:
                 task: snapshot_changes
 
     dev_org_namespaced:
-        description: Set up a namespaced scratch org as a development environment for unmanaged metadata
+        #description: Set up a namespaced scratch org as a development environment for unmanaged metadata
         steps:
             4:
                 task: enable_course_connections
