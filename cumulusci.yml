@@ -42,6 +42,7 @@ tasks:
             path: unpackaged/config/trial
 
     update_admin_profile:
+        #description: Retrieves, edits, and redeploys the Admin.profile with full FLS perms for all objects/fields
         class_path: tasks.salesforce.UpdateAdminProfile
 
     retrieve_postinstall_config:
@@ -61,6 +62,7 @@ tasks:
             namespace_tokenize: $project_config.project__package__namespace
 
     uninstall_packaged_incremental:
+        #description: Deletes any metadata from the package in the target org not in the local workspace
         class_path: cumulusci.tasks.salesforce.UninstallPackagedIncremental
         options:
             ignore:
@@ -73,7 +75,7 @@ tasks:
                     - NewNote
                     - NewTask
                     - SendEmail
-    
+
     execute_install_apex:
         description: Runs most of the install script methods from STG_InstallScript class
         class_path: cumulusci.tasks.apex.anon.AnonymousApexTask
@@ -83,6 +85,7 @@ tasks:
 
 flows:
     config_managed:
+        #description: Configure an org for use as a dev org after package metadata is deployed
         steps:
             3:
                 task: deploy_k12_kit_settings
@@ -102,19 +105,36 @@ flows:
                 task: deploy_trial_config
                 options:
                     unmanaged: False
-
-    dev_org:
+    qa_org:
+        #description: Set up an org as a QA environment for unmanaged metadata
         steps:
             4:
                 task: enable_course_connections
             5:
                 task: deploy_trial_config
             6:
-                task: snapshot_changes
+                task: deploy_k12_kit_settings
             7:
                 task: execute_install_apex
+            8:
+                task: snapshot_changes
+
+    dev_org:
+        #description: Set up an org as a development environment for unmanaged metadata
+        steps:
+            4:
+                task: enable_course_connections
+            5:
+                task: deploy_trial_config
+            6:
+                task: deploy_k12_kit_settings
+            7:
+                task: execute_install_apex
+            8:
+                task: snapshot_changes
 
     dev_org_namespaced:
+        #description: Set up a namespaced scratch org as a development environment for unmanaged metadata
         steps:
             4:
                 task: enable_course_connections
@@ -125,9 +145,11 @@ flows:
                 options:
                     namespaced_org: True
             6:
-                task: snapshot_changes
+                task: deploy_k12_kit_settings
             7:
                 task: execute_install_apex
+            8:
+                task: snapshot_changes
 
 plans:
     install:
