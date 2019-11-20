@@ -81,11 +81,15 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
             "required": True,
         },
         "recordtypes": {
-            "description": "The record types that these new picklist values will be available for",
+            "description": "The record types for which these new picklist values will be available",
             "required": False,
         },
         "sorted": {
-            "description": "If true, set the entire picklist to be sorted in alphabetical order",
+            "description": "If true, sets the entire picklist to be sorted in alphabetical order",
+            "required": False,
+        },
+        "otherlast": {
+            "description": "If true, the Other value (if one exists), will remain at the end of the values",
             "required": False,
         }
     }
@@ -211,18 +215,31 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
         return package_xml
 
     def _build_object_xml(self, validated_field, picklist_record_types, existing_picklist_values, values, field):
-        # to-do: "Other" should always be at the bottom? (if it's already there)
-
         picklist_values_xml = ""
         record_type_picklist_xml = ""
 
+        # should "Other" remain at the bottom of the picklist? (If it exists)
+        other_last = False
+        other_picklist_xml = ""
+        if "otherlast" in self.options:
+            if self.options["otherlast"] == "True":
+                other_last = True
+
         # add the existing picklist values
         for existing_picklist_value in existing_picklist_values:
-            picklist_values_xml += picklist_value_template.format(
-                name = existing_picklist_value["valueName"], 
-                default = existing_picklist_value["default"], 
-                label = existing_picklist_value["label"]
-            )
+            if other_last and existing_picklist_value["label"] == "Other":
+                other_picklist_xml = picklist_value_template.format(
+                    name = existing_picklist_value["valueName"], 
+                    default = existing_picklist_value["default"], 
+                    label = existing_picklist_value["label"]
+                )
+            
+            else:
+                picklist_values_xml += picklist_value_template.format(
+                    name = existing_picklist_value["valueName"], 
+                    default = existing_picklist_value["default"], 
+                    label = existing_picklist_value["label"]
+                )
         
         # add the new picklist values
         for value in values:
@@ -231,6 +248,9 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
                 default = False, 
                 label = value
             )
+
+        # add "Other", if it exists
+        picklist_values_xml += other_picklist_xml
 
         # add the picklist values to the record types, if any were specified
         if picklist_record_types:
@@ -245,6 +265,7 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
                                 name = picklist_value["valueName"],
                                 default = picklist_value["default"]
                             )
+                        break
 
                 # assign the new picklist values to the record type
                 for value in values:
