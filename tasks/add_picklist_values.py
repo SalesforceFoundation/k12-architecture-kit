@@ -21,15 +21,15 @@ package_xml_record_types_block_template = """
     </types>"""
 
 package_xml_record_type_template = """
-        <members>{object}.{record_type_name}</members>"""
+        <members>{record_type_full_name}</members>"""
 
 object_template = """<?xml version="1.0" encoding="UTF-8"?>
 <CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
     <fields>
         <fullName>{field}</fullName>
-        <description>The type of credential or Attribute.</description><!-- to-do: update this -->
-        <inlineHelpText>The type of credential or Attribute.</inlineHelpText><!-- to-do: update this -->
-        <label>Attribute Type</label><!-- to-do: update this -->
+        <description>{description}</description>
+        <inlineHelpText>{helpText}</inlineHelpText>
+        <label>{label}</label>
         <type>Picklist</type>
         <valueSet>
             <valueSetDefinition>
@@ -50,6 +50,7 @@ record_type_picklist_template = """
     <recordTypes>
         <fullName>{name}</fullName>
         <active>true</active>
+        <description>{description}</description>
         <label>{label}</label>
         <picklistValues>
             <picklist>{field}</picklist>{picklist_values}
@@ -83,8 +84,8 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
             "description": "The record types that these new picklist values will be available for",
             "required": False,
         },
-        "alphabetical": {
-            "description": "If true, set the entire picklist to be alphabetical order",
+        "sorted": {
+            "description": "If true, set the entire picklist to be sorted in alphabetical order",
             "required": False,
         }
     }
@@ -94,45 +95,52 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
         field = self.options["field"]
         values = self.options["values"].split(',')
 
-        active_picklist_values = []
-        describe_results = getattr(self.sf, sobject).describe()
-        
-        validated_field = None
-        for f in describe_results["fields"]:
-            if f["name"] == field:
-                validated_field = f["name"]
-                field_describe = f
-                break
+        # The Tooling API does not have the namespace or the '__c' suffix in the DeveloperName of the CustomField object,
+        # so we have to remove it.
+        split_field = field.split('__')
+        if len(split_field) is 3:
+            field_developer_name = split_field[1]
+            namespace = split_field[0]
+        else:
+            field_developer_name = split_field[0]
+            namespace = ""
 
-        if validated_field != field:
+        field_tooling_results = self.tooling.query(
+            "SELECT Id, DeveloperName, Metadata "
+            "FROM CustomField "
+            "WHERE NamespacePrefix = '{namespace}' "
+            "AND DeveloperName = '{developer_name}' ".format(namespace = namespace, developer_name = field_developer_name)
+        )
+
+        if field_tooling_results["size"] is not 1:
             raise Exception('{} field not found on {}'.format(field, sobject))
 
-        # build up a list of active record types
-        # to-do: issue when the record type has a namespace... duplicate is created without a namespace
-        picklist_record_types = self._get_active_record_types(describe_results)
+        validated_field = field_tooling_results["records"][0]["Metadata"]
+        existing_picklist_values = []
 
-        if field_describe["type"] == "picklist":
-            active_picklist_values = [
-                picklist for picklist in field_describe["picklistValues"] if picklist["active"] is True
-            ]
+        # build up a list of active record types
+        picklist_record_types = self._get_active_record_types(sobject)
+
+        if validated_field["type"] == "Picklist":
+            existing_picklist_values = validated_field["valueSet"]["valueSetDefinition"]["value"]
         else:
             raise Exception('{} field is not a picklist field'.format(field))
 
         # remove any existing picklist values from the list of picklist values to add
-        for active_picklist_value in active_picklist_values:
-            if active_picklist_value["value"] in values:
-                print('{} is already a picklist value on {}. Skipping...'.format(active_picklist_value["value"], field))
-                values.remove(active_picklist_value["value"])
+        for existing_picklist_value in existing_picklist_values:
+            if existing_picklist_value["label"] in values:
+                print('{} is already a picklist value on {}. Skipping...'.format(existing_picklist_value["label"], field))
+                values.remove(existing_picklist_value["label"])
 
         # build the package.xml:
         package_xml = self._build_package_xml(picklist_record_types, sobject, field)
         print(package_xml) # temporary
 
         # build the object XML:
-        object_xml = self._build_object_xml(picklist_record_types, active_picklist_values, values, field)
+        object_xml = self._build_object_xml(validated_field, picklist_record_types, existing_picklist_values, values, field)
         print(object_xml) # temporary
 
-        # deploy back to Salesforce
+        # create temporary files & deploy back to Salesforce
         self.tempdir = tempfile.mkdtemp()
         package_xml_file = os.path.join(self.tempdir, "package.xml")
         with open(package_xml_file, "w") as f:
@@ -141,7 +149,7 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
         print(self.tempdir) # temporary
         print(package_xml_file) # temporary
 
-        object_folder = os.mkdir("{}/{}".format(self.tempdir, "objects"))
+        os.mkdir("{}/{}".format(self.tempdir, "objects"))
         object_xml_file = os.path.join(self.tempdir, "objects", "{}.object".format(sobject))
         with open(object_xml_file, "w") as f:
             f.write(object_xml)
@@ -151,29 +159,33 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
         self._deploy_metadata()
         shutil.rmtree(self.tempdir)
 
-    def _get_active_record_types(self, describe_results):
+    def _get_active_record_types(self, sobject):
         picklist_record_types = []
         picklist_record_type_names = []
         if "recordtypes" in self.options:
+            record_type_tooling_results = self.tooling.query(
+                "SELECT Id, FullName, Metadata, Name "
+                "FROM RecordType "
+                "WHERE SobjectType = '{sobject}' "
+                "AND IsActive = True ".format(sobject = sobject)
+            )
+
             record_types = self.options["recordtypes"].split(',')
-
             active_record_types = [
-                rt for rt in describe_results["recordTypeInfos"] if not rt["master"] and rt["active"] is True
+                rt for rt in record_type_tooling_results["records"] if rt["Metadata"]["active"] is True
             ]
-
-            print(active_record_types)
 
             # validate record_types against active_record_types
             for active_record_type in active_record_types:
-                if active_record_type["developerName"] in record_types:
+                record_type_name = active_record_type["FullName"].split('.')[1] # removes the SObject from FullName
+                if record_type_name in record_types:
                     picklist_record_types.append(active_record_type)
-                    picklist_record_type_names.append(active_record_type["developerName"])
-                    # to-do: The describe doesn't include the namespace, which is necessary otherwise duplicate record types are created. WHY???
+                    picklist_record_type_names.append(record_type_name)
 
             for rt in record_types:
                 if rt not in picklist_record_type_names:
                     # Choosing to not throw an exception here since a customer might have deactivated or deleted a record type.
-                    print('{} is not an active record type for the {} object.'.format(rt, describe_results["name"]))
+                    print('{} is not an active record type for the {} object.'.format(rt, sobject))
 
         return picklist_record_types
 
@@ -184,8 +196,7 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
             package_xml_record_types = ""
             for rt in picklist_record_types:
                 package_xml_record_types += package_xml_record_type_template.format(
-                    object = sobject, 
-                    record_type_name = rt["developerName"]
+                    record_type_full_name = rt["FullName"]
                 )
             
             package_xml_record_types_block = package_xml_record_types_block_template.format(record_types = package_xml_record_types)
@@ -199,27 +210,19 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
 
         return package_xml
 
-    def _build_object_xml(self, picklist_record_types, active_picklist_values, values, field):
+    def _build_object_xml(self, validated_field, picklist_record_types, existing_picklist_values, values, field):
         # to-do: "Other" should always be at the bottom? (if it's already there)
 
         picklist_values_xml = ""
         record_type_picklist_xml = ""
-        record_type_picklist_values_xml = ""
 
         # add the existing picklist values
-        for active_picklist_value in active_picklist_values:
+        for existing_picklist_value in existing_picklist_values:
             picklist_values_xml += picklist_value_template.format(
-                name = active_picklist_value["value"], 
-                default = active_picklist_value["defaultValue"], 
-                label = active_picklist_value["label"]
+                name = existing_picklist_value["valueName"], 
+                default = existing_picklist_value["default"], 
+                label = existing_picklist_value["label"]
             )
-
-            if picklist_record_types:
-                record_type_picklist_values_xml += record_type_picklist_value_template.format(
-                    # to-do: Not all picklist values should be available for the record type... it will be dependent on how its configured in the org.
-                    name = active_picklist_value["value"], 
-                    default = active_picklist_value["defaultValue"] # to-do: I don't think this is right. Can we look at the record type XML describe?
-                )
         
         # add the new picklist values
         for value in values:
@@ -229,30 +232,46 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
                 label = value
             )
 
-            if picklist_record_types:
-                record_type_picklist_values_xml += record_type_picklist_value_template.format(
-                    name = value,
-                    default = False
-                )
-
         # add the picklist values to the record types, if any were specified
         if picklist_record_types:
             for rt in picklist_record_types:
+                record_type_picklist_values_xml = ""
+
+                # add back the existing picklist values assigned to the record type
+                for picklist in rt["Metadata"]["picklistValues"]:
+                    if picklist["picklist"] == field:
+                        for picklist_value in picklist["values"]:
+                            record_type_picklist_values_xml += record_type_picklist_value_template.format(
+                                name = picklist_value["valueName"],
+                                default = picklist_value["default"]
+                            )
+
+                # assign the new picklist values to the record type
+                for value in values:
+                    record_type_picklist_values_xml += record_type_picklist_value_template.format(
+                        name = value,
+                        default = False
+                    )
+
                 record_type_picklist_xml += record_type_picklist_template.format(
-                    name = rt["developerName"], 
-                    label = rt["name"], 
+                    name = rt["FullName"].split('.')[1], # removes the SObject from FullName
+                    description = rt["Metadata"]["description"],
+                    label = rt["Name"], 
                     field = field,
                     picklist_values = record_type_picklist_values_xml
                 )
 
-        sorted_picklist = False
-        if "alphabetical" in self.options:
-            if self.options["alphabetical"] == "True":
+        sorted_picklist = validated_field["valueSet"]["valueSetDefinition"]["sorted"]
+        if "sorted" in self.options:
+            if self.options["sorted"] == "True":
                 sorted_picklist = True
 
         # combine it all together
         object_xml = object_template.format(
             field = field,
+            description = validated_field["description"],
+            helpText = validated_field["inlineHelpText"],
+            label = validated_field["label"],
             sorted = sorted_picklist,
             picklist_values = picklist_values_xml,
             record_types = record_type_picklist_xml
