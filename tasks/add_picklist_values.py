@@ -69,11 +69,11 @@ record_type_picklist_value_template = """
 class AddPicklistValues(BaseSalesforceApiTask, Deploy):
     task_options = {
         "sobject": {
-            "description": "SObject of the picklist being modified",
+            "description": "SObject of the picklist field being modified",
             "required": True,
         },
         "field": {
-            "description": "The picklist being modified",
+            "description": "The picklist field being modified",
             "required": True,
         },
         "values": {
@@ -89,7 +89,7 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
             "required": False,
         },
         "otherlast": {
-            "description": "If true, the Other value (if one exists), will remain at the end of the values",
+            "description": "If true, the Other value (if one exists) will remain at the end of the values",
             "required": False,
         }
     }
@@ -130,19 +130,11 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
         else:
             raise Exception('{} field is not a picklist field'.format(field))
 
-        # remove any existing picklist values from the list of picklist values to add
-        for existing_picklist_value in existing_picklist_values:
-            if existing_picklist_value["label"] in values:
-                print('{} is already a picklist value on {}. Skipping...'.format(existing_picklist_value["label"], field))
-                values.remove(existing_picklist_value["label"])
-
         # build the package.xml:
         package_xml = self._build_package_xml(picklist_record_types, sobject, field)
-        print(package_xml) # temporary
 
         # build the object XML:
         object_xml = self._build_object_xml(validated_field, picklist_record_types, existing_picklist_values, values, field)
-        print(object_xml) # temporary
 
         # create temporary files & deploy back to Salesforce
         self.tempdir = tempfile.mkdtemp()
@@ -150,15 +142,10 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
         with open(package_xml_file, "w") as f:
             f.write(package_xml)
 
-        print(self.tempdir) # temporary
-        print(package_xml_file) # temporary
-
         os.mkdir("{}/{}".format(self.tempdir, "objects"))
         object_xml_file = os.path.join(self.tempdir, "objects", "{}.object".format(sobject))
         with open(object_xml_file, "w") as f:
             f.write(object_xml)
-
-        print(object_xml_file) # temporary
         
         self._deploy_metadata()
         shutil.rmtree(self.tempdir)
@@ -189,7 +176,7 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
             for rt in record_types:
                 if rt not in picklist_record_type_names:
                     # Choosing to not throw an exception here since a customer might have deactivated or deleted a record type.
-                    print('{} is not an active record type for the {} object.'.format(rt, sobject))
+                    self.logger.info(f'{rt} is not an active record type for the {sobject} object. Skipping over...')
 
         return picklist_record_types
 
@@ -221,12 +208,14 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
         # should "Other" remain at the bottom of the picklist? (If it exists)
         other_last = False
         other_picklist_xml = ""
-        if "otherlast" in self.options:
-            if self.options["otherlast"] == "True":
-                other_last = True
+        if "otherlast" in self.options and self.options["otherlast"] == "True":
+            other_last = True
+
+        values_added = []
 
         # add the existing picklist values
         for existing_picklist_value in existing_picklist_values:
+            values_added.append(existing_picklist_value["label"])
             if other_last and existing_picklist_value["label"] == "Other":
                 other_picklist_xml = picklist_value_template.format(
                     name = existing_picklist_value["valueName"], 
@@ -243,11 +232,16 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
         
         # add the new picklist values
         for value in values:
-            picklist_values_xml += picklist_value_template.format(
-                name = value, 
-                default = False, 
-                label = value
-            )
+            # ignore any existing picklist values
+            if value in values_added:
+                self.logger.info(f'{value} is already a picklist value on {field}. Skipping over...')
+
+            else:
+                picklist_values_xml += picklist_value_template.format(
+                    name = value, 
+                    default = False, 
+                    label = value
+                )
 
         # add "Other", if it exists
         picklist_values_xml += other_picklist_xml
@@ -256,11 +250,13 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
         if picklist_record_types:
             for rt in picklist_record_types:
                 record_type_picklist_values_xml = ""
+                values_added_to_record_type = []
 
                 # add back the existing picklist values assigned to the record type
                 for picklist in rt["Metadata"]["picklistValues"]:
                     if picklist["picklist"] == field:
                         for picklist_value in picklist["values"]:
+                            values_added_to_record_type.append(picklist_value["valueName"])
                             record_type_picklist_values_xml += record_type_picklist_value_template.format(
                                 name = picklist_value["valueName"],
                                 default = picklist_value["default"]
@@ -269,6 +265,10 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
 
                 # assign the new picklist values to the record type
                 for value in values:
+                    # ignore any existing picklist values
+                    if value in values_added_to_record_type:
+                        continue
+
                     record_type_picklist_values_xml += record_type_picklist_value_template.format(
                         name = value,
                         default = False
@@ -283,9 +283,8 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
                 )
 
         sorted_picklist = validated_field["valueSet"]["valueSetDefinition"]["sorted"]
-        if "sorted" in self.options:
-            if self.options["sorted"] == "True":
-                sorted_picklist = True
+        if "sorted" in self.options and self.options["sorted"] == "True":
+            sorted_picklist = True
 
         # combine it all together
         object_xml = object_template.format(
