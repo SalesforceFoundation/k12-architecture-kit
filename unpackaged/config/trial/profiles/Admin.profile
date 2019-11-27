@@ -39,6 +39,9 @@
         <layout>Contact-%%%NAMESPACE%%%K12 Kit Student Layout</layout>
         <recordType>Contact.%%%NAMESPACED_ORG%%%Student</recordType>
     </layoutAssignments>
+     <layoutAssignments>
+        <layout>hed__Address__c-%%%NAMESPACE%%%K12 Kit Address Layout</layout>
+    </layoutAssignments>
     <layoutAssignments>
         <layout>hed__Affiliation__c-%%%NAMESPACE%%%K12 Kit Affiliation Layout</layout>
     </layoutAssignments>
