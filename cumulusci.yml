@@ -31,6 +31,15 @@ tasks:
             path: scripts/configure_k12_kit.cls
             apex: enableCourseConnections();
 
+    deploy_k12_app:
+        description: Deploys the K12 Kit App for those who use the installer rather than the trial
+        class_path: cumulusci.tasks.salesforce.Deploy
+        group: Project-specific
+        ui_options:
+            name: Deploy K12 Architecture Kit app tile
+        options:
+            path: unpackaged/config/installer
+
     deploy_trial_config:
         description: Deploys metadata and configuration for TSOs.
         class_path: cumulusci.tasks.salesforce.Deploy
@@ -110,6 +119,7 @@ flows:
                 task: deploy_trial_config
                 options:
                     unmanaged: False
+                    
     qa_org:
         #description: Set up an org as a QA environment for unmanaged metadata
         steps:
@@ -191,6 +201,8 @@ plans:
                 ui_options:
                     config:
                         name: K-12 Architecture Kit Metadata and Configuration
+            5:
+                task: deploy_k12_app
 orgs:
     scratch:
         dev_namespaced:
