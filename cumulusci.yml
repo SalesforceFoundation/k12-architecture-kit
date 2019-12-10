@@ -103,8 +103,12 @@ flows:
         steps:
             2:
                 task: enable_course_connections
+                options:
+                    managed: True
             3:
                 task: deploy_trial_config
+                options:
+                    unmanaged: False
 
     trial_org:
         description: Deploy trial configuration to an org.
