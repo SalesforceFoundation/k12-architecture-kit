@@ -99,6 +99,13 @@ flows:
             3:
                 task: deploy_k12_kit_settings
 
+    config_regression:
+        steps:
+            2:
+                task: enable_course_connections
+            3:
+                task: deploy_trial_config
+
     trial_org:
         description: Deploy trial configuration to an org.
         steps:
