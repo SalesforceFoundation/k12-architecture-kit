@@ -95,6 +95,7 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
     }
 
     def _run_task(self):
+        self.api_version = "47.0"
         sobject = self.options["sobject"]
         field = self.options["field"]
         values = self.options["values"].split(',')

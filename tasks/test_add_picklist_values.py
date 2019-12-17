@@ -1,67 +1,85 @@
-import click
 import unittest
 from tasks import add_picklist_values
 from unittest import mock
-from cumulusci.cli import cci
-from cumulusci.core.config import BaseGlobalConfig
-from cumulusci.core.config import BaseProjectConfig
-from cumulusci.core.config import OrgConfig
-from cumulusci.core.config import TaskConfig
-from cumulusci.core.config import ServiceConfig
-from cumulusci.core.keychain import BaseProjectKeychain
+import responses
+from cumulusci.salesforce_api.tests.metadata_test_strings import deploy_result
+from cumulusci.tasks.salesforce.tests.util import create_task
+#from cumulusci.salesforce_api import soap_envelopes
 
-def run_click_command(cmd, *args, **kw):
-    """Run a click command with a mock context and injected CCI config object.
-    """
-    config = kw.pop("config", None)
-    with mock.patch("cumulusci.cli.cci.TEST_CONFIG", config):
-        with click.Context(command=mock.Mock()):
-            return cmd.callback(*args, **kw)
+task_options = {
+    "sobject": "hed__Attribute__c",
+    "field": "hed__Attribute_Type__c",
+    "values": "Test Value" # recordtypes, sorted, otherlast
+}
+
+api_version = "47.0"
 
 class TestAddPicklistValues(unittest.TestCase):
-    
-    def setUp(self):
-        self.api_version = 46.0
-        self.global_config = BaseGlobalConfig(
-            {"project": {"package": {"api_version": self.api_version}}}
-        )
-        self.project_config = BaseProjectConfig(
-            self.global_config, config={"noyaml": True}
-        )
-        self.project_config.config["project"] = {
-            "package": {"api_version": self.api_version}
-        }
-        self.project_config.config["services"] = {
-            "connected_app": {"attributes": {"client_id": {}}}
-        }
-        self.keychain = BaseProjectKeychain(self.project_config, "")
-        self.project_config.set_keychain(self.keychain)
 
-        self.task_config = TaskConfig()
-        self.org_config = OrgConfig(
-            {"instance_url": "https://example.com", "access_token": "abc123"}, "test"
-        )
-        self.base_tooling_url = "{}/services/data/v{}/tooling/".format(
-            self.org_config.instance_url, self.api_version
-        )
+    # to-do tests: record types, sorted, otherlast, bad object, bad field, etc
     
+    @responses.activate
     def test_basic(self):
-        config = mock.Mock()
-        self.org_config.refresh_oauth_token = mock.Mock()
-        config.get_org = mock.Mock(return_value=("test", self.org_config))
-        config.project_config = self.project_config
-        config.project_config.config["tasks"] = {
-            "add_picklist_values": {"class_path": "tasks.add_picklist_values.AddPicklistValues"}
+        add_picklist_values_task = create_task(add_picklist_values.AddPicklistValues, task_options)
+        
+        # to-do: define URLs
+        # to-do: define responses
+        base_tooling_url = "{}/services/data/v{}/tooling/".format(
+            add_picklist_values_task.org_config.instance_url,
+            api_version
+        )
+        
+        base_deployment_url = "{}/services/Soap/m/{}/{}".format(
+            add_picklist_values_task.org_config.instance_url,
+            api_version,
+            add_picklist_values_task.org_config.org_id
+        )
+
+        customfield_query_url = (
+            base_tooling_url
+            + "query/?q=SELECT+Id%2C+DeveloperName%2C+Metadata+FROM+CustomField+"
+            + "WHERE+NamespacePrefix+%3D+%27hed%27+AND+DeveloperName+%3D+%27Attribute_Type%27+"
+        )
+        
+        expected_customfield_query_response = {
+            "done": True,
+            "records": [{
+                "Id": 1, 
+                "Metadata": {
+                    "description": "Test",
+                    "inlineHelpText": "Test",
+                    "label": "Attribute Type",
+                    "type": "Picklist",
+                    "valueSet": {
+                        "valueSetDefinition": {
+                            "sorted": False,
+                            "value": [
+                                {
+                                    "default": False,
+                                    "label": "Existing Value",
+                                    "valueName": "Existing Value"
+                                }
+                            ]
+                        }
+                    }
+                }
+            }],
+            "size": 1,
         }
 
-        run_click_command(
-            cci.task_run,
-            config=config,
-            task_name="add_picklist_values",
-            org="test",
-            o=[("sobject", "test"), ("field", "test"), ("values", "test")],
-            debug=False,
-            debug_before=False,
-            debug_after=False,
-            no_prompt=True,
+        responses.add(
+            method=responses.GET, 
+            url=customfield_query_url, 
+            match_querystring=True, 
+            json=expected_customfield_query_response
         )
+
+        responses.add(
+            method=responses.POST,
+            url=base_deployment_url,
+            body=deploy_result.format(status="Succeeded", extra=""), #soap_envelopes.CHECK_DEPLOY_STATUS.format(process_id="123"),
+            status=200,
+            content_type="text/xml; charset=utf-8",
+        )
+
+        add_picklist_values_task()
