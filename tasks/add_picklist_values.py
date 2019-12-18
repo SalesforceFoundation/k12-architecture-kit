@@ -100,8 +100,8 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
         field = self.options["field"]
         values = self.options["values"].split(',')
 
-        # The Tooling API does not have the namespace or the '__c' suffix in the DeveloperName of the CustomField object,
-        # so we have to remove it.
+        # The Tooling API does not have the namespace or the '__c' suffix in the DeveloperName of the CustomField object
+        # or in the DeveloperName of the EntityDefinition object, so we have to remove it.
         split_field = field.split('__')
         if len(split_field) is 3:
             field_developer_name = split_field[1]
@@ -110,11 +110,37 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
             field_developer_name = split_field[0]
             namespace = ""
 
+        split_sobject = sobject.split('__')
+        if len(split_sobject) is 3:
+            sobject_developer_name = split_sobject[1]
+        else:
+            sobject_developer_name = split_sobject[0]
+
+        sobject_tooling_results = self.tooling.query(
+            "SELECT DeveloperName, DurableId "
+            "FROM EntityDefinition "
+            "WHERE NamespacePrefix = '{namespace}' "
+            "AND DeveloperName = '{sobject}'".format(
+                namespace = namespace,
+                sobject = sobject_developer_name
+            )
+        )
+
+        if sobject_tooling_results["size"] is not 1:
+            raise Exception('{} object not found'.format(sobject))
+
+        validated_sobject_id = sobject_tooling_results["records"][0]["DurableId"]
+
         field_tooling_results = self.tooling.query(
             "SELECT Id, DeveloperName, Metadata "
             "FROM CustomField "
             "WHERE NamespacePrefix = '{namespace}' "
-            "AND DeveloperName = '{developer_name}' ".format(namespace = namespace, developer_name = field_developer_name)
+            "AND DeveloperName = '{developer_name}' "
+            "AND TableEnumOrId = '{sobject_id}'".format(
+                namespace = namespace, 
+                developer_name = field_developer_name, 
+                sobject_id = validated_sobject_id
+            )
         )
 
         if field_tooling_results["size"] is not 1:
