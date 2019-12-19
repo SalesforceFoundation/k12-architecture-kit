@@ -27,6 +27,38 @@
         <fields>hed__Attribute_Type__c</fields>
         <label>K12 Student Characteristic Compact Layout</label>
     </compactLayouts>
+    <listViews>
+        <fullName>K12_Student_Characteristics</fullName>
+        <columns>NAME</columns>
+        <columns>hed__Attribute_Type__c</columns>
+        <columns>hed__Contact__c</columns>
+        <columns>hed__Start_Date__c</columns>
+        <columns>hed__End_Date__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>hed__Attribute__c.hed__Student_Characteristic</value>
+        </filters>
+        <label>K12 Student Characteristics</label>
+    </listViews>
+    <listViews>
+        <fullName>Credentials</fullName>
+        <columns>NAME</columns>
+        <columns>hed__Attribute_Type__c</columns>
+        <columns>hed__Subject_Area__c</columns>
+        <columns>Grade_Level__c</columns>
+        <columns>hed__Start_Date__c</columns>
+        <columns>hed__End_Date__c</columns>
+        <columns>hed__Expired__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>hed__Attribute__c.hed__Credential</value>
+        </filters>
+        <label>Credentials</label>
+    </listViews>
     <recordTypes>
         <fullName>hed__Credential</fullName>
         <active>true</active>
