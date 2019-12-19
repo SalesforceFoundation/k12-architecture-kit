@@ -68,10 +68,10 @@
         <members>Contact.K12_All_Faculty</members>
         <members>Contact.K12_All_Guardians</members>
         <members>Contact.K12_All_Students</members>
-        <members>Grade_Enrollment__c.K12_Grade_Enrollments</members>
+        <members>Grade_Enrollment__c.K12_All_Grade_Enrollments</members>
         <members>hed__Affiliation__c.K12_All_Affiliations</members>
-        <members>hed__Attribute__c.K12_Student_Characteristics</members>
-        <members>hed__Attribute__c.Credentials</members>
+        <members>hed__Attribute__c.K12_All_Student_Characteristics</members>
+        <members>hed__Attribute__c.K12_All_Credentials</members>
         <members>hed__Contact_Language__c.K12_All_Contact_Languages</members>
         <members>hed__Course_Enrollment__c.K12_All_Course_Connections</members>
         <members>hed__Course_Enrollment__c.K12_All_Faculty_Course_Connections</members>
