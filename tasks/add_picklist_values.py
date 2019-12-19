@@ -63,9 +63,6 @@ record_type_picklist_value_template = """
                 <default>{default}</default>
             </values>"""
 
-# Adds picklist values to the given field, if they don't already exist.
-# Optionally adds the picklist values for the specified record types, if the record types exist.
-# Optionally updates the picklist values to be alphabetical.
 class AddPicklistValues(BaseSalesforceApiTask, Deploy):
     task_options = {
         "sobject": {
@@ -94,6 +91,9 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
         }
     }
 
+    # Adds picklist values to the given field, if they don't already exist.
+    # Optionally adds the picklist values for the specified record types, if the record types exist.
+    # Optionally updates the picklist values to be alphabetical.
     def _run_task(self):
         self.api_version = "47.0"
         sobject = self.options["sobject"]
@@ -185,7 +185,7 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
                 "SELECT Id, FullName, Metadata, Name "
                 "FROM RecordType "
                 "WHERE SobjectType = '{sobject}' "
-                "AND IsActive = True ".format(sobject = sobject)
+                "AND IsActive = True".format(sobject=sobject)
             )
 
             record_types = self.options["recordtypes"].split(',')
