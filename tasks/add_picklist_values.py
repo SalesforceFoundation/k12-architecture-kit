@@ -105,25 +105,30 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
         split_field = field.split('__')
         if len(split_field) is 3:
             field_developer_name = split_field[1]
-            field_namespace = split_field[0]
+            field_namespace_query = "NamespacePrefix = '{}' AND ".format(
+                split_field[0]
+            )
         else:
             field_developer_name = split_field[0]
-            field_namespace = ""
+            field_namespace_query = "NamespacePrefix = '' AND "
 
         split_sobject = sobject.split('__')
         if len(split_sobject) is 3:
             sobject_developer_name = split_sobject[1]
-            sobject_namespace = split_sobject[0]
+            sobject_namespace_query = "NamespacePrefix = '{}' AND ".format(
+                split_sobject[0]
+            )
         else:
             sobject_developer_name = split_sobject[0]
-            sobject_namespace = ""
+            # Standard objects will not be found if NamespacePrefix is left in the query.
+            sobject_namespace_query = ""
 
         sobject_tooling_results = self.tooling.query(
             "SELECT DeveloperName, DurableId "
             "FROM EntityDefinition "
-            "WHERE NamespacePrefix = '{namespace}' "
-            "AND DeveloperName = '{sobject}'".format(
-                namespace=sobject_namespace,
+            "WHERE {namespace_query}"
+            "DeveloperName = '{sobject}'".format(
+                namespace_query=sobject_namespace_query,
                 sobject=sobject_developer_name
             )
         )
@@ -136,10 +141,10 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
         field_tooling_results = self.tooling.query(
             "SELECT Id, DeveloperName, Metadata "
             "FROM CustomField "
-            "WHERE NamespacePrefix = '{namespace}' "
-            "AND DeveloperName = '{developer_name}' "
+            "WHERE {namespace_query}"
+            "DeveloperName = '{developer_name}' "
             "AND TableEnumOrId = '{sobject_id}'".format(
-                namespace=field_namespace,
+                namespace_query=field_namespace_query,
                 developer_name=field_developer_name,
                 sobject_id=validated_sobject_id
             )
