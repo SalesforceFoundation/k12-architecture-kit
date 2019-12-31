@@ -105,24 +105,26 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
         split_field = field.split('__')
         if len(split_field) is 3:
             field_developer_name = split_field[1]
-            namespace = split_field[0]
+            field_namespace = split_field[0]
         else:
             field_developer_name = split_field[0]
-            namespace = ""
+            field_namespace = ""
 
         split_sobject = sobject.split('__')
         if len(split_sobject) is 3:
             sobject_developer_name = split_sobject[1]
+            sobject_namespace = split_sobject[0]
         else:
             sobject_developer_name = split_sobject[0]
+            sobject_namespace = ""
 
         sobject_tooling_results = self.tooling.query(
             "SELECT DeveloperName, DurableId "
             "FROM EntityDefinition "
             "WHERE NamespacePrefix = '{namespace}' "
             "AND DeveloperName = '{sobject}'".format(
-                namespace = namespace,
-                sobject = sobject_developer_name
+                namespace=sobject_namespace,
+                sobject=sobject_developer_name
             )
         )
 
@@ -137,9 +139,9 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
             "WHERE NamespacePrefix = '{namespace}' "
             "AND DeveloperName = '{developer_name}' "
             "AND TableEnumOrId = '{sobject_id}'".format(
-                namespace = namespace, 
-                developer_name = field_developer_name, 
-                sobject_id = validated_sobject_id
+                namespace=field_namespace,
+                developer_name=field_developer_name,
+                sobject_id=validated_sobject_id
             )
         )
 
