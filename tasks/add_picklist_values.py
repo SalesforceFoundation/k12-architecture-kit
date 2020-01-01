@@ -3,6 +3,8 @@ import json
 import shutil
 import tempfile
 
+from cumulusci.core.utils import process_bool_arg
+from cumulusci.core.utils import process_list_arg
 from cumulusci.tasks.salesforce import BaseSalesforceApiTask
 from cumulusci.tasks.salesforce import Deploy
 
@@ -91,6 +93,13 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
         }
     }
 
+    def _init_options(self, kwargs):
+        super()._init_options(kwargs)
+        self.options["values"] = process_list_arg(self.options.get("values", []))
+        self.options["recordtypes"] = process_list_arg(self.options.get("recordtypes", []))
+        self.options["sorted"] = process_bool_arg(self.options.get("sorted", False))
+        self.options["otherlast"] = process_bool_arg(self.options.get("otherlast", False))
+
     # Adds picklist values to the given field, if they don't already exist.
     # Optionally adds the picklist values for the specified record types, if the record types exist.
     # Optionally updates the picklist values to be alphabetical.
@@ -98,12 +107,16 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
         self.api_version = "47.0"
         sobject = self.options["sobject"]
         field = self.options["field"]
-        values = self.options["values"].split(',')
+
+        if self.options["sorted"] and self.options["otherlast"]:
+            raise Exception(f"The sorted option and otherlast option cannot both be set to true. "
+            "To sort a picklist but leave Other at the end, run the task twice: once to add the new values, sorted alphabetically, "
+            "and once to set Other at the end.")
 
         # The Tooling API does not have the namespace or the '__c' suffix in the DeveloperName of the CustomField object
         # or in the DeveloperName of the EntityDefinition object, so we have to remove it.
         split_field = field.split('__')
-        if len(split_field) is 3:
+        if len(split_field) == 3:
             field_developer_name = split_field[1]
             field_namespace_query = "NamespacePrefix = '{}' AND ".format(
                 split_field[0]
@@ -113,14 +126,19 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
             field_namespace_query = "NamespacePrefix = '' AND "
 
         split_sobject = sobject.split('__')
-        if len(split_sobject) is 3:
+        if len(split_sobject) == 3:
+            # Namespaced Custom Object
             sobject_developer_name = split_sobject[1]
             sobject_namespace_query = "NamespacePrefix = '{}' AND ".format(
                 split_sobject[0]
             )
-        else:
+        elif len(split_sobject) == 2:
+            # Custom Object
             sobject_developer_name = split_sobject[0]
-            # Standard objects will not be found if NamespacePrefix is left in the query.
+            sobject_namespace_query = "NamespacePrefix = '' AND "
+        else:
+            # Standard Object -- will not be found if NamespacePrefix is left in the query.
+            sobject_developer_name = split_sobject[0]
             sobject_namespace_query = ""
 
         sobject_tooling_results = self.tooling.query(
@@ -133,8 +151,8 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
             )
         )
 
-        if sobject_tooling_results["size"] is not 1:
-            raise Exception('{} object not found'.format(sobject))
+        if sobject_tooling_results["size"] != 1:
+            raise Exception(f"{sobject} object not found")
 
         validated_sobject_id = sobject_tooling_results["records"][0]["DurableId"]
 
@@ -150,8 +168,8 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
             )
         )
 
-        if field_tooling_results["size"] is not 1:
-            raise Exception('{} field not found on {}'.format(field, sobject))
+        if field_tooling_results["size"] != 1:
+            raise Exception(f"{field} field not found on {sobject}")
 
         validated_field = field_tooling_results["records"][0]["Metadata"]
         existing_picklist_values = []
@@ -162,32 +180,32 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
         if validated_field["type"] == "Picklist":
             existing_picklist_values = validated_field["valueSet"]["valueSetDefinition"]["value"]
         else:
-            raise Exception('{} field is not a picklist field'.format(field))
+            raise Exception(f"{field} field is not a picklist field")
 
         # build the package.xml:
         package_xml = self._build_package_xml(picklist_record_types, sobject, field)
 
         # build the object XML:
-        object_xml = self._build_object_xml(validated_field, picklist_record_types, existing_picklist_values, values, field)
+        object_xml = self._build_object_xml(validated_field, picklist_record_types, existing_picklist_values, field)
 
         # create temporary files & deploy back to Salesforce
-        self.tempdir = tempfile.mkdtemp()
-        package_xml_file = os.path.join(self.tempdir, "package.xml")
-        with open(package_xml_file, "w") as f:
-            f.write(package_xml)
+        with tempfile.TemporaryDirectory() as self.tempdir:
+            package_xml_file = os.path.join(self.tempdir, "package.xml")
+            with open(package_xml_file, "w") as f:
+                f.write(package_xml)
 
-        os.mkdir("{}/{}".format(self.tempdir, "objects"))
-        object_xml_file = os.path.join(self.tempdir, "objects", "{}.object".format(sobject))
-        with open(object_xml_file, "w") as f:
-            f.write(object_xml)
-        
-        self._deploy_metadata()
-        shutil.rmtree(self.tempdir)
+            os.mkdir("{}/{}".format(self.tempdir, "objects"))
+            object_xml_file = os.path.join(
+                self.tempdir, "objects", "{}.object".format(sobject))
+            with open(object_xml_file, "w") as f:
+                f.write(object_xml)
+
+            self._deploy_metadata()
 
     def _get_active_record_types(self, sobject):
         picklist_record_types = []
         picklist_record_type_names = []
-        if "recordtypes" in self.options:
+        if len(self.options["recordtypes"]) > 0:
             record_type_tooling_results = self.tooling.query(
                 "SELECT Id, FullName, Metadata, Name "
                 "FROM RecordType "
@@ -195,22 +213,21 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
                 "AND IsActive = True".format(sobject=sobject)
             )
 
-            record_types = self.options["recordtypes"].split(',')
             active_record_types = [
                 rt for rt in record_type_tooling_results["records"] if rt["Metadata"]["active"] is True
             ]
 
-            # validate record_types against active_record_types
+            # validate against active_record_types
             for active_record_type in active_record_types:
                 record_type_name = active_record_type["FullName"].split('.')[1] # removes the SObject from FullName
-                if record_type_name in record_types:
+                if record_type_name in self.options["recordtypes"]:
                     picklist_record_types.append(active_record_type)
                     picklist_record_type_names.append(record_type_name)
 
-            for rt in record_types:
+            for rt in self.options["recordtypes"]:
                 if rt not in picklist_record_type_names:
                     # Choosing to not throw an exception here since a customer might have deactivated or deleted a record type.
-                    self.logger.info(f'{rt} is not an active record type for the {sobject} object. Skipping over...')
+                    self.logger.info(f"{rt} is not an active record type for the {sobject} object. Skipping over...")
 
         return picklist_record_types
 
@@ -235,22 +252,18 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
 
         return package_xml
 
-    def _build_object_xml(self, validated_field, picklist_record_types, existing_picklist_values, values, field):
+    def _build_object_xml(self, validated_field, picklist_record_types, existing_picklist_values, field):
         picklist_values_xml = ""
         record_type_picklist_xml = ""
-
-        # should "Other" remain at the bottom of the picklist? (If it exists)
-        other_last = False
         other_picklist_xml = ""
-        if "otherlast" in self.options and self.options["otherlast"] == "True":
-            other_last = True
 
         values_added = []
 
         # add the existing picklist values
         for existing_picklist_value in existing_picklist_values:
             values_added.append(existing_picklist_value["label"])
-            if other_last and existing_picklist_value["label"] == "Other":
+            # if it exists, should "Other" remain at the bottom of the picklist?
+            if existing_picklist_value["label"] == "Other" and self.options["otherlast"]:
                 other_picklist_xml = picklist_value_template.format(
                     name = existing_picklist_value["valueName"], 
                     default = existing_picklist_value["default"], 
@@ -265,10 +278,10 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
                 )
         
         # add the new picklist values
-        for value in values:
+        for value in self.options["values"]:
             # ignore any existing picklist values
             if value in values_added:
-                self.logger.info(f'{value} is already a picklist value on {field}. Skipping over...')
+                self.logger.info(f"{value} is already a picklist value on {field}. Skipping over...")
 
             else:
                 picklist_values_xml += picklist_value_template.format(
@@ -298,7 +311,7 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
                         break
 
                 # assign the new picklist values to the record type
-                for value in values:
+                for value in self.options["values"]:
                     # ignore any existing picklist values
                     if value in values_added_to_record_type:
                         continue
@@ -317,7 +330,7 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
                 )
 
         sorted_picklist = validated_field["valueSet"]["valueSetDefinition"]["sorted"]
-        if "sorted" in self.options and self.options["sorted"] == "True":
+        if self.options["sorted"]:
             sorted_picklist = True
 
         # combine it all together
