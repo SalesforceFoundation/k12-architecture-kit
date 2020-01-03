@@ -31,7 +31,7 @@ object_template = """<?xml version="1.0" encoding="UTF-8"?>
 <CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
     <fields>
         <fullName>{field}</fullName>
-        <description>{description}</description>
+        {description}
         <inlineHelpText>{helpText}</inlineHelpText>
         <label>{label}</label>
         <type>Picklist</type>
@@ -54,7 +54,7 @@ record_type_picklist_template = """
     <recordTypes>
         <fullName>{name}</fullName>
         <active>true</active>
-        <description>{description}</description>
+        {description}
         <label>{label}</label>
         <picklistValues>
             <picklist>{field}</picklist>{picklist_values}
@@ -322,9 +322,14 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
                         default = False
                     )
 
+                # only include the description if there's a value -- if it's blank, an error is thrown if the record type is managed
+                record_type_description = ""
+                if rt["Metadata"]["description"] != None:
+                    record_type_description = "<description>{}</description>".format(escape(rt["Metadata"]["description"]))
+
                 record_type_picklist_xml += record_type_picklist_template.format(
                     name = rt["FullName"].split('.')[1], # removes the SObject from FullName
-                    description = escape(rt["Metadata"]["description"]),
+                    description = record_type_description,
                     label = escape(rt["Name"]), 
                     field = field,
                     picklist_values = record_type_picklist_values_xml
@@ -334,11 +339,20 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
         if self.options["sorted"]:
             sorted_picklist = True
 
+        # only include the object description if there's a value -- if it's blank, an error is thrown if the object is managed
+        object_description = ""
+        if validated_field["description"] != None:
+            object_description = "<description>{}</description>".format(escape(validated_field["description"]))
+
+        object_help_text = ""
+        if validated_field["inlineHelpText"] != None:
+            object_help_text = escape(validated_field["inlineHelpText"])
+
         # combine it all together
         object_xml = object_template.format(
             field = field,
-            description = escape(validated_field["description"]),
-            helpText = escape(validated_field["inlineHelpText"]),
+            description = object_description,
+            helpText = object_help_text,
             label = escape(validated_field["label"]),
             sorted = sorted_picklist,
             picklist_values = picklist_values_xml,
