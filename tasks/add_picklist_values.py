@@ -140,7 +140,7 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
             sobject_namespace_query = ""
 
         sobject_tooling_results = self.tooling.query(
-            "SELECT DeveloperName, DurableId, NamespacePrefix "
+            "SELECT DeveloperName, DurableId "
             "FROM EntityDefinition "
             "WHERE {namespace_query}"
             "DeveloperName = '{sobject}'".format(
@@ -176,7 +176,10 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
         picklist_record_types = self._get_active_record_types(sobject)
 
         if validated_field["type"] == "Picklist":
-            existing_picklist_values = validated_field["valueSet"]["valueSetDefinition"]["value"]
+            if validated_field["valueSet"]["valueSetDefinition"] != None:
+                existing_picklist_values = validated_field["valueSet"]["valueSetDefinition"]["value"]
+            else:
+                raise Exception(f"Picklist fields that use Global Value Sets are not currently supported.")
         else:
             raise Exception(f"{field} field is not a picklist field")
 
