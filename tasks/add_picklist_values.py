@@ -8,6 +8,7 @@ from cumulusci.core.utils import process_bool_arg
 from cumulusci.core.utils import process_list_arg
 from cumulusci.tasks.salesforce import BaseSalesforceApiTask
 from cumulusci.tasks.salesforce import Deploy
+from xml.sax.saxutils import escape
 
 package_xml_template = """<?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
@@ -133,17 +134,13 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
             sobject_namespace_query = "NamespacePrefix = '{}' AND ".format(
                 split_sobject[0]
             )
-        elif len(split_sobject) == 2:
-            # Custom Object
-            sobject_developer_name = split_sobject[0]
-            sobject_namespace_query = "NamespacePrefix = '' AND "
         else:
-            # Standard Object -- will not be found if NamespacePrefix is left in the query.
+            # Standard or Custom Object -- will not be found if NamespacePrefix is left in the query.
             sobject_developer_name = split_sobject[0]
             sobject_namespace_query = ""
 
         sobject_tooling_results = self.tooling.query(
-            "SELECT DeveloperName, DurableId "
+            "SELECT DeveloperName, DurableId, NamespacePrefix "
             "FROM EntityDefinition "
             "WHERE {namespace_query}"
             "DeveloperName = '{sobject}'".format(
@@ -262,7 +259,7 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
 
         # add the existing picklist values
         for existing_picklist_value in existing_picklist_values:
-            values_added.append(existing_picklist_value["label"])
+            values_added.append(existing_picklist_value["label"].lower())
             # if it exists, should "Other" remain at the bottom of the picklist?
             if existing_picklist_value["label"] == "Other" and self.options["otherlast"]:
                 other_picklist_xml = picklist_value_template.format(
@@ -273,22 +270,22 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
             
             else:
                 picklist_values_xml += picklist_value_template.format(
-                    name = existing_picklist_value["valueName"], 
+                    name = escape(existing_picklist_value["valueName"]), 
                     default = existing_picklist_value["default"], 
-                    label = existing_picklist_value["label"]
+                    label = escape(existing_picklist_value["label"])
                 )
         
         # add the new picklist values
         for value in self.options["values"]:
             # ignore any existing picklist values
-            if value in values_added:
+            if value.lower() in values_added:
                 self.logger.info(f"{value} is already a picklist value on {field}. Skipping over...")
 
             else:
                 picklist_values_xml += picklist_value_template.format(
-                    name = value, 
+                    name = escape(value), 
                     default = False, 
-                    label = value
+                    label = escape(value)
                 )
 
         # add "Other", if it exists
@@ -304,9 +301,9 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
                 for picklist in rt["Metadata"]["picklistValues"]:
                     if picklist["picklist"] == field:
                         for picklist_value in picklist["values"]:
-                            values_added_to_record_type.append(picklist_value["valueName"])
+                            values_added_to_record_type.append(picklist_value["valueName"].lower())
                             record_type_picklist_values_xml += record_type_picklist_value_template.format(
-                                name = picklist_value["valueName"],
+                                name = escape(picklist_value["valueName"]),
                                 default = picklist_value["default"]
                             )
                         break
@@ -314,18 +311,18 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
                 # assign the new picklist values to the record type
                 for value in self.options["values"]:
                     # ignore any existing picklist values
-                    if value in values_added_to_record_type:
+                    if value.lower() in values_added_to_record_type:
                         continue
 
                     record_type_picklist_values_xml += record_type_picklist_value_template.format(
-                        name = value,
+                        name = escape(value),
                         default = False
                     )
 
                 record_type_picklist_xml += record_type_picklist_template.format(
                     name = rt["FullName"].split('.')[1], # removes the SObject from FullName
-                    description = rt["Metadata"]["description"],
-                    label = rt["Name"], 
+                    description = escape(rt["Metadata"]["description"]),
+                    label = escape(rt["Name"]), 
                     field = field,
                     picklist_values = record_type_picklist_values_xml
                 )
@@ -337,9 +334,9 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
         # combine it all together
         object_xml = object_template.format(
             field = field,
-            description = validated_field["description"],
-            helpText = validated_field["inlineHelpText"],
-            label = validated_field["label"],
+            description = escape(validated_field["description"]),
+            helpText = escape(validated_field["inlineHelpText"]),
+            label = escape(validated_field["label"]),
             sorted = sorted_picklist,
             picklist_values = picklist_values_xml,
             record_types = record_type_picklist_xml
