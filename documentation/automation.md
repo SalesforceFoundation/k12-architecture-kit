@@ -35,6 +35,8 @@ cci task run add_picklist_values --org ORG
     -o otherlast True/False
 ```
 
+Validation: `sorted` and `otherlast` cannot both be true in the same task execution, otherwise an error is thrown.
+
 ## Examples
 
 ### Basic Example
@@ -133,6 +135,9 @@ cci task run add_picklist_values --org dev
 
 A few limitations exist in the current implementation of the task:
 
+* Multi-select picklist fields are not yet supported.
+* Picklist fields that use a Global Value Set are not yet supported.
+* Standard fields are not yet supported, such as the Status field on the Case object.
 * There is no way to specify any of the new values as the default picklist value, or as the default value for a particular record type.
     * If a default picklist value is already defined on the field, it will remain as the default.
 * There is no way to specify a specific order for the existing or new values, except:
