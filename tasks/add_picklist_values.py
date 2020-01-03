@@ -3,6 +3,7 @@ import json
 import shutil
 import tempfile
 
+from cumulusci.core.exceptions import TaskOptionsError
 from cumulusci.core.utils import process_bool_arg
 from cumulusci.core.utils import process_list_arg
 from cumulusci.tasks.salesforce import BaseSalesforceApiTask
@@ -100,6 +101,11 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
         self.options["sorted"] = process_bool_arg(self.options.get("sorted", False))
         self.options["otherlast"] = process_bool_arg(self.options.get("otherlast", False))
 
+        if self.options["sorted"] and self.options["otherlast"]:
+            raise TaskOptionsError(f"The sorted option and otherlast option cannot both be set to true. "
+            "To sort a picklist but leave Other at the end, run the task twice: once to add the new values, sorted alphabetically, "
+            "and again to set Other at the end.")
+
     # Adds picklist values to the given field, if they don't already exist.
     # Optionally adds the picklist values for the specified record types, if the record types exist.
     # Optionally updates the picklist values to be alphabetical.
@@ -107,11 +113,6 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
         self.api_version = "47.0"
         sobject = self.options["sobject"]
         field = self.options["field"]
-
-        if self.options["sorted"] and self.options["otherlast"]:
-            raise Exception(f"The sorted option and otherlast option cannot both be set to true. "
-            "To sort a picklist but leave Other at the end, run the task twice: once to add the new values, sorted alphabetically, "
-            "and once to set Other at the end.")
 
         # The Tooling API does not have the namespace or the '__c' suffix in the DeveloperName of the CustomField object
         # or in the DeveloperName of the EntityDefinition object, so we have to remove it.
