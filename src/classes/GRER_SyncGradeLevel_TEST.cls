@@ -234,7 +234,7 @@ private class GRER_SyncGradeLevel_TEST {
         
         // Ensure Current Grade Level is populated on Contact
         Contact conAfterUpdate1 = [SELECT Id, Current_Grade_Level__c FROM CONTACT];
-        System.assertEquals(conAfterUpdate1.Current_Grade_Level__c, 'Prekindergarten');
+        System.assertEquals(conAfterUpdate1.Current_Grade_Level__c, 'Prekindergarten', 'Current Grade Level should be populated');
         
         // Ensure Current Grade Level is cleared on Contact when its related Grade Level Enrollment is cleared     
         Test.startTest();
@@ -243,7 +243,7 @@ private class GRER_SyncGradeLevel_TEST {
         Test.stopTest();
         
         Contact conAfterUpdate = [SELECT Id, Current_Grade_Level__c FROM CONTACT];
-        System.assertEquals('NotApplicable', conAfterUpdate.Current_Grade_Level__c, 'should change to not applicable');
+        System.assertEquals('NotApplicable', conAfterUpdate.Current_Grade_Level__c, 'Current Grade Level should change to not applicable');
 
     } 
     
@@ -264,7 +264,7 @@ private class GRER_SyncGradeLevel_TEST {
         
         // Ensure Current Grade Level is populated on Contact
         Contact conAfterUpdate1 = [SELECT Id, Current_Grade_Level__c FROM CONTACT];
-        System.assertEquals(conAfterUpdate1.Current_Grade_Level__c, 'Prekindergarten');
+        System.assertEquals(conAfterUpdate1.Current_Grade_Level__c, 'Prekindergarten', 'Current Grade Level should be populated');
         
         // Turn off Trigger handler
         hed__Trigger_Handler__c handler = [SELECT Id, hed__Active__c , hed__Trigger_Action__c  
@@ -313,7 +313,7 @@ private class GRER_SyncGradeLevel_TEST {
         
         // Ensure Current Grade Level is populated on Contact
         Contact conAfterUpdate1 = [SELECT Id, Current_Grade_Level__c FROM CONTACT];
-        System.assertEquals(conAfterUpdate1.Current_Grade_Level__c, 'Prekindergarten');
+        System.assertEquals(conAfterUpdate1.Current_Grade_Level__c, 'Prekindergarten', 'Current Grade Level should be populated');
         
         // Turn off Trigger handler
         hed__Trigger_Handler__c handler = [SELECT Id, hed__Active__c , hed__Trigger_Action__c  
@@ -338,7 +338,7 @@ private class GRER_SyncGradeLevel_TEST {
         Test.stopTest();
         
         Contact contactAfterUpdate = [SELECT Id, Current_Grade_Level__c FROM CONTACT];
-        System.assertEquals('First Grade', contactAfterUpdate.Current_Grade_Level__c, 'Should change from Prekindergarten to First Grade');
+        System.assertEquals('First Grade', contactAfterUpdate.Current_Grade_Level__c, 'Current Grade Level should change from Prekindergarten to First Grade');
        
     } 
     
@@ -365,7 +365,7 @@ private class GRER_SyncGradeLevel_TEST {
         // Ensure Current Grade Level is populated
         List<Contact> contactList = [SELECT Id, Current_Grade_Level__c FROM Contact];
         for (Contact eachCon: contactList) {
-            System.assertEquals('Prekindergarten', eachCon.Current_Grade_Level__c, 'Current grade level should be populated');                
+            System.assertEquals('Prekindergarten', eachCon.Current_Grade_Level__c, 'Current Grade Level should be populated');                
         }
         
         // Turn off Trigger handler
@@ -409,8 +409,44 @@ private class GRER_SyncGradeLevel_TEST {
         Contact updateContact2 = [SELECT Id, Current_Grade_Level__c FROM Contact WHERE Current_Grade_Level__c = 'First Grade'];
         Contact updateContact3 = [SELECT Id, Current_Grade_Level__c FROM Contact WHERE Current_Grade_Level__c = 'Prekindergarten'];
         
-        System.assertEquals('NotApplicable', updateContact1.Current_Grade_Level__c, 'Should change to Not Applicable from Prekindergarten');
-        System.assertEquals('First Grade', updateContact2.Current_Grade_Level__c, 'Should change to First Grade from Prekindergarten');
-        System.assertEquals('Prekindergarten', updateContact3.Current_Grade_Level__c,'Should remain Same');
+        System.assertEquals('NotApplicable', updateContact1.Current_Grade_Level__c, 'Current Grade Level should change to Not Applicable from Prekindergarten');
+        System.assertEquals('First Grade', updateContact2.Current_Grade_Level__c, 'Current Grade Level should change to First Grade from Prekindergarten');
+        System.assertEquals('Prekindergarten', updateContact3.Current_Grade_Level__c,'Current Grade Level should remain same');
+    }
+
+    /*********************************************************************************************************
+    * @description This method Contact's Current Grade Enrollment is updated when one grade enrollment is marked
+    * as current and one is marked as former in the same execution.
+    * when there are multiple Current Grade Enrollments
+    */
+    @isTest
+    public static void concurrentUpdates() {
+        
+        // Insert Contact
+        Contact testContact = hed.UTIL_UnitTestData_API.getContact();
+        insert testContact;
+
+        // Insert Grade Enrollment        
+        Grade_Enrollment__c currentGradeEnroll = new Grade_Enrollment__c(Status__c = 'Current', Grade_Level__c = 'First Grade', Contact__c = testContact.Id);
+        Grade_Enrollment__c formerGradeEnroll = new Grade_Enrollment__c(Status__c = 'Former', Grade_Level__c = 'Second Grade', Contact__c = testContact.Id);
+        insert new Grade_Enrollment__c[] {currentGradeEnroll, formerGradeEnroll};
+        
+        // Ensure Current Grade Level is populated on Contact
+        Contact conAfterUpdate1 = [SELECT Id, Current_Grade_Level__c FROM CONTACT];
+        System.assertEquals(conAfterUpdate1.Current_Grade_Level__c, 'First Grade');
+        
+        /* Ensure Current Grade Enrollment is updated when one grade enrollment is marked
+           as current and one is marked as former in the same execution. */
+        Test.startTest();
+            List<Grade_Enrollment__c> gradeEnrollList = new List<Grade_Enrollment__c>();
+            currentGradeEnroll.Status__c = 'Former';
+            formerGradeEnroll.status__c = 'Current';
+            gradeEnrollList.add(currentGradeEnroll);
+            gradeEnrollList.add(formerGradeEnroll);
+            update gradeEnrollList;
+        Test.stopTest();
+        
+        Contact updatedContact = [SELECT Id, Current_Grade_Level__c FROM Contact];
+        System.assertEquals('Second Grade', updatedContact.Current_Grade_Level__c, 'Current Grade Level should change from First Grade to Second Grade');       
     }           
 }
