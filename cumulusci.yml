@@ -106,7 +106,12 @@ flows:
 
     config_regression:
         steps:
-
+            1: 
+                flow: None
+            2:
+                task: deploy_post
+                options:
+                    unmanaged: False
             3:
                 task: deploy_k12_kit_settings
             4:
