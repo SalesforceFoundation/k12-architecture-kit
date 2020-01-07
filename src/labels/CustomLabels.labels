@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>MultipleCurrentGradeEnrollmentsError</fullName>
+        <categories>Grade Enrollments</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>MultipleCurrentGradeEnrollmentsError</shortDescription>
+        <value>We&apos;ve found more than one Grade Enrollment record specified as Current. Review your Grade Enrollment records to ensure that only one is set as Current.</value>
+    </labels>
+</CustomLabels>

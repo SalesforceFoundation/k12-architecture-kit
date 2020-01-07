@@ -32,7 +32,10 @@
 * @date 2019
 * @group Grade Enrollments
 * @group-content ../../ApexDocContent/GradeEnrollments.htm
-* @description This class matches the Contact's Current Grade Level picklist value to the Grade Level set on the Grade Enrollment record when that record's status is “Current.”
+* @description This class matches the Contact's Current Grade Level picklist value 
+* to the Grade Level set on the Grade Enrollment record when that record's status is “Current.” 
+* Also, it Ensure a Contact's Current Grade Level field is updated to 'Not Applicable' when 
+* there are no Grade Enrollment Records with Status of "Current".
 */
 global with sharing class GRER_SyncGradeLevel_TDTM extends hed.TDTM_Runnable {
     /*******************************************************************************************************
@@ -58,22 +61,53 @@ global with sharing class GRER_SyncGradeLevel_TDTM extends hed.TDTM_Runnable {
         //Declare and initiate lists to update
         List<Contact> contactsToUpdate = new List<Contact>();
         List<Grade_Enrollment__c> gradeEnrolsToUpdate = new List<Grade_Enrollment__c>();
+        
+        //Declare and initiate oldMap
+        Map<ID, Grade_Enrollment__c> oldMap = new Map<ID, Grade_Enrollment__c>();
+        if (listOld != NULL) {
+            oldMap = new Map<ID, Grade_Enrollment__c>((List<Grade_Enrollment__c>)listOld);
+        }
+        //Declare new map to capture Contacts and their related Grade Enrollments
+        Map<ID, List<Grade_Enrollment__c>> contactToGradeEnroll = new Map<ID, List<Grade_Enrollment__c>>();
+             
+        //Declare and initiate set of Grade Enrollment Ids that were changed from a stauts of 'Current'
+        Set<Id> formerGradeEnrolIds = new Set<Id>();
+        
+        //Declare and initiate set of related Contact Ids that had its Grade Enrollments changed from a stauts of 'Current'
+        Set<Id> contactsIdsFormer = new Set<Id>(); 
+            
+        //Declare and initiate lists to show errors on Grade Enrollment records
+        List<Grade_Enrollment__c> gradeEnrolsErrorRecords = new List<Grade_Enrollment__c>();   
+         
+        // Declare and initiate map of Contact Id to its Current Grade Level
+        Map<Id, String> contactIdToCurrentGradeLevel = new Map<Id, String>(); 
 
         //After INSERT and After UPDATE
         if(triggerAction == hed.TDTM_Runnable.Action.AfterInsert 
             || triggerAction == hed.TDTM_Runnable.Action.AfterUpdate) {
             if (listNew != null && listNew.size() > 0) {
                 for (Integer i = 0; i < listNew.size(); i++) {
-                    Grade_Enrollment__c gradeErol = (Grade_Enrollment__c)listNew[i];
-                    if (gradeErol.Status__c != null 
-                        && gradeErol.Status__c == 'Current') {
+                    Grade_Enrollment__c gradeEnrol = (Grade_Enrollment__c)listNew[i];
+                    if (gradeEnrol.Status__c != NULL 
+                        && gradeEnrol.Status__c == 'Current') {
                         //Collect Ids of related contacts
-                        relatedContactIds.add(gradeErol.Contact__c);
-                        currentGradeEnrolIds.add(gradeErol.Id);
+                        relatedContactIds.add(gradeEnrol.Contact__c);
+                        currentGradeEnrolIds.add(gradeEnrol.Id);
+                    } else if (triggerAction == hed.TDTM_Runnable.Action.AfterUpdate
+                        && oldMap.get(gradeEnrol.ID).Status__c == 'Current'
+                        && gradeEnrol.Status__c != 'Current') {
+                        //Collect Ids of related contacts
+                        formerGradeEnrolIds.add(gradeEnrol.Id);
+                        contactsIdsFormer.add(gradeEnrol.Contact__c);
+                        if (contactToGradeEnroll.containsKey(gradeEnrol.Contact__c)) {
+                            contactToGradeEnroll.get(gradeEnrol.Contact__c).add(gradeEnrol);
+                        } else {
+                            contactToGradeEnroll.put(gradeEnrol.Contact__c, new List<Grade_Enrollment__c>{gradeEnrol});
+                        } 
                     }
                 }
             }
-
+            
             //Query and loop through related contacts and their grade enrollment
             for (Contact relatedContact :   [SELECT Id,
                                                        Current_Grade_Level__c,
@@ -83,20 +117,61 @@ global with sharing class GRER_SyncGradeLevel_TDTM extends hed.TDTM_Runnable {
                                                     FROM Grade_Enrollments__r
                                                     WHERE Status__c = 'Current') 
                                             FROM Contact
-                                            WHERE Id in :relatedContactIds]) {
-                for (Grade_Enrollment__c gradeErol : relatedContact.Grade_Enrollments__r) {
-                    if (currentGradeEnrolIds.contains(gradeErol.Id)) {
-                        relatedContact.Current_Grade_Level__c = gradeErol.Grade_Level__c;
+                                            WHERE Id IN :relatedContactIds]) {
+                for (Grade_Enrollment__c gradeEnrol : relatedContact.Grade_Enrollments__r) {
+                    if (currentGradeEnrolIds.contains(gradeEnrol.Id)) {
+                        relatedContact.Current_Grade_Level__c = gradeEnrol.Grade_Level__c;
                         contactsToUpdate.add(relatedContact);
                     } else {
-                        gradeErol.Status__c = 'Former';
-                        gradeEnrolsToUpdate.add(gradeErol);    
+                        gradeEnrol.Status__c = 'Former';
+                        gradeEnrolsToUpdate.add(gradeEnrol);    
                     }
                 }
-            }  
+            }
+            /* Query and loop through related contacts and their Current Grade Enrollments
+             * If there are no Current Grade Enrollments then mark the Current Grade Level on the Contact as 'Not Applicable'
+             * If there is only 1 Current Grade Enrollment then update the related Contact's Current Grade level to match Grade Enrollment's Current Grade level
+             * If there are more than 1 Current Grade Enrollments then show an error on the records that have Grade levels matching with Contact's Current Grade Level
+            */
+            if (contactsIdsFormer != NULL && contactsIdsFormer.size() > 0) {
+                for (Contact relatedContact :   [SELECT Id,
+                                                            Current_Grade_Level__c,
+                                                        (SELECT Id, 
+                                                                Status__c, Contact__c,
+                                                                Grade_Level__c
+                                                        FROM Grade_Enrollments__r WHERE Status__c = 'Current')
+                                                 FROM Contact
+                                                 WHERE Id IN :contactsIdsFormer]) {
+                                             
+                    contactIdToCurrentGradeLevel.put(relatedContact.Id, relatedContact.Current_Grade_Level__c);
+                                             
+                    if (relatedContact.Grade_Enrollments__r.size() == 0) {
+                        if (relatedContact.Current_Grade_Level__c != 'NotApplicable') {
+                            relatedContact.Current_Grade_Level__c = 'NotApplicable';
+                            contactsToUpdate.add(relatedContact);
+                        }     
+                    } else if (relatedContact.Grade_Enrollments__r.size() == 1) {
+                        if (relatedContact.Current_Grade_Level__c != relatedContact.Grade_Enrollments__r[0].Grade_Level__c) {                
+                            relatedContact.Current_Grade_Level__c = relatedContact.Grade_Enrollments__r[0].Grade_Level__c;
+                            contactsToUpdate.add(relatedContact); 
+                        }                
+                    } else {
+                        gradeEnrolsErrorRecords.addAll(contactToGradeEnroll.get(relatedContact.Id)); 
+                    }                                                
+                }
+            }                                        
         }
+        
+        // Show error on only those Grade Enrollments that have matching Grade Level on the related Contact
+        if (gradeEnrolsErrorRecords != NULL && gradeEnrolsErrorRecords.size() > 0) {
+            for (Grade_Enrollment__c eachEnroll : gradeEnrolsErrorRecords) {
+                if (!contactIdToCurrentGradeLevel.isEmpty() && eachEnroll.Grade_Level__c ==  contactIdToCurrentGradeLevel.get(eachEnroll.Contact__c)) {
+                    eachEnroll.addError(Label.MultipleCurrentGradeEnrollmentsError);
+                }                                 
+            }        
+        }    
 
-        //Add toupdate lists to dmlWrapper
+        //Add to update lists to dmlWrapper
         dmlWrapper.objectsToUpdate.addAll((List<SObject>)contactsToUpdate);
         dmlWrapper.objectsToUpdate.addAll((List<SObject>)gradeEnrolsToUpdate);
 
