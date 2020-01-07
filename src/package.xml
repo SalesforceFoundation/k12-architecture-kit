@@ -7,6 +7,8 @@
         <members>STG_InstallScript</members>
         <members>STG_InstallScript_TEST</members>
         <members>TDTM_DefaultConfig</members>
+        <members>UTIL_Namespace</members>
+        <members>UTIL_Namespace_TEST</members>
         <name>ApexClass</name>
     </types>
     <types>

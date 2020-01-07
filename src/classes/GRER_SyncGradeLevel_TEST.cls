@@ -32,7 +32,12 @@
 * @description Tests for GRER_SyncGradeLevel_TDTM class*/
 @isTest
 private class GRER_SyncGradeLevel_TEST {
-
+    
+    // Get Namespace
+    Static String namespace = UTIL_Namespace.getNamespace();
+    Static String prefix = (String.isNotBlank(namespace)) ? namespace + '.' : '';
+    Static String gradeEnrollClass = prefix+'GRER_SyncGradeLevel_TDTM';
+    
     @testSetup
     static void setup() {
         //Insert HEDA Trigger Handlers
@@ -222,7 +227,7 @@ private class GRER_SyncGradeLevel_TEST {
     * from current
     */
     @isTest
-    public static void clearCurrentGradeEnrollment() {
+    private static void clearCurrentGradeEnrollment() {
         
         // Insert Contact
         Contact testContact = hed.UTIL_UnitTestData_API.getContact();
@@ -252,7 +257,7 @@ private class GRER_SyncGradeLevel_TEST {
     * when there are multiple Current Grade Enrollments
     */
     @isTest
-    public static void currentGradeEnrollmentError() {
+    private static void currentGradeEnrollmentError() {
         
         // Insert Contact
         Contact testContact = hed.UTIL_UnitTestData_API.getContact();
@@ -268,7 +273,7 @@ private class GRER_SyncGradeLevel_TEST {
         
         // Turn off Trigger handler
         hed__Trigger_Handler__c handler = [SELECT Id, hed__Active__c , hed__Trigger_Action__c  
-                                  FROM hed__Trigger_Handler__c  WHERE hed__Class__c = 'k12kit.GRER_SyncGradeLevel_TDTM' LIMIT 1];        
+                                  FROM hed__Trigger_Handler__c  WHERE hed__Class__c = :gradeEnrollClass LIMIT 1];        
         handler.hed__Active__c = False;
         update handler;
         
@@ -283,7 +288,7 @@ private class GRER_SyncGradeLevel_TEST {
              Test.startTest();
                  hed__Trigger_Handler__c handlerUpdate = [SELECT Id, hed__Active__c , hed__Trigger_Action__c  
                                                           FROM hed__Trigger_Handler__c  WHERE 
-                                                          hed__Class__c = 'k12kit.GRER_SyncGradeLevel_TDTM' LIMIT 1];        
+                                                          hed__Class__c = :gradeEnrollClass LIMIT 1];        
                  handlerUpdate.hed__Active__c = True;
                  update handlerUpdate;
         
@@ -301,7 +306,7 @@ private class GRER_SyncGradeLevel_TEST {
     * Enrollment 
     */
     @isTest
-    public static void changeCurrentGradeEnrollment() {
+    private static void changeCurrentGradeEnrollment() {
         
         // Insert Contact
         Contact testContact = hed.UTIL_UnitTestData_API.getContact();
@@ -317,7 +322,7 @@ private class GRER_SyncGradeLevel_TEST {
         
         // Turn off Trigger handler
         hed__Trigger_Handler__c handler = [SELECT Id, hed__Active__c , hed__Trigger_Action__c  
-                                  FROM hed__Trigger_Handler__c  WHERE hed__Class__c = 'k12kit.GRER_SyncGradeLevel_TDTM' LIMIT 1];        
+                                  FROM hed__Trigger_Handler__c  WHERE hed__Class__c = :gradeEnrollClass LIMIT 1];        
         handler.hed__Active__c = False;
         update handler;
         
@@ -329,7 +334,7 @@ private class GRER_SyncGradeLevel_TEST {
         Test.startTest();
             hed__Trigger_Handler__c handlerUpdate = [SELECT Id, hed__Active__c , hed__Trigger_Action__c  
                                                      FROM hed__Trigger_Handler__c  WHERE 
-                                                     hed__Class__c = 'k12kit.GRER_SyncGradeLevel_TDTM' LIMIT 1];        
+                                                     hed__Class__c = :gradeEnrollClass LIMIT 1];        
             handlerUpdate.hed__Active__c = True;
             update handlerUpdate;
                  
@@ -346,7 +351,7 @@ private class GRER_SyncGradeLevel_TEST {
     * @description This method ensures bulk updates are successfully run
     */
     @isTest
-    public static void gradeEnrollmentBulkCheck() {
+    private static void gradeEnrollmentBulkCheck() {
         
         // Insert Contacts
         Contact testContact1 = hed.UTIL_UnitTestData_API.getContact();
@@ -370,7 +375,7 @@ private class GRER_SyncGradeLevel_TEST {
         
         // Turn off Trigger handler
         hed__Trigger_Handler__c handler = [SELECT Id, hed__Active__c , hed__Trigger_Action__c  
-                                           FROM hed__Trigger_Handler__c  WHERE hed__Class__c = 'k12kit.GRER_SyncGradeLevel_TDTM' LIMIT 1];        
+                                           FROM hed__Trigger_Handler__c  WHERE hed__Class__c = :gradeEnrollClass LIMIT 1];        
         handler.hed__Active__c = False;
         update handler;
         
@@ -384,7 +389,7 @@ private class GRER_SyncGradeLevel_TEST {
         insert new Grade_Enrollment__c[] {testGradeEnroll4, testGradeEnroll5, testGradeEnroll6, testGradeEnroll7, testGradeEnroll8};
         
         hed__Trigger_Handler__c handlerUpdate = [SELECT Id, hed__Active__c , hed__Trigger_Action__c  
-                                                 FROM hed__Trigger_Handler__c  WHERE hed__Class__c = 'k12kit.GRER_SyncGradeLevel_TDTM' LIMIT 1];        
+                                                 FROM hed__Trigger_Handler__c  WHERE hed__Class__c = :gradeEnrollClass LIMIT 1];        
         handlerUpdate.hed__Active__c = True;
         update handlerUpdate;
         
@@ -420,7 +425,7 @@ private class GRER_SyncGradeLevel_TEST {
     * when there are multiple Current Grade Enrollments
     */
     @isTest
-    public static void concurrentUpdates() {
+    private static void concurrentUpdates() {
         
         // Insert Contact
         Contact testContact = hed.UTIL_UnitTestData_API.getContact();
