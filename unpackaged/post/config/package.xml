@@ -111,9 +111,9 @@
         <members>unfiled$public/Term_Grades_Grouped_by_Student_and_Term</members>
         <name>Report</name>
     </types>
-    <types>	
-        <members>OrgPreference</members>	
-        <name>Settings</name>	
+    <types>
+        <members>OrgPreference</members>
+        <name>Settings</name>
     </types>
     <version>45.0</version>
 </Package>
