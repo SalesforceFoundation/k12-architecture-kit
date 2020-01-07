@@ -70,6 +70,11 @@ tasks:
             path: unpackaged/config/trial
             namespace_tokenize: $project_config.project__package__namespace
 
+    add_picklist_values:
+        description: Adds picklist values to the given field, if they don't already exist.
+        class_path: tasks.add_picklist_values.AddPicklistValues
+        group: Custom Tasks
+        
     uninstall_packaged_incremental:
         #description: Deletes any metadata from the package in the target org not in the local workspace
         class_path: cumulusci.tasks.salesforce.UninstallPackagedIncremental
