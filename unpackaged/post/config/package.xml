@@ -68,7 +68,6 @@
         <members>Contact.K12_All_Faculty</members>
         <members>Contact.K12_All_Guardians</members>
         <members>Contact.K12_All_Students</members>
-        <members>Grade_Enrollment__c.K12_All_Grade_Enrollments</members>
         <members>hed__Affiliation__c.K12_All_Affiliations</members>
         <members>hed__Attribute__c.K12_All_Student_Characteristics</members>
         <members>hed__Attribute__c.K12_All_Credentials</members>
