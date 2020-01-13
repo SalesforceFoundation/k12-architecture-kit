@@ -34,8 +34,8 @@
         <columns>hed__Contact__c</columns>
         <columns>hed__RelatedContact__c</columns>
         <columns>hed__Relationship_Explanation__c</columns>
-        <columns>FERPA_Approved__c</columns>
-        <columns>HIPPA_Approved__c</columns>
+        <columns>%%%NAMESPACE%%%FERPA_Approved__c</columns>
+        <columns>%%%NAMESPACE%%%HIPPA_Approved__c</columns>
         <columns>hed__Emergency_Contact__c</columns>
         <filterScope>Everything</filterScope>
         <label>K12 All Relationships</label>

@@ -47,7 +47,7 @@
         <columns>NAME</columns>
         <columns>hed__Attribute_Type__c</columns>
         <columns>hed__Subject_Area__c</columns>
-        <columns>Grade_Level__c</columns>
+        <columns>%%%NAMESPACE%%%Grade_Level__c</columns>
         <columns>hed__Start_Date__c</columns>
         <columns>hed__End_Date__c</columns>
         <columns>hed__Expired__c</columns>
