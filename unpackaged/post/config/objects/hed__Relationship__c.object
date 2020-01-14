@@ -29,7 +29,7 @@
         <label>HEDA Relationship Compact Layout</label>
     </compactLayouts>
     <listViews>
-        <fullName>K12_All_Relationships</fullName>
+        <fullName>K_12_All_Relationships</fullName>
         <columns>NAME</columns>
         <columns>hed__Contact__c</columns>
         <columns>hed__RelatedContact__c</columns>
@@ -38,7 +38,7 @@
         <columns>%%%NAMESPACE%%%HIPPA_Approved__c</columns>
         <columns>hed__Emergency_Contact__c</columns>
         <filterScope>Everything</filterScope>
-        <label>K12 All Relationships</label>
+        <label>K-12 All Relationships</label>
     </listViews>
     <deploymentStatus>Deployed</deploymentStatus>
     <description>Connection between two Contacts.</description>

@@ -28,7 +28,7 @@
         <label>K12 Student Characteristic Compact Layout</label>
     </compactLayouts>
     <listViews>
-        <fullName>K12_All_Student_Characteristics</fullName>
+        <fullName>K_12_All_Student_Characteristics</fullName>
         <columns>NAME</columns>
         <columns>hed__Attribute_Type__c</columns>
         <columns>hed__Contact__c</columns>
@@ -40,10 +40,10 @@
             <operation>equals</operation>
             <value>hed__Attribute__c.hed__Student_Characteristic</value>
         </filters>
-        <label>K12 All Student Characteristics</label>
+        <label>K-12 All Student Characteristics</label>
     </listViews>
     <listViews>
-        <fullName>K12_All_Credentials</fullName>
+        <fullName>K_12_All_Credentials</fullName>
         <columns>NAME</columns>
         <columns>hed__Attribute_Type__c</columns>
         <columns>hed__Subject_Area__c</columns>
@@ -57,7 +57,7 @@
             <operation>equals</operation>
             <value>hed__Attribute__c.hed__Credential</value>
         </filters>
-        <label>K12 All Credentials</label>
+        <label>K-12 All Credentials</label>
     </listViews>
     <recordTypes>
         <fullName>hed__Credential</fullName>

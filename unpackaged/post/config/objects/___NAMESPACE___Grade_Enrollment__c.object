@@ -13,7 +13,7 @@
         <label>K12 Grade Enrollment Compact Layout</label>
     </compactLayouts>
     <listViews>
-        <fullName>K12_All_Grade_Enrollments</fullName>
+        <fullName>K_12_All_Grade_Enrollments</fullName>
         <columns>NAME</columns>
         <columns>%%%NAMESPACE%%%Contact__c</columns>
         <columns>%%%NAMESPACE%%%Grade_Level__c</columns>
@@ -21,7 +21,7 @@
         <columns>%%%NAMESPACE%%%Start_Date__c</columns>
         <columns>%%%NAMESPACE%%%End_Date__c</columns>
         <filterScope>Everything</filterScope>
-        <label>K12 All Grade Enrollments</label>
+        <label>K-12 All Grade Enrollments</label>
     </listViews>
     <deploymentStatus>Deployed</deploymentStatus>
     <description>A student's enrollment in a particular grade at a given educational institution.</description>
