@@ -78,19 +78,23 @@ class UpdateAdminProfile(BaseUpdateAdminProfile):
             "Account.{namespaced_org}Academic_Program".format(**namespace_args), "false"
         )
         self._set_record_type(
-            "Account.{namespaced_org}Business_Organization".format(**namespace_args), "false"
+            "Account.{namespaced_org}Business_Organization".format(**namespace_args),
+            "false",
         )
         self._set_record_type(
-            "Account.{namespaced_org}Educational_Institution".format(**namespace_args), "false"
+            "Account.{namespaced_org}Educational_Institution".format(**namespace_args),
+            "false",
         )
         self._set_record_type(
             "Account.{namespaced_org}HH_Account".format(**namespace_args), "false"
         )
         self._set_record_type(
-            "Account.{namespaced_org}Sports_Organization".format(**namespace_args), "false"
+            "Account.{namespaced_org}Sports_Organization".format(**namespace_args),
+            "false",
         )
         self._set_record_type(
-            "Account.{namespaced_org}University_Department".format(**namespace_args), "false"
+            "Account.{namespaced_org}University_Department".format(**namespace_args),
+            "false",
         )
         self._set_record_type(
             "Contact.{namespaced_org}Faculty".format(**namespace_args), "false"
@@ -127,12 +131,11 @@ class UpdateAdminProfile(BaseUpdateAdminProfile):
 
         # Set record type visibilities for Attribute
         self._set_record_type(
-            'hed__Attribute__c.hed__Credential'.format(**namespace_args),
-            'true',
+            "hed__Attribute__c.hed__Credential".format(**namespace_args), "true"
         )
         self._set_record_type(
-            'hed__Attribute__c.hed__Student_Characteristic'.format(**namespace_args),
-            'false',
+            "hed__Attribute__c.hed__Student_Characteristic".format(**namespace_args),
+            "false",
         )
 
         # Set record type visibilities for Case
