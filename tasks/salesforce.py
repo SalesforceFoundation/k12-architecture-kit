@@ -1,4 +1,4 @@
-import os
+from pathlib import Path
 from cumulusci.core.utils import process_bool_arg
 from cumulusci.tasks.salesforce import UpdateAdminProfile as BaseUpdateAdminProfile
 from cumulusci.utils import findReplace
@@ -61,7 +61,7 @@ class UpdateAdminProfile(BaseUpdateAdminProfile):
         findReplaceRegex(
             "<recordTypeVisibilities>([^\$]+)</recordTypeVisibilities>",
             "",
-            os.path.join(self.tempdir, "profiles"),
+            Path(self.retrieve_dir, "profiles"),
             "Admin.profile",
         )
 
@@ -145,7 +145,7 @@ class UpdateAdminProfile(BaseUpdateAdminProfile):
         findReplace(
             "<tabVisibilities>",
             "{}<tabVisibilities>".format(rt),
-            os.path.join(self.tempdir, "profiles"),
+            Path(self.retrieve_dir, "profiles"),
             "Admin.profile",
             max=1,
         )
