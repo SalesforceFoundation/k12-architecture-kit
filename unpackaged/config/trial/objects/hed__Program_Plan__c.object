@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>K12_Program_Plan_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <compactLayoutAssignment>K12_Program_Plan_Compact_Layout</compactLayoutAssignment>
+    <compactLayouts>
+        <fullName>K12_Program_Plan_Compact_Layout</fullName>
+        <fields>Name</fields>
+        <fields>hed__Account__c</fields>
+        <fields>hed__Total_Required_Credits__c</fields>
+        <label>K12 Program Plan Compact Layout</label>
+    </compactLayouts>
+    <compactLayouts>
+        <fullName>hed__HEDA_Program_Plan_Compact_Layout</fullName>
+        <fields>Name</fields>
+        <fields>hed__Start_Date__c</fields>
+        <fields>hed__End_Date__c</fields>
+        <label>HEDA Program Plan Compact Layout</label>
+    </compactLayouts>
+    <listViews>
+        <fullName>K12_All_Program_Plans</fullName>
+        <columns>NAME</columns>
+        <columns>hed__Account__c</columns>
+        <columns>hed__Total_Required_Credits__c</columns>
+        <columns>hed__Is_Primary__c</columns>
+        <columns>hed__Status__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>K-12 All Program Plans</label>
+    </listViews>
+    <searchLayouts>
+        <searchResultsAdditionalFields>hed__Account__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>hed__Start_Date__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>hed__End_Date__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>hed__Is_Primary__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>hed__Status__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Links Courses to an Academic Program to create a path for students to follow. An Academic Program can list multiple Courses, and a Course can be associated with multiple Academic Programs.</description>
+    <label>Program Plan</label>
+    <nameField>
+        <label>Program Plan Name</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Program Plans</pluralLabel>
+    <sharingModel>ReadWrite</sharingModel>
+</CustomObject>

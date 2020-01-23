@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>K12_Facility_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <compactLayoutAssignment>K12_Facility_Compact_Layout</compactLayoutAssignment>
+    <compactLayouts>
+        <fullName>K12_Facility_Compact_Layout</fullName>
+        <fields>Name</fields>
+        <fields>hed__Facility_Type__c</fields>
+        <fields>hed__Capacity__c</fields>
+        <fields>hed__Account__c</fields>
+        <label>K12 Facility Compact Layout</label>
+    </compactLayouts>
+    <compactLayouts>
+        <fullName>hed__HEDA_Facility_Compact_Layout</fullName>
+        <fields>Name</fields>
+        <fields>hed__Facility_Type__c</fields>
+        <fields>hed__Capacity__c</fields>
+        <label>HEDA Facility Compact Layout</label>
+    </compactLayouts>
+    <listViews>
+        <fullName>K12_All_Facilities</fullName>
+        <columns>NAME</columns>
+        <columns>hed__Facility_Type__c</columns>
+        <columns>hed__Account__c</columns>
+        <columns>hed__Parent_Facility__c</columns>
+        <columns>hed__Capacity__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>K-12 All Facilities</label>
+    </listViews>
+    <searchLayouts>
+        <customTabListAdditionalFields>hed__Facility_Type__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>hed__Capacity__c</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>hed__Facility_Type__c</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>hed__Facility_Type__c</lookupPhoneDialogsAdditionalFields>
+        <searchResultsAdditionalFields>hed__Facility_Type__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>hed__Capacity__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>A school property asset. For example, a classroom, lecture hall, or laboratory.</description>
+    <label>Facility</label>
+    <nameField>
+        <label>Facility Name</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Facilities</pluralLabel>
+    <sharingModel>ReadWrite</sharingModel>
+</CustomObject>
