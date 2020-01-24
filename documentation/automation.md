@@ -1,4 +1,28 @@
 # K-12 Automation Inventory
+
+**Table of Contents**
+
+- [K-12 Automation Inventory](#k-12-automation-inventory)
+    - [Key Workflows](#key-workflows)
+    - [Unpackaged Metadata](#unpackaged-metadata)
+    - [Utility Tasks and Flows](#utility-tasks-and-flows)
+        - [`add_picklist_values`](#addpicklistvalues)
+            - [Basic Usage](#basic-usage)
+                - [Task Documentation](#task-documentation)
+            - [Examples](#examples)
+                - [Basic Example](#basic-example)
+                - [Basic Example With Sorting](#basic-example-with-sorting)
+                - [Basic Example With Other Last](#basic-example-with-other-last)
+                - [Including Record Types](#including-record-types)
+                - [Including Multiple Record Types](#including-multiple-record-types)
+                - [Adding Multiple Values](#adding-multiple-values)
+                - [Sorting Alphabetically, With Other Last](#sorting-alphabetically-with-other-last)
+            - [Limitations](#limitations)
+    - [Trialforce Source Org (TSO) Updates](#trialforce-source-org-tso-updates)
+        - [How is the TSO updated during a release?](#how-is-the-tso-updated-during-a-release)
+        - [How do I access the trial experience?](#how-do-i-access-the-trial-experience)
+        - [What needs to go in `unpackaged/config/trial` versus `unpackaged/{pre,post}`?](#what-needs-to-go-in-unpackagedconfigtrial-versus-unpackagedprepost)
+
 ## Key Workflows
 
 | Workflow                     | Flow                 | Org Type         | Managed | Namespace |
