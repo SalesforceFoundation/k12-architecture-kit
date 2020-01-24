@@ -219,7 +219,7 @@ The basic process during each release:
 
 You have two options:
 
-1. To see what a trial org based on the current release's Trialforce Template ID, use the `trial` scratch org config (e.g. `cci org browser trial`).
+1. To see a trial org based on the current release's Trialforce Template ID, use the `trial` scratch org config (e.g. `cci org browser trial`).
 2. To see the output of the `trial_org` flow that is run aginst the TSO, use the `trial_org` flow and the `release` scratch org config (e.g. `cci flow run trial_org --org release`).
 
 ### What needs to go in `unpackaged/config/trial` versus `unpackaged/{pre,post}`?
