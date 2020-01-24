@@ -19,7 +19,7 @@ tasks:
     deploy_k12_kit_settings:
         description: Configure the default K-12 Architecture Kit Settings
         class_path: cumulusci.tasks.apex.anon.AnonymousApexTask
-        group: Project-specific
+        group: 'K-12: Custom Settings'
         options:
             path: scripts/configure_k12_kit.cls
             apex: initializeK12KitSettings();
@@ -27,7 +27,7 @@ tasks:
     enable_course_connections:
         description: Enables course connections and sets default record types
         class_path: cumulusci.tasks.apex.anon.AnonymousApexTask
-        group: Project-specific
+        group: 'K-12: Custom Settings'
         options:
             path: scripts/configure_k12_kit.cls
             apex: enableCourseConnections();
@@ -35,7 +35,7 @@ tasks:
     deploy_k12_app:
         description: Deploys the K12 Kit App for those who use the installer rather than the trial
         class_path: cumulusci.tasks.salesforce.Deploy
-        group: Project-specific
+        group: 'K-12: Installer Tasks'
         ui_options:
             name: Deploy K12 Architecture Kit app tile
         options:
@@ -44,7 +44,7 @@ tasks:
     deploy_trial_config:
         description: Deploys metadata and configuration for TSOs.
         class_path: cumulusci.tasks.salesforce.Deploy
-        group: Project-specific
+        group: 'K-12: Trial'
         ui_options:
             name: Deploy Trial Metadata
         options:
@@ -74,7 +74,7 @@ tasks:
     add_picklist_values:
         description: Adds picklist values to the given field, if they don't already exist.
         class_path: tasks.add_picklist_values.AddPicklistValues
-        group: Custom Tasks
+        group: 'K-12: Metadata'
         
     uninstall_packaged_incremental:
         #description: Deletes any metadata from the package in the target org not in the local workspace
@@ -94,6 +94,7 @@ tasks:
     execute_install_apex:
         description: Runs most of the install script methods from STG_InstallScript class
         class_path: cumulusci.tasks.apex.anon.AnonymousApexTask
+        group: 'K-12: Custom Settings'
         options:
             apex:
                 STG_InstallScript.setK12kitDefaultTriggerHandlers();
@@ -130,6 +131,7 @@ flows:
 
     trial_org:
         description: Deploy trial configuration to an org.
+        group: 'K-12: Trial'
         steps:
             1:
                 flow: dependencies
