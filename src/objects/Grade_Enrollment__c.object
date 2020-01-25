@@ -125,6 +125,11 @@
                     <default>false</default>
                     <label>Transferred In</label>
                 </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -163,9 +168,19 @@
                     <label>Promoted</label>
                 </value>
                 <value>
+                    <fullName>Skipped Grade</fullName>
+                    <default>false</default>
+                    <label>Skipped Grade</label>
+                </value>
+                <value>
                     <fullName>Transferred Out</fullName>
                     <default>false</default>
                     <label>Transferred Out</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -219,21 +234,6 @@
                     <fullName>Former</fullName>
                     <default>false</default>
                     <label>Former</label>
-                </value>
-                <value>
-                    <fullName>Graduated</fullName>
-                    <default>false</default>
-                    <label>Graduated</label>
-                </value>
-                <value>
-                    <fullName>Pre-Registered</fullName>
-                    <default>false</default>
-                    <label>Pre-Registered</label>
-                </value>
-                <value>
-                    <fullName>Transferred Out</fullName>
-                    <default>false</default>
-                    <label>Transferred Out</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
