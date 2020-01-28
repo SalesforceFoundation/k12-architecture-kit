@@ -6,6 +6,6 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>MultipleCurrentGradeEnrollmentsError</shortDescription>
-        <value>We&apos;ve found more than one Grade Enrollment record specified as Current. Review your Grade Enrollment records to ensure that only one is set as Current.</value>
+        <value>We&apos;ve found more than one Grade Enrollment record specified as Current. Review your Grade Enrollment records and ensure that only one is set as Current before changing the status of this record.</value>
     </labels>
 </CustomLabels>
