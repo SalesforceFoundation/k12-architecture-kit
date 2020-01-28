@@ -40,7 +40,10 @@ public class TDTM_ProcessControl {
     */
     public enum registeredTrigger {
         CON_CurrentGradeLevel_TDTM_After_Insert,
-        CON_CurrentGradeLevel_TDTM_After_Update
+        CON_CurrentGradeLevel_TDTM_After_Update,
+        CON_CurrentGradeLevel_TDTM_createGradeEnrollments,
+        GRER_SyncGradeLevel_TDTM_After_Insert,
+        GRER_SyncGradeLevel_TDTM_After_Update
     }
 
     /*******************************************************************************************************

@@ -36,17 +36,17 @@
 */
 global with sharing class GRER_SyncGradeLevel_TDTM extends hed.TDTM_Runnable {
     /*******************************************************************************************************
-    * @description Matches the Contact's Current Grade Level picklist value to the Grade Level set on the Grade Enrollment record. 
-    * @param listNew the list of Course Enrollments from trigger new. 
-    * @param listOld the list of Coursen Enrollments from trigger old. 
-    * @param triggerAction which trigger event (BeforeInsert, AfterInsert, etc.). 
+    * @description Matches the Contact's Current Grade Level picklist value to the Grade Level set on the Grade Enrollment record.
+    * @param listNew the list of Course Enrollments from trigger new.
+    * @param listOld the list of Coursen Enrollments from trigger old.
+    * @param triggerAction which trigger event (BeforeInsert, AfterInsert, etc.).
     * @param objResult the describe for Course Enrollments.
     * @return dmlWrapper
     ********************************************************************************************************/
-    global override DmlWrapper run(List<SObject> listNew, List<SObject> listOld, 
+    global override DmlWrapper run(List<SObject> listNew, List<SObject> listOld,
         hed.TDTM_Runnable.Action triggerAction, Schema.DescribeSObjectResult objResult) {
 
-        //Declare and initiate dmlWrapper    
+        //Declare and initiate dmlWrapper
         DmlWrapper dmlWrapper = new DmlWrapper();
 
         //Declare and initiate set of related contact ids
@@ -54,18 +54,21 @@ global with sharing class GRER_SyncGradeLevel_TDTM extends hed.TDTM_Runnable {
 
         //Declare and initiate set of current grade enrollment ids
         Set<Id> currentGradeEnrolIds = new Set<Id>();
-        
+
         //Declare and initiate lists to update
         List<Contact> contactsToUpdate = new List<Contact>();
         List<Grade_Enrollment__c> gradeEnrolsToUpdate = new List<Grade_Enrollment__c>();
 
+        // Turn off After Update for CON_CurrentGradeLevel_TDTM
+        GRER_SyncGradeLevel_TDTM.turnOff();
+
         //After INSERT and After UPDATE
-        if(triggerAction == hed.TDTM_Runnable.Action.AfterInsert 
+        if(triggerAction == hed.TDTM_Runnable.Action.AfterInsert
             || triggerAction == hed.TDTM_Runnable.Action.AfterUpdate) {
             if (listNew != null && listNew.size() > 0) {
                 for (Integer i = 0; i < listNew.size(); i++) {
                     Grade_Enrollment__c gradeErol = (Grade_Enrollment__c)listNew[i];
-                    if (gradeErol.Status__c != null 
+                    if (gradeErol.Status__c != null
                         && gradeErol.Status__c == 'Current') {
                         //Collect Ids of related contacts
                         relatedContactIds.add(gradeErol.Contact__c);
@@ -77,11 +80,11 @@ global with sharing class GRER_SyncGradeLevel_TDTM extends hed.TDTM_Runnable {
             //Query and loop through related contacts and their grade enrollment
             for (Contact relatedContact :   [SELECT Id,
                                                        Current_Grade_Level__c,
-                                                    (SELECT Id, 
+                                                    (SELECT Id,
                                                             Status__c,
                                                             Grade_Level__c
                                                     FROM Grade_Enrollments__r
-                                                    WHERE Status__c = 'Current') 
+                                                    WHERE Status__c = 'Current')
                                             FROM Contact
                                             WHERE Id in :relatedContactIds]) {
                 for (Grade_Enrollment__c gradeErol : relatedContact.Grade_Enrollments__r) {
@@ -90,16 +93,29 @@ global with sharing class GRER_SyncGradeLevel_TDTM extends hed.TDTM_Runnable {
                         contactsToUpdate.add(relatedContact);
                     } else {
                         gradeErol.Status__c = 'Former';
-                        gradeEnrolsToUpdate.add(gradeErol);    
+                        gradeEnrolsToUpdate.add(gradeErol);
                     }
                 }
-            }  
+            }
+            if (triggerAction == hed.TDTM_Runnable.Action.AfterInsert) {
+                TDTM_ProcessControl.setRecursionFlag(TDTM_ProcessControl.registeredTrigger.GRER_SyncGradeLevel_TDTM_After_Insert, true);
+            }
+            if (triggerAction == hed.TDTM_Runnable.Action.AfterUpdate) {
+                TDTM_ProcessControl.setRecursionFlag(TDTM_ProcessControl.registeredTrigger.GRER_SyncGradeLevel_TDTM_After_Update, true);
+            }
         }
 
         //Add toupdate lists to dmlWrapper
         dmlWrapper.objectsToUpdate.addAll((List<SObject>)contactsToUpdate);
         dmlWrapper.objectsToUpdate.addAll((List<SObject>)gradeEnrolsToUpdate);
 
+        TDTM_ProcessControl.setRecursionFlag(TDTM_ProcessControl.registeredTrigger.GRER_SyncGradeLevel_TDTM_After_Insert, false);
+        TDTM_ProcessControl.setRecursionFlag(TDTM_ProcessControl.registeredTrigger.GRER_SyncGradeLevel_TDTM_After_Update, false);
+
         return dmlWrapper;
+    }
+
+    public static void turnOff() {
+        TDTM_ProcessControl.setRecursionFlag(TDTM_ProcessControl.registeredTrigger.CON_CurrentGradeLevel_TDTM_createGradeEnrollments, true);
     }
 }

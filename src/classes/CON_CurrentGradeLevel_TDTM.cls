@@ -33,14 +33,14 @@
 * @group Contact
 * @group-content ../../ApexDocContent/Contact.htm
 * @description Whenever a Contact is created with 'Current Grade Level'or updated with 'Current Grade Level' this class
-* creates a Grade Enrollment record with status 'Current' and assigns the 'Grade Level' on the Contact, if there are no
-* other matching Grade Enrollments or updates the 'Grade Level' on the matching record to Current.
+* creates a Grade Enrollment record with status 'Current' and assigns the 'Grade Level' on the Contact OR 
+* updates the 'Grade Level' on the matching record to Current.
 */
 global with sharing class CON_CurrentGradeLevel_TDTM extends hed.TDTM_Runnable {
     /**********************************************************************************************************************
     * @description Whenever a Contact is created with 'Current Grade Level'or updated with 'Current Grade Level' this class
-    * creates a Grade Enrollment record with status 'Current' and assigns the 'Grade Level' on the Contact, if there are no
-    * other matching Grade Enrollments or updates the 'Grade Level' on the matching record to Current.
+    * creates a Grade Enrollment record with status 'Current' and assigns the 'Grade Level' on the Contact OR
+    * updates the 'Grade Level' on the matching record to Current.
     * @param listNew the list of Course Enrollments from trigger new.
     * @param listOld the list of Coursen Enrollments from trigger old.
     * @param triggerAction which trigger event (AfterInsert, AfterUpdate, etc.).
@@ -68,7 +68,9 @@ global with sharing class CON_CurrentGradeLevel_TDTM extends hed.TDTM_Runnable {
             if (listOld != NULL && listNew != NULL &&  listNew.size() > 0 &&  listOld.size() > 0) {
                 Map<Id, Contact> allIdsToOldContacts = new Map<Id, Contact>((List<Contact>)listOld);
                 Map<Id, Contact> allIdsToNewContacts = new Map<Id, Contact>((List<Contact>)listNew);
-                createGradeEnrollments(allIdsToNewContacts, allIdsToOldContacts, dmlWrapper);
+                if (!TDTM_ProcessControl.getRecursionFlag(TDTM_ProcessControl.registeredTrigger.CON_CurrentGradeLevel_TDTM_createGradeEnrollments)) {
+                    createGradeEnrollments(allIdsToNewContacts, allIdsToOldContacts, dmlWrapper);
+                }    
                 updateGradeEnrollments(allIdsToNewContacts, allIdsToOldContacts, dmlWrapper);
                 TDTM_ProcessControl.setRecursionFlag(TDTM_ProcessControl.registeredTrigger.CON_CurrentGradeLevel_TDTM_After_Update, true);
             }
@@ -77,6 +79,7 @@ global with sharing class CON_CurrentGradeLevel_TDTM extends hed.TDTM_Runnable {
         // Set the recursion flags to false for next transaction
         TDTM_ProcessControl.setRecursionFlag(TDTM_ProcessControl.registeredTrigger.CON_CurrentGradeLevel_TDTM_After_Insert, false);
         TDTM_ProcessControl.setRecursionFlag(TDTM_ProcessControl.registeredTrigger.CON_CurrentGradeLevel_TDTM_After_Update, false);
+        TDTM_ProcessControl.setRecursionFlag(TDTM_ProcessControl.registeredTrigger.CON_CurrentGradeLevel_TDTM_createGradeEnrollments, false);
 
         return dmlWrapper;
     }
