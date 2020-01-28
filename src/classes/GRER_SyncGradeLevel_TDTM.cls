@@ -97,6 +97,7 @@ global with sharing class GRER_SyncGradeLevel_TDTM extends hed.TDTM_Runnable {
                     }
                 }
             }
+            // Set the flags to true to prevent recursion
             if (triggerAction == hed.TDTM_Runnable.Action.AfterInsert) {
                 TDTM_ProcessControl.setRecursionFlag(TDTM_ProcessControl.registeredTrigger.GRER_SyncGradeLevel_TDTM_After_Insert, true);
             }
@@ -108,7 +109,8 @@ global with sharing class GRER_SyncGradeLevel_TDTM extends hed.TDTM_Runnable {
         //Add toupdate lists to dmlWrapper
         dmlWrapper.objectsToUpdate.addAll((List<SObject>)contactsToUpdate);
         dmlWrapper.objectsToUpdate.addAll((List<SObject>)gradeEnrolsToUpdate);
-
+        
+        // Reset the recursion flags for next transaction
         TDTM_ProcessControl.setRecursionFlag(TDTM_ProcessControl.registeredTrigger.GRER_SyncGradeLevel_TDTM_After_Insert, false);
         TDTM_ProcessControl.setRecursionFlag(TDTM_ProcessControl.registeredTrigger.GRER_SyncGradeLevel_TDTM_After_Update, false);
 
