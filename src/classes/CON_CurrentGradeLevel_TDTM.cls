@@ -59,6 +59,7 @@ global with sharing class CON_CurrentGradeLevel_TDTM extends hed.TDTM_Runnable {
             if (listNew != null && listNew.size() > 0) {
                 Map<Id, Contact> allIdsToNewContacts = new Map<Id, Contact>((List<Contact>)listNew);
                 createGradeEnrollments(allIdsToNewContacts, NULL, dmlWrapper);
+                // Set recursion flag to prevent recursion
                 TDTM_ProcessControl.setRecursionFlag(TDTM_ProcessControl.registeredTrigger.CON_CurrentGradeLevel_TDTM_After_Insert, true);
             }
         }
@@ -72,6 +73,7 @@ global with sharing class CON_CurrentGradeLevel_TDTM extends hed.TDTM_Runnable {
                     createGradeEnrollments(allIdsToNewContacts, allIdsToOldContacts, dmlWrapper);
                 }    
                 updateGradeEnrollments(allIdsToNewContacts, allIdsToOldContacts, dmlWrapper);
+                // Set recursion flag to prevent recursion
                 TDTM_ProcessControl.setRecursionFlag(TDTM_ProcessControl.registeredTrigger.CON_CurrentGradeLevel_TDTM_After_Update, true);
             }
         }
