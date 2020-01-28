@@ -60,7 +60,7 @@ global with sharing class GRER_SyncGradeLevel_TDTM extends hed.TDTM_Runnable {
         List<Grade_Enrollment__c> gradeEnrolsToUpdate = new List<Grade_Enrollment__c>();
 
         // Turn off After Update for CON_CurrentGradeLevel_TDTM
-        GRER_SyncGradeLevel_TDTM.turnOff();
+        GRER_SyncGradeLevel_TDTM.turnOffGradeEnrollmentCreation();
 
         //After INSERT and After UPDATE
         if(triggerAction == hed.TDTM_Runnable.Action.AfterInsert
@@ -115,7 +115,7 @@ global with sharing class GRER_SyncGradeLevel_TDTM extends hed.TDTM_Runnable {
         return dmlWrapper;
     }
 
-    public static void turnOff() {
+    public static void turnOffGradeEnrollmentCreation() {
         TDTM_ProcessControl.setRecursionFlag(TDTM_ProcessControl.registeredTrigger.CON_CurrentGradeLevel_TDTM_createGradeEnrollments, true);
     }
 }
