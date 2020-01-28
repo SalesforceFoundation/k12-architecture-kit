@@ -1,4 +1,4 @@
-import os
+from pathlib import Path
 from cumulusci.core.utils import process_bool_arg
 from cumulusci.tasks.salesforce import UpdateAdminProfile as BaseUpdateAdminProfile
 from cumulusci.utils import findReplace
@@ -61,7 +61,7 @@ class UpdateAdminProfile(BaseUpdateAdminProfile):
         findReplaceRegex(
             "<recordTypeVisibilities>([^\$]+)</recordTypeVisibilities>",
             "",
-            os.path.join(self.tempdir, "profiles"),
+            Path(self.retrieve_dir, "profiles"),
             "Admin.profile",
         )
 
@@ -78,19 +78,23 @@ class UpdateAdminProfile(BaseUpdateAdminProfile):
             "Account.{namespaced_org}Academic_Program".format(**namespace_args), "false"
         )
         self._set_record_type(
-            "Account.{namespaced_org}Business_Organization".format(**namespace_args), "false"
+            "Account.{namespaced_org}Business_Organization".format(**namespace_args),
+            "false",
         )
         self._set_record_type(
-            "Account.{namespaced_org}Educational_Institution".format(**namespace_args), "false"
+            "Account.{namespaced_org}Educational_Institution".format(**namespace_args),
+            "false",
         )
         self._set_record_type(
             "Account.{namespaced_org}HH_Account".format(**namespace_args), "false"
         )
         self._set_record_type(
-            "Account.{namespaced_org}Sports_Organization".format(**namespace_args), "false"
+            "Account.{namespaced_org}Sports_Organization".format(**namespace_args),
+            "false",
         )
         self._set_record_type(
-            "Account.{namespaced_org}University_Department".format(**namespace_args), "false"
+            "Account.{namespaced_org}University_Department".format(**namespace_args),
+            "false",
         )
         self._set_record_type(
             "Contact.{namespaced_org}Faculty".format(**namespace_args), "false"
@@ -127,12 +131,11 @@ class UpdateAdminProfile(BaseUpdateAdminProfile):
 
         # Set record type visibilities for Attribute
         self._set_record_type(
-            'hed__Attribute__c.hed__Credential'.format(**namespace_args),
-            'true',
+            "hed__Attribute__c.hed__Credential".format(**namespace_args), "true"
         )
         self._set_record_type(
-            'hed__Attribute__c.hed__Student_Characteristic'.format(**namespace_args),
-            'false',
+            "hed__Attribute__c.hed__Student_Characteristic".format(**namespace_args),
+            "false",
         )
 
         # Set record type visibilities for Case
@@ -145,7 +148,7 @@ class UpdateAdminProfile(BaseUpdateAdminProfile):
         findReplace(
             "<tabVisibilities>",
             "{}<tabVisibilities>".format(rt),
-            os.path.join(self.tempdir, "profiles"),
+            Path(self.retrieve_dir, "profiles"),
             "Admin.profile",
             max=1,
         )

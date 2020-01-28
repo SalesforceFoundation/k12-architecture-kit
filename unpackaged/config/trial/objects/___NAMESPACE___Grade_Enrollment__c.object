@@ -23,16 +23,6 @@
         <filterScope>Everything</filterScope>
         <label>K-12 All Grade Enrollments</label>
     </listViews>
-    <deploymentStatus>Deployed</deploymentStatus>
-    <description>A student's enrollment in a particular grade at a given educational institution.</description>
-    <enableActivities>true</enableActivities>
-    <enableBulkApi>true</enableBulkApi>
-    <enableFeeds>false</enableFeeds>
-    <enableHistory>false</enableHistory>
-    <enableReports>true</enableReports>
-    <enableSearch>true</enableSearch>
-    <enableSharing>true</enableSharing>
-    <enableStreamingApi>true</enableStreamingApi>
     <fields>
         <fullName>Grade_Number__c</fullName>
         <description>The selected Grade Level reflected as a numerical value.</description>
@@ -67,7 +57,138 @@
         <type>Number</type>
         <unique>false</unique>
     </fields>
+    <fields>
+        <fullName>%%%NAMESPACE%%%Entry_Reason__c</fullName>
+        <description>The reason a student enrolled in this Grade Level.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The reason a student enrolled in this Grade Level.</inlineHelpText>
+        <label>Entry Reason</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Promoted</fullName>
+                    <default>false</default>
+                    <label>Promoted</label>
+                </value>
+                <value>
+                    <fullName>Repeated Grade</fullName>
+                    <default>false</default>
+                    <label>Repeated Grade</label>
+                </value>
+                <value>
+                    <fullName>Skipped Grade</fullName>
+                    <default>false</default>
+                    <label>Skipped Grade</label>
+                </value>
+                <value>
+                    <fullName>Transferred In</fullName>
+                    <default>false</default>
+                    <label>Transferred In</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>%%%NAMESPACE%%%Exit_Reason__c</fullName>
+        <description>The reason a student exited this Grade Level.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The reason a student exited this Grade Level.</inlineHelpText>
+        <label>Exit Reason</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Deceased</fullName>
+                    <default>false</default>
+                    <label>Deceased</label>
+                </value>
+                <value>
+                    <fullName>Expelled</fullName>
+                    <default>false</default>
+                    <label>Expelled</label>
+                </value>
+                <value>
+                    <fullName>No Show</fullName>
+                    <default>false</default>
+                    <label>No Show</label>
+                </value>
+                <value>
+                    <fullName>Promoted</fullName>
+                    <default>false</default>
+                    <label>Promoted</label>
+                </value>
+                <value>
+                    <fullName>Skipped Grade</fullName>
+                    <default>false</default>
+                    <label>Skipped Grade</label>
+                </value>
+                <value>
+                    <fullName>Transferred Out</fullName>
+                    <default>false</default>
+                    <label>Transferred Out</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>%%%NAMESPACE%%%Status__c</fullName>
+        <description>The status of this Grade Level enrollment.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The status of this Grade Level enrollment.</inlineHelpText>
+        <label>Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Current</fullName>
+                    <default>false</default>
+                    <label>Current</label>
+                </value>
+                <value>
+                    <fullName>Former</fullName>
+                    <default>false</default>
+                    <label>Former</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
     <label>Grade Enrollment</label>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>A student's enrollment in a particular grade at a given educational institution.</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
     <nameField>
         <displayFormat>GRN-{0000}</displayFormat>
         <label>Grade Enrollment Name</label>
