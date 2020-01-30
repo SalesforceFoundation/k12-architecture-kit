@@ -10,6 +10,8 @@
         <members>STG_InstallScript_TEST</members>
         <members>TDTM_DefaultConfig</members>
         <members>TDTM_ProcessControl</members>
+        <members>UTIL_Namespace</members>
+        <members>UTIL_Namespace_TEST</members>
         <name>ApexClass</name>
     </types>
     <types>
@@ -40,6 +42,14 @@
         <members>hed__Relationship__c.FERPA_Approved__c</members>
         <members>hed__Relationship__c.HIPPA_Approved__c</members>
         <name>CustomField</name>
+    </types>
+    <types>
+        <members>MultipleCurrentGradeEnrollmentsError</members>
+        <name>CustomLabel</name>
+    </types>
+    <types>
+        <members>CustomLabels</members>
+        <name>CustomLabels</name>
     </types>
     <types>
         <members>Grade_Enrollment__c</members>
@@ -109,6 +119,12 @@
         <members>hed__Term__c-K12 Kit Term Layout</members>
         <members>hed__Time_Block__c-K12 Kit Time Block Layout</members>
         <name>Layout</name>
+    </types>
+    <types>
+        <members>ca</members>
+        <members>es</members>
+        <members>fr</members>
+        <name>Translations</name>
     </types>
     <version>45.0</version>
 </Package>
