@@ -2,6 +2,6 @@
 <OrgPreferenceSettings xmlns="http://soap.sforce.com/2006/04/metadata">
     <preferences>
         <settingName>Translation</settingName>
-        <settingValue>false</settingValue>
+        <settingValue>true</settingValue>
     </preferences>
 </OrgPreferenceSettings>
