@@ -33,7 +33,7 @@
 * @group Contact
 * @group-content ../../ApexDocContent/Contact.htm
 * @description Whenever a Contact is created with 'Current Grade Level'or updated with 'Current Grade Level' this class
-* creates a Grade Enrollment record with status 'Current' and assigns the 'Grade Level' on the Contact OR 
+* creates a Grade Enrollment record with status 'Current' and assigns the 'Grade Level' on the Contact OR
 * updates the 'Grade Level' on the matching record to Current.
 */
 global with sharing class CON_CurrentGradeLevel_TDTM extends hed.TDTM_Runnable {
@@ -71,7 +71,7 @@ global with sharing class CON_CurrentGradeLevel_TDTM extends hed.TDTM_Runnable {
                 Map<Id, Contact> allIdsToNewContacts = new Map<Id, Contact>((List<Contact>)listNew);
                 if (!TDTM_ProcessControl.getRecursionFlag(TDTM_ProcessControl.registeredTrigger.CON_CurrentGradeLevel_TDTM_createGradeEnrollments)) {
                     createGradeEnrollments(allIdsToNewContacts, allIdsToOldContacts, dmlWrapper);
-                }    
+                }
                 updateGradeEnrollments(allIdsToNewContacts, allIdsToOldContacts, dmlWrapper);
                 // Set recursion flag to prevent recursion
                 TDTM_ProcessControl.setRecursionFlag(TDTM_ProcessControl.registeredTrigger.CON_CurrentGradeLevel_TDTM_After_Update, true);
@@ -87,7 +87,7 @@ global with sharing class CON_CurrentGradeLevel_TDTM extends hed.TDTM_Runnable {
     }
     /*******************************************************************************************************
     * @description This method creates Grade Enrollment records whenever a Contact with a Current Grade Level
-    * is inserted OR Contact's Current Grade Level is changed.
+    * is inserted OR Contact's Current Grade Level is changed
     * @param allIdsToContacts A Map of Id to all new Contact Records
     * @param allIdsToContactsOld A Map of Id to all old Contact Records
     * @param dmlWrapper
@@ -95,20 +95,35 @@ global with sharing class CON_CurrentGradeLevel_TDTM extends hed.TDTM_Runnable {
     private void createGradeEnrollments(Map<Id, Contact> allIdsToContacts, Map<Id, Contact> allIdsToContactsOld, dmlWrapper dmlWrapper) {
         List<Grade_Enrollment__c> gradeEnrollmentsToInsert = new List<Grade_Enrollment__c>();
         for (Contact eachContact : [SELECT Id, Current_Grade_Level__c FROM Contact WHERE (((Current_Grade_Level__c != NULL) AND (Current_Grade_Level__c != 'NotApplicable')
-                                                                                         AND (Current_Grade_Level__c != '--None--') AND (Current_Grade_Level__c != ''))
+                                                                                            AND (Current_Grade_Level__c != ''))
                                                                                          AND Id IN :allIdsToContacts.keySet())]) {
-            if (eachContact != NULL && ((allIdsToContactsOld == NULL) || (allIdsToContactsOld != NULL && allIdsToContactsOld.get(eachContact.Id) != NULL
-                    && eachContact.Current_Grade_Level__c != allIdsToContactsOld.get(eachContact.Id).Current_Grade_Level__c))) {
-                Grade_Enrollment__c gradeEnrollment = new Grade_Enrollment__c();
-                gradeEnrollment.Contact__c = eachContact.Id;
-                gradeEnrollment.Status__c = 'Current';
-                gradeEnrollment.Grade_Level__c = eachContact.Current_Grade_Level__c;
-                gradeEnrollmentsToInsert.add(gradeEnrollment);
+            if (eachContact != NULL) {
+                Boolean currentGradeLevelChanged = currentGradeEnrollmentChanged(allIdsToContactsOld, eachContact);
+                if (allIdsToContactsOld == NULL || currentGradeLevelChanged) {
+                    Grade_Enrollment__c gradeEnrollment = new Grade_Enrollment__c();
+                    gradeEnrollment.Contact__c = eachContact.Id;
+                    gradeEnrollment.Status__c = 'Current';
+                    gradeEnrollment.Grade_Level__c = eachContact.Current_Grade_Level__c;
+                    gradeEnrollmentsToInsert.add(gradeEnrollment);
+                }
             }
         }
         if (gradeEnrollmentsToInsert != NULL && gradeEnrollmentsToInsert.size() > 0) {
             dmlWrapper.objectsToInsert.addAll((List<SObject>)gradeEnrollmentsToInsert);
         }
+    }
+    /*******************************************************************************************************
+    * @description This method checks if the Current Grade Level on a given Contact has changed or not
+    * @param idToContacts A Map of Id to all old Contact Records
+    * @param contactUnderContext The contact record which is being updated
+    * @param dmlWrapper
+    ********************************************************************************************************/
+    private Boolean currentGradeEnrollmentChanged(Map<Id, Contact> idToContacts, Contact contactUnderContext) {
+        Boolean currentGradeLevelIsChanged = False;
+        if (idToContacts != NULL && idToContacts.get(contactUnderContext.Id) != NULL) {
+            currentGradeLevelIsChanged = (contactUnderContext.Current_Grade_Level__c != idToContacts.get(contactUnderContext.Id).Current_Grade_Level__c);
+        }
+        return currentGradeLevelIsChanged;
     }
     /*******************************************************************************************************
     * @description This method updates all the Grade Enrollments with Status 'Current' to 'Former' when its
@@ -120,8 +135,9 @@ global with sharing class CON_CurrentGradeLevel_TDTM extends hed.TDTM_Runnable {
     private void updateGradeEnrollments(Map<Id, Contact> allIdsToContacts, Map<Id, Contact> allIdsToContactsOld, dmlWrapper dmlWrapper) {
         List<Grade_Enrollment__c> gradeEnrollmentsToUpdate = new List<Grade_Enrollment__c>();
         for (Contact eachContact: [SELECT Id, Current_Grade_Level__c, (SELECT Id, Status__c FROM Grade_Enrollments__r WHERE Status__c = 'Current')
-                                   FROM Contact WHERE Current_Grade_Level__c = 'NotApplicable' AND Id IN :allIdsToContacts.keySet()]) {
-            if (eachContact != NULL && allIdsToContactsOld != NULL && allIdsToContactsOld.get(eachContact.Id) != NULL &&
+                                   FROM Contact WHERE ((Current_Grade_Level__c = 'NotApplicable' OR Current_Grade_Level__c = '' OR Current_Grade_Level__c = NULL)
+                                                      AND Id IN :allIdsToContacts.keySet())]) {
+            if (eachContact != NULL && allIdsToContactsOld.get(eachContact.Id) != NULL &&
                 allIdsToContactsOld.get(eachContact.Id).Current_Grade_Level__c != eachContact.Current_Grade_Level__c) {
                 for (Grade_Enrollment__c eachGE : eachContact.Grade_Enrollments__r) {
                     eachGE.Status__c = 'Former';
