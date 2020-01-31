@@ -21,10 +21,40 @@
     </flexiPageRegions>
     <flexiPageRegions>
         <componentInstances>
+            <componentName>runtime_sales_activities:activityPanel</componentName>
+        </componentInstances>
+        <name>Facet-d794e1ee-5c1b-4c74-b9be-18c04a6a96d8</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <componentInstances>
+            <componentInstanceProperties>
+                <name>active</name>
+                <value>true</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>body</name>
+                <value>Facet-d794e1ee-5c1b-4c74-b9be-18c04a6a96d8</value>
+            </componentInstanceProperties>
+            <componentInstanceProperties>
+                <name>title</name>
+                <value>Standard.Tab.activity</value>
+            </componentInstanceProperties>
+            <componentName>flexipage:tab</componentName>
+        </componentInstances>
+        <name>Facet-01b57ed6-a546-4713-93f3-e0754c84bc41</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <componentInstances>
             <componentName>force:detailPanel</componentName>
         </componentInstances>
         <componentInstances>
-            <componentName>runtime_sales_activities:activityPanel</componentName>
+            <componentInstanceProperties>
+                <name>tabs</name>
+                <value>Facet-01b57ed6-a546-4713-93f3-e0754c84bc41</value>
+            </componentInstanceProperties>
+            <componentName>flexipage:tabset</componentName>
         </componentInstances>
         <name>main</name>
         <type>Region</type>
