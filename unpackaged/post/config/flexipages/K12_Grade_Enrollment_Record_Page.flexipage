@@ -79,7 +79,7 @@
         <type>Region</type>
     </flexiPageRegions>
     <masterLabel>K12 Grade Enrollment Record Page</masterLabel>
-    <sobjectType>Grade_Enrollment__c</sobjectType>
+    <sobjectType>%%%NAMESPACE%%%Grade_Enrollment__c</sobjectType>
     <template>
         <name>flexipage:recordHomeTemplateDesktop</name>
     </template>
