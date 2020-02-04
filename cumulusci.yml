@@ -191,7 +191,22 @@ flows:
                 task: execute_install_apex
             8:
                 task: snapshot_changes
-
+                
+    upgraded_org:
+        description: Simulate an org that has been push-upgraded to the latest releases of EDA and any dependencies.
+        steps:
+            1:
+                flow: latest_release:dependencies
+            2:
+                task: install_managed
+            3:
+                flow: latest_release:config_regression
+            4:
+                task: update_dependencies
+                options:
+                    include_beta: True
+            5:
+                task: install_managed_beta
 plans:
     install:
         slug: install
