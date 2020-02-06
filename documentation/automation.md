@@ -52,6 +52,19 @@ Each directory is used as follows:
 | `config/trial`     | Unmanaged TSO configuration  | `deploy_trial_config` |               |
 
 ## Utility Tasks and Flows
+
+## Flow Documentation
+-   **`upgraded_org`** Simulates an org that has been push-upgraded to the latest releases of k12 and underlying dependencies.
+
+### `upgraded_org`
+
+We’ve implemented a custom task in the K-12 Architecture Kit to simulate a push upgrade to existing orgs. 
+
+#### Basic Usage
+
+This flow takes in no options, to call this flow please execute using the following command:
+    cci flow run upgraded_org --org [NAME_OF_ORG] 
+
 ### `add_picklist_values`
 
 We’ve implemented a custom task in the K-12 Architecture Kit for adding new picklist values to an existing field. This use case is generic enough that this custom task may eventually move into core CumulusCI, but for now it resides in the K-12 repository.
