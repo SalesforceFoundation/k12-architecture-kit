@@ -63,7 +63,7 @@ We’ve implemented a custom task in the K-12 Architecture Kit to simulate a pus
 #### Basic Usage
 
 This flow takes in no options, to call this flow please execute using the following command:
-    cci flow run upgraded_org --org [NAME_OF_ORG] 
+    `cci flow run upgraded_org --org [NAME_OF_ORG]`
 
 ### `add_picklist_values`
 
