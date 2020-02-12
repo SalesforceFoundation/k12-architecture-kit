@@ -199,7 +199,7 @@ flows:
                 task: snapshot_changes
 
     upgraded_org:
-        description: Simulate an org that has been push-upgraded to the latest releases of EDA and any dependencies.
+        description: Simulate an existing org. Used to test the state of a customer's org after a push upgrade.
         steps:
             1:
                 flow: latest_release:dependencies
