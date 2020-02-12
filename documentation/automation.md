@@ -33,7 +33,7 @@
 | Regression                   | `regression_org`     | `release`        | ✔       |           |
 | Latest Trial Template        | N/A                  | `trial`          | ✔       |           |
 | Update Trialforce Source Org | `trial_org`          | `release`        | ✔       |           |
-
+| Upgraded Org                 | `upgraded_org`       | `dev`            |         |           |
 ## Unpackaged Metadata
 
 Unpackaged directory structure:
@@ -53,17 +53,11 @@ Each directory is used as follows:
 
 ## Utility Tasks and Flows
 
-## Flow Documentation
 -   **`upgraded_org`** Simulates an org that has been push-upgraded to the latest releases of k12 and underlying dependencies.
 
 ### `upgraded_org`
 
 We’ve implemented a custom task in the K-12 Architecture Kit to simulate a push upgrade to existing orgs. 
-
-#### Basic Usage
-
-This flow takes in no options, to call this flow please execute using the following command:
-    `cci flow run upgraded_org --org [NAME_OF_ORG]`
 
 ### `add_picklist_values`
 
