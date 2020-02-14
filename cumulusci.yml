@@ -77,7 +77,7 @@ tasks:
             path: unpackaged/config/trial
             namespace_tokenize: $project_config.project__package__namespace
 
-    add_picklist_values:
+    add_application_type_picklist_values:
         description: Adds picklist values to the given field, if they don't already exist.
         class_path: tasks.add_picklist_values.AddPicklistValues
         group: 'K-12: Metadata'
@@ -141,7 +141,7 @@ flows:
                 options:
                     managed: True
             7:
-                task: add_picklist_values
+                task: add_application_type_picklist_values
 
     trial_org:
         description: Deploy trial configuration to an org.
@@ -160,7 +160,7 @@ flows:
                 options:
                     unmanaged: False
             6:
-                task: add_picklist_values
+                task: add_application_type_picklist_values
                     
     qa_org:
         #description: Set up an org as a QA environment for unmanaged metadata
@@ -172,7 +172,7 @@ flows:
             6:
                 task: deploy_k12_kit_settings
             7:
-                task: add_picklist_values
+                task: add_application_type_picklist_values
             8:
                 task: execute_install_apex
             9:
