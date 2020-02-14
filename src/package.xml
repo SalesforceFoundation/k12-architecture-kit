@@ -2,11 +2,14 @@
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>K-12 Architecture Kit</fullName>
     <types>
+        <members>CON_CurrentGradeLevel_TDTM</members>
+        <members>CON_CurrentGradeLevel_TEST</members>
         <members>GRER_SyncGradeLevel_TDTM</members>
         <members>GRER_SyncGradeLevel_TEST</members>
         <members>STG_InstallScript</members>
         <members>STG_InstallScript_TEST</members>
         <members>TDTM_DefaultConfig</members>
+        <members>TDTM_ProcessControl</members>
         <members>UTIL_Namespace</members>
         <members>UTIL_Namespace_TEST</members>
         <name>ApexClass</name>
