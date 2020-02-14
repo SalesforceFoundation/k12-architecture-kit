@@ -81,7 +81,13 @@ tasks:
         description: Adds picklist values to the given field, if they don't already exist.
         class_path: tasks.add_picklist_values.AddPicklistValues
         group: 'K-12: Metadata'
-        
+        options:
+            sobject: hed__Application__c
+            field: hed__Application_Type__c
+            values: "Elementary,Middle School,High School"
+            recordTypes: picklist
+            sorted: True
+            
     uninstall_packaged_incremental:
         #description: Deletes any metadata from the package in the target org not in the local workspace
         class_path: cumulusci.tasks.salesforce.UninstallPackagedIncremental
@@ -136,12 +142,6 @@ flows:
                     managed: True
             7:
                 task: add_picklist_values
-                options:
-                    sobject: hed__Application__c
-                    field: hed__Application_Type__c
-                    values: "Elementary,Middle School,High School"
-                    recordTypes: picklist
-                    sorted: True
 
     trial_org:
         description: Deploy trial configuration to an org.
@@ -161,12 +161,6 @@ flows:
                     unmanaged: False
             6:
                 task: add_picklist_values
-                options:
-                    sobject: hed__Application__c
-                    field: hed__Application_Type__c
-                    values: "Elementary,Middle School,High School"
-                    recordTypes: picklist
-                    sorted: True
                     
     qa_org:
         #description: Set up an org as a QA environment for unmanaged metadata
@@ -179,12 +173,6 @@ flows:
                 task: deploy_k12_kit_settings
             7:
                 task: add_picklist_values
-                options:
-                    sobject: hed__Application__c
-                    field: hed__Application_Type__c
-                    values: "Elementary,Middle School,High School"
-                    recordTypes: picklist
-                    sorted: True
             8:
                 task: execute_install_apex
             9:
