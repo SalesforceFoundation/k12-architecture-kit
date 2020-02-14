@@ -67,8 +67,8 @@ private class GRER_SyncGradeLevel_TEST {
 
         //Assert the results
         List<Contact> resultContacts = [SELECT Current_Grade_Level__c FROM Contact];
-        system.assertEquals(1, resultContacts.size(), 'There should be only one contact created');
-        system.assertEquals('Prekindergarten', resultContacts[0].Current_Grade_Level__c, 'The current grade level of the contact is not updated properly');
+        System.assertEquals(1, resultContacts.size(), 'There should be only one contact created');
+        System.assertEquals('Prekindergarten', resultContacts[0].Current_Grade_Level__c, 'The current grade level of the contact is not updated properly');
     }
 
     /*********************************************************************************************************
@@ -80,7 +80,12 @@ private class GRER_SyncGradeLevel_TEST {
         Contact testContact = hed.UTIL_UnitTestData_API.getContact();
         testContact.Current_Grade_Level__c = 'Preschool';
         insert testContact;
-
+        
+        Grade_Enrollment__c GradeEnroll = [SELECT Id, Status__c, Grade_Level__c, Contact__c FROM Grade_Enrollment__c];
+        System.assertEquals('Current', GradeEnroll.Status__c, 'A Grade Enrollment should have been created after a contact is inserted');
+        System.assertEquals('Preschool', GradeEnroll.Grade_Level__c, 'Status should match Contact\'s Current Grade Level');
+        System.assertEquals(testContact.Id, GradeEnroll.Contact__c, 'Grade Level should be linked to Contact');
+        
         Grade_Enrollment__c testGradeEnroll = new Grade_Enrollment__c(Status__c = 'Current', Grade_Level__c = 'Prekindergarten', Contact__c = testContact.Id);
         insert testGradeEnroll;
 
@@ -93,16 +98,16 @@ private class GRER_SyncGradeLevel_TEST {
 
         //Assert the results
         List<Contact> resultContacts = [SELECT Current_Grade_Level__c FROM Contact];
-        system.assertEquals(1, resultContacts.size(), 'There should be only one contact created');
-        system.assertEquals('Transitional Kindergarten', resultContacts[0].Current_Grade_Level__c, 'The current grade level of the contact is not updated properly');
+        System.assertEquals(1, resultContacts.size(), 'There should be only one contact created');
+        System.assertEquals('Transitional Kindergarten', resultContacts[0].Current_Grade_Level__c, 'The current grade level of the contact is not updated properly');
 
         List<Grade_Enrollment__c> resultGradeEnrollments= [SELECT Status__c FROM Grade_Enrollment__c];
-        system.assertEquals(2, resultGradeEnrollments.size(), 'There should be two grade enrollments created');
+        System.assertEquals(3, resultGradeEnrollments.size(), 'There should be 3 grade enrollments created');
         for (Grade_Enrollment__c ge : resultGradeEnrollments) {
-            if (ge.Id != testGradeEnroll.Id) {
-                system.assertEquals('Current', ge.Status__c, 'the new Grade Enrollment should be current');
+            if (ge.Id == testNewGradeEnroll.Id) {
+                System.assertEquals('Current', ge.Status__c, 'the new Grade Enrollment should be current');
             } else {
-                system.assertEquals('Former', ge.Status__c, 'the old Grade Enrollment should be former');
+                System.assertEquals('Former', ge.Status__c, 'the old Grade Enrollment should be former');
             }
         }
     }
@@ -116,7 +121,12 @@ private class GRER_SyncGradeLevel_TEST {
         Contact testContact = hed.UTIL_UnitTestData_API.getContact();
         testContact.Current_Grade_Level__c = 'Preschool';
         insert testContact;
-
+        
+        Grade_Enrollment__c GradeEnroll = [SELECT Id, Status__c, Grade_Level__c, Contact__c FROM Grade_Enrollment__c];
+        System.assertEquals('Current', GradeEnroll.Status__c, 'A Grade Enrollment should have been created after a contact is inserted');
+        System.assertEquals('Preschool', GradeEnroll.Grade_Level__c, 'Status should match Contact\'s Current Grade Level');
+        System.assertEquals(testContact.Id, GradeEnroll.Contact__c, 'Grade Level should be linked to Contact');
+        
         Grade_Enrollment__c testGradeEnroll = new Grade_Enrollment__c(Status__c = 'Current', Grade_Level__c = 'Prekindergarten', Contact__c = testContact.Id);
         insert testGradeEnroll;
 
@@ -131,16 +141,16 @@ private class GRER_SyncGradeLevel_TEST {
 
         //Assert the results
         List<Contact> resultContacts = [SELECT Current_Grade_Level__c FROM Contact];
-        system.assertEquals(1, resultContacts.size(), 'There should be only one contact created');
-        system.assertEquals('Prekindergarten', resultContacts[0].Current_Grade_Level__c, 'The current grade level of the contact is not updated properly');
+        System.assertEquals(1, resultContacts.size(), 'There should be only one contact created');
+        System.assertEquals('Prekindergarten', resultContacts[0].Current_Grade_Level__c, 'The current grade level of the contact is not updated properly');
 
         List<Grade_Enrollment__c> resultGradeEnrollments= [SELECT Status__c FROM Grade_Enrollment__c];
-        system.assertEquals(2, resultGradeEnrollments.size(), 'There should be two grade enrollments created');
+        System.assertEquals(3, resultGradeEnrollments.size(), 'There should be two grade enrollments created');
         for (Grade_Enrollment__c ge : resultGradeEnrollments) {
             if (ge.Id != testGradeEnroll.Id) {
-                system.assertEquals('Former', ge.Status__c, 'the new Grade Enrollment should be former');
+                System.assertEquals('Former', ge.Status__c, 'the Old Grade Enrollment should be former');
             } else {
-                system.assertEquals('Current', ge.Status__c, 'the old Grade Enrollment should be current');
+                System.assertEquals('Current', ge.Status__c, 'the New Grade Enrollment should be current');
             }
         }
     }
@@ -154,7 +164,12 @@ private class GRER_SyncGradeLevel_TEST {
         Contact testContact = hed.UTIL_UnitTestData_API.getContact();
         testContact.Current_Grade_Level__c = 'Preschool';
         insert testContact;
-
+        
+        Grade_Enrollment__c GradeEnroll = [SELECT Id, Status__c, Grade_Level__c, Contact__c FROM Grade_Enrollment__c];
+        System.assertEquals('Current', GradeEnroll.Status__c, 'A Grade Enrollment should have been created after a contact is inserted');
+        System.assertEquals('Preschool', GradeEnroll.Grade_Level__c, 'Status should match Contact\'s Current Grade Level');
+        System.assertEquals(testContact.Id, GradeEnroll.Contact__c, 'Grade Level should be linked to Contact');
+        
         Grade_Enrollment__c testGradeEnroll = new Grade_Enrollment__c(Status__c = 'Current', Grade_Level__c = 'Prekindergarten', Contact__c = testContact.Id);
         insert testGradeEnroll;
 
@@ -169,16 +184,16 @@ private class GRER_SyncGradeLevel_TEST {
 
         //Assert the results
         List<Contact> resultContacts = [SELECT Current_Grade_Level__c FROM Contact];
-        system.assertEquals(1, resultContacts.size(), 'There should be only one contact created');
-        system.assertEquals('Preschool', resultContacts[0].Current_Grade_Level__c, 'The current grade level of the contact is not updated properly');
+        System.assertEquals(1, resultContacts.size(), 'There should be only one contact created');
+        System.assertEquals('Preschool', resultContacts[0].Current_Grade_Level__c, 'The current grade level of the contact is not updated properly');
 
         List<Grade_Enrollment__c> resultGradeEnrollments= [SELECT Status__c FROM Grade_Enrollment__c];
-        system.assertEquals(2, resultGradeEnrollments.size(), 'There should be two grade enrollments created');
+        system.assertEquals(3, resultGradeEnrollments.size(), 'There should be two grade enrollments created');
         for (Grade_Enrollment__c ge : resultGradeEnrollments) {
-            if (ge.Id != testGradeEnroll.Id) {
-                system.assertEquals('Current', ge.Status__c, 'the new Grade Enrollment should be former');
+            if (ge.Id == testNewGradeEnroll.Id) {
+                System.assertEquals('Current', ge.Status__c, 'the new Grade Enrollment should be former');
             } else {
-                system.assertEquals('Former', ge.Status__c, 'the old Grade Enrollment should be current');
+                System.assertEquals('Former', ge.Status__c, 'the old Grade Enrollment should be current');
             }
         }
     }
@@ -192,7 +207,12 @@ private class GRER_SyncGradeLevel_TEST {
         Contact testContact = hed.UTIL_UnitTestData_API.getContact();
         testContact.Current_Grade_Level__c = 'Preschool';
         insert testContact;
-
+        
+        Grade_Enrollment__c GradeEnroll = [SELECT Id, Status__c, Grade_Level__c, Contact__c FROM Grade_Enrollment__c];
+        System.assertEquals('Current', GradeEnroll.Status__c, 'A Grade Enrollment should have been created after a contact is inserted');
+        System.assertEquals('Preschool', GradeEnroll.Grade_Level__c, 'Status should match Contact\'s Current Grade Level');
+        System.assertEquals(testContact.Id, GradeEnroll.Contact__c, 'Grade Level should be linked to Contact');
+        
         Grade_Enrollment__c testGradeEnroll = new Grade_Enrollment__c(Status__c = 'Former', Grade_Level__c = 'Prekindergarten', Contact__c = testContact.Id);
         insert testGradeEnroll;
 
@@ -208,16 +228,16 @@ private class GRER_SyncGradeLevel_TEST {
 
         //Assert the results
         List<Contact> resultContacts = [SELECT Current_Grade_Level__c FROM Contact];
-        system.assertEquals(1, resultContacts.size(), 'There should be only one contact created');
-        system.assertEquals('Transitional Kindergarten', resultContacts[0].Current_Grade_Level__c, 'The current grade level of the contact is not updated properly');
+        System.assertEquals(1, resultContacts.size(), 'There should be only one contact created');
+        System.assertEquals('Transitional Kindergarten', resultContacts[0].Current_Grade_Level__c, 'The current grade level of the contact is not updated properly');
 
         List<Grade_Enrollment__c> resultGradeEnrollments= [SELECT Status__c FROM Grade_Enrollment__c];
-        system.assertEquals(2, resultGradeEnrollments.size(), 'There should be two grade enrollments created');
+        System.assertEquals(3, resultGradeEnrollments.size(), 'There should be 3 grade enrollments created');
         for (Grade_Enrollment__c ge : resultGradeEnrollments) {
-            if (ge.Id != testGradeEnroll.Id) {
-                system.assertEquals('Current', ge.Status__c, 'the new Grade Enrollment should be former');
+            if (ge.Id == testNewGradeEnroll.Id) {
+                System.assertEquals('Current', ge.Status__c, 'the new Grade Enrollment should be former');
             } else {
-                system.assertEquals('Former', ge.Status__c, 'the old Grade Enrollment should be current');
+                System.assertEquals('Former', ge.Status__c, 'the old Grade Enrollment should be current');
             }
         }
     }
