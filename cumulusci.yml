@@ -250,6 +250,7 @@ plans:
                         name: K-12 Architecture Kit Metadata and Configuration
             5:
                 task: deploy_k12_app
+                
 orgs:
     scratch:
         dev_namespaced:
