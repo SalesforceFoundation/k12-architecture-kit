@@ -85,7 +85,6 @@ tasks:
             sobject: hed__Application__c
             field: hed__Application_Type__c
             values: "Elementary,Middle School,High School"
-            recordTypes: picklist
             sorted: True
             
     uninstall_packaged_incremental:
