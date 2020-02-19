@@ -77,14 +77,19 @@ tasks:
             path: unpackaged/config/trial
             namespace_tokenize: $project_config.project__package__namespace
 
-    add_application_type_picklist_values:
+    add_picklist_values:
         description: Adds picklist values to the given field, if they don't already exist.
+        class_path: tasks.add_picklist_values.AddPicklistValues
+        group: 'K-12: Metadata'
+
+    add_application_type_picklist_values:
+        description: Adds Elementary,Middle School,High Schoola as picklist values to the application type object.
         class_path: tasks.add_picklist_values.AddPicklistValues
         group: 'K-12: Metadata'
         options:
             sobject: hed__Application__c
             field: hed__Application_Type__c
-            values: "Elementary,Middle School,High School"
+            values: "Elementary School,Middle School,High School"
             sorted: True
             
     uninstall_packaged_incremental:
