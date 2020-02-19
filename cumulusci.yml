@@ -83,7 +83,7 @@ tasks:
         group: 'K-12: Metadata'
 
     add_application_type_picklist_values:
-        description: Adds Elementary,Middle School,High Schoola as picklist values to the application type object.
+        description: Adds Elementary School, Middle School, and High School picklist values to the application type field.
         class_path: tasks.add_picklist_values.AddPicklistValues
         group: 'K-12: Metadata'
         options:
