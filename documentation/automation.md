@@ -33,7 +33,7 @@
 | Regression                   | `regression_org`     | `release`        | ✔       |           |
 | Latest Trial Template        | N/A                  | `trial`          | ✔       |           |
 | Update Trialforce Source Org | `trial_org`          | `release`        | ✔       |           |
-| Upgraded Org                 | `upgraded_org`       | `release`            |         |           |
+| Upgraded Org                 | `upgraded_org`       | `release`        | ✔       |           |
 ## Unpackaged Metadata
 
 Unpackaged directory structure:

@@ -81,7 +81,17 @@ tasks:
         description: Adds picklist values to the given field, if they don't already exist.
         class_path: tasks.add_picklist_values.AddPicklistValues
         group: 'K-12: Metadata'
-        
+
+    add_application_type_picklist_values:
+        description: Adds Elementary School, Middle School, and High School picklist values to the application type field.
+        class_path: tasks.add_picklist_values.AddPicklistValues
+        group: 'K-12: Metadata'
+        options:
+            sobject: hed__Application__c
+            field: hed__Application_Type__c
+            values: "Elementary School,Middle School,High School"
+            sorted: True
+            
     uninstall_packaged_incremental:
         #description: Deletes any metadata from the package in the target org not in the local workspace
         class_path: cumulusci.tasks.salesforce.UninstallPackagedIncremental
@@ -134,6 +144,8 @@ flows:
                 task: update_admin_profile
                 options:
                     managed: True
+            7:
+                task: add_application_type_picklist_values
 
     trial_org:
         description: Deploy trial configuration to an org.
@@ -151,6 +163,8 @@ flows:
                 task: deploy_trial_config
                 options:
                     unmanaged: False
+            6:
+                task: add_application_type_picklist_values
                     
     qa_org:
         #description: Set up an org as a QA environment for unmanaged metadata
@@ -162,8 +176,10 @@ flows:
             6:
                 task: deploy_k12_kit_settings
             7:
-                task: execute_install_apex
+                task: add_application_type_picklist_values
             8:
+                task: execute_install_apex
+            9:
                 task: snapshot_changes
 
     dev_org:
@@ -262,7 +278,7 @@ plans:
                         name: K-12 Architecture Kit Metadata and Configuration
             5:
                 task: deploy_k12_app
-
+                
 orgs:
     scratch:
         dev_namespaced:
