@@ -229,6 +229,18 @@ flows:
                     include_beta: True
             5:
                 task: install_managed_beta
+
+    ci_feature_beta_deps:
+        description: When run, the latest version (including betas) of Cumulus and EDA are installed, and all tests are run.
+        steps:
+            5:
+                task: run_tests
+                options:
+                   managed: True
+                   namespace: hed
+            6:
+                task: github_parent_to_children
+
 plans:
     install:
         slug: install
