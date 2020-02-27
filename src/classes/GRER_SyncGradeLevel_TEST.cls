@@ -417,7 +417,7 @@ private class GRER_SyncGradeLevel_TEST {
         try {
             Test.startTest();
                 List<Grade_Enrollment__c> updateList = new List<Grade_Enrollment__c>();        
-        	    List<Grade_Enrollment__c> allEnrollments = [SELECT Id, Status__c FROM Grade_Enrollment__c
+                List<Grade_Enrollment__c> allEnrollments = [SELECT Id, Status__c FROM Grade_Enrollment__c
                                                             WHERE Status__c = 'Current' AND (Grade_Level__c = 'Prekindergarten'
                                                             OR Grade_Level__c = 'Third Grade')];
                 for (Grade_Enrollment__c eachEnrollment : allEnrollments) {            
@@ -473,5 +473,77 @@ private class GRER_SyncGradeLevel_TEST {
         
         Contact updatedContact = [SELECT Id, Current_Grade_Level__c FROM Contact];
         System.assertEquals('Second Grade', updatedContact.Current_Grade_Level__c, 'Current Grade Level should change from First Grade to Second Grade');       
-    }           
+    }
+
+    /*********************************************************************************************************
+    * @description This method ensures bulk deletes run successfully
+    */
+    @isTest
+    private static void gradeEnrollmentBulkDeleteCheck() {
+
+        // Insert Contacts
+        Contact testContact1 = hed.UTIL_UnitTestData_API.getContact();
+        Contact testContact2 = hed.UTIL_UnitTestData_API.getContact();
+        Contact testContact3 = hed.UTIL_UnitTestData_API.getContact();
+
+        insert new Contact[] {testContact1, testContact2, testContact3};
+
+        // Insert a Grade Enrollment for each Contact
+        Grade_Enrollment__c testGradeEnroll1 = new Grade_Enrollment__c(Status__c = 'Current', Grade_Level__c = 'Prekindergarten', Contact__c = testContact1.Id);
+        Grade_Enrollment__c testGradeEnroll2 = new Grade_Enrollment__c(Status__c = 'Current', Grade_Level__c = 'Prekindergarten', Contact__c = testContact2.Id);
+        Grade_Enrollment__c testGradeEnroll3 = new Grade_Enrollment__c(Status__c = 'Current', Grade_Level__c = 'Prekindergarten', Contact__c = testContact3.Id);
+
+        insert new Grade_Enrollment__c[] {testGradeEnroll1, testGradeEnroll2, testGradeEnroll3};
+
+        // Ensure Current Grade Level is populated on all Contacts
+        List<Contact> contactList = [SELECT Id, Current_Grade_Level__c FROM Contact];
+        for (Contact eachCon: contactList) {
+            System.assertEquals('Prekindergarten', eachCon.Current_Grade_Level__c, 'Current Grade Level should be populated');
+        }
+
+        // Turn off Trigger handler to associate multiple Grade Enrollments with status 'Current' to each Contact
+        hed__Trigger_Handler__c handler = [SELECT Id, hed__Active__c , hed__Trigger_Action__c
+                                           FROM hed__Trigger_Handler__c  WHERE hed__Class__c = :gradeEnrollClass LIMIT 1];   
+        handler.hed__Active__c = False;
+        update handler;
+
+        // Insert multiple Grade Enrollments
+        Grade_Enrollment__c testGradeEnroll4 = new Grade_Enrollment__c(Status__c = 'Former', Grade_Level__c = 'First Grade', Contact__c = testContact1.Id);
+        Grade_Enrollment__c testGradeEnroll5 = new Grade_Enrollment__c(Status__c = 'Current', Grade_Level__c = 'First Grade', Contact__c = testContact2.Id);
+        Grade_Enrollment__c testGradeEnroll6 = new Grade_Enrollment__c(Status__c = 'Current', Grade_Level__c = 'First Grade', Contact__c = testContact3.Id);
+        Grade_Enrollment__c testGradeEnroll7 = new Grade_Enrollment__c(Status__c = 'Current', Grade_Level__c = 'Second Grade', Contact__c = testContact3.Id);
+        Grade_Enrollment__c testGradeEnroll8 = new Grade_Enrollment__c(Status__c = 'Current', Grade_Level__c = 'Third Grade', Contact__c = testContact3.Id);
+
+        insert new Grade_Enrollment__c[] {testGradeEnroll4, testGradeEnroll5, testGradeEnroll6, testGradeEnroll7, testGradeEnroll8};
+
+        // Turn the trigger handler back on
+        hed__Trigger_Handler__c handlerUpdate = [SELECT Id, hed__Active__c , hed__Trigger_Action__c
+                                                 FROM hed__Trigger_Handler__c  WHERE hed__Class__c = :gradeEnrollClass LIMIT 1];    
+        handlerUpdate.hed__Active__c = True;
+        update handlerUpdate;
+
+        // Ensure bulk updates run successfully
+        try {
+            Test.startTest();
+                List<Grade_Enrollment__c> deleteList = new List<Grade_Enrollment__c>();   
+                List<Grade_Enrollment__c> allEnrollments = [SELECT Id, Status__c FROM Grade_Enrollment__c
+                                                            WHERE Status__c = 'Current' AND (Grade_Level__c = 'Prekindergarten'
+                                                            OR Grade_Level__c = 'Third Grade')];
+                for (Grade_Enrollment__c eachEnrollment : allEnrollments) {
+                    deleteList.add(eachEnrollment);
+                }
+                Database.delete(deleteList, false);     
+            Test.stopTest();
+        } catch(Exception error) {
+              System.assert(error.getMessage().contains(Label.MultipleCurrentGradeEnrollmentsError));            
+          }
+
+        Contact updateContact1 = [SELECT Id, Current_Grade_Level__c FROM Contact WHERE Current_Grade_Level__c = 'NotApplicable'];       
+        Contact updateContact2 = [SELECT Id, Current_Grade_Level__c FROM Contact WHERE Current_Grade_Level__c = 'First Grade'];
+        Contact updateContact3 = [SELECT Id, Current_Grade_Level__c FROM Contact WHERE Current_Grade_Level__c = 'Prekindergarten'];
+
+        System.assertEquals('NotApplicable', updateContact1.Current_Grade_Level__c, 'Current Grade Level should change to Not Applicable from Prekindergarten');
+        System.assertEquals('First Grade', updateContact2.Current_Grade_Level__c, 'Current Grade Level should change to First Grade from Prekindergarten');
+        System.assertEquals('Prekindergarten', updateContact3.Current_Grade_Level__c,'Current Grade Level should remain same');
+    }
 }

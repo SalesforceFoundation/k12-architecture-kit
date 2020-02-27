@@ -43,7 +43,8 @@ public class TDTM_ProcessControl {
         CON_CurrentGradeLevel_TDTM_After_Update,
         CON_CurrentGradeLevel_TDTM_createGradeEnrollments,
         GRER_SyncGradeLevel_TDTM_After_Insert,
-        GRER_SyncGradeLevel_TDTM_After_Update
+        GRER_SyncGradeLevel_TDTM_After_Update,
+        GRER_SyncGradeLevel_TDTM_After_Delete
     }
 
     /*******************************************************************************************************
