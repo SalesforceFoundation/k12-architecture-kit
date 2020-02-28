@@ -5,4 +5,8 @@
         <default>true</default>
         <visible>true</visible>
     </applicationVisibilities>
+    <tabVisibilities>
+        <tab>hed__Application__c</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
 </Profile>
