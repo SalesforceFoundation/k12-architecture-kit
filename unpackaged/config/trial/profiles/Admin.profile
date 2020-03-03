@@ -46,6 +46,9 @@
         <layout>hed__Affiliation__c-%%%NAMESPACE%%%K12 Kit Affiliation Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>hed__Application__c-%%%NAMESPACE%%%K12 Kit Application Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>hed__Attendance_Event__c-%%%NAMESPACE%%%K12 Kit Attendance Event Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
