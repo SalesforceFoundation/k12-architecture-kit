@@ -49,6 +49,10 @@
         <name>FlexiPage</name>
     </types>
     <types>
+        <members>hed__Application__c.K12_Kit_Application_Layout</members>
+        <name>Layout</name>
+    </types>
+    <types>
         <members>Account.K12_All_Academic_Departments</members>
         <members>Account.K12_All_Academic_Programs</members>
         <members>Account.K12_All_Educational_Institutions</members>
