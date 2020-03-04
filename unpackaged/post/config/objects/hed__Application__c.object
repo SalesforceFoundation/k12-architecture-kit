@@ -8,9 +8,9 @@
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
     </actionOverrides>
-    <compactLayoutAssignment>K12_Application_Layout</compactLayoutAssignment>
+    <compactLayoutAssignment>K12_Application_Compact_Layout</compactLayoutAssignment>
     <compactLayouts>
-        <fullName>K12_Application_Layout</fullName>
+        <fullName>K12_Application_Compact_Layout</fullName>
         <fields>Name</fields>
         <fields>hed__Applicant__c</fields>
         <fields>hed__Application_Type__c</fields>
