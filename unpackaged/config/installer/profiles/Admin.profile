@@ -5,9 +5,6 @@
         <default>true</default>
         <visible>true</visible>
     </applicationVisibilities>
-    <layoutAssignments>
-        <layout>%%%NAMESPACE%%%hed__Application__c-K12 Kit Application Layout</layout>
-    </layoutAssignments>
     <tabVisibilities>
         <tab>hed__Application__c</tab>
         <visibility>DefaultOn</visibility>
