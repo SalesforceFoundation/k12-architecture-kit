@@ -126,7 +126,7 @@
                 <value>
                     <fullName>No Show</fullName>
                     <default>false</default>
-                    <label>No Show</label>
+                    <label>No-Show</label>
                 </value>
                 <value>
                     <fullName>Promoted</fullName>
