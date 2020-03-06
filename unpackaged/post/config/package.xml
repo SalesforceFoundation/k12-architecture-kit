@@ -28,6 +28,8 @@
         <members>hed__Relationship__c.hed__HEDA_Relationship_Compact_Layout</members>
         <members>hed__Term_Grade__c.K12_Term_Grade_Compact_Layout</members>
         <members>hed__Term__c.hed__HEDA_Term_Compact_Layout</members>
+        <members>hed__Test__c.K12_Test_Compact_Layout</members>
+        <members>hed__Test_Score__c.K12_Test_Score_Compact_Layout</members>
         <members>hed__Time_Block__c.K12_Time_Block_Compact_Layout</members>
         <name>CompactLayout</name>
     </types>
