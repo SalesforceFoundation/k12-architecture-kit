@@ -90,7 +90,7 @@ tasks:
             sobject: hed__Application__c
             field: hed__Application_Type__c
             values: "Elementary School,Middle School,High School"
-            sorted: True
+            sorted: true
             
     uninstall_packaged_incremental:
         #description: Deletes any metadata from the package in the target org not in the local workspace
@@ -191,9 +191,11 @@ flows:
                 task: deploy_trial_config
             6:
                 task: deploy_k12_kit_settings
-            7:
-                task: execute_install_apex
+            7:  
+                task: add_application_type_picklist_values
             8:
+                task: execute_install_apex
+            9:
                 task: snapshot_changes
 
     dev_org_namespaced:
@@ -210,8 +212,10 @@ flows:
             6:
                 task: deploy_k12_kit_settings
             7:
-                task: execute_install_apex
+                task: add_application_type_picklist_values
             8:
+                task: execute_install_apex
+            9:
                 task: snapshot_changes
 
     upgraded_org:
@@ -229,6 +233,8 @@ flows:
                     include_beta: True
             5:
                 task: install_managed_beta
+            6:
+                task: add_application_type_picklist_values
 
     ci_feature_beta_deps:
         description: When run, the latest version (including betas) of Cumulus and EDA are installed, and all tests are run.
