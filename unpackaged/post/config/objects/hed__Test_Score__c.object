@@ -13,7 +13,6 @@
         <fullName>K12_Test_Score_Compact_Layout</fullName>
         <fields>NAME</fields>
         <fields>hed__Test_Type__c</fields>
-        <fields>hed__Test__c</fields>
         <fields>hed__Subject_Area__c</fields>
         <fields>hed__Score__c</fields>
         <fields>hed__Percentile__c</fields>
@@ -48,6 +47,7 @@
     </nameField>
     <pluralLabel>Test Scores</pluralLabel>
     <searchLayouts>
+        <searchResultsAdditionalFields>NAME</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>hed__Test_Type__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>hed__Test__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>hed__Subject_Area__c</searchResultsAdditionalFields>
