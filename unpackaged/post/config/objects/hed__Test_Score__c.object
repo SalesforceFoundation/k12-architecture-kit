@@ -27,7 +27,7 @@
         <columns>hed__Subject_Area__c</columns>
         <columns>hed__Score__c</columns>
         <columns>hed__Percentile__c</columns>
-        <filterScope>Mine</filterScope>
+        <filterScope>Everything</filterScope>
         <label>K-12 All Test Scores</label>
     </listViews>
     <deploymentStatus>Deployed</deploymentStatus>
