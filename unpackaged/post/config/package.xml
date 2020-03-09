@@ -89,8 +89,8 @@
         <members>hed__Relationship__c.K_12_All_Relationships</members>
         <members>hed__Term_Grade__c.K12_All_Term_Grades</members>
         <members>hed__Term__c.K12_All_Terms</members>
-        <members>hed__Test__c.%%%NAMESPACE%%%K12_All_Tests</members>
-        <members>hed__Test_Score__c.%%%NAMESPACE%%%K12_All_Test_Scores</members>
+        <members>hed__Test__c.K_12_All_Tests</members>
+        <members>hed__Test_Score__c.K_12_All_Test_Scores</members>
         <members>hed__Time_Block__c.K12_All_Time_Blocks</members>
         <name>ListView</name>
     </types>
