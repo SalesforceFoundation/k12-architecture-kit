@@ -26,7 +26,7 @@
         <columns>hed__Applying_To__c</columns>
         <columns>hed__Application_Type__c</columns>
         <columns>hed__Term__c</columns>
-        <columns>hed__Application_Status__c</column>
+        <columns>hed__Application_Status__c</columns>
         <columns>hed__Application_Date__c</columns>
         <columns>hed__Application_Decision_Date__c</columns>
         <columns>hed__Applicant_Decision_Date__c</columns>
