@@ -13,7 +13,7 @@ project:
         prefix_release: release/
         repo_url: https://github.com/SalesforceFoundation/k12-architecture-kit
     dependencies:
-        - github: 'https://github.com/SalesforceFoundation/HEDAP'
+        - github: 'https://github.com/SalesforceFoundation/EDA'
 
 
 sources:
