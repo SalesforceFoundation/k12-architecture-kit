@@ -31,7 +31,7 @@
         <columns>hed__Application_Decision_Date__c</columns>
         <columns>hed__Applicant_Decision_Date__c</columns>
         <columns>hed__Preparer__c</columns>
-        <filterScope>Mine</filterScope>
+        <filterScope>Everything</filterScope>
         <label>K-12 All Applications</label>
     </listViews>
     <deploymentStatus>Deployed</deploymentStatus>
