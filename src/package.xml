@@ -117,6 +117,8 @@
         <members>hed__Relationship__c-K12 Kit Relationship Layout</members>
         <members>hed__Term_Grade__c-K12 Kit Term Grade Layout</members>
         <members>hed__Term__c-K12 Kit Term Layout</members>
+        <members>hed__Test_Score__c-K12 Kit Test Score Layout</members>
+        <members>hed__Test__c-K12 Kit Test Layout</members>
         <members>hed__Time_Block__c-K12 Kit Time Block Layout</members>
         <name>Layout</name>
     </types>
