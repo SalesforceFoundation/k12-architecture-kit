@@ -98,6 +98,7 @@
         <members>Grade_Enrollment__c-K12 Kit Grade Enrollment Layout</members>
         <members>hed__Address__c-K12 Kit Address Layout</members>
         <members>hed__Affiliation__c-K12 Kit Affiliation Layout</members>
+        <members>hed__Application__c-K12 Kit Application Layout</members>
         <members>hed__Attendance_Event__c-K12 Kit Attendance Event Layout</members>
         <members>hed__Attribute__c-K12 Kit Credential Layout</members>
         <members>hed__Attribute__c-K12 Kit Student Characteristic Layout</members>
