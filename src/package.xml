@@ -39,6 +39,7 @@
         <members>Grade_Enrollment__c.Status__c</members>
         <members>Grade_Enrollment__c.Term__c</members>
         <members>hed__Attribute__c.Grade_Level__c</members>
+        <members>hed__Behavior_Response__c.School_Days_Missed__c</members>
         <members>hed__Relationship__c.FERPA_Approved__c</members>
         <members>hed__Relationship__c.HIPPA_Approved__c</members>
         <name>CustomField</name>
@@ -70,6 +71,10 @@
         <members>hed__Attribute__c-en_US</members>
         <members>hed__Attribute__c-es</members>
         <members>hed__Attribute__c-fr</members>
+        <members>hed__Behavior_Response__c-ca</members>
+        <members>hed__Behavior_Response__c-en_US</members>
+        <members>hed__Behavior_Response__c-es</members>
+        <members>hed__Behavior_Response__c-fr</members>
         <members>hed__Relationship__c-ca</members>
         <members>hed__Relationship__c-en_US</members>
         <members>hed__Relationship__c-es</members>

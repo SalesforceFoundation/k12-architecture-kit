@@ -29,4 +29,17 @@
     </nameField>
     <pluralLabel>Behavior Responses</pluralLabel>
     <sharingModel>ReadWrite</sharingModel>
+    <fields>
+        <fullName>School_Days_Missed__c</fullName>
+        <description>The length, in school days, of the response.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The length, in school days, of the response.</inlineHelpText>
+        <label>School Days Missed</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
 </CustomObject>
