@@ -252,8 +252,6 @@ flows:
                 options:
                     unmanaged: False
             6:
-                task: update_admin_profile
-            7:
                 task: add_application_type_picklist_values
 
     ci_feature_beta_deps:
