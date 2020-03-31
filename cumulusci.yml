@@ -236,7 +236,7 @@ flows:
                 task: add_application_type_picklist_values
 
     net_new_org:
-        description: Deploy trial configuration to an org.
+        description: Simulates an K12 installation for a new customer. Installs the latest beta and dependencies.
         group: 'K-12: Trial'
         steps:
             1:
