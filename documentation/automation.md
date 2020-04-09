@@ -34,6 +34,8 @@
 | Latest Trial Template        | N/A                  | `trial`          | ✔       |           |
 | Update Trialforce Source Org | `trial_org`          | `release`        | ✔       |           |
 | Upgraded Org                 | `upgraded_org`       | `release`        | ✔       |           |
+| Net New Org                  | `net_new_org`        | `release`        | ✔       |           |
+
 ## Unpackaged Metadata
 
 Unpackaged directory structure:
@@ -53,11 +55,12 @@ Each directory is used as follows:
 
 ## Utility Tasks and Flows
 
--   **`upgraded_org`** Simulates an org that has been push-upgraded to the latest releases of k12 and underlying dependencies.
+-   **`regression_org`** Simulates an K12 org upgraded from the latest production release to the current beta and its dependencies (EDA), using the unpackaged metadata from the current beta. Use this when you want an upgraded org without needing to make any manual configurations.
 
-### `upgraded_org`
+-   **`net_new_org`** Simulates the creation of a new K12 org for a new customer, installing the latest beta of K12 and dependencies (EDA). Use this when you want a fully configured regression environment that matches a new installation.
 
-We’ve implemented a custom task in the K-12 Architecture Kit to simulate a push upgrade to existing orgs. 
+-   **`upgraded_org`** Simulates a push upgrade of K12 and dependencies (EDA) to existing customer orgs, from the latest production release to the current beta. This means all push-upgradable components have been updated, but only the unpackaged metadata from the previous version will exist in the org (and not the unpackaged metadata from the current beta.) Use this when you want to see which manual configuration steps are required in order for existing customers to use new functionality.
+
 
 ### `add_picklist_values`
 
