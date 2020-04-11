@@ -54,6 +54,7 @@ picklist_value_template = """
 record_type_picklist_template = """
     <recordTypes>
         <fullName>{name}</fullName>
+        {business_process}
         <active>true</active>
         {description}
         <label>{label}</label>
@@ -94,10 +95,6 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
         },
         "restricted": {
             "description": "If picklist value is a required field",
-            "required": False,
-        },
-        "buisness_process": {
-            "description": "If picklist value is a business_process",
             "required": False,
         },
     }
@@ -362,8 +359,13 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
                     record_type_description = "<description>{}</description>".format(
                         escape(rt["Metadata"]["description"])
                     )
+                if rt["Metadata"]["businessProcess"] != None:
+                    record_type_business_process = "<businessProcess>{}</businessProcess>".format(
+                        escape(rt["Metadata"]["businessProcess"])
+                    )
 
                 record_type_picklist_xml += record_type_picklist_template.format(
+                    business_process=record_type_business_process,
                     name=rt["FullName"].split(".")[
                         1
                     ],  # removes the SObject from FullName

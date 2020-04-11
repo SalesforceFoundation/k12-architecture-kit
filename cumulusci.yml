@@ -106,10 +106,9 @@ tasks:
         class_path: tasks.add_picklist_values.AddPicklistValues
         group: 'K-12: Metadata'
         options:
-            sobject: hed__Case
+            sobject: Case
             field: hed__Location__c
             values: "Administrative Offices Area,Athletic Field or Playground,Auditorium,Bus Stop,Cafeteria Area,Classroom,Computer Lab,Hallway or Stairs,Library/Media Center,Locker Room or Gym Areas,Online,Parking Lot,Restroom,School Bus,Stadium,Unknown,Walking to or from School"
-            sorted: true
             recordtypes: Incident
             restricted: true
             
@@ -145,7 +144,7 @@ flows:
 
     config_regression:
         steps:
-            1: 
+            1:
                 flow: None
             2:
                 task: deploy_post
@@ -167,10 +166,18 @@ flows:
                     managed: True
             7:
                 task: add_application_type_picklist_values
-            8: 
+            8:
                 task: add_behavior_response_type_values
-            9: 
+                options:
+                    sorted: True
+            9:
+                task: add_behavior_response_type_values # intentionally called twice to allow for sorting and other value as last option
+                options:
+                    otherlast: True
+            10:
                 task: add_case_location_values
+                options:
+                    sorted: True
 
     trial_org:
         description: Deploy trial configuration to an org.
@@ -190,11 +197,19 @@ flows:
                     unmanaged: False
             6:
                 task: add_application_type_picklist_values
-            7: 
+            7:
                 task: add_behavior_response_type_values
-            8: 
-                task: add_case_location_values   
-            
+                options:
+                    sorted: True
+            8:
+                task: add_behavior_response_type_values # intentionally called twice to allow for sorting and other value as last option
+                options:
+                    otherlast: True
+            9:
+                task: add_case_location_values
+                options:
+                    sorted: True
+
     qa_org:
         #description: Set up an org as a QA environment for unmanaged metadata
         steps:
@@ -206,19 +221,21 @@ flows:
                 task: deploy_k12_kit_settings
             7:
                 task: add_application_type_picklist_values
-            8: 
+            8:
                 task: add_behavior_response_type_values
                 options:
                     sorted: True
-            9:                 
-                task: add_behavior_response_type_values
+            9:
+                task: add_behavior_response_type_values # intentionally called twice to allow for sorting and other value as last option
                 options:
                     otherlast: True
-            # 9: 
-            #     task: add_case_location_values
             10:
-                task: execute_install_apex
+                task: add_case_location_values
+                options:
+                    sorted: True
             11:
+                task: execute_install_apex
+            12:
                 task: snapshot_changes
 
     dev_org:
@@ -230,15 +247,23 @@ flows:
                 task: deploy_trial_config
             6:
                 task: deploy_k12_kit_settings
-            7:  
+            7:
                 task: add_application_type_picklist_values
-            8: 
+            8:
                 task: add_behavior_response_type_values
-            9: 
-                task: add_case_location_values
+                options:
+                    sorted: True
+            9:
+                task: add_behavior_response_type_values # intentionally called twice to allow for sorting and other value as last option
+                options:
+                    otherlast: True
             10:
-                task: execute_install_apex
+                task: add_case_location_values
+                options:
+                    sorted: True
             11:
+                task: execute_install_apex
+            12:
                 task: snapshot_changes
 
     dev_org_namespaced:
@@ -256,13 +281,21 @@ flows:
                 task: deploy_k12_kit_settings
             7:
                 task: add_application_type_picklist_values
-            8: 
+            8:
                 task: add_behavior_response_type_values
-            9: 
-                task: add_case_location_values
+                options:
+                    sorted: True
+            9:
+                task: add_behavior_response_type_values # intentionally called twice to allow for sorting and other value as last option
+                options:
+                    otherlast: True
             10:
-                task: execute_install_apex
+                task: add_case_location_values
+                options:
+                    sorted: True
             11:
+                task: execute_install_apex
+            12:
                 task: snapshot_changes
 
     upgraded_org:
@@ -300,10 +333,18 @@ flows:
                     unmanaged: False
             6:
                 task: add_application_type_picklist_values
-            7: 
+            7:
                 task: add_behavior_response_type_values
-            8: 
+                options:
+                    sorted: True
+            8:
+                task: add_behavior_response_type_values # intentionally called twice to allow for sorting and other value as last option
+                options:
+                    otherlast: True
+            9:
                 task: add_case_location_values
+                options:
+                    sorted: True
 
     ci_feature_beta_deps:
         description: When run, the latest version (including betas) of Cumulus and EDA are installed, and all tests are run.
