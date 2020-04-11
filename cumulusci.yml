@@ -99,8 +99,7 @@ tasks:
             sobject: hed__Behavior_Response__c
             field: hed__Type__c
             values: "Expulsion with Services,In-School Suspension,Out-of-School Suspension,Removal from Classroom"
-            sorted: true
-            otherlast: true
+            restricted: true
     
     add_case_location_values: 
         description: Adds additional picklist values to the Location field.
@@ -111,8 +110,8 @@ tasks:
             field: hed__Location__c
             values: "Administrative Offices Area,Athletic Field or Playground,Auditorium,Bus Stop,Cafeteria Area,Classroom,Computer Lab,Hallway or Stairs,Library/Media Center,Locker Room or Gym Areas,Online,Parking Lot,Restroom,School Bus,Stadium,Unknown,Walking to or from School"
             sorted: true
-            otherlast: true
-            recordtypes: hed__Incident
+            recordtypes: Incident
+            restricted: true
             
     uninstall_packaged_incremental:
         #description: Deletes any metadata from the package in the target org not in the local workspace
@@ -209,8 +208,14 @@ flows:
                 task: add_application_type_picklist_values
             8: 
                 task: add_behavior_response_type_values
-            9: 
-                task: add_case_location_values
+                options:
+                    sorted: True
+            9:                 
+                task: add_behavior_response_type_values
+                options:
+                    otherlast: True
+            # 9: 
+            #     task: add_case_location_values
             10:
                 task: execute_install_apex
             11:
