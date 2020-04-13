@@ -119,7 +119,7 @@ expected_recordtypes_query_response = {
     "size": 2,
 }
 
-api_version = "47.0"
+api_version = "48.0"
 
 
 class TestAddPicklistValues(unittest.TestCase):

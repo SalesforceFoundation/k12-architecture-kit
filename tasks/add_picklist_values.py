@@ -111,7 +111,7 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
     # Optionally adds the picklist values for the specified record types, if the record types exist.
     # Optionally updates the picklist values to be alphabetical.
     def _run_task(self):
-        self.api_version = "47.0"
+        self.api_version = "48.0"
         sobject = self.options["sobject"]
         field = self.options["field"]
 
