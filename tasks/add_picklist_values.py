@@ -16,7 +16,7 @@ package_xml_template = """<?xml version="1.0" encoding="UTF-8"?>
         <members>{object}.{field}</members>
         <name>CustomField</name>
     </types>{record_types_block}
-    <version>45.0</version>
+    <version>48.0</version>
 </Package>"""
 
 package_xml_record_types_block_template = """
