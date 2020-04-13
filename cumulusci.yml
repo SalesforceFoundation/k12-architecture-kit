@@ -109,7 +109,7 @@ tasks:
             sobject: Case
             field: hed__Location__c
             values: "Administrative Offices Area,Athletic Field or Playground,Auditorium,Bus Stop,Cafeteria Area,Classroom,Computer Lab,Hallway or Stairs,Library/Media Center,Locker Room or Gym Areas,Online,Parking Lot,Restroom,School Bus,Stadium,Unknown,Walking to or from School"
-            recordtypes: Incident
+            #recordtypes: Incident
             restricted: true
             
     uninstall_packaged_incremental:
@@ -178,6 +178,15 @@ flows:
                 task: add_case_location_values
                 options:
                     sorted: True
+            11:
+                task: add_case_location_values
+                options:
+                    otherlast: True
+            12:
+                task: add_case_location_values
+                options: 
+                    recordtypes: Incident
+                    otherlast: True
 
     trial_org:
         description: Deploy trial configuration to an org.
@@ -209,6 +218,15 @@ flows:
                 task: add_case_location_values
                 options:
                     sorted: True
+            10:
+                task: add_case_location_values
+                options:
+                    otherlast: True
+            11:
+                task: add_case_location_values
+                options: 
+                    recordtypes: Incident
+                    otherlast: True
 
     qa_org:
         #description: Set up an org as a QA environment for unmanaged metadata
@@ -234,8 +252,17 @@ flows:
                 options:
                     sorted: True
             11:
-                task: execute_install_apex
+                task: add_case_location_values
+                options:
+                    otherlast: True
             12:
+                task: add_case_location_values
+                options: 
+                    recordtypes: Incident
+                    otherlast: True
+            13:
+                task: execute_install_apex
+            14:
                 task: snapshot_changes
 
     dev_org:
@@ -262,8 +289,17 @@ flows:
                 options:
                     sorted: True
             11:
-                task: execute_install_apex
+                task: add_case_location_values
+                options:
+                    otherlast: True
             12:
+                task: add_case_location_values
+                options: 
+                    recordtypes: Incident
+                    otherlast: True
+            13:
+                task: execute_install_apex
+            14:
                 task: snapshot_changes
 
     dev_org_namespaced:
@@ -294,8 +330,17 @@ flows:
                 options:
                     sorted: True
             11:
-                task: execute_install_apex
+                task: add_case_location_values
+                options:
+                    otherlast: True
             12:
+                task: add_case_location_values
+                options: 
+                    recordtypes: Incident
+                    otherlast: True
+            13:
+                task: execute_install_apex
+            14:
                 task: snapshot_changes
 
     upgraded_org:
@@ -345,6 +390,15 @@ flows:
                 task: add_case_location_values
                 options:
                     sorted: True
+            10:
+                task: add_case_location_values
+                options:
+                    otherlast: True
+            11:
+                task: add_case_location_values
+                options: 
+                    recordtypes: Incident
+                    otherlast: True
 
     ci_feature_beta_deps:
         description: When run, the latest version (including betas) of Cumulus and EDA are installed, and all tests are run.
