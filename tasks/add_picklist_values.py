@@ -89,10 +89,6 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
             "description": "If true, sets the entire picklist to be sorted in alphabetical order",
             "required": False,
         },
-        "otherlast": {
-            "description": "If true, the Other value (if one exists) will remain at the end of the values",
-            "required": False,
-        },
         "restricted": {
             "description": "If picklist value is a required field",
             "required": False,
@@ -109,16 +105,6 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
             self.options.get("restricted", False)
         )
         self.options["sorted"] = process_bool_arg(self.options.get("sorted", False))
-        self.options["otherlast"] = process_bool_arg(
-            self.options.get("otherlast", False)
-        )
-
-        if self.options["sorted"] and self.options["otherlast"]:
-            raise TaskOptionsError(
-                f"The sorted option and otherlast option cannot both be set to true. "
-                "To sort a picklist but leave Other at the end, run the task twice: once to add the new values, sorted alphabetically, "
-                "and again to set Other at the end."
-            )
 
     # Adds picklist values to the given field, if they don't already exist.
     # Optionally adds the picklist values for the specified record types, if the record types exist.
@@ -291,10 +277,7 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
         for existing_picklist_value in existing_picklist_values:
             values_added.append(existing_picklist_value["label"].lower())
             # if it exists, should "Other" remain at the bottom of the picklist?
-            if (
-                existing_picklist_value["label"] == "Other"
-                and self.options["otherlast"]
-            ):
+            if existing_picklist_value["label"] == "Other":
                 other_picklist_xml = picklist_value_template.format(
                     name=existing_picklist_value["valueName"],
                     default=existing_picklist_value["default"],
