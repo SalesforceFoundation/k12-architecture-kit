@@ -319,20 +319,28 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
             for rt in picklist_record_types:
                 record_type_picklist_values_xml = ""
                 values_added_to_record_type = []
+                other_record_type_picklist_values_xml = ""
 
                 # add back the existing picklist values assigned to the record type
                 for picklist in rt["Metadata"]["picklistValues"]:
+                    
                     if picklist["picklist"] == field:
                         for picklist_value in picklist["values"]:
                             values_added_to_record_type.append(
                                 picklist_value["valueName"].lower()
                             )
-                            record_type_picklist_values_xml += record_type_picklist_value_template.format(
+                            if picklist["values"][0]["valueName"] == "Other": 
+                                other_record_type_picklist_values_xml += record_type_picklist_value_template.format(
                                 name=escape(picklist_value["valueName"]),
                                 default=picklist_value["default"],
                             )
+                            else:
+                                record_type_picklist_values_xml += record_type_picklist_value_template.format(
+                                    name=escape(picklist_value["valueName"]),
+                                    default=picklist_value["default"],
+                                )
                         break
-
+                            
                 # assign the new picklist values to the record type
                 for value in self.options["values"]:
                     # ignore any existing picklist values
@@ -342,7 +350,9 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
                     record_type_picklist_values_xml += record_type_picklist_value_template.format(
                         name=escape(value), default=False
                     )
-
+            
+                record_type_picklist_values_xml += other_record_type_picklist_values_xml  
+                print(record_type_picklist_values_xml)   
                 # only include the description if there's a value -- if it's blank, an error is thrown if the record type is managed
                 record_type_description = ""
                 if rt["Metadata"]["description"] != None:
