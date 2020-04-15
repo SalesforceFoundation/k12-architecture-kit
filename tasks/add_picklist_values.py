@@ -272,11 +272,15 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
         other_picklist_xml = ""
 
         values_added = []
-
         # add the existing picklist values
         for existing_picklist_value in existing_picklist_values:
             values_added.append(existing_picklist_value["label"].lower())
             # if it exists, should "Other" remain at the bottom of the picklist?
+            if (
+                existing_picklist_value["label"] == "On Campus"
+                or existing_picklist_value["label"] == "Off Campus"
+            ):
+                continue
             if existing_picklist_value["label"] == "Other":
                 other_picklist_xml = picklist_value_template.format(
                     name=existing_picklist_value["valueName"],
@@ -294,15 +298,15 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
         # add the new picklist values
         for value in self.options["values"]:
             # ignore any existing picklist values
-            if value.lower() in values_added:
-                self.logger.info(
-                    f"{value} is already a picklist value on {field}. Skipping over..."
-                )
+            # if value.lower() in values_added:
+            #     self.logger.info(
+            #         f"{value} is already a picklist value on {field}. Skipping over..."
+            #     )
 
-            else:
-                picklist_values_xml += picklist_value_template.format(
-                    name=escape(value), default=False, label=escape(value)
-                )
+            # else:
+            picklist_values_xml += picklist_value_template.format(
+                name=escape(value), default=False, label=escape(value)
+            )
 
         # add "Other", if it exists
         picklist_values_xml += other_picklist_xml
