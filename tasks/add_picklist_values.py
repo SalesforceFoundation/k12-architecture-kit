@@ -85,6 +85,10 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
             "description": "The record types for which these new picklist values will be available",
             "required": False,
         },
+        "existing_values": {
+            "description": "The record types for which these new picklist values will be available",
+            "required": False,
+        },
         "sorted": {
             "description": "If true, sets the entire picklist to be sorted in alphabetical order",
             "required": False,
@@ -270,15 +274,14 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
         picklist_values_xml = ""
         record_type_picklist_xml = ""
         other_picklist_xml = ""
-
         values_added = []
         # add the existing picklist values
         for existing_picklist_value in existing_picklist_values:
             values_added.append(existing_picklist_value["label"].lower())
             # if it exists, should "Other" remain at the bottom of the picklist?
             if (
-                existing_picklist_value["label"] == "On Campus"
-                or existing_picklist_value["label"] == "Off Campus"
+                "existing_values" in self.options
+                and existing_picklist_value["label"] in self.options["existing_values"]
             ):
                 continue
             if existing_picklist_value["label"] == "Other":
