@@ -16,7 +16,7 @@ package_xml_template = """<?xml version="1.0" encoding="UTF-8"?>
         <members>{object}.{field}</members>
         <name>CustomField</name>
     </types>{record_types_block}
-    <version>45.0</version>
+    <version>48.0</version>
 </Package>"""
 
 package_xml_record_types_block_template = """
@@ -114,7 +114,7 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
     # Optionally adds the picklist values for the specified record types, if the record types exist.
     # Optionally updates the picklist values to be alphabetical.
     def _run_task(self):
-        self.api_version = "47.0"
+        self.api_version = "48.0"
         sobject = self.options["sobject"]
         field = self.options["field"]
 
