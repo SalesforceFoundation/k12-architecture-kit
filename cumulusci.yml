@@ -90,6 +90,7 @@ tasks:
             sobject: hed__Application__c
             field: hed__Application_Type__c
             values: "Elementary School,Middle School,High School"
+            #existing_values: "Elementary School,Middle School,High School"
             sorted: true
     
     add_behavior_response_type_values:
@@ -99,7 +100,7 @@ tasks:
         options:
             sobject: hed__Behavior_Response__c
             field: hed__Type__c
-            values: "Expulsion with Services,In-School Suspension,Out-of-School Suspension,Removal from Classroom"
+            values: "Detention,Expulsion with Services,In-School Suspension,Out-of-School Suspension,Removal from Classroom"
             restricted: true
             sorted: True
     
