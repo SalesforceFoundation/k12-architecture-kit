@@ -260,13 +260,16 @@ flows:
                 task: deploy_k12_kit_settings
             7:
                 task: add_application_type_picklist_values
+                options:
+                    namespaced: True
             8:
                 task: add_behavior_response_type_values
+                options:
+                    namespaced: True
             9:
                 task: add_case_location_values
                 options:
                     namespaced: True
-                    namespace_value: 'hed'
             10:
                 task: execute_install_apex
             11:

@@ -102,10 +102,6 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
             "description": "If picklist value is a required field",
             "required": False,
         },
-        "namespace_value": {
-            "description": "If picklist value is a required field",
-            "required": False,
-        },
     }
 
     def _init_options(self, kwargs):
@@ -120,10 +116,13 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
         self.options["namespaced"] = process_bool_arg(
             self.options.get("namespaced", False)
         )
-        if self.options["namespaced"]:
-            self.options["namespace_value"] = self.options.get("namespace_value")
-
         self.options["sorted"] = process_bool_arg(self.options.get("sorted", False))
+        if self.options["namespaced"] and self.options["recordtypes"]:
+            # add the namespace prefix for each record type
+            namespace = self.project_config.project__package__namespace + "__"
+            self.options["recordtypes"] = [
+                namespace + name for name in self.options["recordtypes"]
+            ]
 
     # Adds picklist values to the given field, if they don't already exist.
     # Optionally adds the picklist values for the specified record types, if the record types exist.
@@ -228,7 +227,7 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
     def _get_active_record_types(self, sobject):
         picklist_record_types = []
         picklist_record_type_names = []
-        if len(self.options["recordtypes"]) > 0:
+        if self.options["recordtypes"]:
             record_type_tooling_results = self.tooling.query(
                 "SELECT Id, FullName, Metadata, Name "
                 "FROM RecordType "
@@ -338,50 +337,21 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
 
                 # add back the existing picklist values assigned to the record type
                 for picklist in rt["Metadata"]["picklistValues"]:
-
                     if picklist["picklist"] == field:
                         for picklist_value in picklist["values"]:
                             values_added_to_record_type.append(
                                 picklist_value["valueName"].lower()
                             )
                             if picklist["values"][0]["valueName"] == "Other":
-                                if self.options["namespaced"]:
-                                    other_record_type_picklist_values_xml += record_type_picklist_value_template.format(
-                                        name=escape(
-                                            inject_namespace(
-                                                "%%%NAMPESPACED_ORG%%%"
-                                                + picklist_value["valueName"],
-                                                namespace="hed",
-                                                managed=True,
-                                                namespaced_org=True,
-                                            )
-                                        ),
-                                        default=picklist_value["default"],
-                                    )
-                                else:
-                                    other_record_type_picklist_values_xml += record_type_picklist_value_template.format(
-                                        name=escape(picklist_value["valueName"]),
-                                        default=picklist_value["default"],
-                                    )
+                                other_record_type_picklist_values_xml += record_type_picklist_value_template.format(
+                                    name=escape(picklist_value["valueName"]),
+                                    default=picklist_value["default"],
+                                )
                             else:
-                                if self.options["namespaced"]:
-                                    record_type_picklist_values_xml += record_type_picklist_value_template.format(
-                                        name=escape(
-                                            inject_namespace(
-                                                "%%%NAMPESPACED_ORG%%%"
-                                                + picklist_value["valueName"],
-                                                namespace="hed",
-                                                managed=True,
-                                                namespaced_org=True,
-                                            )
-                                        ),
-                                        default=picklist_value["default"],
-                                    )
-                                else:
-                                    record_type_picklist_values_xml += record_type_picklist_value_template.format(
-                                        name=escape(picklist_value["valueName"]),
-                                        default=picklist_value["default"],
-                                    )
+                                record_type_picklist_values_xml += record_type_picklist_value_template.format(
+                                    name=escape(picklist_value["valueName"]),
+                                    default=picklist_value["default"],
+                                )
                         break
 
                 # assign the new picklist values to the record type
@@ -389,25 +359,13 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
                     # ignore any existing picklist values
                     if value.lower() in values_added_to_record_type:
                         continue
-                    if self.options["namespaced"]:
-                        record_type_picklist_values_xml += record_type_picklist_value_template.format(
-                            name=escape(
-                                inject_namespace(
-                                    "%%%NAMPESPACED_ORG%%%"
-                                    + picklist_value["valueName"],
-                                    namespace="hed",
-                                    managed=True,
-                                    namespaced_org=True,
-                                )
-                            ),
-                            default=False,
-                        )
-                    else:
-                        record_type_picklist_values_xml += record_type_picklist_value_template.format(
-                            name=escape(picklist_value["valueName"]), default=False
-                        )
+
+                    record_type_picklist_values_xml += record_type_picklist_value_template.format(
+                        name=escape(value), default=False
+                    )
 
                 record_type_picklist_values_xml += other_record_type_picklist_values_xml
+                print(record_type_picklist_values_xml)
                 # only include the description if there's a value -- if it's blank, an error is thrown if the record type is managed
                 record_type_description = ""
                 if rt["Metadata"]["description"] != None:
@@ -418,6 +376,7 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
                     record_type_business_process = "<businessProcess>{}</businessProcess>".format(
                         escape(rt["Metadata"]["businessProcess"])
                     )
+
                 record_type_picklist_xml += record_type_picklist_template.format(
                     business_process=record_type_business_process,
                     name=rt["FullName"].split(".")[
