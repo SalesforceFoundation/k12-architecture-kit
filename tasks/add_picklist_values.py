@@ -358,7 +358,6 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
                     )
 
                 record_type_picklist_values_xml += other_record_type_picklist_values_xml
-                print(record_type_picklist_values_xml)
                 # only include the description if there's a value -- if it's blank, an error is thrown if the record type is managed
                 record_type_description = ""
                 if rt["Metadata"]["description"] != None:
