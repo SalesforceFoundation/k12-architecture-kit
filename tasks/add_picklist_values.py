@@ -95,11 +95,11 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
             "required": False,
         },
         "restricted": {
-            "description": "If picklist value is a required field",
+            "description": "If true, sets each picklist value to be a restricted field",
             "required": False,
         },
         "namespaced": {
-            "description": "If picklist value is a required field",
+            "description": "If true, sets the org to a namespaced context",
             "required": False,
         },
     }
@@ -314,13 +314,6 @@ class AddPicklistValues(BaseSalesforceApiTask, Deploy):
 
         # add the new picklist values
         for value in self.options["values"]:
-            # ignore any existing picklist values
-            # if value.lower() in values_added:
-            #     self.logger.info(
-            #         f"{value} is already a picklist value on {field}. Skipping over..."
-            #     )
-
-            # else:
             picklist_values_xml += picklist_value_template.format(
                 name=escape(value), default=False, label=escape(value)
             )

@@ -123,7 +123,7 @@ tasks:
             namespaced: False
 
     uninstall_packaged_incremental:
-        #description: Deletes any metadata from the package in the target org not in the local workspace
+        description: Deletes any metadata from the package in the target org not in the local workspace
         class_path: cumulusci.tasks.salesforce.UninstallPackagedIncremental
         options:
             ignore:
