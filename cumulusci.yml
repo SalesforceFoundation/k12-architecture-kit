@@ -80,6 +80,8 @@ tasks:
         description: Adds picklist values to the given field, if they don't already exist.
         class_path: tasks.add_picklist_values.AddPicklistValues
         group: 'K-12: Metadata'
+        namespaced: False
+        
 
     add_application_type_picklist_values:
         description: Adds Elementary School, Middle School, and High School picklist values to the application type field.
@@ -89,10 +91,39 @@ tasks:
             sobject: hed__Application__c
             field: hed__Application_Type__c
             values: "Elementary School,Middle School,High School"
+            existing_values: "Elementary School,Middle School,High School"
             sorted: true
-            
+            namespaced: False
+
+    add_behavior_response_type_values:
+        description: Adds additional picklist values to the Type field.
+        class_path: tasks.add_picklist_values.AddPicklistValues
+        group: 'K-12: Metadata'
+        options:
+            sobject: hed__Behavior_Response__c
+            field: hed__Type__c
+            values: "Detention,Expulsion with Services,In-School Suspension,Out-of-School Suspension,Removal from Classroom"
+            restricted: true
+            sorted: True
+            namespaced: False
+
+    
+    add_case_location_values: 
+        description: Adds additional picklist values to the Location field.
+        class_path: tasks.add_picklist_values.AddPicklistValues
+        group: 'K-12: Metadata'
+        options:
+            sobject: Case
+            field: hed__Location__c
+            values: "Administrative Offices Area,Athletic Field or Playground,Auditorium,Bus Stop,Cafeteria Area,Classroom,Computer Lab,Hallway or Stairs,Library/Media Center,Locker Room or Gym Areas,Off Campus,On Campus,Online,Parking Lot,Restroom,School Bus,Stadium,Unknown,Walking to or from School"
+            existing_values: "Off Campus, On Campus"
+            recordtypes: Incident
+            restricted: true
+            sorted: True
+            namespaced: False
+
     uninstall_packaged_incremental:
-        #description: Deletes any metadata from the package in the target org not in the local workspace
+        description: Deletes any metadata from the package in the target org not in the local workspace
         class_path: cumulusci.tasks.salesforce.UninstallPackagedIncremental
         options:
             ignore:
@@ -123,7 +154,7 @@ flows:
 
     config_regression:
         steps:
-            1: 
+            1:
                 flow: None
             2:
                 task: deploy_post
@@ -145,6 +176,11 @@ flows:
                     managed: True
             7:
                 task: add_application_type_picklist_values
+            8:
+                task: add_behavior_response_type_values
+            9:
+                task: add_case_location_values
+
 
     trial_org:
         description: Deploy trial configuration to an org.
@@ -164,7 +200,11 @@ flows:
                     unmanaged: False
             6:
                 task: add_application_type_picklist_values
-                    
+            7:
+                task: add_behavior_response_type_values
+            8:
+                task: add_case_location_values
+
     qa_org:
         #description: Set up an org as a QA environment for unmanaged metadata
         steps:
@@ -177,8 +217,12 @@ flows:
             7:
                 task: add_application_type_picklist_values
             8:
-                task: execute_install_apex
+                task: add_behavior_response_type_values
             9:
+                task: add_case_location_values
+            10:
+                task: execute_install_apex
+            11:
                 task: snapshot_changes
 
     dev_org:
@@ -190,11 +234,15 @@ flows:
                 task: deploy_trial_config
             6:
                 task: deploy_k12_kit_settings
-            7:  
+            7:
                 task: add_application_type_picklist_values
             8:
-                task: execute_install_apex
+                task: add_behavior_response_type_values
             9:
+                task: add_case_location_values
+            10:
+                task: execute_install_apex
+            11:
                 task: snapshot_changes
 
     dev_org_namespaced:
@@ -212,9 +260,19 @@ flows:
                 task: deploy_k12_kit_settings
             7:
                 task: add_application_type_picklist_values
+                options:
+                    namespaced: True
             8:
-                task: execute_install_apex
+                task: add_behavior_response_type_values
+                options:
+                    namespaced: True
             9:
+                task: add_case_location_values
+                options:
+                    namespaced: True
+            10:
+                task: execute_install_apex
+            11:
                 task: snapshot_changes
 
     upgraded_org:
@@ -252,6 +310,10 @@ flows:
                     unmanaged: False
             6:
                 task: add_application_type_picklist_values
+            7:
+                task: add_behavior_response_type_values
+            8:
+                task: add_case_location_values
 
     ci_feature_beta_deps:
         description: When run, the latest version (including betas) of Cumulus and EDA are installed, and all tests are run.
