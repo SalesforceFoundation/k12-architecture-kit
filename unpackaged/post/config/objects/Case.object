@@ -19,14 +19,14 @@
     </compactLayouts>
     <listViews>
         <fullName>K12_All_Positive_Behaviors</fullName>
-        <columns>Case.CaseNumber</columns>
+        <columns>CaseNumber</columns>
         <columns>Case.ContactId</columns>
         <columns>hed__Category__c</columns>
         <columns>Case.Subject</columns>
         <columns>Case.CreatedDate</columns>
         <filterScope>Everything</filterScope>
         <filters>
-            <field>Case.RECORDTYPE</field>
+            <field>Case.RecordType</field>
             <operation>equals</operation>
             <value>Case.Positive_Behavior</value>
         </filters>
@@ -43,7 +43,7 @@
         <columns>Case.CreatedDate</columns>
         <filterScope>Everything</filterScope>
         <filters>
-            <field>Case.RECORDTYPE</field>
+            <field>Case.RecordType</field>
             <operation>equals</operation>
             <value>Case.Incident</value>
         </filters>
