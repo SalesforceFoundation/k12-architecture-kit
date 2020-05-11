@@ -128,7 +128,7 @@ tasks:
         options:
             sobject: Case
             field: hed__Category__c
-            values:"Cooperation,Integrity,Leadership,Respect,Teamwork"
+            values: "Cooperation,Integrity,Leadership,Respect,Teamwork"
             recordtypes: Positive_Behavior
             restricted: true
             sorted: True
