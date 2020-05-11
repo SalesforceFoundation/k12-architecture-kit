@@ -8,4 +8,62 @@
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
     </actionOverrides>
+    <compactLayoutAssignment>K12_Behavior_Compact_Layout</compactLayoutAssignment>
+    <compactLayouts>
+        <fullName>K12_Behavior_Compact_Layout</fullName>
+        <fields>hed__Category__c</fields>
+        <fields>RecordTypeId</fields>
+        <fields>Priority</fields>
+        <fields>Status</fields>
+        <label>K12 Behavior Compact Layout</label>
+    </compactLayouts>
+    <listViews>
+        <fullName>K12_All_Positive_Behaviors</fullName>
+        <columns>Case.CaseNumber</columns>
+        <columns>Case.ContactId</columns>
+        <columns>hed__Category__c</columns>
+        <columns>Case.Subject</columns>
+        <columns>Case.CreatedDate</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Case.RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Case.Positive_Behavior</value>
+        </filters>
+        <label>K-12 All Positive Behaviors</label>
+    </listViews>
+    <listViews>
+        <fullName>K12_All_Incidents</fullName>
+        <columns>Case.CaseNumber</columns>
+        <columns>Case.ContactId</columns>
+        <columns>hed__Category__c</columns>
+        <columns>Case.Subject</columns>
+        <columns>Case.Status</columns>
+        <columns>Case.Priority</columns>
+        <columns>Case.CreatedDate</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Case.RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Case.Incident</value>
+        </filters>
+        <label>K-12 All Incidents</label>
+    </listViews>
+    <recordTypes>
+        <fullName>Positive_Behavior</fullName>
+        <active>true</active>
+        <description>A positive behavior event that’s being tracked by this Case.</description>
+        <businessProcess>Behavior Management</businessProcess>
+        <label>Positive Behavior</label>
+    </recordTypes>
+    <searchLayouts>
+        <searchResultsAdditionalFields>Case.CaseNumber</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Case.RecordType</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Case.ContactId</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>hed__Category__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Case.Subject</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Case.Status</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Case.Priority</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Case.CreatedDate</searchResultsAdditionalFields>
+    </searchLayouts>
 </CustomObject>
