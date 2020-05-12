@@ -122,6 +122,20 @@ tasks:
             sorted: True
             namespaced: False
 
+    add_behavior_involvement_role_picklist_values:
+        description: Adds additional Participant value to the Role picklist for Positive Behavior Involvement Record type on the Behavior Involvment object.
+        class_path: tasks.add_picklist_values.AddPicklistValues
+        group: 'K-12: Metadata'
+        options:
+            sobject: hed__Behavior_Involvement__c
+            field: hed__Role__c
+            values: "Participant, Reporter, Witness, Other"
+            existing_values: "Reporter, Witness, Other"
+            restricted: true
+            recordtypes: Positive_Behavior_Involvement
+            sorted: true
+            namespaced: False
+
     uninstall_packaged_incremental:
         description: Deletes any metadata from the package in the target org not in the local workspace
         class_path: cumulusci.tasks.salesforce.UninstallPackagedIncremental
@@ -204,6 +218,8 @@ flows:
                 task: add_behavior_response_type_values
             8:
                 task: add_case_location_values
+            9: 
+                task: add_behavior_involvement_role_picklist_values
 
     qa_org:
         #description: Set up an org as a QA environment for unmanaged metadata
@@ -220,9 +236,11 @@ flows:
                 task: add_behavior_response_type_values
             9:
                 task: add_case_location_values
-            10:
-                task: execute_install_apex
+            10: 
+                task: add_behavior_involvement_role_picklist_values
             11:
+                task: execute_install_apex
+            12:
                 task: snapshot_changes
 
     dev_org:
@@ -240,9 +258,11 @@ flows:
                 task: add_behavior_response_type_values
             9:
                 task: add_case_location_values
-            10:
-                task: execute_install_apex
+            10: 
+                task: add_behavior_involvement_role_picklist_values
             11:
+                task: execute_install_apex
+            12:
                 task: snapshot_changes
 
     dev_org_namespaced:
@@ -270,9 +290,13 @@ flows:
                 task: add_case_location_values
                 options:
                     namespaced: True
-            10:
-                task: execute_install_apex
+            10: 
+                task: add_behavior_involvement_role_picklist_values
+                options:
+                    namespaced: True
             11:
+                task: execute_install_apex
+            12:
                 task: snapshot_changes
 
     upgraded_org:
