@@ -134,5 +134,10 @@
         <members>fr</members>
         <name>Translations</name>
     </types>
+    <types>
+        <members>hed__Behavior_Involvement__c.Incident_Involvement</members>
+        <members>hed__Behavior_Involvement__c.Positive_Behavior_Involvement</members>
+        <name>RecordType</name>
+    </types>
     <version>48.0</version>
 </Package>
