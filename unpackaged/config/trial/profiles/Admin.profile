@@ -25,7 +25,7 @@
         <recordType>Case.%%%NAMESPACED_ORG%%%Incident</recordType>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Case-%%%NAMESPACE%%%K12 Kit Positive Behavior Layout</layout>
+        <layout>Case-K12 Kit Positive Behavior Layout</layout>
         <recordType>Case.%%%NAMESPACED_ORG%%%Positive_Behavior</recordType>
     </layoutAssignments>
     <layoutAssignments>
@@ -126,6 +126,16 @@
     <layoutAssignments>
         <layout>hed__Time_Block__c-%%%NAMESPACE%%%K12 Kit Time Block Layout</layout>
     </layoutAssignments>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>CASE.Positive_Behavior</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>True</default>
+        <recordType>CASE.Incident</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
     <tabVisibilities>
         <tab>hed__Application__c</tab>
         <visibility>DefaultOn</visibility>
