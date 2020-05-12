@@ -19,14 +19,14 @@
     </compactLayouts>
     <listViews>
         <fullName>K12_All_Positive_Behaviors</fullName>
-        <columns>CaseNumber</columns>
-        <columns>Case.ContactId</columns>
+        <columns>CASES.CASE_NUMBER</columns>
+        <columns>NAME</columns>
         <columns>hed__Category__c</columns>
-        <columns>Case.Subject</columns>
-        <columns>Case.CreatedDate</columns>
+        <columns>CASES.SUBJECT</columns>
+        <columns>CASES.CREATED_DATE_DATE_ONLY</columns>
         <filterScope>Everything</filterScope>
         <filters>
-            <field>Case.RecordType</field>
+            <field>CASES.RECORDTYPE</field>
             <operation>equals</operation>
             <value>Case.Positive_Behavior</value>
         </filters>
@@ -34,16 +34,16 @@
     </listViews>
     <listViews>
         <fullName>K12_All_Incidents</fullName>
-        <columns>Case.CaseNumber</columns>
-        <columns>Case.ContactId</columns>
+        <columns>CASES.CASE_NUMBER</columns>
+        <columns>NAME</columns>
         <columns>hed__Category__c</columns>
-        <columns>Case.Subject</columns>
-        <columns>Case.Status</columns>
-        <columns>Case.Priority</columns>
-        <columns>Case.CreatedDate</columns>
+        <columns>CASES.SUBJECT</columns>
+        <columns>CASES.STATUS</columns>
+        <columns>CASES.PRIORITY</columns>
+        <columns>CASES.CREATED_DATE_DATE_ONLY</columns>
         <filterScope>Everything</filterScope>
         <filters>
-            <field>Case.RecordType</field>
+            <field>CASES.RECORDTYPE</field>
             <operation>equals</operation>
             <value>Case.Incident</value>
         </filters>
@@ -57,13 +57,13 @@
         <label>Positive Behavior</label>
     </recordTypes>
     <searchLayouts>
-        <searchResultsAdditionalFields>Case.CaseNumber</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>Case.RecordType</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>Case.ContactId</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CASES.CASE_NUMBER</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CASES.RECORDTYPE</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>NAME</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>hed__Category__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>Case.Subject</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>Case.Status</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>Case.Priority</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>Case.CreatedDate</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CASES.SUBJECT</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CASES.STATUS</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CASES.PRIORITY</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CASES.CREATED_DATE_DATE_ONLY</searchResultsAdditionalFields>
     </searchLayouts>
 </CustomObject>

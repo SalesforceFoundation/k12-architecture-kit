@@ -233,8 +233,10 @@ flows:
             9:
                 task: add_case_location_values
             10:
-                task: execute_install_apex
+                task: add_case_category_values
             11:
+                task: execute_install_apex
+            12:
                 task: snapshot_changes
 
     dev_org:
@@ -253,8 +255,10 @@ flows:
             9:
                 task: add_case_location_values
             10:
-                task: execute_install_apex
+                task: add_case_category_values
             11:
+                task: execute_install_apex
+            12:
                 task: snapshot_changes
 
     dev_org_namespaced:
@@ -282,9 +286,13 @@ flows:
                 task: add_case_location_values
                 options:
                     namespaced: True
-            10:
-                task: execute_install_apex
+            10: 
+                task: add_case_category_values
+                options:
+                    namespaced: True
             11:
+                task: execute_install_apex
+            12:
                 task: snapshot_changes
 
     upgraded_org:
@@ -326,6 +334,8 @@ flows:
                 task: add_behavior_response_type_values
             8:
                 task: add_case_location_values
+            9: 
+                task: add_case_category_values
 
     ci_feature_beta_deps:
         description: When run, the latest version (including betas) of Cumulus and EDA are installed, and all tests are run.
