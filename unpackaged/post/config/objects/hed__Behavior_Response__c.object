@@ -28,5 +28,61 @@
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Behavior Responses</pluralLabel>
+    <listViews>
+        <fullName>K12_All_Positive_Behavior_Responses</fullName>
+        <columns>NAME</columns>
+        <columns>hed__Contact__c</columns>
+        <columns>hed__Type__c</columns>
+        <columns>hed__Description__c</columns>
+        <columns>hed__Behavior_Involvement__c</columns>
+        <columns>hed__Start_Date__c</columns>
+        <columns>hed__End_Date__c</columns>
+        <columns>hed__Status__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>hed__Behavior_Response__c.Positive_Behavior_Response</value>
+        </filters>
+        <label>K-12 All Positive Behavior Responses</label>
+    </listViews>
+    <listViews>
+        <fullName>K12_All_Incident_Responses</fullName>
+        <columns>NAME</columns>
+        <columns>hed__Contact__c</columns>
+        <columns>hed__Type__c</columns>
+        <columns>hed__Description__c</columns>
+        <columns>hed__Behavior_Involvement__c</columns>
+        <columns>hed__Start_Date__c</columns>
+        <columns>hed__End_Date__c</columns>
+        <columns>hed__Status__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>hed__Behavior_Response__c.Incident_Response</value>
+        </filters>
+        <label>K-12 All Incident Responses</label>
+    </listViews>
+    <recordTypes>
+        <fullName>Incident_Response</fullName>
+        <active>true</active>
+        <description>Stores information about the response to an a Behavior Incident.</description>
+        <label>Incident Response</label>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Positive_Behavior_Response</fullName>
+        <active>true</active>
+        <description>Stores information about the response to a Positive Behavior event.</description>
+        <label>Positive Behavior Response</label>
+    </recordTypes>
+    <searchLayouts>
+        <searchResultsAdditionalFields>NAME</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>RECORDTYPE</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Behavior_Involvement__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>hed__Behavior_Response__c.Contact__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>hed__Behavior_Response__c.Type__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>hed__Behavior_Response__c.Status__c</searchResultsAdditionalFields>
+    </searchLayouts>
     <sharingModel>ReadWrite</sharingModel>
 </CustomObject>
