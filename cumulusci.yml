@@ -94,7 +94,7 @@ tasks:
             existing_values: "Elementary School,Middle School,High School"
             sorted: True
             namespaced: False
-
+            
     add_behavior_response_type_values:
         description: Adds additional picklist values to the Type field.
         class_path: tasks.add_picklist_values.AddPicklistValues
@@ -102,12 +102,12 @@ tasks:
         options:
             sobject: hed__Behavior_Response__c
             field: hed__Type__c
-            values: "Award,Detention,Expulsion with Services,In-School Suspension,Out-of-School Suspension,Other,Removal from Classroom,Verbal,Verbal Recognition"
-            existing_values: "Academic Probation, Expulsion, Other"
+            values: "Academic Probation,Award,Detention,Expulsion,Expulsion with Services,In-School Suspension,Out-of-School Suspension,Removal from Classroom,Verbal,Verbal Recognition"
+            existing_values: "Academic Probation,Expulsion,Other"
             restricted: True
             sorted: True
             namespaced: False
-    
+
     add_behavior_response_type1_values:
         description: Adds additional picklist values to the Type field.
         class_path: tasks.add_picklist_values.AddPicklistValues
@@ -115,9 +115,23 @@ tasks:
         options:
             sobject: hed__Behavior_Response__c
             field: hed__Type__c
-            values: "Award,Verbal Recognition,Other"
-            existing_values: "Award,Other,Verbal Recognition"
+            values: "Academic Probation,Expulsion,Other"
+            recordtypes: Incident_Response
+            existing_values: "Academic Probation,Expulsion,Other"
+            restricted: True
+            sorted: True
+            namespaced: False
+    
+    add_behavior_response_type2_values:
+        description: Adds additional picklist values to the Type field.
+        class_path: tasks.add_picklist_values.AddPicklistValues
+        group: 'K-12: Metadata'
+        options:
+            sobject: hed__Behavior_Response__c
+            field: hed__Type__c
+            values: "Award,Other,Verbal Recognition"
             recordtypes: Positive_Behavior_Response
+            existing_values: "Award,Other,Verbal Recognition"
             restricted: True
             sorted: True
             namespaced: False
@@ -250,14 +264,16 @@ flows:
             7:
                 task: add_application_type_picklist_values
             8:
-                task: add_behavior_response_type_values
-            9:
                 task: add_case_location_values
+            9:
+                task: add_behavior_response_type_values
             10:
                 task: add_behavior_response_type1_values
             11:
-                task: execute_install_apex
+                task: add_behavior_response_type2_values
             12:
+                task: execute_install_apex
+            13:
                 task: snapshot_changes
 
     dev_org_namespaced:
