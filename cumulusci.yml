@@ -129,11 +129,11 @@ tasks:
         options:
             sobject: hed__Behavior_Involvement__c
             field: hed__Role__c
-            values: "Participant, Reporter, Witness, Other"
-            existing_values: "Reporter, Witness, Other"
-            restricted: true
+            values: "Participant, Perpetrator, Reporter, Victim, Witness, Other"
+            existing_values: "Perpetrator, Reporter, Victim, Witness, Other"
+            restricted: True
             recordtypes: Positive_Behavior_Involvement
-            sorted: true
+            sorted: True
             namespaced: False
 
     uninstall_packaged_incremental:
@@ -194,6 +194,8 @@ flows:
                 task: add_behavior_response_type_values
             9:
                 task: add_case_location_values
+            10:
+                task: add_behavior_involvement_role_picklist_values
 
 
     trial_org:
