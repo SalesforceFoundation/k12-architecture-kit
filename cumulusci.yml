@@ -102,13 +102,13 @@ tasks:
         options:
             sobject: hed__Behavior_Response__c
             field: hed__Type__c
-            values: "Academic Probation,Award,Detention,Expulsion,Expulsion with Services,In-School Suspension,Out-of-School Suspension,Removal from Classroom,Verbal,Verbal Recognition"
+            values: "Award,Detention,Expulsion with Services,In-School Suspension,Out-of-School Suspension,Removal from Classroom,Verbal,Verbal Recognition"
             existing_values: "Academic Probation,Expulsion,Other"
             restricted: True
             sorted: True
             namespaced: False
 
-    add_behavior_response_type1_values:
+    add_incident_behavior_response_values:
         description: Adds additional picklist values to the Type field.
         class_path: tasks.add_picklist_values.AddPicklistValues
         group: 'K-12: Metadata'
@@ -122,7 +122,7 @@ tasks:
             sorted: True
             namespaced: False
     
-    add_behavior_response_type2_values:
+    add_positive_behavior_response_values:
         description: Adds additional picklist values to the Type field.
         class_path: tasks.add_picklist_values.AddPicklistValues
         group: 'K-12: Metadata'
@@ -205,9 +205,13 @@ flows:
             7:
                 task: add_application_type_picklist_values
             8:
-                task: add_behavior_response_type_values
-            9:
                 task: add_case_location_values
+            9:
+                task: add_behavior_response_type_values
+            10: 
+                task: add_incident_behavior_response_values
+            11:
+                task: add_positive_behavior_response_values
 
     trial_org:
         description: Deploy trial configuration to an org.
@@ -228,9 +232,13 @@ flows:
             6:
                 task: add_application_type_picklist_values
             7:
-                task: add_behavior_response_type_values
-            8:
                 task: add_case_location_values
+            8:
+                task: add_behavior_response_type_values
+            9: 
+                task: add_incident_behavior_response_values
+            10:
+                task: add_positive_behavior_response_values
 
     qa_org:
         #description: Set up an org as a QA environment for unmanaged metadata
@@ -244,12 +252,16 @@ flows:
             7:
                 task: add_application_type_picklist_values
             8:
-                task: add_behavior_response_type_values
-            9:
                 task: add_case_location_values
-            10:
-                task: execute_install_apex
+            9:
+                task: add_behavior_response_type_values
+            10: 
+                task: add_incident_behavior_response_values
             11:
+                task: add_positive_behavior_response_values
+            12:
+                task: execute_install_apex
+            13:
                 task: snapshot_changes
 
     dev_org:
@@ -268,9 +280,9 @@ flows:
             9:
                 task: add_behavior_response_type_values
             10:
-                task: add_behavior_response_type1_values
+                task: add_incident_behavior_response_values
             11:
-                task: add_behavior_response_type2_values
+                task: add_positive_behavior_response_values
             12:
                 task: execute_install_apex
             13:
@@ -294,11 +306,19 @@ flows:
                 options:
                     namespaced: True
             8:
-                task: add_behavior_response_type_values
+                task: add_case_location_values
                 options:
                     namespaced: True
             9:
-                task: add_case_location_values
+                task: add_behavior_response_type_values
+                options:
+                    namespaced: True
+            9: 
+                task: add_incident_behavior_response_values
+                options:
+                    namespaced: True
+            10:
+                task: add_positive_behavior_response_values
                 options:
                     namespaced: True
             10:
@@ -342,9 +362,13 @@ flows:
             6:
                 task: add_application_type_picklist_values
             7:
-                task: add_behavior_response_type_values
-            8:
                 task: add_case_location_values
+            8:
+                task: add_behavior_response_type_values
+            9:
+                task: add_incident_behavior_response_values
+            10:
+                task: add_positive_behavior_response_values
 
     ci_feature_beta_deps:
         description: When run, the latest version (including betas) of Cumulus and EDA are installed, and all tests are run.
