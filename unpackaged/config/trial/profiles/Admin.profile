@@ -122,6 +122,24 @@
     <layoutAssignments>
         <layout>hed__Time_Block__c-%%%NAMESPACE%%%K12 Kit Time Block Layout</layout>
     </layoutAssignments>
+     <layoutAssignments>
+        <layout>hed__Behavior_Involvement__c-K12 Kit Behavior Involvement Layout</layout>
+        <recordType>hed__Behavior_Involvement__c.Incident_Involvement</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>hed__Behavior_Involvement__c-K12 Kit Positive Behavior Involvement Layout</layout>
+        <recordType>hed__Behavior_Involvement__c.Positive_Behavior_Involvement</recordType>
+    </layoutAssignments>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>hed__Behavior_Involvement__c.Incident_Involvement</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>true</default>
+        <recordType>hed__Behavior_Involvement__c.Positive_Behavior_Involvement</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
     <tabVisibilities>
         <tab>hed__Application__c</tab>
         <visibility>DefaultOn</visibility>
