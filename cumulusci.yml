@@ -313,17 +313,17 @@ flows:
                 task: add_behavior_response_type_values
                 options:
                     namespaced: True
-            9: 
+            10: 
                 task: add_incident_behavior_response_values
                 options:
                     namespaced: True
-            10:
+            11:
                 task: add_positive_behavior_response_values
                 options:
                     namespaced: True
-            10:
+            12:
                 task: execute_install_apex
-            11:
+            13:
                 task: snapshot_changes
 
     upgraded_org:

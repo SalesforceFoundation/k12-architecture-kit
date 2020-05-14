@@ -12,6 +12,7 @@
     <compactLayouts>
         <fullName>K12_Behavior_Response_Compact_Layout</fullName>
         <fields>hed__Contact__c</fields>
+        <fields>RECORDTYPEID</fields>
         <fields>hed__Type__c</fields>
         <fields>hed__Status__c</fields>
         <label>K12 Behavior Response Compact Layout</label>
