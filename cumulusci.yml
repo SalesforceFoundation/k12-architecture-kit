@@ -132,21 +132,34 @@ tasks:
             values: "Participant, Perpetrator, Reporter, Victim, Witness, Other"
             existing_values: "Perpetrator, Reporter, Victim, Witness, Other"
             restricted: True
-            #recordtypes: Positive_Behavior_Involvement
+            sorted: True
+            namespaced: False
+
+    add_incident_involvement_role_picklist_Positive_Behavior_Involvement_RecordType_values:
+        description: Adds selected picklist values for Role for Positive Behavior Involvement Record type on the Behavior Involvment object.
+        class_path: tasks.add_picklist_values.AddPicklistValues
+        group: 'K-12: Metadata'
+        options:
+            sobject: hed__Behavior_Involvement__c
+            field: hed__Role__c
+            values: "Perpetrator, Reporter, Victim, Witness, Other"
+            recordtypes: Incident_Involvement
+            existing_values: "Perpetrator, Reporter, Victim, Witness, Other"
+            restricted: True
             sorted: True
             namespaced: False
 
     add_behavior_involvement_role_picklist_Positive_Behavior_Involvement_RecordType_values:
-        description: Adds additional Participant value to the Role picklist for Positive Behavior Involvement Record type on the Behavior Involvment object.
+        description: Adds selected picklist values for Role for Positive Behavior Involvement Record type on the Behavior Involvment object.
         class_path: tasks.add_picklist_values.AddPicklistValues
         group: 'K-12: Metadata'
         options:
             sobject: hed__Behavior_Involvement__c
             field: hed__Role__c
             values: "Participant, Reporter, Witness, Other"
+            recordtypes: Positive_Behavior_Involvement
             existing_values: "Participant, Reporter, Witness, Other"
             restricted: True
-            recordtypes: Positive_Behavior_Involvement
             sorted: True
             namespaced: False
 
@@ -277,10 +290,12 @@ flows:
             10: 
                 task: add_behavior_involvement_role_picklist_values
             11:
-                task: add_behavior_involvement_role_picklist_Positive_Behavior_Involvement_RecordType_values
+                task: add_incident_involvement_role_picklist_Positive_Behavior_Involvement_RecordType_values
             12:
-                task: execute_install_apex
+                task: add_behavior_involvement_role_picklist_Positive_Behavior_Involvement_RecordType_values
             13:
+                task: execute_install_apex
+            14:
                 task: snapshot_changes
 
     dev_org_namespaced:
