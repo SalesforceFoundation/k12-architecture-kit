@@ -122,34 +122,7 @@ tasks:
             sorted: True
             namespaced: False
 
-    add_behavior_involvement_role_picklist_values:
-        description: Adds additional Participant value to the Role picklist for Positive Behavior Involvement Record type on the Behavior Involvment object.
-        class_path: tasks.add_picklist_values.AddPicklistValues
-        group: 'K-12: Metadata'
-        options:
-            sobject: hed__Behavior_Involvement__c
-            field: hed__Role__c
-            values: "Participant, Perpetrator, Reporter, Victim, Witness, Other"
-            existing_values: "Perpetrator, Reporter, Victim, Witness, Other"
-            restricted: True
-            sorted: True
-            namespaced: False
-
-    add_incident_involvement_role_picklist_Positive_Behavior_Involvement_RecordType_values:
-        description: Adds selected picklist values for Role for Positive Behavior Involvement Record type on the Behavior Involvment object.
-        class_path: tasks.add_picklist_values.AddPicklistValues
-        group: 'K-12: Metadata'
-        options:
-            sobject: hed__Behavior_Involvement__c
-            field: hed__Role__c
-            values: "Perpetrator, Reporter, Victim, Witness, Other"
-            recordtypes: Incident_Involvement
-            existing_values: "Perpetrator, Reporter, Victim, Witness, Other"
-            restricted: True
-            sorted: True
-            namespaced: False
-
-    add_behavior_involvement_role_picklist_Positive_Behavior_Involvement_RecordType_values:
+    add_behavior_involvement_positive_behavior_involvement_role_values:
         description: Adds selected picklist values for Role for Positive Behavior Involvement Record type on the Behavior Involvment object.
         class_path: tasks.add_picklist_values.AddPicklistValues
         group: 'K-12: Metadata'
@@ -158,7 +131,7 @@ tasks:
             field: hed__Role__c
             values: "Participant, Reporter, Witness, Other"
             recordtypes: Positive_Behavior_Involvement
-            existing_values: "Participant, Reporter, Witness, Other"
+            existing_values: "Reporter, Witness, Other"
             restricted: True
             sorted: True
             namespaced: False
@@ -222,7 +195,7 @@ flows:
             9:
                 task: add_case_location_values
             10:
-                task: add_behavior_involvement_role_picklist_values
+                task: add_behavior_involvement_positive_behavior_involvement_role_values
 
 
     trial_org:
@@ -248,7 +221,7 @@ flows:
             8:
                 task: add_case_location_values
             9: 
-                task: add_behavior_involvement_role_picklist_values
+                task: add_behavior_involvement_positive_behavior_involvement_role_values
 
     qa_org:
         #description: Set up an org as a QA environment for unmanaged metadata
@@ -266,7 +239,7 @@ flows:
             9:
                 task: add_case_location_values
             10: 
-                task: add_behavior_involvement_role_picklist_values
+                task: add_behavior_involvement_positive_behavior_involvement_role_values
             11:
                 task: execute_install_apex
             12:
@@ -288,14 +261,10 @@ flows:
             9:
                 task: add_case_location_values
             10: 
-                task: add_behavior_involvement_role_picklist_values
+                task: add_behavior_involvement_positive_behavior_involvement_role_values
             11:
-                task: add_incident_involvement_role_picklist_Positive_Behavior_Involvement_RecordType_values
-            12:
-                task: add_behavior_involvement_role_picklist_Positive_Behavior_Involvement_RecordType_values
-            13:
                 task: execute_install_apex
-            14:
+            12:
                 task: snapshot_changes
 
     dev_org_namespaced:
@@ -324,7 +293,7 @@ flows:
                 options:
                     namespaced: True
             10: 
-                task: add_behavior_involvement_role_picklist_values
+                task: add_behavior_involvement_positive_behavior_involvement_role_values
                 options:
                     namespaced: True
             11:
