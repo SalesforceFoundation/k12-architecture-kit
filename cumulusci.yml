@@ -128,8 +128,8 @@ tasks:
         options:
             sobject: Case
             field: hed__Category__c
-            values: "Cooperation,Integrity,Leadership,Respect,School Code of Conduct,School Violation,State Offense,Teamwork"
-            existing_values: "School Code of Conduct, School Violation, State Offense"
+            values: "Cooperation,Integrity,Leadership,Other,Respect,Teamwork"
+            existing_values: "Other"
             recordtypes: Positive_Behavior
             restricted: True
             sorted: True
