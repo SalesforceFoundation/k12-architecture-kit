@@ -50,7 +50,7 @@
         <name>FlexiPage</name>
     </types>
     <types>
-        <members>hed__Behavior_Involvement__c-K12 Kit Behavior Involvment Layout</members>
+        <members>hed__Behavior_Involvement__c-K12 Kit Behavior Involvement Layout</members>
         <members>hed__Behavior_Involvement__c-K12 Kit Positive Behavior Involvement Layout</members>
         <name>Layout</name>
     </types>
