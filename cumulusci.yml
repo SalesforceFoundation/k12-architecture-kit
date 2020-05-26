@@ -83,20 +83,26 @@ tasks:
         namespaced: False
 
     add_application_type_picklist_values:
-        description: Adds Elementary School, Middle School, and High School picklist values to the application type field.
-        class_path: tasks.add_picklist_values.AddPicklistValues
+        description: Adds additional picklist values to the Type field.
+        class_path: tasks.picklists.AddPicklistEntries
         group: 'K-12: Metadata'
         options:
-            sobject: hed__Application__c
-            field: hed__Application_Type__c
-            values: "Elementary School,Middle School,High School"
-            existing_values: "Elementary School,Middle School,High School"
-            sorted: True
-            namespaced: False
+            picklists: hed__Application__c.hed__Application_Type__c
+            entries:
+                - fullName: "High School"
+                  label: "High School"
+                  add_before: "Transfer"
+                - fullName: "Middle School"
+                  label: "Middle School"
+                  add_before: "Transfer"
+                - fullName: "Elementary School"
+                  label: "Elementary School"
+                  add_before: "Graduate"
+    
 
     add_behavior_response_type_values:
         description: Adds additional picklist values to the Type field.
-        class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
+        class_path: tasks.picklists.AddPicklistEntries
         group: 'K-12: Metadata'
         options:
             picklists: hed__Behavior_Response__c.hed__Type__c
@@ -107,6 +113,7 @@ tasks:
                 - fullName: "Verbal Recognition"
                   label: "Verbal Recognition"
                   add_before: "Other"
+
     
     add_case_location_values: 
         description: Adds additional picklist values to the Location field.
@@ -149,6 +156,8 @@ flows:
     add_k12_picklist_values:
         steps:
             1:
+                task: add_application_type_picklist_values
+            2:
                 task: add_behavior_response_type_values
     config_managed:
         #description: Configure an org for use as a dev org after package metadata is deployed
@@ -179,8 +188,6 @@ flows:
                 options:
                     managed: True
             7:
-                task: add_application_type_picklist_values
-            8:
                 task: add_case_location_values
 
     dependencies:
@@ -209,8 +216,6 @@ flows:
                 options:
                     unmanaged: False
             6:
-                task: add_application_type_picklist_values
-            7:
                 task: add_case_location_values
 
     qa_org:
@@ -223,12 +228,10 @@ flows:
             6:
                 task: deploy_k12_kit_settings
             7:
-                task: add_application_type_picklist_values
-            8:
                 task: add_case_location_values
-            9:
+            8:
                 task: execute_install_apex
-            10:
+            9:
                 task: snapshot_changes
 
     dev_org:
@@ -241,12 +244,10 @@ flows:
             6:
                 task: deploy_k12_kit_settings
             7:
-                task: add_application_type_picklist_values
-            8:
                 task: add_case_location_values
-            9:
+            8:
                 task: execute_install_apex
-            10:
+            9:
                 task: snapshot_changes
 
     dev_org_namespaced:
@@ -263,16 +264,12 @@ flows:
             6:
                 task: deploy_k12_kit_settings
             7:
-                task: add_application_type_picklist_values
-                options:
-                    namespaced: True
-            8:
                 task: add_case_location_values
                 options:
                     namespaced: True
-            9:
+            8:
                 task: execute_install_apex
-            10:
+            9:
                 task: snapshot_changes
 
     upgraded_org:
@@ -309,8 +306,6 @@ flows:
                 options:
                     unmanaged: False
             6:
-                task: add_application_type_picklist_values
-            7:
                 task: add_case_location_values
 
     ci_feature_beta_deps:
