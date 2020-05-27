@@ -103,6 +103,7 @@ tasks:
             sobject: hed__Behavior_Response__c
             field: hed__Type__c
             values: "Detention,Expulsion with Services,In-School Suspension,Out-of-School Suspension,Removal from Classroom"
+            existing_values: "Detention,Expulsion with Services,In-School Suspension,Out-of-School Suspension,Removal from Classroom"
             restricted: true
             sorted: True
             namespaced: False
@@ -116,7 +117,7 @@ tasks:
             sobject: Case
             field: hed__Location__c
             values: "Administrative Offices Area,Athletic Field or Playground,Auditorium,Bus Stop,Cafeteria Area,Classroom,Computer Lab,Hallway or Stairs,Library/Media Center,Locker Room or Gym Areas,Off Campus,On Campus,Online,Parking Lot,Restroom,School Bus,Stadium,Unknown,Walking to or from School"
-            existing_values: "Off Campus, On Campus"
+            existing_values: "Administrative Offices Area,Athletic Field or Playground,Auditorium,Bus Stop,Cafeteria Area,Classroom,Computer Lab,Hallway or Stairs,Library/Media Center,Locker Room or Gym Areas,Off Campus,On Campus,Online,Parking Lot,Restroom,School Bus,Stadium,Unknown,Walking to or from School"
             recordtypes: Incident
             restricted: true
             sorted: True
