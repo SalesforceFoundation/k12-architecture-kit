@@ -122,19 +122,30 @@ tasks:
             sorted: True
             namespaced: False
 
-    add_behavior_involvement_positive_behavior_involvement_role_values:
-        description: Adds selected picklist values for Role for Positive Behavior Involvement Record type on the Behavior Involvment object.
-        class_path: tasks.add_picklist_values.AddPicklistValues
+    add_behavior_involvement_values:
+        description: Adds additional picklist values to the Role field.
+        class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
         group: 'K-12: Metadata'
         options:
-            sobject: hed__Behavior_Involvement__c
-            field: hed__Role__c
-            values: "Participant, Reporter, Witness, Other"
-            recordtypes: Positive_Behavior_Involvement
-            existing_values: "Reporter, Witness, Other"
-            restricted: True
-            sorted: True
-            namespaced: False
+            picklists: hed__Behavior_Involvement__c.hed__Role__c
+            entries:
+                - fullName: "Other"
+                  label: "Other"
+                - fullName: "Witness"
+                  label: "Witness"
+                  add_before: "Other"
+                - fullName: "Victim"
+                  label: "Victim"
+                  add_before: "Witness"
+                - fullName: "Reporter"
+                  label: "Reporter"
+                  add_before: "Victim"
+                - fullName: "Perpetrator"
+                  label: "Perpetrator"
+                  add_before: "Reporter"
+                - fullName: "Participant"
+                  label: "Participant"
+                  add_before: "Perpetrator"
 
     uninstall_packaged_incremental:
         description: Deletes any metadata from the package in the target org not in the local workspace
@@ -168,6 +179,8 @@ flows:
                 task: add_behavior_response_type_values
             3:
                 task: add_case_location_values
+            4:
+                task: add_behavior_involvement_values
                 
     beta_dependencies:
         steps:
