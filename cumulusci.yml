@@ -255,17 +255,9 @@ flows:
         steps:
             2:
                 task: None
+            3:
+                task: deploy_pre
 
-            3:
-                task: deploy_pre
-    beta_dependencies:
-        steps:
-            2:
-                task: None
-            3:
-                flow: add_k12_picklist_values
-            4:
-                task: deploy_pre
         
     trial_org:
         description: Deploy trial configuration to an org.
