@@ -123,17 +123,26 @@ tasks:
     
     add_case_category_values:
         description: Adds additional picklist values to the Category field.
-        class_path: tasks.add_picklist_values.AddPicklistValues
+        class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
         group: 'K-12: Metadata'
         options:
-            sobject: Case
-            field: hed__Category__c
-            values: "Cooperation,Integrity,Leadership,Other,Respect,Teamwork"
-            existing_values: "Other"
-            recordtypes: Positive_Behavior
-            restricted: True
-            sorted: True
-            namespaced: False
+            picklists: hed__Category__c
+            entries:
+                - fullName: "Cooperation"
+                  label: "Cooperation"
+                  add_before: "School Code of Conduct"
+                - fullName: "Integrity"
+                  label: "Integrity"
+                  add_before: "School Code of Conduct"
+                - fullName: "Leadership"
+                  label: "Leadership"
+                  add_before: "School Code of Conduct"
+                - fullName: "Respect"
+                  label: "Respect"
+                  add_before: "School Code of Conduct"
+                - fullName: "Teamwork"
+                  label: "Teamwork"
+                  add_before: "Other"
 
     uninstall_packaged_incremental:
         description: Deletes any metadata from the package in the target org not in the local workspace
