@@ -256,8 +256,6 @@ flows:
             2:
                 task: None
             3:
-                flow: add_k12_picklist_values
-            4:
                 task: deploy_pre
 
     trial_org:
@@ -289,6 +287,8 @@ flows:
             7:
                 task: execute_install_apex
             8:
+                flow: add_k12_picklist_values
+            9:
                 task: snapshot_changes
 
     dev_org:
@@ -301,8 +301,10 @@ flows:
             6:
                 task: deploy_k12_kit_settings
             7:
-                task: execute_install_apex
+                flow: add_k12_picklist_values
             8:
+                task: execute_install_apex
+            9:
                 task: snapshot_changes
 
     dev_org_namespaced:
@@ -319,8 +321,10 @@ flows:
             6:
                 task: deploy_k12_kit_settings
             7:
-                task: execute_install_apex
+                flow: add_k12_picklist_values
             8:
+                task: execute_install_apex
+            9:
                 task: snapshot_changes
 
     upgraded_org:
