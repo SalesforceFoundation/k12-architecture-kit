@@ -172,7 +172,8 @@ class AddPicklistEntries(MetadataSingleEntityTransformTask):
         ) or rt_element.append("picklistValues")
         if not picklist_element.find("picklist", text=picklist):
             picklist_element.append("picklist", text=picklist)
-
+        for i in picklist_element:
+            print(i._element.getchildren())
         # If this picklist value entry is not already present, add it.
         default = str(process_bool_arg(entry.get("default", False))).lower
         fullName = entry["fullName"]

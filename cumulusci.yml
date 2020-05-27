@@ -98,7 +98,6 @@ tasks:
                 - fullName: "Elementary School"
                   label: "Elementary School"
                   add_before: "Graduate"
-    
 
     add_behavior_response_type_values:
         description: Adds additional picklist values to the Type field.
@@ -113,9 +112,71 @@ tasks:
                 - fullName: "Verbal Recognition"
                   label: "Verbal Recognition"
                   add_before: "Other"
+            record_types:
+                - "Positive_Behavior_Response"
 
-    
-    add_case_location_values: 
+    add_case_location_values:
+        description: Adds additional picklist values to the Type field.
+        class_path: tasks.picklists.AddPicklistEntries
+        group: 'K-12: Metadata'
+        options:
+            picklists: Case.hed__Location__c
+            entries:
+                - fullName: "Administrative Offices Area"
+                  label: "Administrative Offices Area"
+                  add_before: "Off Campus"
+                - fullName: "Athletic Field or Playground"
+                  label: "Athletic Field or Playground"
+                  add_before: "Off Campus"
+                - fullName: "Auditorium"
+                  label: "Auditorium"
+                  add_before: "Off Campus"
+                - fullName: "Bus Stop"
+                  label: "Bus Stop"
+                  add_before: "Off Campus"
+                - fullName: "Cafeteria Area"
+                  label: "Cafeteria Area"
+                  add_before: "Off Campus"
+                - fullName: "Classroom"
+                  label: "Classroom"
+                  add_before: "Off Campus"
+                - fullName: "Computer Lab"
+                  label: "Computer Lab"
+                  add_before: "Off Campus"
+                - fullName: "Hallway or Stairs"
+                  label: "Hallway or Stairs"
+                  add_before: "Off Campus"
+                - fullName: "Library/Media Center"
+                  label: "Library/Media Center"
+                  add_before: "Off Campus"
+                - fullName: "Locker Room or Gym Areas"
+                  label: "Locker Room or Gym Areas"
+                  add_before: "Off Campus"
+                - fullName: "Online"
+                  label: "Online"
+                  add_before: "Other"
+                - fullName: "Parking Lot"
+                  label: "Parking Lot"
+                  add_before: "Other"
+                - fullName: "Restroom"
+                  label: "Restroom"
+                  add_before: "Other"
+                - fullName: "School Bus"
+                  label: "School Bus"
+                  add_before: "Other"
+                - fullName: "Stadium"
+                  label: "Stadium"
+                  add_before: "Other"
+                - fullName: "Unknown"
+                  label: "Unknown"
+                  add_before: "Other"
+                - fullName: "Walking to or from School"
+                  label: "Walking to or from School"
+                  add_before: "Other"
+            record_types:
+                - "Incident"
+
+    add_case_location_value:
         description: Adds additional picklist values to the Location field.
         class_path: tasks.add_picklist_values.AddPicklistValues
         group: 'K-12: Metadata'
@@ -159,6 +220,8 @@ flows:
                 task: add_application_type_picklist_values
             2:
                 task: add_behavior_response_type_values
+            3:
+                task: add_case_location_values
     config_managed:
         #description: Configure an org for use as a dev org after package metadata is deployed
         steps:
@@ -187,8 +250,6 @@ flows:
                 task: update_admin_profile
                 options:
                     managed: True
-            7:
-                task: add_case_location_values
 
     dependencies:
         steps:
@@ -215,8 +276,6 @@ flows:
                 task: deploy_trial_config
                 options:
                     unmanaged: False
-            6:
-                task: add_case_location_values
 
     qa_org:
         #description: Set up an org as a QA environment for unmanaged metadata
@@ -228,10 +287,8 @@ flows:
             6:
                 task: deploy_k12_kit_settings
             7:
-                task: add_case_location_values
-            8:
                 task: execute_install_apex
-            9:
+            8:
                 task: snapshot_changes
 
     dev_org:
@@ -244,10 +301,8 @@ flows:
             6:
                 task: deploy_k12_kit_settings
             7:
-                task: add_case_location_values
-            8:
                 task: execute_install_apex
-            9:
+            8:
                 task: snapshot_changes
 
     dev_org_namespaced:
@@ -264,12 +319,8 @@ flows:
             6:
                 task: deploy_k12_kit_settings
             7:
-                task: add_case_location_values
-                options:
-                    namespaced: True
-            8:
                 task: execute_install_apex
-            9:
+            8:
                 task: snapshot_changes
 
     upgraded_org:
@@ -305,8 +356,6 @@ flows:
                 task: deploy_trial_config
                 options:
                     unmanaged: False
-            6:
-                task: add_case_location_values
 
     ci_feature_beta_deps:
         description: When run, the latest version (including betas) of Cumulus and EDA are installed, and all tests are run.
