@@ -84,16 +84,21 @@ tasks:
         
 
     add_application_type_picklist_values:
-        description: Adds Elementary School, Middle School, and High School picklist values to the application type field.
-        class_path: tasks.add_picklist_values.AddPicklistValues
+        description: Adds additional picklist values to the Type field.
+        class_path: tasks.picklists.AddPicklistEntries
         group: 'K-12: Metadata'
         options:
-            sobject: hed__Application__c
-            field: hed__Application_Type__c
-            values: "Elementary School,Middle School,High School"
-            existing_values: "Elementary School,Middle School,High School"
-            sorted: true
-            namespaced: False
+            picklists: hed__Application__c.hed__Application_Type__c
+            entries:
+                - fullName: "High School"
+                  label: "High School"
+                  add_before: "Transfer"
+                - fullName: "Middle School"
+                  label: "Middle School"
+                  add_before: "Transfer"
+                - fullName: "Elementary School"
+                  label: "Elementary School"
+                  add_before: "Graduate"
 
     add_behavior_response_type_values:
         description: Adds additional picklist values to the Type field.
