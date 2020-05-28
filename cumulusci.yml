@@ -142,18 +142,71 @@ tasks:
                   
     add_case_location_values: 
         description: Adds additional picklist values to the Location field.
-        class_path: tasks.add_picklist_values.AddPicklistValues
+        class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
         group: 'K-12: Metadata'
         options:
-            sobject: Case
-            field: hed__Location__c
-            values: "Administrative Offices Area,Athletic Field or Playground,Auditorium,Bus Stop,Cafeteria Area,Classroom,Computer Lab,Hallway or Stairs,Library/Media Center,Locker Room or Gym Areas,Off Campus,On Campus,Online,Parking Lot,Restroom,School Bus,Stadium,Unknown,Walking to or from School"
-            existing_values: "Administrative Offices Area,Athletic Field or Playground,Auditorium,Bus Stop,Cafeteria Area,Classroom,Computer Lab,Hallway or Stairs,Library/Media Center,Locker Room or Gym Areas,Off Campus,On Campus,Online,Parking Lot,Restroom,School Bus,Stadium,Unknown,Walking to or from School"
-            recordtypes: Incident
-            restricted: True
-            sorted: True
-            namespaced: False
-
+            picklists: Case.hed__Location__c
+            entries:
+                - fullName: "Other"
+                  label: "Other"
+                - fullName: "On Campus"
+                  label: "On Campus"
+                  add_before: "Other"
+                - fullName: "Off Campus"
+                  label: "Off Campus"
+                  add_before: "On Campus"
+                - fullName: "Administrative Offices Area"
+                  label: "Administrative Offices Area"
+                  add_before: "Off Campus"
+                - fullName: "Athletic Field or Playground"
+                  label: "Athletic Field or Playground"
+                  add_before: "Off Campus" 
+                - fullName: "Auditorium"
+                  label: "Auditorium"
+                  add_before: "Off Campus"
+                - fullName: "Bus Stop"
+                  label: "Bus Stop"
+                  add_before: "Off Campus"
+                - fullName: "Cafeteria Area"
+                  label: "Cafeteria Area"
+                  add_before: "Off Campus"
+                - fullName: "Classroom"
+                  label: "Classroom"
+                  add_before: "Off Campus"
+                - fullName: "Computer Lab"
+                  label: "Computer Lab"
+                  add_before: "Off Campus"
+                - fullName: "Hallway or Stairs"
+                  label: "Hallway or Stairs"
+                  add_before: "Off Campus"
+                - fullName: "Library/Media Center"
+                  label: "Library/Media Center"
+                  add_before: "Off Campus"
+                - fullName: "Locker Room or Gym Areas"
+                  label: "Locker Room or Gym Areas"
+                  add_before: "Off Campus"
+                - fullName: "Online"
+                  label: "Online"
+                  add_before: "On Campus"
+                - fullName: "Parking Lot"
+                  label: "Parking Lot"
+                  add_before: "Other"
+                - fullName: "Restroom"
+                  label: "Restroom"
+                  add_before: "Other"
+                - fullName: "School Bus"
+                  label: "School Bus"
+                  add_before: "Other"
+                - fullName: "Stadium"
+                  label: "Stadium"
+                  add_before: "Other"
+                - fullName: "Unknown"
+                  label: "Unknown"
+                  add_before: "Other"
+                - fullName: "Walking to or from School"
+                  label: "Walking to or from School"
+                  add_before: "Other"
+                
     uninstall_packaged_incremental:
         description: Deletes any metadata from the package in the target org not in the local workspace
         class_path: cumulusci.tasks.salesforce.UninstallPackagedIncremental
