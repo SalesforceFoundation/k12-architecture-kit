@@ -201,7 +201,7 @@ flows:
             3:
                 flow: add_k12_picklist_values
             4:
-                task: deploy_pre'  
+                task: deploy_pre
                 
     trial_org:
         description: Deploy trial configuration to an org.
