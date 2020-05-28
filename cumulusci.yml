@@ -149,7 +149,21 @@ flows:
     add_k12_picklist_values:
         steps:
             1:
+                task: add_application_type_picklist_values
+            2: 
                 task: add_behavior_response_type_values
+            3: 
+                task: add_case_location_values
+                
+    beta_dependencies:
+        steps:
+            2: 
+                task: None 
+            3:
+                flow: add_k12_picklist_values
+            4:
+                task: deploy_pre
+                
     config_managed:
         #description: Configure an org for use as a dev org after package metadata is deployed
         steps:
