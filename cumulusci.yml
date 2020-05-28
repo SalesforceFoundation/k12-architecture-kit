@@ -99,7 +99,7 @@ tasks:
         class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
         group: 'K-12: Metadata'
         options:
-            picklists: hed__Behavior_Response__c.hed__Type__c
+            picklists: hed__Behavior_Response__c.Type__c
             entries:
                 - fullName: "Award"
                   label: "Award"
