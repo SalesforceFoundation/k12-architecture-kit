@@ -81,7 +81,6 @@ tasks:
         class_path: tasks.add_picklist_values.AddPicklistValues
         group: 'K-12: Metadata'
         namespaced: False
-        
 
     add_application_type_picklist_values:
         description: Adds Elementary School, Middle School, and High School picklist values to the application type field.
@@ -126,8 +125,19 @@ tasks:
         class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
         group: 'K-12: Metadata'
         options:
-            picklists: hed__Category__c
+            picklists: Case.hed__Category__c
             entries:
+                - fullName: "Other"
+                  label: "Other"
+                - fullName: "State Offense"
+                  label: "State Offense"
+                  add_before: "Other"
+                - fullName: "School Violation"
+                  label: "School Violation"
+                  add_before: "State Offense"
+                - fullName: "School Code of Conduct"
+                  label: "School Code of Conduct"
+                  add_before: "School Violation"
                 - fullName: "Cooperation"
                   label: "Cooperation"
                   add_before: "School Code of Conduct"
@@ -175,6 +185,8 @@ flows:
             2:
                 task: add_behavior_response_type_values
             3:
+                task: add_case_category_values
+            4:
                 task: add_case_location_values
                 
     beta_dependencies:
@@ -222,7 +234,7 @@ flows:
             3:
                 flow: add_k12_picklist_values
             4:
-                task: deploy_pre'  
+                task: deploy_pre
                 
     trial_org:
         description: Deploy trial configuration to an org.
