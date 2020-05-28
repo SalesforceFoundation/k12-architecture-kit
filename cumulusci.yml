@@ -115,7 +115,7 @@ tasks:
             sobject: Case
             field: hed__Location__c
             values: "Administrative Offices Area,Athletic Field or Playground,Auditorium,Bus Stop,Cafeteria Area,Classroom,Computer Lab,Hallway or Stairs,Library/Media Center,Locker Room or Gym Areas,Off Campus,On Campus,Online,Parking Lot,Restroom,School Bus,Stadium,Unknown,Walking to or from School"
-            existing_values: "Off Campus, On Campus"
+            existing_values: "Administrative Offices Area,Athletic Field or Playground,Auditorium,Bus Stop,Cafeteria Area,Classroom,Computer Lab,Hallway or Stairs,Library/Media Center,Locker Room or Gym Areas,Off Campus,On Campus,Online,Parking Lot,Restroom,School Bus,Stadium,Unknown,Walking to or from School"
             recordtypes: Incident
             restricted: True
             sorted: True
@@ -168,6 +168,24 @@ tasks:
                 STG_InstallScript.setK12kitDefaultTriggerHandlers();
 
 flows:
+    add_k12_picklist_values:
+        steps:
+            1: 
+                task: add_application_type_picklist_values
+            2:
+                task: add_behavior_response_type_values
+            3:
+                task: add_case_location_values
+                
+    beta_dependencies:
+        steps:
+            2: 
+                task: None 
+            3:
+                flow: add_k12_picklist_values
+            4:
+                task: deploy_pre
+                
     config_managed:
         #description: Configure an org for use as a dev org after package metadata is deployed
         steps:
@@ -196,16 +214,16 @@ flows:
                 task: update_admin_profile
                 options:
                     managed: True
-            7:
-                task: add_application_type_picklist_values
-            8:
-                task: add_behavior_response_type_values
-            9:
-                task: add_case_location_values
-            10: 
-                task: add_case_category_values
-
-
+    
+    dependencies:
+        steps:
+            2: 
+                task: None 
+            3:
+                flow: add_k12_picklist_values
+            4:
+                task: deploy_pre'  
+                
     trial_org:
         description: Deploy trial configuration to an org.
         group: 'K-12: Trial'
@@ -222,14 +240,6 @@ flows:
                 task: deploy_trial_config
                 options:
                     unmanaged: False
-            6:
-                task: add_application_type_picklist_values
-            7:
-                task: add_behavior_response_type_values
-            8:
-                task: add_case_location_values
-            9:
-                task: add_case_category_values
 
     qa_org:
         #description: Set up an org as a QA environment for unmanaged metadata
@@ -241,16 +251,8 @@ flows:
             6:
                 task: deploy_k12_kit_settings
             7:
-                task: add_application_type_picklist_values
-            8:
-                task: add_behavior_response_type_values
-            9:
-                task: add_case_location_values
-            10:
-                task: add_case_category_values
-            11:
                 task: execute_install_apex
-            12:
+            8:
                 task: snapshot_changes
 
     dev_org:
@@ -263,16 +265,8 @@ flows:
             6:
                 task: deploy_k12_kit_settings
             7:
-                task: add_application_type_picklist_values
-            8:
-                task: add_behavior_response_type_values
-            9:
-                task: add_case_location_values
-            10:
-                task: add_case_category_values
-            11:
                 task: execute_install_apex
-            12:
+            8:
                 task: snapshot_changes
 
     dev_org_namespaced:
@@ -289,24 +283,8 @@ flows:
             6:
                 task: deploy_k12_kit_settings
             7:
-                task: add_application_type_picklist_values
-                options:
-                    namespaced: True
-            8:
-                task: add_behavior_response_type_values
-                options:
-                    namespaced: True
-            9:
-                task: add_case_location_values
-                options:
-                    namespaced: True
-            10: 
-                task: add_case_category_values
-                options:
-                    namespaced: True
-            11:
                 task: execute_install_apex
-            12:
+            8:
                 task: snapshot_changes
 
     upgraded_org:
@@ -342,14 +320,6 @@ flows:
                 task: deploy_trial_config
                 options:
                     unmanaged: False
-            6:
-                task: add_application_type_picklist_values
-            7:
-                task: add_behavior_response_type_values
-            8:
-                task: add_case_location_values
-            9: 
-                task: add_case_category_values
 
     ci_feature_beta_deps:
         description: When run, the latest version (including betas) of Cumulus and EDA are installed, and all tests are run.
