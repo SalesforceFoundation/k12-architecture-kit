@@ -142,7 +142,7 @@ tasks:
                   
     add_case_location_values: 
         description: Adds additional picklist values to the Location field.
-        class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
+        class_path: tasks.picklists.AddPicklistEntries
         group: 'K-12: Metadata'
         options:
             picklists: Case.hed__Location__c
