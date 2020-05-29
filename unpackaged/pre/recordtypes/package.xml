@@ -7,6 +7,10 @@
         <members>Contact.Faculty</members>
         <members>Contact.Guardian</members>
         <members>Contact.Student</members>
+        <members>hed__Behavior_Involvement__c.Incident_Involvement</members>
+        <members>hed__Behavior_Involvement__c.Positive_Behavior_Involvement</members>
+        <members>hed__Behavior_Response__c.Incident_Response</members>
+        <members>hed__Behavior_Response__c.Positive_Behavior_Response</members>
         <name>RecordType</name>
     </types>
     <version>48.0</version>

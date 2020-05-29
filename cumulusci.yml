@@ -91,7 +91,7 @@ tasks:
             field: hed__Application_Type__c
             values: "Elementary School,Middle School,High School"
             existing_values: "Elementary School,Middle School,High School"
-            sorted: true
+            sorted: True
             namespaced: False
 
     add_behavior_response_type_values:
@@ -99,12 +99,37 @@ tasks:
         class_path: tasks.add_picklist_values.AddPicklistValues
         group: 'K-12: Metadata'
         options:
-            sobject: hed__Behavior_Response__c
-            field: hed__Type__c
-            values: "Detention,Expulsion with Services,In-School Suspension,Out-of-School Suspension,Removal from Classroom"
-            restricted: True
-            sorted: True
-            namespaced: False
+            picklists: hed__Behavior_Response__c.hed__Type__c
+            entries:
+                - fullName: "Other"
+                  label: "Other"
+                - fullName: "Expulsion"
+                  label: "Expulsion"
+                  add_before: "Other"
+                - fullName: "Academic Probation"
+                  label: "Academic Probation"
+                  add_before: "Expulsion"
+                - fullName: "Award"
+                  label: "Award"
+                  add_before: "Expulsion"
+                - fullName: "Detention"
+                  label: "Detention"
+                  add_before: "Expulsion"
+                - fullName: "Expulsion with Services"
+                  label: "Expulsion with Services"
+                  add_before: "Other"
+                - fullName: "In-School Suspension"
+                  label: "In-School Suspension"
+                  add_before: "Other"
+                - fullName: "Out-of-School Suspension"
+                  label: "Out-of-School Suspension"
+                  add_before: "Other"
+                - fullName: "Removal from Classroom"
+                  label: "Removal from Classroom"
+                  add_before: "Other"
+                - fullName: "Verbal Recognition"
+                  label: "Verbal Recognition"
+                  add_before: "Other"
             
     add_case_category_values:
         description: Adds additional picklist values to the Category field.
@@ -139,7 +164,7 @@ tasks:
                 - fullName: "Teamwork"
                   label: "Teamwork"
                   add_before: "Other"
-                  
+    
     add_case_location_values: 
         description: Adds additional picklist values to the Location field.
         class_path: tasks.picklists.AddPicklistEntries
@@ -206,7 +231,32 @@ tasks:
                 - fullName: "Walking to or from School"
                   label: "Walking to or from School"
                   add_before: "Other"
-                
+
+    add_behavior_involvement_values:
+        description: Adds additional picklist values to the Role field.
+        class_path: tasks.picklists.AddPicklistEntries
+        group: 'K-12: Metadata'
+        options:
+            picklists: hed__Behavior_Involvement__c.hed__Role__c
+            entries:
+                - fullName: "Other"
+                  label: "Other"
+                - fullName: "Witness"
+                  label: "Witness"
+                  add_before: "Other"
+                - fullName: "Victim"
+                  label: "Victim"
+                  add_before: "Witness"
+                - fullName: "Reporter"
+                  label: "Reporter"
+                  add_before: "Victim"
+                - fullName: "Perpetrator"
+                  label: "Perpetrator"
+                  add_before: "Reporter"
+                - fullName: "Participant"
+                  label: "Participant"
+                  add_before: "Perpetrator"
+
     uninstall_packaged_incremental:
         description: Deletes any metadata from the package in the target org not in the local workspace
         class_path: cumulusci.tasks.salesforce.UninstallPackagedIncremental
@@ -241,6 +291,8 @@ flows:
                 task: add_case_category_values
             4:
                 task: add_case_location_values
+            4:
+                task: add_behavior_involvement_values
                 
     beta_dependencies:
         steps:
@@ -279,7 +331,7 @@ flows:
                 task: update_admin_profile
                 options:
                     managed: True
-    
+
     dependencies:
         steps:
             2: 
@@ -288,7 +340,7 @@ flows:
                 flow: add_k12_picklist_values
             4:
                 task: deploy_pre
-                
+
     trial_org:
         description: Deploy trial configuration to an org.
         group: 'K-12: Trial'
