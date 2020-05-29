@@ -81,7 +81,6 @@ tasks:
         class_path: tasks.add_picklist_values.AddPicklistValues
         group: 'K-12: Metadata'
         namespaced: False
-        
 
     add_application_type_picklist_values:
         description: Adds Elementary School, Middle School, and High School picklist values to the application type field.
@@ -92,7 +91,7 @@ tasks:
             field: hed__Application_Type__c
             values: "Elementary School,Middle School,High School"
             existing_values: "Elementary School,Middle School,High School"
-            sorted: true
+            sorted: True
             namespaced: False
 
     add_behavior_response_type_values:
@@ -100,14 +99,37 @@ tasks:
         class_path: tasks.add_picklist_values.AddPicklistValues
         group: 'K-12: Metadata'
         options:
-            sobject: hed__Behavior_Response__c
-            field: hed__Type__c
-            values: "Detention,Expulsion with Services,In-School Suspension,Out-of-School Suspension,Removal from Classroom"
-            existing_values: "Detention,Expulsion with Services,In-School Suspension,Out-of-School Suspension,Removal from Classroom"
-            restricted: true
-            sorted: True
-            namespaced: False
-
+            picklists: hed__Behavior_Response__c.hed__Type__c
+            entries:
+                - fullName: "Other"
+                  label: "Other"
+                - fullName: "Expulsion"
+                  label: "Expulsion"
+                  add_before: "Other"
+                - fullName: "Academic Probation"
+                  label: "Academic Probation"
+                  add_before: "Expulsion"
+                - fullName: "Award"
+                  label: "Award"
+                  add_before: "Expulsion"
+                - fullName: "Detention"
+                  label: "Detention"
+                  add_before: "Expulsion"
+                - fullName: "Expulsion with Services"
+                  label: "Expulsion with Services"
+                  add_before: "Other"
+                - fullName: "In-School Suspension"
+                  label: "In-School Suspension"
+                  add_before: "Other"
+                - fullName: "Out-of-School Suspension"
+                  label: "Out-of-School Suspension"
+                  add_before: "Other"
+                - fullName: "Removal from Classroom"
+                  label: "Removal from Classroom"
+                  add_before: "Other"
+                - fullName: "Verbal Recognition"
+                  label: "Verbal Recognition"
+                  add_before: "Other"
     
     add_case_location_values: 
         description: Adds additional picklist values to the Location field.
@@ -119,7 +141,7 @@ tasks:
             values: "Administrative Offices Area,Athletic Field or Playground,Auditorium,Bus Stop,Cafeteria Area,Classroom,Computer Lab,Hallway or Stairs,Library/Media Center,Locker Room or Gym Areas,Off Campus,On Campus,Online,Parking Lot,Restroom,School Bus,Stadium,Unknown,Walking to or from School"
             existing_values: "Administrative Offices Area,Athletic Field or Playground,Auditorium,Bus Stop,Cafeteria Area,Classroom,Computer Lab,Hallway or Stairs,Library/Media Center,Locker Room or Gym Areas,Off Campus,On Campus,Online,Parking Lot,Restroom,School Bus,Stadium,Unknown,Walking to or from School"
             recordtypes: Incident
-            restricted: true
+            restricted: True
             sorted: True
             namespaced: False
 
@@ -220,7 +242,7 @@ flows:
                 task: update_admin_profile
                 options:
                     managed: True
-    
+
     dependencies:
         steps:
             2: 
@@ -229,7 +251,7 @@ flows:
                 flow: add_k12_picklist_values
             4:
                 task: deploy_pre
-                
+
     trial_org:
         description: Deploy trial configuration to an org.
         group: 'K-12: Trial'

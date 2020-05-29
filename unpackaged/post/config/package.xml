@@ -13,6 +13,7 @@
         <members>hed__Attribute__c.K12_Credential_Compact_Layout</members>
         <members>hed__Attribute__c.K12_Student_Characteristic_Compact_Layout</members>
         <members>hed__Behavior_Involvement__c.K12_Behavior_Involvement_Compact_Layout</members>
+        <members>hed__Behavior_Response__c.K12_Behavior_Response_Compact_Layout</members>
         <members>hed__Contact_Language__c.hed__HEDA_Contact_Language_Compact_Layout</members>
         <members>hed__Course_Enrollment__c.K12_Faculty_Course_Connection_Compact_Layout</members>
         <members>hed__Course_Enrollment__c.K12_Student_Course_Connection_Compact_Layout</members>
@@ -79,6 +80,8 @@
         <members>hed__Attribute__c.K_12_All_Credentials</members>
         <members>hed__Behavior_Involvement__c.K12_All_Incident_Involvements</members>
         <members>hed__Behavior_Involvement__c.K12_All_Positive_Behavior_Involvements</members>
+        <members>hed__Behavior_Response__c.K12_All_Incident_Responses</members>
+        <members>hed__Behavior_Response__c.K12_All_Positive_Behavior_Responses</members>
         <members>hed__Contact_Language__c.K12_All_Contact_Languages</members>
         <members>hed__Course_Enrollment__c.K12_All_Course_Connections</members>
         <members>hed__Course_Enrollment__c.K12_All_Faculty_Course_Connections</members>
@@ -112,6 +115,8 @@
         <members>hed__Attribute__c.hed__Student_Characteristic</members>
         <members>hed__Behavior_Involvement__c.Incident_Involvement</members>
         <members>hed__Behavior_Involvement__c.Positive_Behavior_Involvement</members>
+        <members>hed__Behavior_Response__c.Incident_Response</members>
+        <members>hed__Behavior_Response__c.Positive_Behavior_Response</members>
         <members>hed__Course_Enrollment__c.Faculty</members>
         <members>hed__Course_Enrollment__c.Student</members>
         <name>RecordType</name>
