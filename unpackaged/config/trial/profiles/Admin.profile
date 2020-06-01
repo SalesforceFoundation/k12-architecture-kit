@@ -131,12 +131,12 @@
         <recordType>hed__Behavior_Involvement__c.Positive_Behavior_Involvement</recordType>
     </layoutAssignments>
     <recordTypeVisibilities>
-        <default>false</default>
+        <default>true</default>
         <recordType>hed__Behavior_Involvement__c.Incident_Involvement</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
-        <default>true</default>
+        <default>false</default>
         <recordType>hed__Behavior_Involvement__c.Positive_Behavior_Involvement</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
