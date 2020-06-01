@@ -68,13 +68,13 @@
     <recordTypes>
         <fullName>Incident_Response</fullName>
         <active>true</active>
-        <description>Stores information about the response to an a Behavior Incident.</description>
+        <description>Stores information about the response to an Incident Involvement.</description>
         <label>Incident Response</label>
     </recordTypes>
     <recordTypes>
         <fullName>Positive_Behavior_Response</fullName>
         <active>true</active>
-        <description>Stores information about the response to a Positive Behavior event.</description>
+        <description>Stores information about the response to a Positive Behavior Involvement.</description>
         <label>Positive Behavior Response</label>
     </recordTypes>
     <searchLayouts>
