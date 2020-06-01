@@ -96,7 +96,7 @@ tasks:
 
     add_behavior_response_type_values:
         description: Adds additional picklist values to the Type field.
-        class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
+        class_path: tasks.picklists.AddPicklistEntries
         group: 'K-12: Metadata'
         options:
             picklists: hed__Behavior_Response__c.hed__Type__c
