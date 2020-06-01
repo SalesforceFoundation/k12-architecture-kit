@@ -340,7 +340,7 @@ flows:
                 flow: add_k12_picklist_values
             4:
                 task: deploy_pre
-
+ 
     trial_org:
         description: Deploy trial configuration to an org.
         group: 'K-12: Trial'
