@@ -96,16 +96,38 @@ tasks:
 
     add_behavior_response_type_values:
         description: Adds additional picklist values to the Type field.
-        class_path: tasks.add_picklist_values.AddPicklistValues
+        class_path: tasks.picklists.AddPicklistEntries
         group: 'K-12: Metadata'
         options:
-            sobject: hed__Behavior_Response__c
-            field: hed__Type__c
-            values: "Detention,Expulsion with Services,In-School Suspension,Out-of-School Suspension,Removal from Classroom"
-            restricted: True
-            sorted: True
-            namespaced: False
-            
+            picklists: hed__Behavior_Response__c.hed__Type__c
+            entries:
+                - fullName: "Other"
+                  label: "Other"
+                - fullName: "Expulsion"
+                  label: "Expulsion"
+                  add_before: "Other"
+                - fullName: "Academic Probation"
+                  label: "Academic Probation"
+                  add_before: "Expulsion"
+                - fullName: "Award"
+                  label: "Award"
+                  add_before: "Expulsion"
+                - fullName: "Detention"
+                  label: "Detention"
+                  add_before: "Expulsion"
+                - fullName: "Expulsion with Services"
+                  label: "Expulsion with Services"
+                  add_before: "Other"
+                - fullName: "In-School Suspension"
+                  label: "In-School Suspension"
+                  add_before: "Other"
+                - fullName: "Out-of-School Suspension"
+                  label: "Out-of-School Suspension"
+                  add_before: "Other"
+                - fullName: "Removal from Classroom"
+                  label: "Removal from Classroom"
+                  add_before: "Other"
+
     add_case_category_values:
         description: Adds additional picklist values to the Category field.
         class_path: tasks.picklists.AddPicklistEntries
@@ -139,7 +161,7 @@ tasks:
                 - fullName: "Teamwork"
                   label: "Teamwork"
                   add_before: "Other"
-                  
+
     add_case_location_values: 
         description: Adds additional picklist values to the Location field.
         class_path: tasks.picklists.AddPicklistEntries

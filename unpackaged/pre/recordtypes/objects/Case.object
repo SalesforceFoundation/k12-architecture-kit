@@ -55,7 +55,6 @@
                 <fullName>Computer Lab</fullName>
                 <default>false</default>
             </values>
-            
             <values>
                 <fullName>Hallway or Stairs</fullName>
                 <default>false</default>
