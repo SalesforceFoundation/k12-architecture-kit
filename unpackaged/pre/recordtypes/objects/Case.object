@@ -145,11 +145,79 @@
         <picklistValues>
             <picklist>hed__Location__c</picklist>
             <values>
+                <fullName>Administrative Offices Area</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Athletic Field or Playground</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Auditorium</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Bus Stop</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cafeteria Area</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Classroom</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Computer Lab</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hallway or Stairs</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Library/Media Center</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Locker Room or Gym Areas</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Off Campus</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>On Campus</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Online</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Parking Lot</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Restroom</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>School Bus</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Stadium</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Unknown</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Walking to or from School</fullName>
                 <default>false</default>
             </values>
             <values>
