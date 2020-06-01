@@ -128,12 +128,12 @@
     </layoutAssignments>
     <recordTypeVisibilities>
         <default>false</default>
-        <recordType>CASE.Positive_Behavior</recordType>
+        <recordType>Case.Positive_Behavior</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
-        <default>True</default>
-        <recordType>CASE.Incident</recordType>
+        <default>true</default>
+        <recordType>Case.Incident</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
     <tabVisibilities>
