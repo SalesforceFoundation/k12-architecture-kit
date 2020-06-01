@@ -3,7 +3,7 @@
     <recordTypes>
         <fullName>Incident_Response</fullName>
         <active>true</active>
-        <description>Stores information about the response to an a Behavior Incident.</description>
+        <description>Stores information about the response to an Incident Case.</description>
         <label>Incident Response</label>
         <picklistValues>
             <picklist>hed__Type__c</picklist>
@@ -21,7 +21,7 @@
     <recordTypes>
         <fullName>Positive_Behavior_Response</fullName>
         <active>true</active>
-        <description>Stores information about the response to a Positive Behavior event.</description>
+        <description>Stores information about the response to a Positive Behavior Case.</description>
         <label>Positive Behavior Response</label>
         <picklistValues>
             <picklist>hed__Type__c</picklist>
