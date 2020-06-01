@@ -139,22 +139,27 @@
         <recordType>hed__Behavior_Involvement__c.Positive_Behavior_Involvement</recordType>
     </layoutAssignments>
     <recordTypeVisibilities>
-        <default>false</default>
+        <default>true</default>
+        <recordType>Case.Incident</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>true</default>
         <recordType>hed__Behavior_Involvement__c.Incident_Involvement</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>false</default>
-        <recordType>hed__Behavior_Response__c.Incident_Response</recordType>
-        <visible>true</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <default>true</default>
         <recordType>hed__Behavior_Involvement__c.Positive_Behavior_Involvement</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
         <default>true</default>
+        <recordType>hed__Behavior_Response__c.Incident_Response</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
         <recordType>hed__Behavior_Response__c.Positive_Behavior_Response</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
