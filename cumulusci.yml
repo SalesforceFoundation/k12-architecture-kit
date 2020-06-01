@@ -215,10 +215,6 @@ flows:
                 task: update_admin_profile
                 options:
                     managed: True
-            7:
-                task: add_application_type_picklist_values
-            8:
-                task: add_case_location_values
 
     dependencies:
         steps:
@@ -245,10 +241,6 @@ flows:
                 task: deploy_trial_config
                 options:
                     unmanaged: False
-            6:
-                task: add_application_type_picklist_values
-            7:
-                task: add_case_location_values
 
     qa_org:
         #description: Set up an org as a QA environment for unmanaged metadata
@@ -260,12 +252,8 @@ flows:
             6:
                 task: deploy_k12_kit_settings
             7:
-                task: add_application_type_picklist_values
-            8:
-                task: add_case_location_values
-            9:
                 task: execute_install_apex
-            10:
+            8:
                 task: snapshot_changes
 
     dev_org:
@@ -278,12 +266,8 @@ flows:
             6:
                 task: deploy_k12_kit_settings
             7:
-                task: add_application_type_picklist_values
-            8:
-                task: add_case_location_values
-            9:
                 task: execute_install_apex
-            10:
+            8:
                 task: snapshot_changes
 
     dev_org_namespaced:
@@ -300,16 +284,8 @@ flows:
             6:
                 task: deploy_k12_kit_settings
             7:
-                task: add_application_type_picklist_values
-                options:
-                    namespaced: True
-            8:
-                task: add_case_location_values
-                options:
-                    namespaced: True
-            9:
                 task: execute_install_apex
-            10:
+            8:
                 task: snapshot_changes
 
     upgraded_org:
@@ -345,10 +321,6 @@ flows:
                 task: deploy_trial_config
                 options:
                     unmanaged: False
-            6:
-                task: add_application_type_picklist_values
-            7:
-                task: add_case_location_values
 
     ci_feature_beta_deps:
         description: When run, the latest version (including betas) of Cumulus and EDA are installed, and all tests are run.
