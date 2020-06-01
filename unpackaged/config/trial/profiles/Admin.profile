@@ -131,12 +131,12 @@
         <layout>hed__Time_Block__c-%%%NAMESPACE%%%K12 Kit Time Block Layout</layout>
     </layoutAssignments>
     <recordTypeVisibilities>
-        <default>false</default>
+        <default>true</default>
         <recordType>hed__Behavior_Response__c.Incident_Response</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
-        <default>true</default>
+        <default>false</default>
         <recordType>hed__Behavior_Response__c.Positive_Behavior_Response</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
