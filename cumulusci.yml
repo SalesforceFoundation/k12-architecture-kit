@@ -81,7 +81,6 @@ tasks:
         class_path: tasks.add_picklist_values.AddPicklistValues
         group: 'K-12: Metadata'
         namespaced: False
-        
 
     add_application_type_picklist_values:
         description: Adds Elementary School, Middle School, and High School picklist values to the application type field.
@@ -92,7 +91,7 @@ tasks:
             field: hed__Application_Type__c
             values: "Elementary School,Middle School,High School"
             existing_values: "Elementary School,Middle School,High School"
-            sorted: true
+            sorted: True
             namespaced: False
 
     add_behavior_response_type_values:
@@ -128,7 +127,9 @@ tasks:
                 - fullName: "Removal from Classroom"
                   label: "Removal from Classroom"
                   add_before: "Other"
-
+                - fullName: "Verbal Recognition"
+                  label: "Verbal Recognition"
+                  add_before: "Other"
     
     add_case_location_values: 
         description: Adds additional picklist values to the Location field.
