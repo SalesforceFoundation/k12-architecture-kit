@@ -127,6 +127,9 @@ tasks:
                 - fullName: "Removal from Classroom"
                   label: "Removal from Classroom"
                   add_before: "Other"
+                - fullName: "Verbal Recognition"
+                  label: "Verbal Recognition"
+                  add_before: "Other"
 
     add_case_category_values:
         description: Adds additional picklist values to the Category field.
