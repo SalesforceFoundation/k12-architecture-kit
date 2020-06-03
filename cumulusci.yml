@@ -130,6 +130,43 @@ tasks:
                 - fullName: "Verbal Recognition"
                   label: "Verbal Recognition"
                   add_before: "Other"
+
+    add_case_category_values:
+        description: Adds additional picklist values to the Category field.
+        class_path: tasks.picklists.AddPicklistEntries
+        group: 'K-12: Metadata'
+        options:
+            picklists: Case.hed__Category__c
+            entries:
+                - fullName: "Other"
+                  label: "Other"
+                - fullName: "State Offense"
+                  label: "State Offense"
+                  add_before: "Other"
+                - fullName: "School Violation"
+                  label: "School Violation"
+                  add_before: "State Offense"
+                - fullName: "School Code of Conduct"
+                  label: "School Code of Conduct"
+                  add_before: "School Violation"
+                - fullName: "Cooperation"
+                  label: "Cooperation"
+                  add_before: "School Code of Conduct"
+                - fullName: "Integrity"
+                  label: "Integrity"
+                  add_before: "School Code of Conduct"
+                - fullName: "Leadership"
+                  label: "Leadership"
+                  add_before: "School Code of Conduct"
+                - fullName: "Respect"
+                  label: "Respect"
+                  add_before: "School Code of Conduct"
+                - fullName: "Teamwork"
+                  label: "Teamwork"
+                  add_before: "Other"
+                - fullName: "Verbal Recognition"
+                  label: "Verbal Recognition"
+                  add_before: "Other"
     
     add_case_location_values: 
         description: Adds additional picklist values to the Location field.
@@ -197,7 +234,7 @@ tasks:
                 - fullName: "Walking to or from School"
                   label: "Walking to or from School"
                   add_before: "Other"
-
+                
     uninstall_packaged_incremental:
         description: Deletes any metadata from the package in the target org not in the local workspace
         class_path: cumulusci.tasks.salesforce.UninstallPackagedIncremental
@@ -229,6 +266,8 @@ flows:
             2:
                 task: add_behavior_response_type_values
             3:
+                task: add_case_category_values
+            4:
                 task: add_case_location_values
                 
     beta_dependencies:

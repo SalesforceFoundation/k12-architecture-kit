@@ -3,6 +3,7 @@
     <types>
         <members>Account.University_Department</members>
         <members>Case.Incident</members>
+        <members>Case.Positive_Behavior</members>
         <members>Contact.Faculty</members>
         <members>Contact.Guardian</members>
         <members>Contact.Student</members>

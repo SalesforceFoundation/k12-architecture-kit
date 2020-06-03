@@ -3,6 +3,7 @@
     <types>
         <members>Account.K12_Household_Compact_Layout</members>
         <members>Account.hed__HEDA_Account_Compact_Layout</members>
+        <members>Case.K12_Case_Compact_Layout</members>
         <members>Contact.K12_Faculty_Contact_Compact_Layout</members>
         <members>Contact.K12_Guardian_Contact_Compact_Layout</members>
         <members>Contact.K12_Student_Contact_Compact_Layout</members>
@@ -59,6 +60,8 @@
         <members>Account.K12_All_Academic_Programs</members>
         <members>Account.K12_All_Educational_Institutions</members>
         <members>Account.K12_All_Households</members>
+        <members>Case.K12_All_Positive_Behavior_Cases</members>
+        <members>Case.K12_All_Incident_Cases</members>
         <members>Contact.K12_All_Faculty</members>
         <members>Contact.K12_All_Guardians</members>
         <members>Contact.K12_All_Students</members>
@@ -87,6 +90,10 @@
         <name>ListView</name>
     </types>
     <types>
+        <members>Case-K12 Kit Positive Behavior Layout</members>
+        <name>Layout</name>
+    </types>
+    <types>
         <members>*</members>
         <name>CustomObject</name>
     </types>
@@ -96,6 +103,7 @@
     </types>
     <types>
         <members>Account.HH_Account</members>
+        <members>Case.Positive_Behavior</members>
         <members>Contact.Faculty</members>
         <members>Contact.Guardian</members>
         <members>Contact.Student</members>
