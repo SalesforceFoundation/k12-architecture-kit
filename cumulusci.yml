@@ -91,7 +91,7 @@ tasks:
             field: hed__Application_Type__c
             values: "Elementary School,Middle School,High School"
             existing_values: "Elementary School,Middle School,High School"
-            sorted: true
+            sorted: True
             namespaced: False
 
     add_behavior_response_type_values:
@@ -161,7 +161,10 @@ tasks:
                 - fullName: "Teamwork"
                   label: "Teamwork"
                   add_before: "Other"
-
+                - fullName: "Verbal Recognition"
+                  label: "Verbal Recognition"
+                  add_before: "Other"
+    
     add_case_location_values: 
         description: Adds additional picklist values to the Location field.
         class_path: tasks.picklists.AddPicklistEntries

@@ -21,6 +21,14 @@
         <recordType>Account.Sports_Organization</recordType>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>hed__Behavior_Response__c-K12 Kit Behavior Response Layout</layout>
+        <recordType>hed__Behavior_Response__c.Incident_Response</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>hed__Behavior_Response__c-K12 Kit Positive Behavior Response Layout</layout>
+        <recordType>hed__Behavior_Response__c.Positive_Behavior_Response</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>Case-%%%NAMESPACE%%%K12 Kit Incident Layout</layout>
         <recordType>Case.%%%NAMESPACED_ORG%%%Incident</recordType>
     </layoutAssignments>
@@ -134,6 +142,16 @@
     <recordTypeVisibilities>
         <default>true</default>
         <recordType>Case.Incident</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>true</default>
+        <recordType>hed__Behavior_Response__c.Incident_Response</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>hed__Behavior_Response__c.Positive_Behavior_Response</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
     <tabVisibilities>
