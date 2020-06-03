@@ -33,6 +33,10 @@
         <recordType>Case.%%%NAMESPACED_ORG%%%Incident</recordType>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>Case-K12 Kit Positive Behavior Layout</layout>
+        <recordType>Case.%%%NAMESPACED_ORG%%%Positive_Behavior</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>Contact-%%%NAMESPACE%%%K12 Kit Faculty Staff Layout</layout>
         <recordType>Contact.%%%NAMESPACED_ORG%%%Faculty</recordType>
     </layoutAssignments>
@@ -141,6 +145,16 @@
     <recordTypeVisibilities>
         <default>true</default>
         <recordType>hed__Behavior_Involvement__c.Incident_Involvement</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>Case.Positive_Behavior</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>true</default>
+        <recordType>Case.Incident</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
