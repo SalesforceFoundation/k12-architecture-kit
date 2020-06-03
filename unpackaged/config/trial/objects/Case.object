@@ -8,17 +8,17 @@
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
     </actionOverrides>
-    <compactLayoutAssignment>K12_Behavior_Compact_Layout</compactLayoutAssignment>
+    <compactLayoutAssignment>K12_Case_Compact_Layout</compactLayoutAssignment>
     <compactLayouts>
-        <fullName>K12_Behavior_Compact_Layout</fullName>
+        <fullName>K12_Case_Compact_Layout</fullName>
         <fields>hed__Category__c</fields>
         <fields>RecordTypeId</fields>
         <fields>Priority</fields>
         <fields>Status</fields>
-        <label>K12 Behavior Compact Layout</label>
+        <label>K12 Case Compact Layout</label>
     </compactLayouts>
     <listViews>
-        <fullName>K12_All_Positive_Behaviors</fullName>
+        <fullName>K12_All_Positive_Behavior_Cases</fullName>
         <columns>CASES.CASE_NUMBER</columns>
         <columns>NAME</columns>
         <columns>hed__Category__c</columns>
@@ -30,10 +30,10 @@
             <operation>equals</operation>
             <value>Case.Positive_Behavior</value>
         </filters>
-        <label>K-12 All Positive Behaviors</label>
+        <label>K-12 All Positive Behavior Cases</label>
     </listViews>
     <listViews>
-        <fullName>K12_All_Incidents</fullName>
+        <fullName>K12_All_Incident_Cases</fullName>
         <columns>CASES.CASE_NUMBER</columns>
         <columns>NAME</columns>
         <columns>hed__Category__c</columns>
@@ -47,7 +47,7 @@
             <operation>equals</operation>
             <value>Case.Incident</value>
         </filters>
-        <label>K-12 All Incidents</label>
+        <label>K-12 All Incident Cases</label>
     </listViews>
     <recordTypes>
         <fullName>Positive_Behavior</fullName>
