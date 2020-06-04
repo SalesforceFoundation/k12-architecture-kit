@@ -3,6 +3,7 @@
     <types>
         <members>Account.K12_Household_Compact_Layout</members>
         <members>Account.hed__HEDA_Account_Compact_Layout</members>
+        <members>Case.K12_Case_Compact_Layout</members>
         <members>Contact.K12_Faculty_Contact_Compact_Layout</members>
         <members>Contact.K12_Guardian_Contact_Compact_Layout</members>
         <members>Contact.K12_Student_Contact_Compact_Layout</members>
@@ -11,6 +12,8 @@
         <members>hed__Attendance_Event__c.K12_Attendance_Event_Compact_Layout</members>
         <members>hed__Attribute__c.K12_Credential_Compact_Layout</members>
         <members>hed__Attribute__c.K12_Student_Characteristic_Compact_Layout</members>
+        <members>hed__Behavior_Involvement__c.K12_Behavior_Involvement_Compact_Layout</members>
+        <members>hed__Behavior_Response__c.K12_Behavior_Response_Compact_Layout</members>
         <members>hed__Contact_Language__c.hed__HEDA_Contact_Language_Compact_Layout</members>
         <members>hed__Course_Enrollment__c.K12_Faculty_Course_Connection_Compact_Layout</members>
         <members>hed__Course_Enrollment__c.K12_Student_Course_Connection_Compact_Layout</members>
@@ -49,10 +52,19 @@
         <name>FlexiPage</name>
     </types>
     <types>
+        <members>hed__Behavior_Involvement__c-K12 Kit Behavior Involvement Layout</members>
+        <members>hed__Behavior_Involvement__c-K12 Kit Positive Behavior Involvement Layout</members>
+        <members>hed__Behavior_Response__c-K12 Kit Behavior Response Layout</members>
+        <members>hed__Behavior_Response__c-K12 Kit Positive Behavior Response Layout</members>
+        <name>Layout</name>
+    </types>
+    <types>
         <members>Account.K12_All_Academic_Departments</members>
         <members>Account.K12_All_Academic_Programs</members>
         <members>Account.K12_All_Educational_Institutions</members>
         <members>Account.K12_All_Households</members>
+        <members>Case.K12_All_Positive_Behavior_Cases</members>
+        <members>Case.K12_All_Incident_Cases</members>
         <members>Contact.K12_All_Faculty</members>
         <members>Contact.K12_All_Guardians</members>
         <members>Contact.K12_All_Students</members>
@@ -60,6 +72,10 @@
         <members>hed__Affiliation__c.K12_All_Affiliations</members>
         <members>hed__Attribute__c.K_12_All_Student_Characteristics</members>
         <members>hed__Attribute__c.K_12_All_Credentials</members>
+        <members>hed__Behavior_Involvement__c.K12_All_Incident_Involvements</members>
+        <members>hed__Behavior_Involvement__c.K12_All_Positive_Behavior_Involvements</members>
+        <members>hed__Behavior_Response__c.K12_All_Incident_Responses</members>
+        <members>hed__Behavior_Response__c.K12_All_Positive_Behavior_Responses</members>
         <members>hed__Contact_Language__c.K12_All_Contact_Languages</members>
         <members>hed__Course_Enrollment__c.K12_All_Course_Connections</members>
         <members>hed__Course_Enrollment__c.K12_All_Faculty_Course_Connections</members>
@@ -79,6 +95,10 @@
         <name>ListView</name>
     </types>
     <types>
+        <members>Case-K12 Kit Positive Behavior Layout</members>
+        <name>Layout</name>
+    </types>
+    <types>
         <members>*</members>
         <name>CustomObject</name>
     </types>
@@ -88,6 +108,7 @@
     </types>
     <types>
         <members>Account.HH_Account</members>
+        <members>Case.Positive_Behavior</members>
         <members>Contact.Faculty</members>
         <members>Contact.Guardian</members>
         <members>Contact.Student</members>

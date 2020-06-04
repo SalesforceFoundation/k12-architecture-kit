@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <recordTypes>
+        <fullName>Incident</fullName>
+        <active>true</active>
+        <businessProcess>Behavior Management</businessProcess>
+        <description>An event that’s being tracked by this Case.</description>
+        <label>Incident</label>
+        <picklistValues>
+            <picklist>hed__Category__c</picklist>
+            <values>
+                <fullName>School Code of Conduct</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>School Violation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>State Offense</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>hed__Location__c</picklist>
+            <values>
+                <fullName>Administrative Offices Area</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Athletic Field or Playground</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Auditorium</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Bus Stop</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cafeteria Area</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Classroom</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Computer Lab</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hallway or Stairs</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Library/Media Center</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Locker Room or Gym Areas</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Off Campus</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>On Campus</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Online</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Parking Lot</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Restroom</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>School Bus</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Stadium</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Unknown</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Walking to or from School</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Positive_Behavior</fullName>
+        <active>true</active>
+        <description>A positive behavior event that’s being tracked by this Case.</description>
+        <businessProcess>Behavior Management</businessProcess>
+        <label>Positive Behavior</label>
+        <picklistValues>
+            <picklist>hed__Category__c</picklist>
+            <values>
+                <fullName>Cooperation</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Integrity</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Leadership</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Respect</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Teamwork</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>hed__Location__c</picklist>
+            <values>
+                <fullName>Administrative Offices Area</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Athletic Field or Playground</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Auditorium</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Bus Stop</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cafeteria Area</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Classroom</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Computer Lab</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hallway or Stairs</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Library/Media Center</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Locker Room or Gym Areas</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Off Campus</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>On Campus</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Online</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Parking Lot</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Restroom</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>School Bus</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Stadium</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Unknown</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Walking to or from School</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+</CustomObject>

@@ -81,7 +81,6 @@ tasks:
         class_path: tasks.add_picklist_values.AddPicklistValues
         group: 'K-12: Metadata'
         namespaced: False
-        
 
     add_application_type_picklist_values:
         description: Adds Elementary School, Middle School, and High School picklist values to the application type field.
@@ -92,36 +91,174 @@ tasks:
             field: hed__Application_Type__c
             values: "Elementary School,Middle School,High School"
             existing_values: "Elementary School,Middle School,High School"
-            sorted: true
+            sorted: True
             namespaced: False
 
     add_behavior_response_type_values:
         description: Adds additional picklist values to the Type field.
-        class_path: tasks.add_picklist_values.AddPicklistValues
+        class_path: tasks.picklists.AddPicklistEntries
         group: 'K-12: Metadata'
         options:
-            sobject: hed__Behavior_Response__c
-            field: hed__Type__c
-            values: "Detention,Expulsion with Services,In-School Suspension,Out-of-School Suspension,Removal from Classroom"
-            existing_values: "Detention,Expulsion with Services,In-School Suspension,Out-of-School Suspension,Removal from Classroom"
-            restricted: true
-            sorted: True
-            namespaced: False
+            picklists: hed__Behavior_Response__c.hed__Type__c
+            entries:
+                - fullName: "Other"
+                  label: "Other"
+                - fullName: "Expulsion"
+                  label: "Expulsion"
+                  add_before: "Other"
+                - fullName: "Academic Probation"
+                  label: "Academic Probation"
+                  add_before: "Expulsion"
+                - fullName: "Award"
+                  label: "Award"
+                  add_before: "Expulsion"
+                - fullName: "Detention"
+                  label: "Detention"
+                  add_before: "Expulsion"
+                - fullName: "Expulsion with Services"
+                  label: "Expulsion with Services"
+                  add_before: "Other"
+                - fullName: "In-School Suspension"
+                  label: "In-School Suspension"
+                  add_before: "Other"
+                - fullName: "Out-of-School Suspension"
+                  label: "Out-of-School Suspension"
+                  add_before: "Other"
+                - fullName: "Removal from Classroom"
+                  label: "Removal from Classroom"
+                  add_before: "Other"
+                - fullName: "Verbal Recognition"
+                  label: "Verbal Recognition"
+                  add_before: "Other"
 
+    add_case_category_values:
+        description: Adds additional picklist values to the Category field.
+        class_path: tasks.picklists.AddPicklistEntries
+        group: 'K-12: Metadata'
+        options:
+            picklists: Case.hed__Category__c
+            entries:
+                - fullName: "Other"
+                  label: "Other"
+                - fullName: "State Offense"
+                  label: "State Offense"
+                  add_before: "Other"
+                - fullName: "School Violation"
+                  label: "School Violation"
+                  add_before: "State Offense"
+                - fullName: "School Code of Conduct"
+                  label: "School Code of Conduct"
+                  add_before: "School Violation"
+                - fullName: "Cooperation"
+                  label: "Cooperation"
+                  add_before: "School Code of Conduct"
+                - fullName: "Integrity"
+                  label: "Integrity"
+                  add_before: "School Code of Conduct"
+                - fullName: "Leadership"
+                  label: "Leadership"
+                  add_before: "School Code of Conduct"
+                - fullName: "Respect"
+                  label: "Respect"
+                  add_before: "School Code of Conduct"
+                - fullName: "Teamwork"
+                  label: "Teamwork"
+                  add_before: "Other"
+                - fullName: "Verbal Recognition"
+                  label: "Verbal Recognition"
+                  add_before: "Other"
     
     add_case_location_values: 
         description: Adds additional picklist values to the Location field.
-        class_path: tasks.add_picklist_values.AddPicklistValues
+        class_path: tasks.picklists.AddPicklistEntries
         group: 'K-12: Metadata'
         options:
-            sobject: Case
-            field: hed__Location__c
-            values: "Administrative Offices Area,Athletic Field or Playground,Auditorium,Bus Stop,Cafeteria Area,Classroom,Computer Lab,Hallway or Stairs,Library/Media Center,Locker Room or Gym Areas,Off Campus,On Campus,Online,Parking Lot,Restroom,School Bus,Stadium,Unknown,Walking to or from School"
-            existing_values: "Administrative Offices Area,Athletic Field or Playground,Auditorium,Bus Stop,Cafeteria Area,Classroom,Computer Lab,Hallway or Stairs,Library/Media Center,Locker Room or Gym Areas,Off Campus,On Campus,Online,Parking Lot,Restroom,School Bus,Stadium,Unknown,Walking to or from School"
-            recordtypes: Incident
-            restricted: true
-            sorted: True
-            namespaced: False
+            picklists: Case.hed__Location__c
+            entries:
+                - fullName: "Other"
+                  label: "Other"
+                - fullName: "On Campus"
+                  label: "On Campus"
+                  add_before: "Other"
+                - fullName: "Off Campus"
+                  label: "Off Campus"
+                  add_before: "On Campus"
+                - fullName: "Administrative Offices Area"
+                  label: "Administrative Offices Area"
+                  add_before: "Off Campus"
+                - fullName: "Athletic Field or Playground"
+                  label: "Athletic Field or Playground"
+                  add_before: "Off Campus" 
+                - fullName: "Auditorium"
+                  label: "Auditorium"
+                  add_before: "Off Campus"
+                - fullName: "Bus Stop"
+                  label: "Bus Stop"
+                  add_before: "Off Campus"
+                - fullName: "Cafeteria Area"
+                  label: "Cafeteria Area"
+                  add_before: "Off Campus"
+                - fullName: "Classroom"
+                  label: "Classroom"
+                  add_before: "Off Campus"
+                - fullName: "Computer Lab"
+                  label: "Computer Lab"
+                  add_before: "Off Campus"
+                - fullName: "Hallway or Stairs"
+                  label: "Hallway or Stairs"
+                  add_before: "Off Campus"
+                - fullName: "Library/Media Center"
+                  label: "Library/Media Center"
+                  add_before: "Off Campus"
+                - fullName: "Locker Room or Gym Areas"
+                  label: "Locker Room or Gym Areas"
+                  add_before: "Off Campus"
+                - fullName: "Online"
+                  label: "Online"
+                  add_before: "On Campus"
+                - fullName: "Parking Lot"
+                  label: "Parking Lot"
+                  add_before: "Other"
+                - fullName: "Restroom"
+                  label: "Restroom"
+                  add_before: "Other"
+                - fullName: "School Bus"
+                  label: "School Bus"
+                  add_before: "Other"
+                - fullName: "Stadium"
+                  label: "Stadium"
+                  add_before: "Other"
+                - fullName: "Unknown"
+                  label: "Unknown"
+                  add_before: "Other"
+                - fullName: "Walking to or from School"
+                  label: "Walking to or from School"
+                  add_before: "Other"
+
+    add_behavior_involvement_values:
+        description: Adds additional picklist values to the Role field.
+        class_path: tasks.picklists.AddPicklistEntries
+        group: 'K-12: Metadata'
+        options:
+            picklists: hed__Behavior_Involvement__c.hed__Role__c
+            entries:
+                - fullName: "Other"
+                  label: "Other"
+                - fullName: "Witness"
+                  label: "Witness"
+                  add_before: "Other"
+                - fullName: "Victim"
+                  label: "Victim"
+                  add_before: "Witness"
+                - fullName: "Reporter"
+                  label: "Reporter"
+                  add_before: "Victim"
+                - fullName: "Perpetrator"
+                  label: "Perpetrator"
+                  add_before: "Reporter"
+                - fullName: "Participant"
+                  label: "Participant"
+                  add_before: "Perpetrator"
 
     uninstall_packaged_incremental:
         description: Deletes any metadata from the package in the target org not in the local workspace
@@ -147,6 +284,28 @@ tasks:
                 STG_InstallScript.setK12kitDefaultTriggerHandlers();
 
 flows:
+    add_k12_picklist_values:
+        steps:
+            1: 
+                task: add_application_type_picklist_values
+            2:
+                task: add_behavior_response_type_values
+            3:
+                task: add_case_category_values
+            4:
+                task: add_case_location_values
+            5:
+                task: add_behavior_involvement_values
+                
+    beta_dependencies:
+        steps:
+            2: 
+                task: None 
+            3:
+                flow: add_k12_picklist_values
+            4:
+                task: deploy_pre
+                
     config_managed:
         #description: Configure an org for use as a dev org after package metadata is deployed
         steps:
@@ -175,14 +334,16 @@ flows:
                 task: update_admin_profile
                 options:
                     managed: True
-            7:
-                task: add_application_type_picklist_values
-            8:
-                task: add_behavior_response_type_values
-            9:
-                task: add_case_location_values
-
-
+    
+    dependencies:
+        steps:
+            2: 
+                task: None 
+            3:
+                flow: add_k12_picklist_values
+            4:
+                task: deploy_pre
+                
     trial_org:
         description: Deploy trial configuration to an org.
         group: 'K-12: Trial'
@@ -199,12 +360,6 @@ flows:
                 task: deploy_trial_config
                 options:
                     unmanaged: False
-            6:
-                task: add_application_type_picklist_values
-            7:
-                task: add_behavior_response_type_values
-            8:
-                task: add_case_location_values
 
     qa_org:
         #description: Set up an org as a QA environment for unmanaged metadata
@@ -216,14 +371,8 @@ flows:
             6:
                 task: deploy_k12_kit_settings
             7:
-                task: add_application_type_picklist_values
-            8:
-                task: add_behavior_response_type_values
-            9:
-                task: add_case_location_values
-            10:
                 task: execute_install_apex
-            11:
+            8:
                 task: snapshot_changes
 
     dev_org:
@@ -236,14 +385,8 @@ flows:
             6:
                 task: deploy_k12_kit_settings
             7:
-                task: add_application_type_picklist_values
-            8:
-                task: add_behavior_response_type_values
-            9:
-                task: add_case_location_values
-            10:
                 task: execute_install_apex
-            11:
+            8:
                 task: snapshot_changes
 
     dev_org_namespaced:
@@ -260,20 +403,8 @@ flows:
             6:
                 task: deploy_k12_kit_settings
             7:
-                task: add_application_type_picklist_values
-                options:
-                    namespaced: True
-            8:
-                task: add_behavior_response_type_values
-                options:
-                    namespaced: True
-            9:
-                task: add_case_location_values
-                options:
-                    namespaced: True
-            10:
                 task: execute_install_apex
-            11:
+            8:
                 task: snapshot_changes
 
     upgraded_org:
@@ -309,12 +440,6 @@ flows:
                 task: deploy_trial_config
                 options:
                     unmanaged: False
-            6:
-                task: add_application_type_picklist_values
-            7:
-                task: add_behavior_response_type_values
-            8:
-                task: add_case_location_values
 
     ci_feature_beta_deps:
         description: When run, the latest version (including betas) of Cumulus and EDA are installed, and all tests are run.

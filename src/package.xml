@@ -97,6 +97,7 @@
         <members>Account-K12 Kit Organization Layout</members>
         <members>Account-K12 Kit Sports Organization Layout</members>
         <members>Case-K12 Kit Incident Layout</members>
+        <members>Case-K12 Kit Positive Behavior Layout</members>
         <members>Contact-K12 Kit Faculty Staff Layout</members>
         <members>Contact-K12 Kit Guardian Layout</members>
         <members>Contact-K12 Kit Student Layout</members>
@@ -108,7 +109,9 @@
         <members>hed__Attribute__c-K12 Kit Credential Layout</members>
         <members>hed__Attribute__c-K12 Kit Student Characteristic Layout</members>
         <members>hed__Behavior_Involvement__c-K12 Kit Behavior Involvement Layout</members>
+        <members>hed__Behavior_Involvement__c-K12 Kit Positive Behavior Involvement Layout</members>
         <members>hed__Behavior_Response__c-K12 Kit Behavior Response Layout</members>
+        <members>hed__Behavior_Response__c-K12 Kit Positive Behavior Response Layout</members>
         <members>hed__Contact_Language__c-K12 Kit Contact Language Layout</members>
         <members>hed__Course_Enrollment__c-K12 Kit Student Course Connection Layout</members>
         <members>hed__Course_Enrollment__c-K12 Kit Teacher Course Connection Layout</members>
