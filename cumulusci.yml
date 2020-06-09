@@ -84,7 +84,7 @@ tasks:
 
     add_application_type_picklist_values:
         description: Adds Elementary School, Middle School, and High School picklist values to the application type field.
-        class_path: tasks.add_picklist_values.AddPicklistValues
+        class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
         group: 'K-12: Metadata'
         options:
             sobject: hed__Application__c
