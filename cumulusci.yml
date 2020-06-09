@@ -1,4 +1,4 @@
-minimum_cumulusci_version: 3.5.0
+minimum_cumulusci_version: 3.13.0
 project:
     name: Athena
     package:
