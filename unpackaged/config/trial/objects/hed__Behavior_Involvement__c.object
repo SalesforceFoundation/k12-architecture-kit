@@ -12,6 +12,7 @@
     <compactLayouts>
         <fullName>K12_Behavior_Involvement_Compact_Layout</fullName>
         <fields>hed__Contact__c</fields>
+        <fields>RECORDTYPEID</fields>
         <fields>hed__Role__c</fields>
         <fields>hed__Case__c</fields>
         <label>K12 Behavior Involvement Compact Layout</label>
@@ -27,5 +28,54 @@
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Behavior Involvements</pluralLabel>
+    <listViews>
+        <fullName>K12_All_Positive_Behavior_Involvements</fullName>
+        <columns>NAME</columns>
+        <columns>hed__Contact__c</columns>
+        <columns>hed__Role__c</columns>
+        <columns>hed__Description__c</columns>
+        <columns>hed__Case__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>hed__Behavior_Involvement__c.Positive_Behavior_Involvement</value>
+        </filters>
+        <label>K-12 All Positive Behavior Involvements</label>
+    </listViews>
+    <listViews>
+        <fullName>K12_All_Incident_Involvements</fullName>
+        <columns>NAME</columns>
+        <columns>hed__Contact__c</columns>
+        <columns>hed__Role__c</columns>
+        <columns>hed__Description__c</columns>
+        <columns>hed__Case__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>hed__Behavior_Involvement__c.Incident_Involvement</value>
+        </filters>
+        <label>K-12 All Incident Involvements</label>
+    </listViews>
+    <recordTypes>
+        <fullName>Incident_Involvement</fullName>
+        <active>true</active>
+        <description>Stores information about the people involved in a Case that represents a behavior Incident.</description>
+        <label>Incident Involvement</label>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Positive_Behavior_Involvement</fullName>
+        <active>true</active>
+        <description>Stores information about the people involved in a Case that represents a Positive Behavior event.</description>
+        <label>Positive Behavior Involvement</label>
+    </recordTypes>
+    <searchLayouts>
+        <searchResultsAdditionalFields>NAME</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>RECORDTYPE</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>hed__Contact__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>hed__Role__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>hed__Case__c</searchResultsAdditionalFields>
+    </searchLayouts>
     <sharingModel>ReadWrite</sharingModel>
 </CustomObject>

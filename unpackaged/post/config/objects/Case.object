@@ -8,4 +8,62 @@
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
     </actionOverrides>
+    <compactLayoutAssignment>K12_Case_Compact_Layout</compactLayoutAssignment>
+    <compactLayouts>
+        <fullName>K12_Case_Compact_Layout</fullName>
+        <fields>hed__Category__c</fields>
+        <fields>RecordTypeId</fields>
+        <fields>Priority</fields>
+        <fields>Status</fields>
+        <label>K12 Case Compact Layout</label>
+    </compactLayouts>
+    <listViews>
+        <fullName>K12_All_Positive_Behavior_Cases</fullName>
+        <columns>CASES.CASE_NUMBER</columns>
+        <columns>NAME</columns>
+        <columns>hed__Category__c</columns>
+        <columns>CASES.SUBJECT</columns>
+        <columns>CASES.CREATED_DATE_DATE_ONLY</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CASES.RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Case.Positive_Behavior</value>
+        </filters>
+        <label>K-12 All Positive Behavior Cases</label>
+    </listViews>
+    <listViews>
+        <fullName>K12_All_Incident_Cases</fullName>
+        <columns>CASES.CASE_NUMBER</columns>
+        <columns>NAME</columns>
+        <columns>hed__Category__c</columns>
+        <columns>CASES.SUBJECT</columns>
+        <columns>CASES.STATUS</columns>
+        <columns>CASES.PRIORITY</columns>
+        <columns>CASES.CREATED_DATE_DATE_ONLY</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>CASES.RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Case.Incident</value>
+        </filters>
+        <label>K-12 All Incident Cases</label>
+    </listViews>
+    <recordTypes>
+        <fullName>Positive_Behavior</fullName>
+        <active>true</active>
+        <description>A positive behavior event that’s being tracked by this Case.</description>
+        <businessProcess>Behavior Management</businessProcess>
+        <label>Positive Behavior</label>
+    </recordTypes>
+    <searchLayouts>
+        <searchResultsAdditionalFields>CASES.CASE_NUMBER</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CASES.RECORDTYPE</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>NAME</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>hed__Category__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CASES.SUBJECT</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CASES.STATUS</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CASES.PRIORITY</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>CASES.CREATED_DATE_DATE_ONLY</searchResultsAdditionalFields>
+    </searchLayouts>
 </CustomObject>

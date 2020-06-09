@@ -21,8 +21,20 @@
         <recordType>Account.Sports_Organization</recordType>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>hed__Behavior_Response__c-K12 Kit Behavior Response Layout</layout>
+        <recordType>hed__Behavior_Response__c.Incident_Response</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>hed__Behavior_Response__c-K12 Kit Positive Behavior Response Layout</layout>
+        <recordType>hed__Behavior_Response__c.Positive_Behavior_Response</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>Case-%%%NAMESPACE%%%K12 Kit Incident Layout</layout>
         <recordType>Case.%%%NAMESPACED_ORG%%%Incident</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Case-K12 Kit Positive Behavior Layout</layout>
+        <recordType>Case.%%%NAMESPACED_ORG%%%Positive_Behavior</recordType>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Contact-%%%NAMESPACE%%%K12 Kit Faculty Staff Layout</layout>
@@ -122,6 +134,44 @@
     <layoutAssignments>
         <layout>hed__Time_Block__c-%%%NAMESPACE%%%K12 Kit Time Block Layout</layout>
     </layoutAssignments>
+     <layoutAssignments>
+        <layout>hed__Behavior_Involvement__c-K12 Kit Behavior Involvement Layout</layout>
+        <recordType>hed__Behavior_Involvement__c.Incident_Involvement</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>hed__Behavior_Involvement__c-K12 Kit Positive Behavior Involvement Layout</layout>
+        <recordType>hed__Behavior_Involvement__c.Positive_Behavior_Involvement</recordType>
+    </layoutAssignments>
+    <recordTypeVisibilities>
+        <default>true</default>
+        <recordType>hed__Behavior_Involvement__c.Incident_Involvement</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>Case.Positive_Behavior</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>true</default>
+        <recordType>Case.Incident</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>true</default>
+        <recordType>hed__Behavior_Response__c.Incident_Response</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>hed__Behavior_Involvement__c.Positive_Behavior_Involvement</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities> 
+        <default>false</default>
+        <recordType>hed__Behavior_Response__c.Positive_Behavior_Response</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
     <tabVisibilities>
         <tab>hed__Application__c</tab>
         <visibility>DefaultOn</visibility>
