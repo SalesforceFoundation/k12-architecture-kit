@@ -43,7 +43,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>School_Days_Missed__c</field>
+                <field>%%%NAMESPACE%%%School_Days_Missed__c%%%NAMESPACE%%%</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
