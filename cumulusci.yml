@@ -89,8 +89,8 @@ tasks:
         options:
             sobject: hed__Application__c
             field: hed__Application_Type__c
-            values: "Elementary School,Middle School,High School"
-            existing_values: "Elementary School,Middle School,High School"
+            values: "Elementary School,Graduate,High School,Middle School,Transfer,Undergraduate"
+            existing_values: "Elementary School,Graduate,High School,Middle School,Transfer,Undergraduate"
             sorted: True
             namespaced: False
 
