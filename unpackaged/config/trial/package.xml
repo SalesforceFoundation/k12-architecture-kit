@@ -52,10 +52,11 @@
         <name>FlexiPage</name>
     </types>
     <types>
-        <members>hed__Behavior_Involvement__c-K12 Kit Behavior Involvement Layout</members>
-        <members>hed__Behavior_Involvement__c-K12 Kit Positive Behavior Involvement Layout</members>
-        <members>hed__Behavior_Response__c-K12 Kit Behavior Response Layout</members>
-        <members>hed__Behavior_Response__c-K12 Kit Positive Behavior Response Layout</members>
+        <members>hed__Behavior_Involvement__c-%%%NAMESPACE%%%K12 Kit Behavior Involvement Layout</members>
+        <members>hed__Behavior_Involvement__c-%%%NAMESPACE%%%K12 Kit Positive Behavior Involvement Layout</members>
+        <members>hed__Behavior_Response__c-%%%NAMESPACE%%%K12 Kit Behavior Response Layout</members>
+        <members>hed__Behavior_Response__c-%%%NAMESPACE%%%K12 Kit Positive Behavior Response Layout</members>
+        <members>Case-%%%NAMESPACE%%%K12 Kit Positive Behavior Layout</members>
         <name>Layout</name>
     </types>
     <types>
@@ -93,10 +94,6 @@
         <members>hed__Term__c.K12_All_Terms</members>
         <members>hed__Time_Block__c.K12_All_Time_Blocks</members>
         <name>ListView</name>
-    </types>
-    <types>
-        <members>Case-K12 Kit Positive Behavior Layout</members>
-        <name>Layout</name>
     </types>
     <types>
         <members>*</members>
