@@ -21,6 +21,34 @@
         <recordType>Account.Sports_Organization</recordType>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>hed__Address__c-%%%NAMESPACE%%%K12 Kit Address Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>hed__Affiliation__c-%%%NAMESPACE%%%K12 Kit Affiliation Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>hed__Application__c-K12 Kit Application Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>hed__Attendance_Event__c-%%%NAMESPACE%%%K12 Kit Attendance Event Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>hed__Attribute__c-%%%NAMESPACE%%%K12 Kit Credential Layout</layout>
+        <recordType>hed__Attribute__c.hed__Credential</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>hed__Attribute__c-%%%NAMESPACE%%%K12 Kit Student Characteristic Layout</layout>
+        <recordType>hed__Attribute__c.hed__Student_Characteristic</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>hed__Behavior_Involvement__c-K12 Kit Behavior Involvement Layout</layout>
+        <recordType>hed__Behavior_Involvement__c.Incident_Involvement</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>hed__Behavior_Involvement__c-K12 Kit Positive Behavior Involvement Layout</layout>
+        <recordType>hed__Behavior_Involvement__c.Positive_Behavior_Involvement</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>hed__Behavior_Response__c-K12 Kit Behavior Response Layout</layout>
         <recordType>hed__Behavior_Response__c.Incident_Response</recordType>
     </layoutAssignments>
@@ -50,32 +78,6 @@
     <layoutAssignments>
         <layout>Contact-%%%NAMESPACE%%%K12 Kit Student Layout</layout>
         <recordType>Contact.%%%NAMESPACED_ORG%%%Student</recordType>
-    </layoutAssignments>
-     <layoutAssignments>
-        <layout>hed__Address__c-%%%NAMESPACE%%%K12 Kit Address Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>hed__Affiliation__c-%%%NAMESPACE%%%K12 Kit Affiliation Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>hed__Application__c-K12 Kit Application Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>hed__Attendance_Event__c-%%%NAMESPACE%%%K12 Kit Attendance Event Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>hed__Attribute__c-%%%NAMESPACE%%%K12 Kit Credential Layout</layout>
-        <recordType>hed__Attribute__c.hed__Credential</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>hed__Attribute__c-%%%NAMESPACE%%%K12 Kit Student Characteristic Layout</layout>
-        <recordType>hed__Attribute__c.hed__Student_Characteristic</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>hed__Behavior_Involvement__c-%%%NAMESPACE%%%K12 Kit Behavior Involvement Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>hed__Behavior_Response__c-%%%NAMESPACE%%%K12 Kit Behavior Response Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>hed__Contact_Language__c-%%%NAMESPACE%%%K12 Kit Contact Language Layout</layout>
@@ -133,14 +135,6 @@
     </layoutAssignments>
     <layoutAssignments>
         <layout>hed__Time_Block__c-%%%NAMESPACE%%%K12 Kit Time Block Layout</layout>
-    </layoutAssignments>
-     <layoutAssignments>
-        <layout>hed__Behavior_Involvement__c-K12 Kit Behavior Involvement Layout</layout>
-        <recordType>hed__Behavior_Involvement__c.Incident_Involvement</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>hed__Behavior_Involvement__c-K12 Kit Positive Behavior Involvement Layout</layout>
-        <recordType>hed__Behavior_Involvement__c.Positive_Behavior_Involvement</recordType>
     </layoutAssignments>
     <recordTypeVisibilities>
         <default>true</default>
