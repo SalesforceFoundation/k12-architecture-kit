@@ -39,7 +39,7 @@
         <label>K-12 All Program Enrollments</label>
     </listViews>
     <deploymentStatus>Deployed</deploymentStatus>
-    <description>Contains details about the relationship a student Contact has with a Department or School (the degree-granting Account type for the educational institution).</description>
+    <description>A student Contact's enrollment in an academic program offered by a Department or School (the degree-granting Account type for the educational institution).</description>
     <label>Program Enrollment</label>
     <nameField>
         <displayFormat>PE-{0000}</displayFormat>
