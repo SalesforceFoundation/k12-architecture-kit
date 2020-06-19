@@ -22,6 +22,7 @@
     <fields>
         <fullName>hed__Term__c</fullName>
         <externalId>false</externalId>
+        <description>Lookup to the Term record that represents when this Course Offering takes place.</description>
         <label>Term</label>
         <referenceTo>hed__Term__c</referenceTo>
         <relationshipLabel>Course Offerings</relationshipLabel>
