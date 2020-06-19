@@ -126,10 +126,10 @@
         <layout>hed__Term__c-%%%NAMESPACE%%%K12 Kit Term Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>hed__Test__c-%%%NAMESPACE%%%K12 Kit Test Layout</layout>
+        <layout>hed__Test__c-K12 Kit Test Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>hed__Test_Score__c-%%%NAMESPACE%%%K12 Kit Test Score Layout</layout>
+        <layout>hed__Test_Score__c-K12 Kit Test Score Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>hed__Time_Block__c-%%%NAMESPACE%%%K12 Kit Time Block Layout</layout>
