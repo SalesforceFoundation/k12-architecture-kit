@@ -27,7 +27,7 @@
         <layout>hed__Affiliation__c-%%%NAMESPACE%%%K12 Kit Affiliation Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>hed__Application__c-K12 Kit Application Layout</layout>
+        <layout>hed__Application__c-%%%NAMESPACE%%%K12 Kit Application Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>hed__Attendance_Event__c-%%%NAMESPACE%%%K12 Kit Attendance Event Layout</layout>
@@ -41,19 +41,19 @@
         <recordType>hed__Attribute__c.hed__Student_Characteristic</recordType>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>hed__Behavior_Involvement__c-K12 Kit Behavior Involvement Layout</layout>
+        <layout>hed__Behavior_Involvement__c-%%%NAMESPACE%%%K12 Kit Behavior Involvement Layout</layout>
         <recordType>hed__Behavior_Involvement__c.Incident_Involvement</recordType>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>hed__Behavior_Involvement__c-K12 Kit Positive Behavior Involvement Layout</layout>
+        <layout>hed__Behavior_Involvement__c-%%%NAMESPACE%%%K12 Kit Positive Behavior Involvement Layout</layout>
         <recordType>hed__Behavior_Involvement__c.Positive_Behavior_Involvement</recordType>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>hed__Behavior_Response__c-K12 Kit Behavior Response Layout</layout>
+        <layout>hed__Behavior_Response__c-%%%NAMESPACE%%%K12 Kit Behavior Response Layout</layout>
         <recordType>hed__Behavior_Response__c.Incident_Response</recordType>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>hed__Behavior_Response__c-K12 Kit Positive Behavior Response Layout</layout>
+        <layout>hed__Behavior_Response__c-%%%NAMESPACE%%%K12 Kit Positive Behavior Response Layout</layout>
         <recordType>hed__Behavior_Response__c.Positive_Behavior_Response</recordType>
     </layoutAssignments>
     <layoutAssignments>
@@ -61,7 +61,7 @@
         <recordType>Case.%%%NAMESPACED_ORG%%%Incident</recordType>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Case-K12 Kit Positive Behavior Layout</layout>
+        <layout>Case-%%%NAMESPACE%%%K12 Kit Positive Behavior Layout</layout>
         <recordType>Case.%%%NAMESPACED_ORG%%%Positive_Behavior</recordType>
     </layoutAssignments>
     <layoutAssignments>
@@ -71,9 +71,6 @@
     <layoutAssignments>
         <layout>Contact-%%%NAMESPACE%%%K12 Kit Guardian Layout</layout>
         <recordType>Contact.%%%NAMESPACED_ORG%%%Guardian</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Contact-%%%NAMESPACE%%%K12 Kit Student Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>Contact-%%%NAMESPACE%%%K12 Kit Student Layout</layout>
@@ -128,10 +125,10 @@
         <layout>hed__Term__c-%%%NAMESPACE%%%K12 Kit Term Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>hed__Test__c-K12 Kit Test Layout</layout>
+        <layout>hed__Test__c-%%%NAMESPACE%%%K12 Kit Test Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>hed__Test_Score__c-K12 Kit Test Score Layout</layout>
+        <layout>hed__Test_Score__c-%%%NAMESPACE%%%K12 Kit Test Score Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
         <layout>hed__Time_Block__c-%%%NAMESPACE%%%K12 Kit Time Block Layout</layout>
