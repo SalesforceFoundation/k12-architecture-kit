@@ -47,6 +47,7 @@
     </compactLayouts>
     <fields>
         <fullName>hed__Citizenship__c</fullName>
+        <description>The person's country of citizenship. If this student has dual citizenship, indicate the second country of citizenship in the Dual Citizenship field.</description>
         <externalId>false</externalId>
         <label>Citizenship</label>
         <required>false</required>
@@ -1456,6 +1457,8 @@
     <fields>
         <fullName>hed__Country_of_Origin__c</fullName>
         <externalId>false</externalId>
+        <description>The country where this person was born.</description>
+        <inlineHelpText>The country where this person was born.</inlineHelpText>
         <label>Country of Origin</label>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
@@ -2863,9 +2866,9 @@
     </fields>
     <fields>
         <fullName>hed__Primary_Address_Type__c</fullName>
-        <description>Which type of address is the mailing address?</description>
+        <description>Indicate what kind of address the Mailing Address is, for example, Work, Home, or Other.</description>
         <externalId>false</externalId>
-        <inlineHelpText>Which type of address is the mailing address?</inlineHelpText>
+        <inlineHelpText>Indicate what kind of address the Mailing Address is, for example, Work, Home, or Other.</inlineHelpText>
         <label>Primary Address Type</label>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
@@ -2898,9 +2901,9 @@
     </fields>
     <fields>
         <fullName>hed__Secondary_Address_Type__c</fullName>
-        <description>What type of address is the other address?</description>
+        <description>Indicate what kind of address the Secondary Address is, for example, Work, Home, or Other.</description>
         <externalId>false</externalId>
-        <inlineHelpText>What type of address is the other address?</inlineHelpText>
+        <inlineHelpText>Indicate what kind of address the Secondary Address is, for example, Work, Home, or Other.</inlineHelpText>
         <label>Secondary Address Type</label>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
