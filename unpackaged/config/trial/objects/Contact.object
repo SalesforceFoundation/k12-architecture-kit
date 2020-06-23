@@ -2866,9 +2866,10 @@
     </fields>
     <fields>
         <fullName>hed__Primary_Address_Type__c</fullName>
-        <description>Indicate what kind of address the Secondary Address is, for example, Work, Home, or Other.</description>
+
+        <description>Indicate what kind of address the Mailing Address is, for example, Work, Home, or Other.</description>
         <externalId>false</externalId>
-        <inlineHelpText>Indicate what kind of address the Secondary Address is, for example, Work, Home, or Other.</inlineHelpText>
+        <inlineHelpText>Indicate what kind of address the Mailing Address is, for example, Work, Home, or Other.</inlineHelpText>
         <label>Primary Address Type</label>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>

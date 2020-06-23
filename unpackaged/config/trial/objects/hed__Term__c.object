@@ -32,6 +32,7 @@
     <fields>
         <fullName>hed__Account__c</fullName>
         <externalId>false</externalId>
+        <description>The Academic Program, Department, or entire Educational Institution this Term applies to. Select the Account that represents your Educational Institution if Terms are consistent across all Programs and Departments in your school.</description>
         <label>Account</label>
         <description>The Academic Program, Department, or entire Educational Institution this Term applies to. Select the Account that represents your Educational Institution if Terms are consistent across all Programs and Departments in your school.</description>
         <referenceTo>Account</referenceTo>
