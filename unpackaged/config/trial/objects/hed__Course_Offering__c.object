@@ -27,6 +27,7 @@
         <referenceTo>hed__Term__c</referenceTo>
         <relationshipLabel>Course Offerings</relationshipLabel>
         <relationshipName>Course_Offerings</relationshipName>
+
         <relationshipOrder>1</relationshipOrder>
         <reparentableMasterDetail>true</reparentableMasterDetail>
         <trackTrending>false</trackTrending>
