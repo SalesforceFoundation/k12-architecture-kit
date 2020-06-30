@@ -21,29 +21,6 @@
         <recordType>Account.Sports_Organization</recordType>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Case-%%%NAMESPACE%%%K12 Kit Incident Layout</layout>
-        <recordType>Case.%%%NAMESPACED_ORG%%%Incident</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Case-%%%NAMESPACE%%%K12 Kit Positive Behavior Layout</layout>
-        <recordType>Case.%%%NAMESPACED_ORG%%%Positive_Behavior</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Contact-%%%NAMESPACE%%%K12 Kit Faculty Staff Layout</layout>
-        <recordType>Contact.%%%NAMESPACED_ORG%%%Faculty</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Contact-%%%NAMESPACE%%%K12 Kit Guardian Layout</layout>
-        <recordType>Contact.%%%NAMESPACED_ORG%%%Guardian</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Contact-%%%NAMESPACE%%%K12 Kit Student Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>Contact-%%%NAMESPACE%%%K12 Kit Student Layout</layout>
-        <recordType>Contact.%%%NAMESPACED_ORG%%%Student</recordType>
-    </layoutAssignments>
-     <layoutAssignments>
         <layout>hed__Address__c-%%%NAMESPACE%%%K12 Kit Address Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
@@ -65,9 +42,6 @@
     </layoutAssignments>
     <layoutAssignments>
         <layout>hed__Behavior_Involvement__c-%%%NAMESPACE%%%K12 Kit Behavior Involvement Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>hed__Behavior_Involvement__c-%%%NAMESPACE%%%K12 Kit Behavior Involvement Layout</layout>
         <recordType>hed__Behavior_Involvement__c.Incident_Involvement</recordType>
     </layoutAssignments>
     <layoutAssignments>
@@ -76,14 +50,31 @@
     </layoutAssignments>
     <layoutAssignments>
         <layout>hed__Behavior_Response__c-%%%NAMESPACE%%%K12 Kit Behavior Response Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>hed__Behavior_Response__c-%%%NAMESPACE%%%K12 Kit Behavior Response Layout</layout>
         <recordType>hed__Behavior_Response__c.Incident_Response</recordType>
     </layoutAssignments>
     <layoutAssignments>
         <layout>hed__Behavior_Response__c-%%%NAMESPACE%%%K12 Kit Positive Behavior Response Layout</layout>
         <recordType>hed__Behavior_Response__c.Positive_Behavior_Response</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Case-%%%NAMESPACE%%%K12 Kit Incident Layout</layout>
+        <recordType>Case.%%%NAMESPACED_ORG%%%Incident</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Case-%%%NAMESPACE%%%K12 Kit Positive Behavior Layout</layout>
+        <recordType>Case.%%%NAMESPACED_ORG%%%Positive_Behavior</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Contact-%%%NAMESPACE%%%K12 Kit Faculty Staff Layout</layout>
+        <recordType>Contact.%%%NAMESPACED_ORG%%%Faculty</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Contact-%%%NAMESPACE%%%K12 Kit Guardian Layout</layout>
+        <recordType>Contact.%%%NAMESPACED_ORG%%%Guardian</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>Contact-%%%NAMESPACE%%%K12 Kit Student Layout</layout>
+        <recordType>Contact.%%%NAMESPACED_ORG%%%Student</recordType>
     </layoutAssignments>
     <layoutAssignments>
         <layout>hed__Contact_Language__c-%%%NAMESPACE%%%K12 Kit Contact Language Layout</layout>
@@ -174,6 +165,14 @@
     </recordTypeVisibilities>
     <tabVisibilities>
         <tab>hed__Application__c</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>hed__Test__c</tab>
+        <visibility>DefaultOn</visibility>
+    </tabVisibilities>
+    <tabVisibilities>
+        <tab>hed__Test_Score__c</tab>
         <visibility>DefaultOn</visibility>
     </tabVisibilities>
 </Profile>
