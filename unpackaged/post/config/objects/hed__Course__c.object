@@ -27,7 +27,7 @@
         <label>K-12 All Courses</label>
     </listViews>
     <deploymentStatus>Deployed</deploymentStatus>
-    <description>Academic course that a Department or School (the degree-granting Account type for the educational institution) offers.</description>
+    <description>Academic Course offered by a Department or School, for example, English 101 or Ancient History.</description>
     <fields>
         <fullName>hed__Account__c</fullName>
         <externalId>false</externalId>
