@@ -477,22 +477,24 @@ plans:
                     6:
                         name: EDA - Facility Display Name Formula Field
             2:
+                flow: add_k12_picklist_values
+            3:
                 task: deploy_pre
                 options:
                     unmanaged: False
                 ui_options:
                     recordtypes:
                         name: K-12 Architecture Kit - Account and Contact Record Types
-            3:
-                task: install_managed
             4:
+                task: install_managed
+            5:
                 task: deploy_post
                 options:
                     unmanaged: False
                 ui_options:
                     config:
                         name: K-12 Architecture Kit Metadata and Configuration
-            5:
+            6:
                 task: deploy_k12_app
                 
 orgs:
