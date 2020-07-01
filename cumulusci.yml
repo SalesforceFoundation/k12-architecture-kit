@@ -99,6 +99,7 @@ tasks:
                   label: "Elementary School"
                   add_before: "Graduate"
 
+
     add_behavior_response_type_values:
         description: Adds additional picklist values to the Type field.
         class_path: tasks.picklists.AddPicklistEntries
