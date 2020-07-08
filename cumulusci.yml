@@ -21,61 +21,6 @@ sources:
         release: latest
 
 tasks:
-    deploy_k12_kit_settings:
-        description: Configure the default K-12 Architecture Kit Settings
-        class_path: cumulusci.tasks.apex.anon.AnonymousApexTask
-        group: 'K-12: Custom Settings'
-        options:
-            path: scripts/configure_k12_kit.cls
-            apex: initializeK12KitSettings();
-
-    enable_course_connections:
-        description: Enables course connections and sets default record types
-        class_path: cumulusci.tasks.apex.anon.AnonymousApexTask
-        group: 'K-12: Custom Settings'
-        options:
-            path: scripts/configure_k12_kit.cls
-            apex: enableCourseConnections();
-
-    deploy_k12_app:
-        description: Deploys the K12 Kit App for those who use the installer rather than the trial
-        class_path: cumulusci.tasks.salesforce.Deploy
-        group: 'K-12: Installer Tasks'
-        ui_options:
-            name: Deploy K12 Architecture Kit app tile
-        options:
-            path: unpackaged/config/installer
-
-    deploy_trial_config:
-        description: Deploys metadata and configuration for TSOs.
-        class_path: cumulusci.tasks.salesforce.Deploy
-        group: 'K-12: Trial'
-        ui_options:
-            name: Deploy Trial Metadata
-        options:
-            namespace_inject: $project_config.project__package__namespace
-            path: unpackaged/config/trial
-
-    update_admin_profile:
-        #description: Retrieves, edits, and redeploys the Admin.profile with full FLS perms for all objects/fields
-        class_path: tasks.salesforce.UpdateAdminProfile
-
-    retrieve_postinstall_config:
-        description: Retrieves the current changes in a scratch org into unpackaged/post/config
-        class_path: cumulusci.tasks.salesforce.sourcetracking.RetrieveChanges
-        group: Salesforce Metadata
-        options:
-            path: unpackaged/post/config
-            namespace_tokenize: $project_config.project__package__namespace
-
-    retrieve_trial_config:
-        description: Retrieves the current changes in a scratch org into unpackaged/post/trial
-        class_path: cumulusci.tasks.salesforce.sourcetracking.RetrieveChanges
-        group: Salesforce Metadata
-        options:
-            path: unpackaged/config/trial
-            namespace_tokenize: $project_config.project__package__namespace
-
     add_picklist_values:
         description: Adds picklist values to the given field, if they don't already exist.
         class_path: tasks.add_picklist_values.AddPicklistValues
@@ -260,6 +205,65 @@ tasks:
                   label: "Participant"
                   add_before: "Perpetrator"
 
+    deploy_k12_kit_settings:
+        description: Configure the default K-12 Architecture Kit Settings
+        class_path: cumulusci.tasks.apex.anon.AnonymousApexTask
+        group: 'K-12: Custom Settings'
+        options:
+            path: scripts/configure_k12_kit.cls
+            apex: initializeK12KitSettings();
+
+    deploy_k12_app:
+        description: Deploys the K12 Kit App for those who use the installer rather than the trial
+        class_path: cumulusci.tasks.salesforce.Deploy
+        group: 'K-12: Installer Tasks'
+        ui_options:
+            name: Deploy K12 Architecture Kit app tile
+        options:
+            path: unpackaged/config/installer
+
+    deploy_trial_config:
+        description: Deploys metadata and configuration for TSOs.
+        class_path: cumulusci.tasks.salesforce.Deploy
+        group: 'K-12: Trial'
+        ui_options:
+            name: Deploy Trial Metadata
+        options:
+            namespace_inject: $project_config.project__package__namespace
+            path: unpackaged/config/trial
+
+    enable_course_connections:
+        description: Enables course connections and sets default record types
+        class_path: cumulusci.tasks.apex.anon.AnonymousApexTask
+        group: 'K-12: Custom Settings'
+        options:
+            path: scripts/configure_k12_kit.cls
+            apex: enableCourseConnections();
+
+    execute_install_apex:
+        description: Runs most of the install script methods from STG_InstallScript class
+        class_path: cumulusci.tasks.apex.anon.AnonymousApexTask
+        group: 'K-12: Custom Settings'
+        options:
+            apex:
+                STG_InstallScript.setK12kitDefaultTriggerHandlers();
+        
+    retrieve_postinstall_config:
+        description: Retrieves the current changes in a scratch org into unpackaged/post/config
+        class_path: cumulusci.tasks.salesforce.sourcetracking.RetrieveChanges
+        group: Salesforce Metadata
+        options:
+            path: unpackaged/post/config
+            namespace_tokenize: $project_config.project__package__namespace
+
+    retrieve_trial_config:
+        description: Retrieves the current changes in a scratch org into unpackaged/post/trial
+        class_path: cumulusci.tasks.salesforce.sourcetracking.RetrieveChanges
+        group: Salesforce Metadata
+        options:
+            path: unpackaged/config/trial
+            namespace_tokenize: $project_config.project__package__namespace
+
     uninstall_packaged_incremental:
         description: Deletes any metadata from the package in the target org not in the local workspace
         class_path: cumulusci.tasks.salesforce.UninstallPackagedIncremental
@@ -275,13 +279,9 @@ tasks:
                     - NewTask
                     - SendEmail
 
-    execute_install_apex:
-        description: Runs most of the install script methods from STG_InstallScript class
-        class_path: cumulusci.tasks.apex.anon.AnonymousApexTask
-        group: 'K-12: Custom Settings'
-        options:
-            apex:
-                STG_InstallScript.setK12kitDefaultTriggerHandlers();
+    update_admin_profile:
+        #description: Retrieves, edits, and redeploys the Admin.profile with full FLS perms for all objects/fields
+        class_path: tasks.salesforce.UpdateAdminProfile
 
 flows:
     add_k12_picklist_values:
@@ -305,7 +305,18 @@ flows:
                 flow: add_k12_picklist_values
             4:
                 task: deploy_pre
-                
+
+    ci_feature_beta_deps:
+        description: When run, the latest version (including betas) of Cumulus and EDA are installed, and all tests are run.
+        steps:
+            5:
+                task: run_tests
+                options:
+                   managed: True
+                   namespace: hed
+            6:
+                task: github_parent_to_children
+
     config_managed:
         #description: Configure an org for use as a dev org after package metadata is deployed
         steps:
@@ -343,6 +354,98 @@ flows:
                 flow: add_k12_picklist_values
             4:
                 task: deploy_pre
+
+    dev_org:
+        #description: Set up an org as a development environment for unmanaged metadata
+        steps:
+            1:
+                flow: beta_dependencies
+            2:
+                flow: deploy_unmanaged
+            3:
+                flow: config_dev
+            4:
+                task: enable_course_connections
+            5:
+                task: deploy_trial_config
+            6:
+                task: deploy_k12_kit_settings
+            7:
+                task: execute_install_apex
+            8:
+                task: snapshot_changes
+
+    dev_org_namespaced:
+        #description: Set up a namespaced scratch org as a development environment for unmanaged metadata
+        steps:
+            1:
+                flow: beta_dependencies
+            2:
+                flow: deploy_ummanaged
+            3:
+                flow: config_dev
+            4:
+                task: enable_course_connections
+                options:
+                    namespaced: True
+            5:
+                task: deploy_trial_config
+                options:
+                    namespaced_org: True
+            6:
+                task: deploy_k12_kit_settings
+            7:
+                task: execute_install_apex
+            8:
+                task: snapshot_changes
+
+    install_beta:
+        description: Install and configure the latest beta version
+        steps:
+            1:
+                flow: beta_dependencies
+            2:
+                task: install_managed_beta
+            3:
+                flow: config_managed
+            4:
+                task: snapshot_changes
+
+    net_new_org:
+        description: Simulates an K12 installation for a new customer. Installs the latest beta and dependencies.
+        steps:
+            1:
+                flow: beta_dependencies
+            2:
+                task: install_managed_beta
+            3:
+                flow: config_managed
+            4:
+                task: enable_course_connections
+            5:
+                task: deploy_trial_config
+                options:
+                    unmanaged: False
+
+    qa_org:
+        #description: Set up an org as a QA environment for unmanaged metadata
+        steps:
+            1:
+                flow: beta_dependencies
+            2:
+                flow: deploy_unmanaged
+            3:
+                flow: config_qa
+            4:
+                task: enable_course_connections
+            5:
+                task: deploy_trial_config
+            6:
+                task: deploy_k12_kit_settings
+            7:
+                task: execute_install_apex
+            8:
+                task: snapshot_changes
                 
     trial_org:
         description: Deploy trial configuration to an org.
@@ -361,52 +464,6 @@ flows:
                 options:
                     unmanaged: False
 
-    qa_org:
-        #description: Set up an org as a QA environment for unmanaged metadata
-        steps:
-            4:
-                task: enable_course_connections
-            5:
-                task: deploy_trial_config
-            6:
-                task: deploy_k12_kit_settings
-            7:
-                task: execute_install_apex
-            8:
-                task: snapshot_changes
-
-    dev_org:
-        #description: Set up an org as a development environment for unmanaged metadata
-        steps:
-            4:
-                task: enable_course_connections
-            5:
-                task: deploy_trial_config
-            6:
-                task: deploy_k12_kit_settings
-            7:
-                task: execute_install_apex
-            8:
-                task: snapshot_changes
-
-    dev_org_namespaced:
-        #description: Set up a namespaced scratch org as a development environment for unmanaged metadata
-        steps:
-            4:
-                task: enable_course_connections
-                options:
-                    namespaced: True
-            5:
-                task: deploy_trial_config
-                options:
-                    namespaced_org: True
-            6:
-                task: deploy_k12_kit_settings
-            7:
-                task: execute_install_apex
-            8:
-                task: snapshot_changes
-
     upgraded_org:
         description: Simulate an existing org. Used to test the state of a customer's org after a push upgrade.
         steps:
@@ -424,33 +481,6 @@ flows:
                 task: install_managed_beta
             6:
                 task: snapshot_changes  
-
-    net_new_org:
-        description: Simulates an K12 installation for a new customer. Installs the latest beta and dependencies.
-        steps:
-            1:
-                flow: beta_dependencies
-            2:
-                task: install_managed_beta
-            3:
-                flow: config_managed
-            4:
-                task: enable_course_connections
-            5:
-                task: deploy_trial_config
-                options:
-                    unmanaged: False
-
-    ci_feature_beta_deps:
-        description: When run, the latest version (including betas) of Cumulus and EDA are installed, and all tests are run.
-        steps:
-            5:
-                task: run_tests
-                options:
-                   managed: True
-                   namespace: hed
-            6:
-                task: github_parent_to_children
 
 plans:
     install:
