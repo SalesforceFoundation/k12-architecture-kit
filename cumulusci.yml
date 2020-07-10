@@ -381,7 +381,7 @@ flows:
             1:
                 flow: beta_dependencies
             2:
-                flow: deploy_ummanaged
+                flow: deploy_unmanaged
             3:
                 flow: config_dev
             4:
