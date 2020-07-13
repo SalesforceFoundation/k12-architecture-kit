@@ -468,7 +468,7 @@ flows:
         description: Simulate an existing org. Used to test the state of a customer's org after a push upgrade.
         steps:
             1:
-                flow: latest_release:dependencies
+                flow: latest_release:beta_dependencies
             2:
                 task: install_managed
             3:
