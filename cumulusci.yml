@@ -264,6 +264,12 @@ tasks:
             path: unpackaged/config/trial
             namespace_tokenize: $project_config.project__package__namespace
 
+    run_tests:
+        options:
+            retry_failures:
+                - "Apex CPU time limit exceeded"
+            retry_always: True
+
     uninstall_packaged_incremental:
         description: Deletes any metadata from the package in the target org not in the local workspace
         class_path: cumulusci.tasks.salesforce.UninstallPackagedIncremental
