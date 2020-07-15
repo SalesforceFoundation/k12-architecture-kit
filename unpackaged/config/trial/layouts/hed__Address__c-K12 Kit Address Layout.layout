@@ -147,6 +147,11 @@
     <platformActionList>
         <actionListContext>Record</actionListContext>
         <platformActionListItems>
+            <actionName>Edit</actionName>
+            <actionType>StandardButton</actionType>
+            <sortOrder>0</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
             <actionName>NewNote</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>1</sortOrder>
@@ -191,11 +196,6 @@
             <actionType>StandardButton</actionType>
             <sortOrder>9</sortOrder>
         </platformActionListItems>
-        <platformActionListItems>
-            <actionName>Edit</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>0</sortOrder>
-        </platformActionListItems>
     </platformActionList>
     <relatedLists>
         <fields>FULL_NAME</fields>
@@ -212,7 +212,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h2E00000f3qco</masterLabel>
+        <masterLabel>00h5B0000010SW3</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
