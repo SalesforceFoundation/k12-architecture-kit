@@ -52,6 +52,7 @@
         <name>FlexiPage</name>
     </types>
     <types>
+        <members>hed__Address__c-%%%NAMESPACE%%%K12 Kit Address Layout</members>
         <members>hed__Behavior_Involvement__c-%%%NAMESPACE%%%K12 Kit Behavior Involvement Layout</members>
         <members>hed__Behavior_Involvement__c-%%%NAMESPACE%%%K12 Kit Positive Behavior Involvement Layout</members>
         <members>hed__Behavior_Response__c-%%%NAMESPACE%%%K12 Kit Behavior Response Layout</members>
