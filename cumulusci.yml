@@ -21,15 +21,9 @@ sources:
         release: latest
 
 tasks:
-    add_picklist_values:
-        description: Adds picklist values to the given field, if they don't already exist.
-        class_path: tasks.add_picklist_values.AddPicklistValues
-        group: 'K-12: Metadata'
-        namespaced: False
-
     add_application_type_picklist_values:
         description: Adds additional picklist values to the Type field.
-        class_path: tasks.picklists.AddPicklistEntries
+        class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
         group: 'K-12: Metadata'
         options:
             picklists: hed__Application__c.hed__Application_Type__c
@@ -47,7 +41,7 @@ tasks:
 
     add_behavior_response_type_values:
         description: Adds additional picklist values to the Type field.
-        class_path: tasks.picklists.AddPicklistEntries
+        class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
         group: 'K-12: Metadata'
         options:
             picklists: hed__Behavior_Response__c.hed__Type__c
@@ -84,7 +78,7 @@ tasks:
 
     add_case_category_values:
         description: Adds additional picklist values to the Category field.
-        class_path: tasks.picklists.AddPicklistEntries
+        class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
         group: 'K-12: Metadata'
         options:
             picklists: Case.hed__Category__c
@@ -121,7 +115,7 @@ tasks:
     
     add_case_location_values: 
         description: Adds additional picklist values to the Location field.
-        class_path: tasks.picklists.AddPicklistEntries
+        class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
         group: 'K-12: Metadata'
         options:
             picklists: Case.hed__Location__c
@@ -188,7 +182,7 @@ tasks:
 
     add_behavior_involvement_values:
         description: Adds additional picklist values to the Role field.
-        class_path: tasks.picklists.AddPicklistEntries
+        class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
         group: 'K-12: Metadata'
         options:
             picklists: hed__Behavior_Involvement__c.hed__Role__c
