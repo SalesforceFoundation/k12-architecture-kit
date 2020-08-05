@@ -1,4 +1,4 @@
-minimum_cumulusci_version: 3.5.0
+minimum_cumulusci_version: 3.13.0
 project:
     name: Athena
     package:
@@ -21,27 +21,27 @@ sources:
         release: latest
 
 tasks:
-    add_picklist_values:
-        description: Adds picklist values to the given field, if they don't already exist.
-        class_path: tasks.add_picklist_values.AddPicklistValues
-        group: 'K-12: Metadata'
-        namespaced: False
-
     add_application_type_picklist_values:
-        description: Adds Elementary School, Middle School, and High School picklist values to the application type field.
-        class_path: tasks.add_picklist_values.AddPicklistValues
+        description: Adds additional picklist values to the Type field.
+        class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
         group: 'K-12: Metadata'
         options:
-            sobject: hed__Application__c
-            field: hed__Application_Type__c
-            values: "Elementary School,Graduate,High School,Middle School,Transfer,Undergraduate"
-            existing_values: "Elementary School,Graduate,High School,Middle School,Transfer,Undergraduate"
-            sorted: True
-            namespaced: False
+            picklists: hed__Application__c.hed__Application_Type__c
+            entries:
+                - fullName: "High School"
+                  label: "High School"
+                  add_before: "Transfer"
+                - fullName: "Middle School"
+                  label: "Middle School"
+                  add_before: "Transfer"
+                - fullName: "Elementary School"
+                  label: "Elementary School"
+                  add_before: "Graduate"
+
 
     add_behavior_response_type_values:
         description: Adds additional picklist values to the Type field.
-        class_path: tasks.picklists.AddPicklistEntries
+        class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
         group: 'K-12: Metadata'
         options:
             picklists: hed__Behavior_Response__c.hed__Type__c
@@ -78,7 +78,7 @@ tasks:
 
     add_case_category_values:
         description: Adds additional picklist values to the Category field.
-        class_path: tasks.picklists.AddPicklistEntries
+        class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
         group: 'K-12: Metadata'
         options:
             picklists: Case.hed__Category__c
@@ -115,7 +115,7 @@ tasks:
     
     add_case_location_values: 
         description: Adds additional picklist values to the Location field.
-        class_path: tasks.picklists.AddPicklistEntries
+        class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
         group: 'K-12: Metadata'
         options:
             picklists: Case.hed__Location__c
@@ -182,7 +182,7 @@ tasks:
 
     add_behavior_involvement_values:
         description: Adds additional picklist values to the Role field.
-        class_path: tasks.picklists.AddPicklistEntries
+        class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
         group: 'K-12: Metadata'
         options:
             picklists: hed__Behavior_Involvement__c.hed__Role__c
