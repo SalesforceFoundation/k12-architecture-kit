@@ -32,6 +32,7 @@
         <fullName>hed__Account__c</fullName>
         <externalId>false</externalId>
         <label>Department</label>
+        <description>The department (Account record) that offers this Course.</description>
         <referenceTo>Account</referenceTo>
         <relationshipLabel>Courses</relationshipLabel>
         <relationshipName>Courses</relationshipName>
