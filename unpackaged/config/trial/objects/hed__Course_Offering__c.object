@@ -34,7 +34,7 @@
         <writeRequiresMasterRead>false</writeRequiresMasterRead>
     </fields>
     <deploymentStatus>Deployed</deploymentStatus>
-    <description>Joins Courses and Terms to contain information related to a single occurrence of a course.</description>
+    <description>Joins Courses and Terms to contain information related to a single occurrence of a Course.</description>
     <label>Course Offering</label>
     <nameField>
         <label>Course Offering ID</label>
