@@ -8,14 +8,16 @@
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
     </actionOverrides>
-    <compactLayoutAssignment>K12_Facility_Compact_Layout</compactLayoutAssignment>
+    <compactLayoutAssignment>K12_Kit_Education_History_Compact_Layout</compactLayoutAssignment>
     <compactLayouts>
-        <fullName>K12_Facility_Compact_Layout</fullName>
+        <fullName>K12_Kit_Education_History_Compact_Layout</fullName>
         <fields>Name</fields>
-        <fields>hed__Facility_Type__c</fields>
-        <fields>hed__Capacity__c</fields>
         <fields>hed__Account__c</fields>
-        <label>K12 Facility Compact Layout</label>
+        <fields>hed__Contact__c</fields>
+        <fields>School_Enrollment_Status__c</fields>
+        <fields>hed__Start_Date__c</fields>
+        <fields>hed__End_Date__c</fields>
+        <label>K12 Kit Education History Compact Layout</label>
     </compactLayouts>
     <listViews>
         <fullName>K12_All_Education_Histories</fullName>
