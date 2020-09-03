@@ -39,6 +39,9 @@
         <members>Grade_Enrollment__c.Status__c</members>
         <members>Grade_Enrollment__c.Term__c</members>
         <members>hed__Attribute__c.Grade_Level__c</members>
+        <members>hed__Education_History__c.End_Reason__c</members>
+        <members>hed__Education_History__c.School_Enrollment_Status__c</members>
+        <members>hed__Education_History__c.Start_Reason__c</members>
         <members>hed__Behavior_Response__c.School_Days_Missed__c</members>
         <members>hed__Relationship__c.FERPA_Approved__c</members>
         <members>hed__Relationship__c.HIPPA_Approved__c</members>
@@ -118,6 +121,7 @@
         <members>hed__Course_Offering_Schedule__c-K12 Kit Course Offering Schedule Layout</members>
         <members>hed__Course_Offering__c-K12 Kit Course Offering Layout</members>
         <members>hed__Course__c-K12 Kit Course Layout</members>
+        <members>hed__Education_History__c-K12 Kit Education History Layout</members>
         <members>hed__Facility__c-K12 Kit Facility Layout</members>
         <members>hed__Language__c-K12 Kit Language Layout</members>
         <members>hed__Plan_Requirement__c-K12 Kit Plan Requirement Layout</members>
