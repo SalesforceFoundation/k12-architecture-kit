@@ -30,6 +30,7 @@
         <members>Contact.Student_ID__c</members>
         <members>Contact.Years_of_Experience__c</members>
         <members>Grade_Enrollment__c.Contact__c</members>
+        <members>Grade_Enrollment__c.Education_History__c</members>
         <members>Grade_Enrollment__c.Educational_Institution__c</members>
         <members>Grade_Enrollment__c.End_Date__c</members>
         <members>Grade_Enrollment__c.Entry_Reason__c</members>
