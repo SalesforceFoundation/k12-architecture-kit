@@ -20,6 +20,7 @@
         <members>hed__Course_Enrollment__c.hed__HEDA_Course_Enrollment_Compact_Layout</members>
         <members>hed__Course_Offering_Schedule__c.K12_Course_Offering_Schedule_Compact_Layout</members>
         <members>hed__Course__c.hed__HEDA_Course_Compact_Layout</members>
+        <members>hed__Education_History__c.K12_Kit_Education_History_Compact_Layout</members>
         <members>hed__Facility__c.K12_Facility_Compact_Layout</members>
         <members>hed__Facility__c.hed__HEDA_Facility_Compact_Layout</members>
         <members>hed__Plan_Requirement__c.hed__HEDA_Plan_Requirement_Compact_Layout</members>
@@ -57,6 +58,7 @@
         <members>hed__Behavior_Involvement__c-%%%NAMESPACE%%%K12 Kit Positive Behavior Involvement Layout</members>
         <members>hed__Behavior_Response__c-%%%NAMESPACE%%%K12 Kit Behavior Response Layout</members>
         <members>hed__Behavior_Response__c-%%%NAMESPACE%%%K12 Kit Positive Behavior Response Layout</members>
+        <members>hed__Education_History__c-%%%NAMESPACE%%%K12 Kit Education History Layout</members>
         <members>Case-%%%NAMESPACE%%%K12 Kit Positive Behavior Layout</members>
         <name>Layout</name>
     </types>
@@ -86,6 +88,7 @@
         <members>hed__Course_Offering_Schedule__c.K12_All_Course_Offering_Schedules</members>
         <members>hed__Course_Offering__c.K12_All_Course_Offerings</members>
         <members>hed__Course__c.K12_All_Courses</members>
+        <members>hed__Education_History__c.K12_All_Education_Histories</members>
         <members>hed__Facility__c.K12_All_Facilities</members>
         <members>hed__Plan_Requirement__c.K12_All_Plan_Requirements</members>
         <members>hed__Program_Enrollment__c.K12_All_Program_Enrollments</members>
