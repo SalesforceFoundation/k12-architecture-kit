@@ -37,6 +37,10 @@
     </types>
     <types>
         <members>%%%NAMESPACE%%%Grade_Enrollment__c.Grade_Number__c</members>
+        <members>%%%NAMESPACE%%%Grade_Enrollment__c.Education_History__c</members>
+        <members>%%%NAMESPACE%%%Education_History__c.End_Reason__c</members>
+        <members>%%%NAMESPACE%%%Education_History__c.School_Enrollment_Status__c</members>
+        <members>%%%NAMESPACE%%%Education_History__c.Start_Reason__c</members>
         <name>CustomField</name>
     </types>
     <types>
