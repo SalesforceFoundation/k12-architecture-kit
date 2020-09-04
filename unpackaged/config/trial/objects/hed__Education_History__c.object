@@ -28,7 +28,7 @@
         <columns>Start_Reason__c</columns>
         <columns>hed__End_Date__c</columns>
         <columns>End_Reason__c</columns>
-        <filterScope>Mine</filterScope>
+        <filterScope>Everything</filterScope>
         <label>K-12 All Education Histories</label>
     </listViews>
     <searchLayouts>

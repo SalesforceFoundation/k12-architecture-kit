@@ -298,6 +298,8 @@
         <fields>hed__Start_Date__c</fields>
         <fields>hed__End_Date__c</fields>
         <relatedList>hed__Education_History__c.hed__Contact__c</relatedList>
+        <sortField>hed__Start_Date__c</sortField>
+        <sortOrder>Desc</sortOrder>
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
