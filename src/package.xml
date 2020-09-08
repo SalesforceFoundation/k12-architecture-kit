@@ -79,6 +79,10 @@
         <members>hed__Behavior_Response__c-en_US</members>
         <members>hed__Behavior_Response__c-es</members>
         <members>hed__Behavior_Response__c-fr</members>
+        <members>hed__Education_History__c-ca</members>
+        <members>hed__Education_History__c-en_US</members>
+        <members>hed__Education_History__c-es</members>
+        <members>hed__Education_History__c-fr</members>
         <members>hed__Relationship__c-ca</members>
         <members>hed__Relationship__c-en_US</members>
         <members>hed__Relationship__c-es</members>
