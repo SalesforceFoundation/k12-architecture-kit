@@ -25,12 +25,155 @@
         <columns>hed__Account__c</columns>
         <columns>hed__Contact__c</columns>
         <columns>hed__Start_Date__c</columns>
-        <columns>Start_Reason__c</columns>
+        <columns>%%%NAMESPACE%%%Start_Reason__c</columns>
         <columns>hed__End_Date__c</columns>
         <columns>%%%NAMESPACE%%%End_Reason__c</columns>
         <filterScope>Everything</filterScope>
         <label>K-12 All Education Histories</label>
     </listViews>
+    <fields>
+        <fullName>%%%NAMESPACE%%%End_Reason__c</fullName>
+        <description>The reason the student left this Educational Institution.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The reason the student left this Educational Institution.</inlineHelpText>
+        <label>End Reason</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Completed</fullName>
+                    <default>false</default>
+                    <label>Completed</label>
+                </value>
+                <value>
+                    <fullName>Deceased</fullName>
+                    <default>false</default>
+                    <label>Deceased</label>
+                </value>
+                <value>
+                    <fullName>Dropout</fullName>
+                    <default>false</default>
+                    <label>Dropout</label>
+                </value>
+                <value>
+                    <fullName>Enrolled in a High School Diploma Program</fullName>
+                    <default>false</default>
+                    <label>Enrolled in a High School Diploma Program</label>
+                </value>
+                <value>
+                    <fullName>Expelled</fullName>
+                    <default>false</default>
+                    <label>Expelled</label>
+                </value>
+                <value>
+                    <fullName>Graduated</fullName>
+                    <default>false</default>
+                    <label>Graduated</label>
+                </value>
+                <value>
+                    <fullName>Invalid Enrollment</fullName>
+                    <default>false</default>
+                    <label>Invalid Enrollment</label>
+                </value>
+                <value>
+                    <fullName>No Show</fullName>
+                    <default>false</default>
+                    <label>No Show</label>
+                </value>
+                <value>
+                    <fullName>Reached Maximum Age</fullName>
+                    <default>false</default>
+                    <label>Reached Maximum Age</label>
+                </value>
+                <value>
+                    <fullName>Transferred</fullName>
+                    <default>false</default>
+                    <label>Transferred</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>%%%NAMESPACE%%%School_Enrollment_Status__c</fullName>
+        <description>The status of this student&apos;s enrolllment in this Educational Institution.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The status of this student&apos;s enrolllment in this Educational Institution.</inlineHelpText>
+        <label>School Enrollment Status</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Pre-Registered</fullName>
+                    <default>false</default>
+                    <label>Pre-Registered</label>
+                </value>
+                <value>
+                    <fullName>Current</fullName>
+                    <default>false</default>
+                    <label>Current</label>
+                </value>
+                <value>
+                    <fullName>Former</fullName>
+                    <default>false</default>
+                    <label>Former</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>%%%NAMESPACE%%%Start_Reason__c</fullName>
+        <description>The reason the student started at this Educational Institution.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The reason the student started at this Educational Institution.</inlineHelpText>
+        <label>Start Reason</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>New to Education System</fullName>
+                    <default>false</default>
+                    <label>New to Education System</label>
+                </value>
+                <value>
+                    <fullName>Next Year School</fullName>
+                    <default>false</default>
+                    <label>Next Year School</label>
+                </value>
+                <value>
+                    <fullName>Re-Entry</fullName>
+                    <default>false</default>
+                    <label>Re-Entry</label>
+                </value>
+                <value>
+                    <fullName>Transfer</fullName>
+                    <default>false</default>
+                    <label>Transfer</label>
+                </value>
+                <value>
+                    <fullName>Other</fullName>
+                    <default>false</default>
+                    <label>Other</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
     <searchLayouts>
         <searchResultsAdditionalFields>hed__Account__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>hed__Contact__c</searchResultsAdditionalFields>
