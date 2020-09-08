@@ -14,7 +14,7 @@
         <fields>Name</fields>
         <fields>hed__Account__c</fields>
         <fields>hed__Contact__c</fields>
-        <fields>%%%NAMESPACE%%%School_Enrollment_Status__c</fields>
+        <fields>School_Enrollment_Status__c</fields>
         <fields>hed__Start_Date__c</fields>
         <fields>hed__End_Date__c</fields>
         <label>K12 Kit Education History Compact Layout</label>
@@ -25,9 +25,9 @@
         <columns>hed__Account__c</columns>
         <columns>hed__Contact__c</columns>
         <columns>hed__Start_Date__c</columns>
-        <columns>%%%NAMESPACE%%%Start_Reason__c</columns>
+        <columns>Start_Reason__c</columns>
         <columns>hed__End_Date__c</columns>
-        <columns>%%%NAMESPACE%%%End_Reason__c</columns>
+        <columns>End_Reason__c</columns>
         <filterScope>Everything</filterScope>
         <label>K-12 All Education Histories</label>
     </listViews>
@@ -35,9 +35,9 @@
         <searchResultsAdditionalFields>hed__Account__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>hed__Contact__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>hed__Start_Date__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>%%%NAMESPACE%%%Start_Reason__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Start_Reason__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>hed__End_Date__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>%%%NAMESPACE%%%End_Reason__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>End_Reason__c</searchResultsAdditionalFields>
     </searchLayouts>
     <deploymentStatus>Deployed</deploymentStatus>
     <description>Stores information about a Contact&apos;s education history and related data.</description>
