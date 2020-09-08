@@ -303,10 +303,10 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
-        <fields>Grade_Level__c</fields>
-        <fields>Status__c</fields>
-        <fields>Educational_Institution__c</fields>
-        <relatedList>Grade_Enrollment__c.Contact__c</relatedList>
+        <fields>%%%NAMESPACE%%%Grade_Level__c</fields>
+        <fields>%%%NAMESPACE%%%Status__c</fields>
+        <fields>%%%NAMESPACE%%%Educational_Institution__c</fields>
+        <relatedList>%%%NAMESPACE%%%Grade_Enrollment__c.%%%NAMESPACE%%%Contact__c</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
