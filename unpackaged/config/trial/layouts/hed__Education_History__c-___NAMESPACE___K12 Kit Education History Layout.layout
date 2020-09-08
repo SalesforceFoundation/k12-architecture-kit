@@ -25,7 +25,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>School_Enrollment_Status__c</field>
+                <field>%%%NAMESPACE%%%School_Enrollment_Status__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -70,11 +70,11 @@
         <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Start_Reason__c</field>
+                <field>%%%NAMESPACE%%%Start_Reason__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>End_Reason__c</field>
+                <field>%%%NAMESPACE%%%End_Reason__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
@@ -157,11 +157,11 @@
     </platformActionList>
     <relatedLists>
         <fields>NAME</fields>
-        <fields>Grade_Level__c</fields>
-        <fields>Status__c</fields>
-        <fields>Start_Date__c</fields>
-        <fields>End_Date__c</fields>
-        <relatedList>Grade_Enrollment__c.Education_History__c</relatedList>
+        <fields>%%%NAMESPACE%%%Grade_Level__c</fields>
+        <fields>%%%NAMESPACE%%%Status__c</fields>
+        <fields>%%%NAMESPACE%%%Start_Date__c</fields>
+        <fields>%%%NAMESPACE%%%End_Date__c</fields>
+        <relatedList>%%%NAMESPACE%%%Grade_Enrollment__c.Education_History__c</relatedList>
     </relatedLists>
     <relatedLists>
         <relatedList>RelatedNoteList</relatedList>
