@@ -38,13 +38,15 @@
 */
 global with sharing class EDUHIS_DataInteg_TDTM extends hed.TDTM_Runnable {
     /**********************************************************************************************************************
-    * @description Whenever a Contact is created with 'Current Grade Level'or updated with 'Current Grade Level' this class
-    * creates a Grade Enrollment record with status 'Current' and assigns the 'Grade Level' on the Contact OR
-    * updates the 'Grade Level' on the matching record to Current.
-    * @param listNew the list of Course Enrollments from trigger new.
-    * @param listOld the list of Coursen Enrollments from trigger old.
+    * @description Whenever an Educational History record is updated with a change to the assocaited Educational Institution 
+    * Account, the new Educational Institution is compared with each Institution associated with all the related Grade
+    * Enrollments.  If any of the Educational Institutions associated with the related Grade Enrollment records do not match
+    * the updated Institution specified on the Educational History record, the updated is blocked an an error message is
+    * displayed.  Note that blank values for the Educational Institution are not included in the comparison.
+    * @param newList the list of Education History records from trigger new.
+    * @param oldList the list of Education History records from trigger old.
     * @param triggerAction which trigger event (AfterInsert, AfterUpdate, etc.).
-    * @param objResult the describe for Contact.
+    * @param objResult the describe for Education History.
     * @return dmlWrapper
     ************************************************************************************************************************/
     global override hed.TDTM_Runnable.DmlWrapper run(List<SObject> newList, List<SObject> oldList,
@@ -63,6 +65,11 @@ global with sharing class EDUHIS_DataInteg_TDTM extends hed.TDTM_Runnable {
         return dmlWrapper;
     }
 
+    /**********************************************************************************************************************
+    * @description Handles the logic associated with a Before Update trigger action.
+    * @param  newSObjectsList newSObjectsList description
+    * @param  oldSObjectsList oldSObjectsList description
+    **********************************************************************************************************************/
     @TestVisible
     private void handleBeforeUpdate(List<SObject> newSObjectsList, List<SObject> oldSObjectsList){
         Map<Id, hed__Education_History__c> newEdHistById = new Map<Id, hed__Education_History__c>((List<hed__Education_History__c>)newSObjectsList);
@@ -86,11 +93,25 @@ global with sharing class EDUHIS_DataInteg_TDTM extends hed.TDTM_Runnable {
         }
     }
 
-    @testVisible
+    /**********************************************************************************************************************
+    * @description Determines whether an Education History record is associated with child records.
+    * @param  educationHistory The Education History record to check for child records.
+    * @return True if the Education History record is associated with child records, False otherwise.
+    **********************************************************************************************************************/
+    @TestVisible
     private Boolean hasChildRecords(hed__Education_History__c educationHistory) {
         return ( educationHistory.Grade_Enrollments__r.isEmpty() == FALSE ); 
     }
 
+    /**********************************************************************************************************************
+    * @description Determines whether the updated Educational Institution Account on an Education History record matches
+    * the Educational Institution specified for all related child Grade Enrollment records.
+    * @param  educationHistoryToUpdate The Education History record being updated.
+    * @param  eduHistInContext The Education History record in its updated state.
+    * @return True if there is a mismatch between the updated Educational Institution Account on the Education History record
+    * and at least one of the related Grade Enrollment records; False otherwise.
+    **********************************************************************************************************************/
+    @TestVisible
     private Boolean hasInstitutionMismatch(hed__Education_History__c educationHistoryToUpdate, hed__Education_History__c eduHistInContext){
         if (!educationHistoryToUpdate.Grade_Enrollments__r.isEmpty()){
             for (Grade_Enrollment__c grEnroll : educationHistoryToUpdate.Grade_Enrollments__r){
