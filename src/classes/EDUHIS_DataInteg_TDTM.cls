@@ -70,98 +70,36 @@ global with sharing class EDUHIS_DataInteg_TDTM extends hed.TDTM_Runnable {
         Map<Id, List<Grade_Enrollment__c>> relatedGradeEnrollmentsListByEduHistory = new Map<Id, List<Grade_Enrollment__c>>();
         List<hed__Education_History__c> eduHistoryToVerifyList = new List<hed__Education_History__c>();
 
-        System.debug('MK DEBUG: newEdHistById: ' + newEdHistById);
-        System.debug('MK DEBUG: oldEdHistById: ' + oldEdHistById);
-
         for (hed__Education_History__c eduHist : [SELECT Id,
                                                          Name,
                                                          hed__Account__c,
-                                                         (SELECT Contact__c, Educational_Institution__c, Educational_Institution__r.Name 
+                                                         (SELECT Contact__c, Educational_Institution__c 
                                                          FROM Grade_Enrollments__r)
                                                   FROM hed__Education_History__c
                                                   WHERE Id IN :newEdHistById.keySet()]){
-                                                      // does this need to be oldEdHistById.keySet()
 
-                System.debug('MK DEBUG: NEW eduHist.Account: ' + eduHist.hed__Account__c);
-                System.debug('MK DEBUG: OLD eduHist.Account: ' + oldEdHistById.get(eduHist.Id).hed__Account__c);
+            hed__Education_History__c eduHistInContext = newEdHistById.get(eduHist.Id);
 
-
-            if (this.hasChildRecords(eduHist) && this.hasInstitutionMismatch(eduHist.Grade_Enrollments__r, newEdHistById.get(eduHist.Id))){
-                hed__Education_History__c eduHistInContext = newEdHistById.get(eduHist.Id);
+            if (this.hasChildRecords(eduHist) && this.hasInstitutionMismatch(eduHist, eduHistInContext)){
                 eduHistInContext.addError(Label.EduHisInstitutionMismatch);
             }
-
-            // if (!eduHist.Grade_Enrollments__r.isEmpty()){
-
-            //     System.debug('MK DEBUG: eduHist.Grade_Enrollments__r: ' + eduHist.Grade_Enrollments__r);
-
-            //     if (this.hasInstitutionMismatch(eduHist) == true){
-            //         System.debug('MK DEBUG: mismatch found!');
-            //         newEdHistById.get(eduHist.Id).addError(Label.EduHisInstitutionMismatch);
-            //     }
-            // }
         }
-
-        // for (Grade_Enrollment__c grEnroll : gradeEnrollmentsList){
-        //     gradeEnrollmentToInsertByEduHistory.put(grEnroll.Education_History__c, grEnroll);
-        // }
-
-        // for (hed__Education_History__c edHist : newEdHistById.values()){
-        //     hed__Education_History__c oldEdHist = oldEdHistById.get(edHist.Id);
-
-        //     if (edHist.hed__Account__c != null &&  edHist.hed__Account__c != oldEdHist.hed__Account__c ){
-        //         Grade_Enrollment__c associatedGradeEnroll = gradeEnrollmentToInsertByEduHistory.get(edHist.Id);
-        //         if (edHist.hed__Account__c != associatedGradeEnroll.Educational_Institution__c){
-        //             edHist.addError(Label.EduHisInstitutionMismatch);
-        //         }
-        //     }
-        // }
     }
 
     @testVisible
     private Boolean hasChildRecords(hed__Education_History__c educationHistory) {
-        
         return ( educationHistory.Grade_Enrollments__r.isEmpty() == FALSE ); 
-    
     }
 
-    private Boolean hasInstitutionMismatch(List<Grade_Enrollment__c> gradeEnrollmentsList, hed__Education_History__c educationHistoryToUpdate){
-        System.debug('MK DEBUG: NEW educationHistoryToUpdate Account: ' + educationHistoryToUpdate.hed__Account__c);
-        System.debug('MK DEBUG: educationHistoryToUpdate.Grade_Enrollments__r record count: ' + educationHistoryToUpdate.Grade_Enrollments__r.size());
-
-        if (!gradeEnrollmentsList.isEmpty()){
-            for (Grade_Enrollment__c grEnroll : gradeEnrollmentsList){
-                System.debug('MK DEBUG: grade enrollment account: ' + grEnroll.Educational_Institution__c);
-                if (grEnroll.Educational_Institution__c != null && grEnroll.Educational_Institution__c != educationHistoryToUpdate.hed__Account__c){
-                    System.debug('MK DEBUG: mismatch found');
+    private Boolean hasInstitutionMismatch(hed__Education_History__c educationHistoryToUpdate, hed__Education_History__c eduHistInContext){
+        if (!educationHistoryToUpdate.Grade_Enrollments__r.isEmpty()){
+            for (Grade_Enrollment__c grEnroll : educationHistoryToUpdate.Grade_Enrollments__r){
+                if (grEnroll.Educational_Institution__c != null && eduHistInContext.hed__Account__c != null && grEnroll.Educational_Institution__c != eduHistInContext.hed__Account__c){
                     return true;
                 }
             }
         }
-        
+
         return false;
-    }
-
-    /**
-     * @description Helper method to map Grade Enrollment records related to the same Education History record by Education History Id.
-     * @param  gradeEnrollmentsList The list of Grade Enrollment records to map.
-     * @return A map containing lists of related Grade Enrollment records sorted by Education History Id.
-     */
-    private Map<Id, List<Grade_Enrollment__c>> mapGradeEnrollmentsByEducationHistory(List<Grade_Enrollment__c> gradeEnrollmentsList){
-        Map<Id, List<Grade_Enrollment__c>> gradeEnrollmentsListByEduHistoryId = new Map<Id, List<Grade_Enrollment__c>>();
-        List<Grade_Enrollment__c> relatedGradeEnrollmentsList;
-
-        for (Grade_Enrollment__c grEnroll : gradeEnrollmentsList){
-            if (gradeEnrollmentsListByEduHistoryId.containsKey(grEnroll.Education_History__c)){
-                relatedGradeEnrollmentsList = gradeEnrollmentsListByEduHistoryId.get(grEnroll.Education_History__c);
-            } else {
-                relatedGradeEnrollmentsList = new List<Grade_Enrollment__c>();
-            }
-
-            relatedGradeEnrollmentsList.add(grEnroll);
-            gradeEnrollmentsListByEduHistoryId.put(grEnroll.Education_History__c, relatedGradeEnrollmentsList);
-        }
-
-        return gradeEnrollmentsListByEduHistoryId;
     }
 }
