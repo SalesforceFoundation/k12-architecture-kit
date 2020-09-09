@@ -205,6 +205,38 @@ tasks:
                   label: "Participant"
                   add_before: "Perpetrator"
 
+    add_relationship_picklist_values:
+        description: Adds additional picklist values to the Type field on the Relationship object.
+        class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
+        group: 'K-12: Metadata'
+        options:
+            picklists: hed__Relationship__c.hed__Type__c
+            entries:
+                - fullName: "Guardian"
+                  label: "Guardian"
+                - fullName: "Dependent"
+                  label: "Dependent"
+                - fullName: "Stepfather"
+                  label: "Stepfather"
+                - fullName: "Stepmother"
+                  label: "Stepmother"
+                - fullName: "Stepparent"
+                  label: "Stepparent"
+                - fullName: "Stepdaughter"
+                  label: "Stepdaughter"
+                - fullName: "Stepson"
+                  label: "Stepson"
+                - fullName: "Stepchild"
+                  label: "Stepchild"
+                - fullName: "Foster Parent"
+                  label: "Foster Parent"
+                - fullName: "Foster Daughter"
+                  label: "Foster Daughter"
+                - fullName: "Foster Son"
+                  label: "Foster Son"
+                - fullName: "Foster Child"
+                  label: "Foster Child"
+
     deploy_k12_kit_settings:
         description: Configure the default K-12 Architecture Kit Settings
         class_path: cumulusci.tasks.apex.anon.AnonymousApexTask
@@ -296,6 +328,8 @@ flows:
                 task: add_case_location_values
             5:
                 task: add_behavior_involvement_values
+            6:
+                task: add_relationship_picklist_values
                 
     beta_dependencies:
         steps:
