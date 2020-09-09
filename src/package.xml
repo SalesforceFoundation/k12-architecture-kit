@@ -4,6 +4,7 @@
     <types>
         <members>CON_CurrentGradeLevel_TDTM</members>
         <members>CON_CurrentGradeLevel_TEST</members>
+        <members>EDUHIS_DataInteg_TDTM</members>
         <members>GRER_SyncGradeLevel_TDTM</members>
         <members>GRER_SyncGradeLevel_TEST</members>
         <members>STG_InstallScript</members>
@@ -49,6 +50,8 @@
         <name>CustomField</name>
     </types>
     <types>
+        <members>EduHisInstitutionMismatch</members>
+        <members>GrErInstitutionMismatch</members>
         <members>MultipleCurrentGradeEnrollmentsError</members>
         <name>CustomLabel</name>
     </types>
