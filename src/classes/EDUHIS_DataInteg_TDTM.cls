@@ -85,7 +85,8 @@ global with sharing class EDUHIS_DataInteg_TDTM extends hed.TDTM_Runnable {
 
             hed__Education_History__c updatedEduHistInContext = newEdHistById.get(eduHist.Id);
 
-            if (this.hasChildRecords(eduHist) && this.hasInstitutionMismatch(eduHist, updatedEduHistInContext)){
+            //if (this.hasChildRecords(eduHist) && this.hasInstitutionMismatch(eduHist, updatedEduHistInContext)){
+            if (this.hasChildRecords(eduHist) && this.hasInstitutionMismatch(eduHist, updatedEduHistInContext.hed__Account__c)){
                 updatedEduHistInContext.addError(Label.EduHisInstitutionMismatch);
             }
         }
@@ -105,15 +106,15 @@ global with sharing class EDUHIS_DataInteg_TDTM extends hed.TDTM_Runnable {
     * @description Determines whether the updated Educational Institution Account on an Education History record matches
     * the Educational Institution specified for all related child Grade Enrollment records.
     * @param  educationHistoryToUpdate The Education History record being updated.
-    * @param  eduHistInContext The Education History record in its updated state.
+    * @param  updatedAccountId The Id of the Account that will be the value for the updated Educational Institution on the Education History record.
     * @return True if there is a mismatch between the updated Educational Institution Account on the Education History record
     * and at least one of the related Grade Enrollment records; False otherwise.
     **********************************************************************************************************************/
     @TestVisible
-    private Boolean hasInstitutionMismatch(hed__Education_History__c educationHistoryToUpdate, hed__Education_History__c eduHistInContext){
+    private Boolean hasInstitutionMismatch(hed__Education_History__c educationHistoryToUpdate, Id updatedAccountId){
         if (!educationHistoryToUpdate.Grade_Enrollments__r.isEmpty()){
             for (Grade_Enrollment__c grEnroll : educationHistoryToUpdate.Grade_Enrollments__r){
-                if (grEnroll.Educational_Institution__c != null && eduHistInContext.hed__Account__c != null && grEnroll.Educational_Institution__c != eduHistInContext.hed__Account__c){
+                if (grEnroll.Educational_Institution__c != null && updatedAccountId != null && grEnroll.Educational_Institution__c != updatedAccountId){
                     return true;
                 }
             }
