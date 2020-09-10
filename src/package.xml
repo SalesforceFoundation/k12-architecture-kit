@@ -5,6 +5,7 @@
         <members>CON_CurrentGradeLevel_TDTM</members>
         <members>CON_CurrentGradeLevel_TEST</members>
         <members>EDUHIS_DataInteg_TDTM</members>
+        <members>EDUHIS_DataInteg_TEST</members>
         <members>GRER_SyncGradeLevel_TDTM</members>
         <members>GRER_SyncGradeLevel_TEST</members>
         <members>STG_InstallScript</members>

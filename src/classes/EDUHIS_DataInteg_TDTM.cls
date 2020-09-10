@@ -74,8 +74,6 @@ global with sharing class EDUHIS_DataInteg_TDTM extends hed.TDTM_Runnable {
     private void handleBeforeUpdate(List<SObject> newSObjectsList, List<SObject> oldSObjectsList){
         Map<Id, hed__Education_History__c> newEdHistById = new Map<Id, hed__Education_History__c>((List<hed__Education_History__c>)newSObjectsList);
         Map<Id, hed__Education_History__c> oldEdHistById = new Map<Id, hed__Education_History__c>((List<hed__Education_History__c>)oldSObjectsList);
-        Map<Id, List<Grade_Enrollment__c>> relatedGradeEnrollmentsListByEduHistory = new Map<Id, List<Grade_Enrollment__c>>();
-        List<hed__Education_History__c> eduHistoryToVerifyList = new List<hed__Education_History__c>();
 
         for (hed__Education_History__c eduHist : [SELECT Id,
                                                          Name,
@@ -85,10 +83,10 @@ global with sharing class EDUHIS_DataInteg_TDTM extends hed.TDTM_Runnable {
                                                   FROM hed__Education_History__c
                                                   WHERE Id IN :newEdHistById.keySet()]){
 
-            hed__Education_History__c eduHistInContext = newEdHistById.get(eduHist.Id);
+            hed__Education_History__c updatedEduHistInContext = newEdHistById.get(eduHist.Id);
 
-            if (this.hasChildRecords(eduHist) && this.hasInstitutionMismatch(eduHist, eduHistInContext)){
-                eduHistInContext.addError(Label.EduHisInstitutionMismatch);
+            if (this.hasChildRecords(eduHist) && this.hasInstitutionMismatch(eduHist, updatedEduHistInContext)){
+                updatedEduHistInContext.addError(Label.EduHisInstitutionMismatch);
             }
         }
     }
