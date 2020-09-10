@@ -32,9 +32,10 @@
 * @date 2020
 * @group Education History
 * @group-content ../../ApexDocContent/EducationHistory.htm
-* @description Whenever a Grade Enrollment is created or updated with an associated Education History related to an 
-* Educational Institution, the record is not saved if the 'Educational Institution' field on both the Education History
-* and Grade Enrollment records are populated and do not match.
+* @description Whenever the Educational Institution field on an Education History record is updated with a non-null
+* value, it is compared to the non-null values specified for the 'Educational Institution' field on all related Grade
+* Enrollment records.  The update will be processed only if the Educational Institution fields on all records match,
+* otherwise, an error message will be displayed.
 */
 global with sharing class EDUHIS_DataInteg_TDTM extends hed.TDTM_Runnable {
     /**********************************************************************************************************************
