@@ -13,8 +13,8 @@
             <translation><!-- Deceased --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Dropout</masterLabel>
-            <translation><!-- Dropout --></translation>
+            <masterLabel>Dropped Out</masterLabel>
+            <translation><!-- Dropped Out --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Enrolled in a High School Diploma Program</masterLabel>
