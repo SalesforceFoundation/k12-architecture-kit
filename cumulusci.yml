@@ -557,7 +557,7 @@ plans:
                 task: deploy_k12_app
 
     picklists:
-        slug: install
+        slug: picklists
         title: Install K-12 Architecture Kit picklist values
         tier: secondary
         steps:
