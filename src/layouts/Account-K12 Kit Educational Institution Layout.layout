@@ -273,7 +273,6 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
-        <fields>hed__Account__c</fields>
         <fields>hed__Start_Date__c</fields>
         <fields>hed__End_Date__c</fields>
         <relatedList>hed__Education_History__c.hed__Account__c</relatedList>
