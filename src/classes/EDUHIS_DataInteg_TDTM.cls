@@ -75,17 +75,17 @@ global with sharing class EDUHIS_DataInteg_TDTM extends hed.TDTM_Runnable {
         Map<Id, hed__Education_History__c> newEdHistById = new Map<Id, hed__Education_History__c>((List<hed__Education_History__c>)newSObjectsList);
         Map<Id, hed__Education_History__c> oldEdHistById = new Map<Id, hed__Education_History__c>((List<hed__Education_History__c>)oldSObjectsList);
 
-        for (hed__Education_History__c eduHist : [SELECT Id,
-                                                         Name,
-                                                         hed__Account__c,
-                                                         (SELECT Contact__c, Educational_Institution__c 
-                                                         FROM Grade_Enrollments__r)
-                                                  FROM hed__Education_History__c
-                                                  WHERE Id IN :newEdHistById.keySet()]){
-
+        List<hed__Education_History__c> educationHistoriesToUpdateList = [SELECT Id,
+                                                                                 Name,
+                                                                                 hed__Account__c,
+                                                                                 (SELECT Contact__c, Educational_Institution__c 
+                                                                                 FROM Grade_Enrollments__r)
+                                                                          FROM hed__Education_History__c
+                                                                          WHERE Id IN :newEdHistById.keySet()];
+        
+        for (hed__Education_History__c eduHist : educationHistoriesToUpdateList){
             hed__Education_History__c updatedEduHistInContext = newEdHistById.get(eduHist.Id);
 
-            //if (this.hasChildRecords(eduHist) && this.hasInstitutionMismatch(eduHist, updatedEduHistInContext)){
             if (this.hasChildRecords(eduHist) && this.hasInstitutionMismatch(eduHist, updatedEduHistInContext.hed__Account__c)){
                 updatedEduHistInContext.addError(Label.EduHisInstitutionMismatch);
             }

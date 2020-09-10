@@ -396,7 +396,6 @@ private class EDUHIS_DataInteg_TEST {
     *********************************************************************************************************/
     @isTest 
     private static void hasInstitutionMismatchTrue(){
-        EDUHIS_DataInteg_TEST.setup();
         hed__Hierarchy_Settings__c hs = hed.UTIL_CustomSettings_API.getSettings();
         String adminRecordType = hs.hed__Administrative_Account_Record_Type__c;
 
@@ -448,7 +447,6 @@ private class EDUHIS_DataInteg_TEST {
         for (hed__Education_History__c eduHist : educationHistoryResultsList){
             System.assertEquals(true, eduHisTdtm.hasInstitutionMismatch(eduHist, eduHist.hed__Account__c), 'Education History record should be associated with Grade Enrollments with mismatching institutions.');
         }
-        
         Test.stopTest();
     }
 
@@ -458,7 +456,6 @@ private class EDUHIS_DataInteg_TEST {
     *********************************************************************************************************/
     @isTest 
     private static void hasInstitutionMismatchFalse(){
-        EDUHIS_DataInteg_TEST.setup();
         hed__Hierarchy_Settings__c hs = hed.UTIL_CustomSettings_API.getSettings();
         String adminRecordType = hs.hed__Administrative_Account_Record_Type__c;
         List<Grade_Enrollment__c> gradeEnrollmentsList = new List<Grade_Enrollment__c>();
@@ -504,11 +501,108 @@ private class EDUHIS_DataInteg_TEST {
         for (hed__Education_History__c eduHist : educationHistoryResultsList){
             System.assertEquals(false, eduHisTdtm.hasInstitutionMismatch(eduHist, eduHist.hed__Account__c), 'Education History record should not be associated with Grade Enrollments with mismatching institutions.');
         }
-        
         Test.stopTest();
     }
 
+    /*********************************************************************************************************
+    * @description Test to verify that method hasChildRecords returns true when an Education History
+    * record is related to Grade Enrollment records.
+    *********************************************************************************************************/
+    @isTest 
+    private static void hasChildRecordsTrue(){
+        hed__Hierarchy_Settings__c hs = hed.UTIL_CustomSettings_API.getSettings();
+        String adminRecordType = hs.hed__Administrative_Account_Record_Type__c;
+        List<Grade_Enrollment__c> gradeEnrollmentsList = new List<Grade_Enrollment__c>();
 
+        Account firstAccount = new Account(RecordTypeId = adminRecordType, Name = 'Test Account 1');
+        insert firstAccount;
+
+        Contact testContact = new Contact(LastName = 'Testerson');
+        insert testContact;
+
+        List<hed__Education_History__c> educationHistoryList = new List<hed__Education_History__c>();
+        for (Integer i = 0; i < 5; i++){
+            hed__Education_History__c eduHist = new hed__Education_History__c(hed__Contact__c = testContact.Id,
+                                                                              hed__Account__c = firstAccount.Id
+                                                                             );
+            educationHistoryList.add(eduHist);
+        }
+       
+        insert educationHistoryList;
+
+        for (hed__Education_History__c eduHist : educationHistoryList){
+            Grade_Enrollment__c gradeEnroll = new Grade_Enrollment__c(Contact__c = testContact.Id,
+                                                                      Educational_Institution__c = firstAccount.Id,
+                                                                      Grade_Level__c = 'Eighth Grade',
+                                                                      Education_History__c = eduHist.Id
+                                                                     );
+
+            gradeEnrollmentsList.add(gradeEnroll);
+        }
+
+        insert gradeEnrollmentsList;
+
+        List<hed__Education_History__c> educationHistoryResultsList = [SELECT Id,
+                                                                              Name,
+                                                                              hed__Account__c,
+                                                                              (SELECT Contact__c, Educational_Institution__c 
+                                                                              FROM Grade_Enrollments__r)
+                                                                       FROM hed__Education_History__c
+                                                                       WHERE Id IN :educationHistoryList];
+
+        Test.startTest();
+        EDUHIS_DataInteg_TDTM eduHisTdtm = new EDUHIS_DataInteg_TDTM();
+        for (hed__Education_History__c eduHist : educationHistoryResultsList){
+            System.assertEquals(true, eduHisTdtm.hasChildRecords(eduHist), 'Education History record should associated with child Grade Enrollments records.');
+        }
+        Test.stopTest();
+    }
+
+    /*********************************************************************************************************
+    * @description Test to verify that method hasChildRecords returns false when an Education History
+    * record is not related to Grade Enrollment records.
+    *********************************************************************************************************/
+    @isTest 
+    private static void hasChildRecordsFalse(){
+        hed__Hierarchy_Settings__c hs = hed.UTIL_CustomSettings_API.getSettings();
+        String adminRecordType = hs.hed__Administrative_Account_Record_Type__c;
+
+        Account firstAccount = new Account(RecordTypeId = adminRecordType, Name = 'Test Account 1');
+        insert firstAccount;
+
+        Contact testContact = new Contact(LastName = 'Testerson');
+        insert testContact;
+
+        List<hed__Education_History__c> educationHistoryList = new List<hed__Education_History__c>();
+        for (Integer i = 0; i < 5; i++){
+            hed__Education_History__c eduHist = new hed__Education_History__c(hed__Contact__c = testContact.Id,
+                                                                              hed__Account__c = firstAccount.Id
+                                                                             );
+            educationHistoryList.add(eduHist);
+        }
+       
+        insert educationHistoryList;
+
+        List<hed__Education_History__c> educationHistoryResultsList = [SELECT Id,
+                                                                              Name,
+                                                                              hed__Account__c,
+                                                                              (SELECT Contact__c, Educational_Institution__c 
+                                                                              FROM Grade_Enrollments__r)
+                                                                       FROM hed__Education_History__c
+                                                                       WHERE Id IN :educationHistoryList];
+
+        Test.startTest();
+        EDUHIS_DataInteg_TDTM eduHisTdtm = new EDUHIS_DataInteg_TDTM();
+        for (hed__Education_History__c eduHist : educationHistoryResultsList){
+            System.assertEquals(false, eduHisTdtm.hasChildRecords(eduHist), 'Education History record should not be associated with child Grade Enrollments records.');
+        }
+        Test.stopTest();
+    }
+
+    @isTest 
+    private static void handleBeforeUpdatePositive(){
+        
+    }
 
 
     /*********************************************************************************************************
