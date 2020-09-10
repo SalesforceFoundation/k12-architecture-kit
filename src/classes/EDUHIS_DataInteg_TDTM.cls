@@ -99,7 +99,7 @@ global with sharing class EDUHIS_DataInteg_TDTM extends hed.TDTM_Runnable {
     **********************************************************************************************************************/
     @TestVisible
     private Boolean hasChildRecords(hed__Education_History__c educationHistory) {
-        return ( educationHistory.Grade_Enrollments__r.isEmpty() == FALSE ); 
+        return ( educationHistory.Grade_Enrollments__r.isEmpty() == false ); 
     }
 
     /**********************************************************************************************************************

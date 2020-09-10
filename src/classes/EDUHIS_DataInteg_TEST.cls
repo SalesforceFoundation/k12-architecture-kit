@@ -204,14 +204,6 @@ private class EDUHIS_DataInteg_TEST {
         Test.startTest();
         Database.SaveResult[] results = Database.update(educationHistoryList, false);
         Test.stopTest();
-               
-        // System.debug('MK DEBUG: testAccount1 ID: ' + firstAccount.Id);
-
-        // for (hed__Education_History__c eduHist : educationHistoryList){
-        // //     System.assertEquals(firstAccount.Id, eduHist.hed__Account__c, 'Educational Institution on Education History should not update.');
-        //     System.debug('MK DEBUG: eduHist.hed__Account__c: ' + eduHist.hed__Account__c);
-
-        // }  
 
         for(Database.SaveResult sr : results){
             System.assertEquals(false, sr.isSuccess(), 'Update on Education History with mismatching Institutions should fail.');
@@ -391,7 +383,7 @@ private class EDUHIS_DataInteg_TEST {
     **********************************************************************************************************/
     
     /*********************************************************************************************************
-    * @description Test to verify that method hasInstitutionMismatch returns true when an Education History
+    * @description Test to verify that method hasInstitutionMismatch() returns true when an Education History
     * record is related to Grade Enrollment records with mismatching Educational Insttitutions.
     *********************************************************************************************************/
     @isTest 
@@ -451,7 +443,7 @@ private class EDUHIS_DataInteg_TEST {
     }
 
     /*********************************************************************************************************
-    * @description Test to verify that method hasInstitutionMismatch returns false when an Education History
+    * @description Test to verify that method hasInstitutionMismatch() returns false when an Education History
     * record is related to Grade Enrollment records with matching Educational Insttitutions.
     *********************************************************************************************************/
     @isTest 
@@ -505,7 +497,7 @@ private class EDUHIS_DataInteg_TEST {
     }
 
     /*********************************************************************************************************
-    * @description Test to verify that method hasChildRecords returns true when an Education History
+    * @description Test to verify that method hasChildRecords() returns true when an Education History
     * record is related to Grade Enrollment records.
     *********************************************************************************************************/
     @isTest 
@@ -559,8 +551,8 @@ private class EDUHIS_DataInteg_TEST {
     }
 
     /*********************************************************************************************************
-    * @description Test to verify that method hasChildRecords returns false when an Education History
-    * record is not related to Grade Enrollment records.
+    * @description Test to verify that method hasChildRecords() returns false when an Education History
+    * record is not related to any Grade Enrollment records.
     *********************************************************************************************************/
     @isTest 
     private static void hasChildRecordsFalse(){
@@ -599,21 +591,299 @@ private class EDUHIS_DataInteg_TEST {
         Test.stopTest();
     }
 
+    /*********************************************************************************************************
+    * @description Test to verify that method handleBeforeUpdate() successfully processes an update to the Edcuational 
+    * Institution on an Education History record when it does not mismatch with any of the Institutions specified
+    * on the related Grade Enrollment records.
+    *********************************************************************************************************/
     @isTest 
-    private static void handleBeforeUpdatePositive(){
-        
+    private static void handleBeforeUpdateWithoutMismatch(){
+        hed__Hierarchy_Settings__c hs = hed.UTIL_CustomSettings_API.getSettings();
+        String adminRecordType = hs.hed__Administrative_Account_Record_Type__c;
+
+        List<Account> accountsList = new List<Account>();
+        List<Grade_Enrollment__c> gradeEnrollmentsList = new List<Grade_Enrollment__c>();
+
+        Account firstAccount = new Account(RecordTypeId = adminRecordType, Name = 'Test Account 1');
+        Account secondAccount = new Account(RecordTypeId = adminRecordType, Name = 'Test Account 2');
+        accountsList.add(firstAccount);
+        accountsList.add(secondAccount);
+
+        insert accountsList;
+
+        Contact testContact = new Contact(LastName = 'Testerson');
+        insert testContact;
+
+        List<hed__Education_History__c> educationHistoryList = new List<hed__Education_History__c>();
+        for (Integer i = 0; i < 5; i++){
+            hed__Education_History__c eduHist = new hed__Education_History__c(hed__Contact__c = testContact.Id,
+                                                                              hed__Account__c = secondAccount.Id
+                                                                             );
+            educationHistoryList.add(eduHist);
+        }
+       
+        insert educationHistoryList;
+
+        for (hed__Education_History__c eduHist : educationHistoryList){
+            Grade_Enrollment__c gradeEnroll = new Grade_Enrollment__c(Contact__c = testContact.Id,
+                                                                      Educational_Institution__c = secondAccount.Id,
+                                                                      Grade_Level__c = 'Eighth Grade',
+                                                                      Education_History__c = eduHist.Id
+                                                                     );
+
+            gradeEnrollmentsList.add(gradeEnroll);
+        }
+
+        insert gradeEnrollmentsList;
+
+        List<SObject> newSObjectsList = new List<SObject>();
+        List<SObject> oldSObjectsList = new List<SObject>();
+
+        for (hed__Education_History__c newEdHist : educationHistoryList){
+            newSObjectsList.add((SObject)newEdHist);
+
+            hed__Education_History__c oldEdHist = newEdHist.clone(true);
+            oldEdHist.hed__Account__c = firstAccount.Id;
+            oldSObjectsList.add((SObject)oldEdHist);
+        }
+
+        EDUHIS_DataInteg_TDTM eduHisTdtm = new EDUHIS_DataInteg_TDTM();
+
+        Test.startTest();
+        try {
+            eduHisTdtm.handleBeforeUpdate(newSObjectsList, oldSObjectsList);
+        } catch (Exception e){
+            System.assertEquals(null, e.getMessage(), 'Updates with matching Education Institution for Education History and Grade Enrollment should not display an error.');
+        }
+        Test.stopTest();
+
+        List<hed__Education_History__c> eduHistoryResultsList = [SELECT Id,
+                                                                        Name,
+                                                                        hed__Account__c,
+                                                                        (SELECT Contact__c, Educational_Institution__c 
+                                                                        FROM Grade_Enrollments__r)
+                                                                FROM hed__Education_History__c
+                                                                WHERE Id IN :educationHistoryList];
+
+        for (hed__Education_History__c eduHist : eduHistoryResultsList){
+            System.assertEquals(secondAccount.Id, eduHist.hed__Account__c, 'Education Institution update should occur for Education History with no mismatching Grade Enrollments.');
+        }
     }
 
+    /*********************************************************************************************************
+    * @description Test to verify that method handleBeforeUpdate() does not process an update to the Edcuational 
+    * Institution on an Education History record when it does not match all Institutions specified
+    * on the related Grade Enrollment records.
+    *********************************************************************************************************/
+    @isTest 
+    private static void handleBeforeUpdateWithMismatch(){
+        hed__Hierarchy_Settings__c hs = hed.UTIL_CustomSettings_API.getSettings();
+        String adminRecordType = hs.hed__Administrative_Account_Record_Type__c;
+
+        List<Account> accountsList = new List<Account>();
+        List<Grade_Enrollment__c> gradeEnrollmentsList = new List<Grade_Enrollment__c>();
+
+        Account firstAccount = new Account(RecordTypeId = adminRecordType, Name = 'Test Account 1');
+        Account secondAccount = new Account(RecordTypeId = adminRecordType, Name = 'Test Account 2');
+        accountsList.add(firstAccount);
+        accountsList.add(secondAccount);
+
+        insert accountsList;
+
+        Contact testContact = new Contact(LastName = 'Testerson');
+        insert testContact;
+
+        List<hed__Education_History__c> educationHistoryList = new List<hed__Education_History__c>();
+        for (Integer i = 0; i < 5; i++){
+            hed__Education_History__c eduHist = new hed__Education_History__c(hed__Contact__c = testContact.Id,
+                                                                              hed__Account__c = firstAccount.Id
+                                                                             );
+            educationHistoryList.add(eduHist);
+        }
+       
+        insert educationHistoryList;
+
+        for (hed__Education_History__c eduHist : educationHistoryList){
+            Grade_Enrollment__c gradeEnroll = new Grade_Enrollment__c(Contact__c = testContact.Id,
+                                                                      Educational_Institution__c = secondAccount.Id,
+                                                                      Grade_Level__c = 'Eighth Grade',
+                                                                      Education_History__c = eduHist.Id
+                                                                     );
+
+            gradeEnrollmentsList.add(gradeEnroll);
+        }
+
+        insert gradeEnrollmentsList;
+
+        List<SObject> newSObjectsList = new List<SObject>();
+        List<SObject> oldSObjectsList = new List<SObject>();
+
+        for (hed__Education_History__c newEdHist : educationHistoryList){
+            newSObjectsList.add((SObject)newEdHist);
+
+            hed__Education_History__c oldEdHist = newEdHist.clone(true);
+            oldEdHist.hed__Account__c = secondAccount.Id;
+            oldSObjectsList.add((SObject)oldEdHist);
+        }
+
+        EDUHIS_DataInteg_TDTM eduHisTdtm = new EDUHIS_DataInteg_TDTM();
+
+        Test.startTest();
+        try {
+            eduHisTdtm.handleBeforeUpdate(newSObjectsList, oldSObjectsList);
+        } catch (Exception e){
+            System.assertEquals(Label.EduHisInstitutionMismatch, e.getMessage(), 'Updates with mismatching Education Institution for Education History and Grade Enrollment should display an error.');
+        }
+        Test.stopTest();
+    }
+    
+    /*********************************************************************************************************
+    * @description Test to verify that method run() displays an error message when an update to the Edcuational 
+    * Institution on an Education History record does not match all of the Institutions specified
+    * on the related Grade Enrollment records.
+    *********************************************************************************************************/
+    @isTest 
+    private static void runWithNoUpdate(){
+        hed.TDTM_Runnable.Action triggerAction = hed.TDTM_Runnable.Action.AfterUpdate;
+        Schema.DescribeSObjectResult objResult = Schema.SObjectType.hed__Education_History__c;
+
+        hed__Hierarchy_Settings__c hs = hed.UTIL_CustomSettings_API.getSettings();
+        String adminRecordType = hs.hed__Administrative_Account_Record_Type__c;
+
+        List<Account> accountsList = new List<Account>();
+        List<Grade_Enrollment__c> gradeEnrollmentsList = new List<Grade_Enrollment__c>();
+        List<SObject> newSObjectsList = new List<SObject>();
+        List<SObject> oldSObjectsList = new List<SObject>();
+
+        Account firstAccount = new Account(RecordTypeId = adminRecordType, Name = 'Test Account 1');
+        Account secondAccount = new Account(RecordTypeId = adminRecordType, Name = 'Test Account 2');
+        accountsList.add(firstAccount);
+        accountsList.add(secondAccount);
+
+        insert accountsList;
+
+        Contact testContact = new Contact(LastName = 'Testerson');
+        insert testContact;
+
+        List<hed__Education_History__c> educationHistoryList = new List<hed__Education_History__c>();
+        for (Integer i = 0; i < 5; i++){
+            hed__Education_History__c eduHist = new hed__Education_History__c(hed__Contact__c = testContact.Id,
+                                                                              hed__Account__c = secondAccount.Id
+                                                                             );
+            educationHistoryList.add(eduHist);
+        }
+       
+        insert educationHistoryList;
+
+        for (hed__Education_History__c eduHist : educationHistoryList){
+            Grade_Enrollment__c gradeEnroll = new Grade_Enrollment__c(Contact__c = testContact.Id,
+                                                                      Educational_Institution__c = firstAccount.Id,
+                                                                      Grade_Level__c = 'Eighth Grade',
+                                                                      Education_History__c = eduHist.Id
+                                                                     );
+
+            gradeEnrollmentsList.add(gradeEnroll);
+        }
+
+        insert gradeEnrollmentsList;
+
+        for (hed__Education_History__c newEdHist : educationHistoryList){
+            newSObjectsList.add((SObject)newEdHist);
+
+            hed__Education_History__c oldEdHist = newEdHist.clone(true);
+            oldEdHist.hed__Account__c = firstAccount.Id;
+            oldSObjectsList.add((SObject)oldEdHist);
+        }
+
+        EDUHIS_DataInteg_TDTM eduHisTdtm = new EDUHIS_DataInteg_TDTM();
+
+        Test.startTest();
+        try {
+            eduHisTdtm.run(newSObjectsList, oldSObjectsList, triggerAction, objResult);
+        } catch (Exception e){
+            System.assertEquals(Label.EduHisInstitutionMismatch, e.getMessage(), 'Updates with mismatching Education Institution for Education History and Grade Enrollment should display an error.');
+        }
+        Test.stopTest();
+    }
 
     /*********************************************************************************************************
-    * @description Creates fake Ids for given sObject.
-    * @return The fake Id.
-    **********************************************************************************************************/
-    static Integer s_num = 1;
+    * @description Test to verify that method run() successfully processes an update to the Edcuational 
+    * Institution on an Education History record when matches the Institutions specified for all of the 
+    * related Grade Enrollment records.
+    *********************************************************************************************************/
+    @isTest 
+    private static void runWithUpdate(){
+        hed.TDTM_Runnable.Action triggerAction = hed.TDTM_Runnable.Action.AfterUpdate;
+        Schema.DescribeSObjectResult objResult = Schema.SObjectType.hed__Education_History__c;
 
-    private static String getFakeId(Schema.SObjectType sot) {
-        String result = String.valueOf(s_num++);
-        return sot.getDescribe().getKeyPrefix() +
-            '0'.repeat(12-result.length()) + result;
-   }
+        hed__Hierarchy_Settings__c hs = hed.UTIL_CustomSettings_API.getSettings();
+        String adminRecordType = hs.hed__Administrative_Account_Record_Type__c;
+
+        List<Account> accountsList = new List<Account>();
+        List<Grade_Enrollment__c> gradeEnrollmentsList = new List<Grade_Enrollment__c>();
+        List<SObject> newSObjectsList = new List<SObject>();
+        List<SObject> oldSObjectsList = new List<SObject>();
+
+        Account firstAccount = new Account(RecordTypeId = adminRecordType, Name = 'Test Account 1');
+        Account secondAccount = new Account(RecordTypeId = adminRecordType, Name = 'Test Account 2');
+        accountsList.add(firstAccount);
+        accountsList.add(secondAccount);
+
+        insert accountsList;
+
+        Contact testContact = new Contact(LastName = 'Testerson');
+        insert testContact;
+
+        List<hed__Education_History__c> educationHistoryList = new List<hed__Education_History__c>();
+        for (Integer i = 0; i < 5; i++){
+            hed__Education_History__c eduHist = new hed__Education_History__c(hed__Contact__c = testContact.Id,
+                                                                              hed__Account__c = secondAccount.Id
+                                                                             );
+            educationHistoryList.add(eduHist);
+        }
+       
+        insert educationHistoryList;
+
+        for (hed__Education_History__c eduHist : educationHistoryList){
+            Grade_Enrollment__c gradeEnroll = new Grade_Enrollment__c(Contact__c = testContact.Id,
+                                                                      Educational_Institution__c = secondAccount.Id,
+                                                                      Grade_Level__c = 'Eighth Grade',
+                                                                      Education_History__c = eduHist.Id
+                                                                     );
+
+            gradeEnrollmentsList.add(gradeEnroll);
+        }
+
+        insert gradeEnrollmentsList;
+
+        for (hed__Education_History__c newEdHist : educationHistoryList){
+            newSObjectsList.add((SObject)newEdHist);
+
+            hed__Education_History__c oldEdHist = newEdHist.clone(true);
+            oldEdHist.hed__Account__c = firstAccount.Id;
+            oldSObjectsList.add((SObject)oldEdHist);
+        }
+
+        EDUHIS_DataInteg_TDTM eduHisTdtm = new EDUHIS_DataInteg_TDTM();
+
+        Test.startTest();
+        try {
+            eduHisTdtm.run(newSObjectsList, oldSObjectsList, triggerAction, objResult);
+        } catch (Exception e){
+            System.assertEquals(null, e.getMessage(), 'Updates with matching Education Institution for Education History and Grade Enrollment should not display an error.');
+        }
+        Test.stopTest();
+
+        List<hed__Education_History__c> eduHistoryResultsList = [SELECT Id,
+                                                                        Name,
+                                                                        hed__Account__c,
+                                                                        (SELECT Contact__c, Educational_Institution__c 
+                                                                        FROM Grade_Enrollments__r)
+                                                                FROM hed__Education_History__c
+                                                                WHERE Id IN :educationHistoryList];
+
+        for (hed__Education_History__c eduHist : eduHistoryResultsList){
+            System.assertEquals(secondAccount.Id, eduHist.hed__Account__c, 'Education Institution update should occur for Education History with no mismatching Grade Enrollments.');
+        }
+    }
 }
