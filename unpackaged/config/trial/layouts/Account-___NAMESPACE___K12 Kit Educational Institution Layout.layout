@@ -42,25 +42,25 @@
         <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Pre_school__c</field>
+                <field>%%%NAMESPACE%%%Pre_school__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Middle_School__c</field>
+                <field>%%%NAMESPACE%%%Middle_School__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Grade_Levels__c</field>
+                <field>%%%NAMESPACE%%%Grade_Levels__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Elementary_School__c</field>
+                <field>%%%NAMESPACE%%%Elementary_School__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>High_School__c</field>
+                <field>%%%NAMESPACE%%%High_School__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
