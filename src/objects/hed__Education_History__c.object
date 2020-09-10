@@ -73,9 +73,9 @@
     </fields>
     <fields>
         <fullName>School_Enrollment_Status__c</fullName>
-        <description>The status of this student&apos;s enrolllment in this Educational Institution.</description>
+        <description>The status of this student&apos;s enrollment in this Educational Institution.</description>
         <externalId>false</externalId>
-        <inlineHelpText>The status of this student&apos;s enrolllment in this Educational Institution.</inlineHelpText>
+        <inlineHelpText>The status of this student&apos;s enrollment in this Educational Institution.</inlineHelpText>
         <label>School Enrollment Status</label>
         <required>false</required>
         <trackTrending>false</trackTrending>

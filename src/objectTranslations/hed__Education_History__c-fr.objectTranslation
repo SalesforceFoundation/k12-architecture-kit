@@ -50,7 +50,7 @@
         </picklistValues>
     </fields>
     <fields>
-        <help><!-- The status of this student&apos;s enrolllment in this Educational Institution. --></help>
+        <help><!-- The status of this student&apos;s enrollment in this Educational Institution. --></help>
         <label><!-- School Enrollment Status --></label>
         <name>School_Enrollment_Status__c</name>
         <picklistValues>
