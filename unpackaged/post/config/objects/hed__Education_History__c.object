@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>K12_Education_History_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <compactLayoutAssignment>K12_Education_History_Compact_Layout</compactLayoutAssignment>
+    <compactLayouts>
+        <fullName>K12_Education_History_Compact_Layout</fullName>
+        <fields>Name</fields>
+        <fields>hed__Account__c</fields>
+        <fields>hed__Contact__c</fields>
+        <fields>%%%NAMESPACE%%%School_Enrollment_Status__c</fields>
+        <fields>hed__Start_Date__c</fields>
+        <fields>hed__End_Date__c</fields>
+        <label>K12 Education History Compact Layout</label>
+    </compactLayouts>
+    <listViews>
+        <fullName>K12_All_Education_Histories</fullName>
+        <columns>NAME</columns>
+        <columns>hed__Account__c</columns>
+        <columns>hed__Contact__c</columns>
+        <columns>hed__Start_Date__c</columns>
+        <columns>%%%NAMESPACE%%%Start_Reason__c</columns>
+        <columns>hed__End_Date__c</columns>
+        <columns>%%%NAMESPACE%%%End_Reason__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>K-12 All Education Histories</label>
+    </listViews>
+    <searchLayouts>
+        <searchResultsAdditionalFields>hed__Account__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>hed__Contact__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>hed__Start_Date__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>%%%NAMESPACE%%%Start_Reason__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>hed__End_Date__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>%%%NAMESPACE%%%End_Reason__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Stores information about a Contact&apos;s education history and related data.</description>
+    <label>Education History</label>
+    <nameField>
+        <displayFormat>EH-{0000}</displayFormat>
+        <label>Education History Name</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Education History</pluralLabel>
+    <sharingModel>ReadWrite</sharingModel>
+</CustomObject>

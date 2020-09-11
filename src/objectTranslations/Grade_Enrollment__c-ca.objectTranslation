@@ -15,6 +15,12 @@
         <relationshipLabel><!-- Grade Enrollments --></relationshipLabel>
     </fields>
     <fields>
+        <help><!-- The Education History record related to this Grade Enrollment. --></help>
+        <label><!-- Education History --></label>
+        <name>Education_History__c</name>
+        <relationshipLabel><!-- Grade Enrollments --></relationshipLabel>
+    </fields>
+    <fields>
         <help><!-- The school this student is enrolled in. --></help>
         <label><!-- Educational Institution --></label>
         <name>Educational_Institution__c</name>
