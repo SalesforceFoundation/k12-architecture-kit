@@ -67,6 +67,20 @@
         <type>Lookup</type>
     </fields>
     <fields>
+        <fullName>Education_History__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>The Education History record related to this Grade Enrollment.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The Education History record related to this Grade Enrollment.</inlineHelpText>
+        <label>Education History</label>
+        <referenceTo>hed__Education_History__c</referenceTo>
+        <relationshipLabel>Grade Enrollments</relationshipLabel>
+        <relationshipName>Grade_Enrollments</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
         <fullName>Educational_Institution__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <description>The school this student is enrolled in.</description>

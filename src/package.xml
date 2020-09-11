@@ -30,6 +30,7 @@
         <members>Contact.Student_ID__c</members>
         <members>Contact.Years_of_Experience__c</members>
         <members>Grade_Enrollment__c.Contact__c</members>
+        <members>Grade_Enrollment__c.Education_History__c</members>
         <members>Grade_Enrollment__c.Educational_Institution__c</members>
         <members>Grade_Enrollment__c.End_Date__c</members>
         <members>Grade_Enrollment__c.Entry_Reason__c</members>
@@ -40,6 +41,9 @@
         <members>Grade_Enrollment__c.Term__c</members>
         <members>hed__Attribute__c.Grade_Level__c</members>
         <members>hed__Behavior_Response__c.School_Days_Missed__c</members>
+        <members>hed__Education_History__c.End_Reason__c</members>
+        <members>hed__Education_History__c.School_Enrollment_Status__c</members>
+        <members>hed__Education_History__c.Start_Reason__c</members>
         <members>hed__Relationship__c.FERPA_Approved__c</members>
         <members>hed__Relationship__c.HIPPA_Approved__c</members>
         <name>CustomField</name>
@@ -75,6 +79,10 @@
         <members>hed__Behavior_Response__c-en_US</members>
         <members>hed__Behavior_Response__c-es</members>
         <members>hed__Behavior_Response__c-fr</members>
+        <members>hed__Education_History__c-ca</members>
+        <members>hed__Education_History__c-en_US</members>
+        <members>hed__Education_History__c-es</members>
+        <members>hed__Education_History__c-fr</members>
         <members>hed__Relationship__c-ca</members>
         <members>hed__Relationship__c-en_US</members>
         <members>hed__Relationship__c-es</members>
@@ -118,6 +126,7 @@
         <members>hed__Course_Offering_Schedule__c-K12 Kit Course Offering Schedule Layout</members>
         <members>hed__Course_Offering__c-K12 Kit Course Offering Layout</members>
         <members>hed__Course__c-K12 Kit Course Layout</members>
+        <members>hed__Education_History__c-K12 Kit Education History Layout</members>
         <members>hed__Facility__c-K12 Kit Facility Layout</members>
         <members>hed__Language__c-K12 Kit Language Layout</members>
         <members>hed__Plan_Requirement__c-K12 Kit Plan Requirement Layout</members>
