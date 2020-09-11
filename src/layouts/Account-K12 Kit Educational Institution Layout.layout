@@ -282,12 +282,10 @@
     <relatedLists>
         <fields>NAME</fields>
         <fields>Grade_Level__c</fields>
-        <fields>Education_History__c</fields>
-        <fields>Start_Date__c</fields>
-        <fields>End_Date__c</fields>
+        <fields>Contact__c</fields>
+        <fields>Status__c</fields>
+        <fields>Term__c</fields>
         <relatedList>Grade_Enrollment__c.Educational_Institution__c</relatedList>
-        <sortField>Start_Date__c</sortField>
-        <sortOrder>Desc</sortOrder>
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>

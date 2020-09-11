@@ -283,12 +283,10 @@
     <relatedLists>
         <fields>NAME</fields>
         <fields>%%%NAMESPACE%%%Grade_Level__c</fields>
-        <fields>%%%NAMESPACE%%%Education_History__c</fields>
-        <fields>%%%NAMESPACE%%%Start_Date__c</fields>
-        <fields>%%%NAMESPACE%%%End_Date__c</fields>
+        <fields>%%%NAMESPACE%%%Contact__c</fields>
+        <fields>%%%NAMESPACE%%%Status__c</fields>
+        <fields>%%%NAMESPACE%%%Term__c</fields>
         <relatedList>%%%NAMESPACE%%%Grade_Enrollment__c.%%%NAMESPACE%%%Educational_Institution__c</relatedList>
-        <sortField>%%%NAMESPACE%%%Start_Date__c</sortField>
-        <sortOrder>Desc</sortOrder>
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
