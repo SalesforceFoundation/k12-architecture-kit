@@ -101,6 +101,9 @@
         <layout>hed__Course__c-%%%NAMESPACE%%%K12 Kit Course Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>hed__Education_History__c-%%%NAMESPACE%%%K12 Kit Education History Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>hed__Facility__c-%%%NAMESPACE%%%K12 Kit Facility Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
