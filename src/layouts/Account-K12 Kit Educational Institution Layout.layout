@@ -281,6 +281,7 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
+        <fields>Education_History__c</fields>
         <fields>Start_Date__c</fields>
         <fields>End_Date__c</fields>
         <relatedList>Grade_Enrollment__c.Educational_Institution__c</relatedList>
