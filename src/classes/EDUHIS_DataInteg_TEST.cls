@@ -32,27 +32,68 @@
 * @description Tests for GRER_SyncGradeLevel_TDTM class*/
 @isTest
 private class EDUHIS_DataInteg_TEST {
-    
-    // Get Namespace
-    // Static String namespace = UTIL_Namespace.getNamespace();
-    // Static String prefix = (String.isNotBlank(namespace)) ? namespace + '.' : '';
-    // Static String gradeEnrollClass = prefix+'GRER_SyncGradeLevel_TDTM';
-    
     @testSetup
     static void setup() {
         //Insert EDA Trigger Handlers
-        List<hed.TDTM_Global_API.TdtmToken> tokens = hed.TDTM_Global_API.getTdtmConfig();
-        tokens.add(new hed.TDTM_Global_API.TdtmToken('EDUHIS_DataInteg_TDTM', 'Education_History__c', 'BeforeUpdate', 1.00));
-
-        hed.TDTM_Global_API.setTdtmConfig(tokens);
+        List<hed.TDTM_Global_API.TdtmToken> edaTokens = hed.TDTM_Global_API.getDefaultTdtmConfig();
+        hed.TDTM_Global_API.setTdtmConfig(edaTokens);
 
         //Insert K12 trigger handlers
         STG_InstallScript.setK12kitDefaultTriggerHandlers();
+
+        for (hed.TDTM_Global_API.TdtmToken token : edaTokens){
+            // disable GRER Integ trigger for testing only
+            if (token.className == 'GRER_DataInteg_TDTM.class'){
+                token.active = false;
+            }
+        }
     }
 
     /*********************************************************************************************************
     *****************************************FUNCTIONAL TESTS*************************************************
     **********************************************************************************************************/
+
+    /*********************************************************************************************************
+    * @description Tests to verify that updating an Education History record with no change to the 
+    * Educational Institution field does not execute.
+    *********************************************************************************************************/
+    @isTest
+    public static void updateEducationHistoryNoInstitutionChange() {
+        EDUHIS_DataInteg_TEST.setup();
+
+        hed__Hierarchy_Settings__c hs = hed.UTIL_CustomSettings_API.getSettings();
+        String adminRecordType = hs.hed__Administrative_Account_Record_Type__c;
+
+        List<Account> accountsList = new List<Account>();
+        Account firstAccount = new Account(RecordTypeId = adminRecordType, Name = 'Test Account 1');
+        Account secondAccount = new Account(RecordTypeId = adminRecordType, Name = 'Test Account 2');
+        accountsList.add(firstAccount);
+        accountsList.add(secondAccount);
+
+        insert accountsList;
+
+        Contact testContact = new Contact(LastName = 'Testerson');
+        insert testContact;
+
+        List<hed__Education_History__c> educationHistoryList = new List<hed__Education_History__c>();
+        for (Integer i = 0; i < 5; i++){
+            hed__Education_History__c eduHist = new hed__Education_History__c(hed__Contact__c = testContact.Id,
+                                                                              hed__Account__c = firstAccount.Id
+                                                                             );
+            educationHistoryList.add(eduHist);
+        }
+       
+        insert educationHistoryList;
+
+        Test.startTest();
+        update educationHistoryList;
+        Test.stopTest();
+
+        for (hed__Education_History__c eduHist : educationHistoryList){
+            System.assertEquals(firstAccount.Id, eduHist.hed__Account__c, 'Educational Institution should not change for Education History.');
+        }
+    }
+
 
     /*********************************************************************************************************
     * @description Tests to verify that changing the Educational Institution on an Education History record

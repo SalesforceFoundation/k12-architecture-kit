@@ -68,8 +68,8 @@ global with sharing class EDUHIS_DataInteg_TDTM extends hed.TDTM_Runnable {
 
     /**********************************************************************************************************************
     * @description Handles the logic associated with a Before Update trigger action.
-    * @param  newSObjectsList newSObjectsList description
-    * @param  oldSObjectsList oldSObjectsList description
+    * @param  newSObjectsList List of SObjects in updated state.
+    * @param  oldSObjectsList List of SObjects in state before update.
     **********************************************************************************************************************/
     @TestVisible
     private void handleBeforeUpdate(List<SObject> newSObjectsList, List<SObject> oldSObjectsList){
@@ -86,9 +86,12 @@ global with sharing class EDUHIS_DataInteg_TDTM extends hed.TDTM_Runnable {
         
         for (hed__Education_History__c eduHist : educationHistoriesToUpdateList){
             hed__Education_History__c updatedEduHistInContext = newEdHistById.get(eduHist.Id);
+            hed__Education_History__c oldEduHist = oldEdHistById.get(eduHist.Id);
 
-            if (this.hasChildRecords(eduHist) && this.hasInstitutionMismatch(eduHist, updatedEduHistInContext.hed__Account__c)){
-                updatedEduHistInContext.addError(Label.EduHisInstitutionMismatch);
+            if (updatedEduHistInContext.hed__Account__c != oldEduHist.hed__Account__c){
+                if (this.hasChildRecords(eduHist) && this.hasInstitutionMismatch(eduHist, updatedEduHistInContext.hed__Account__c)){
+                    updatedEduHistInContext.addError(Label.EduHisInstitutionMismatch);
+                }
             }
         }
     }

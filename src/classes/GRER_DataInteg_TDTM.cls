@@ -58,8 +58,8 @@ global with sharing class GRER_DataInteg_TDTM extends hed.TDTM_Runnable {
             return dmlWrapper;
         }
 
-        if (triggerAction = hed.TDTM_Runnable.Action.BeforeInsert){
-            this.handleBeforeInsert(newList);
+        if (triggerAction == hed.TDTM_Runnable.Action.AfterInsert){
+            this.handleAfterInsert(newList);
         }
 
         if (triggerAction == hed.TDTM_Runnable.Action.BeforeUpdate) {
@@ -70,10 +70,10 @@ global with sharing class GRER_DataInteg_TDTM extends hed.TDTM_Runnable {
     }
 
     /**********************************************************************************************************************
-    * @description Handles the logic associated with a Before Insert trigger action.
+    * @description Handles the logic associated with an After Insert trigger action.
     * @param  newSObjectsList A list of SObjects to be inserted.
     **********************************************************************************************************************/
-    private void handleBeforeInsert(List<SObject> newSObjectsList){
+    private void handleAfterInsert(List<SObject> newSObjectsList){
         Map<Id, Grade_Enrollment__c> newGradeEnrollmentsById = new Map<Id, Grade_Enrollment__c>((List<Grade_Enrollment__c>)newSObjectsList);
 
         List<Grade_Enrollment__c> gradeEnrollmentsToInsert = [SELECT Id,
@@ -82,22 +82,71 @@ global with sharing class GRER_DataInteg_TDTM extends hed.TDTM_Runnable {
                                                               FROM Grade_Enrollment__c
                                                               WHERE Id IN :newGradeEnrollmentsById.keySet()];
 
-        for (Grade_Enrollment__c gradeEnroll : gradeEnrollmentsToInsert){
-            Grade_Enrollment__c gradeEnrollInContext = newGradeEnrollmentsById.get(gradeEnroll.Id);
 
-            if (this.hasInstitutionMismatch(gradeEnrollInContext)){
-                gradeEnrollInContext.addError(Label.GrErInstitutionMismatch);
+        for (Grade_Enrollment__c gradeEnroll : gradeEnrollmentsToInsert){
+            Grade_Enrollment__c gradeEnrollToInsertInContext = newGradeEnrollmentsById.get(gradeEnroll.Id);
+            Id accountIdOnRelatedEduHist = gradeEnroll.Education_History__r.hed__Account__c;
+
+            if (this.isEducationalInstitutionFieldsPopulated(gradeEnrollToInsertInContext, accountIdOnRelatedEduHist) && 
+                    this.hasInstitutionMismatch(gradeEnrollToInsertInContext, accountIdOnRelatedEduHist)){
+                        
+                gradeEnrollToInsertInContext.addError(Label.GrErInstitutionMismatch);
             }
         }
     }
 
     /**********************************************************************************************************************
-     * @description Determines whether the Educational Institution specified on the Education History record matches the
-     * one specified on the related Grade Enrollment record.
-     * @param  gradeEnrollment The Grade Enrollment record to evaluate.
-     * @return True if the Educational Institutions do not match, False otherwise.
-     **********************************************************************************************************************/
-    private Boolean hasInstitutionMismatch(Grade_Enrollment__c gradeEnrollment){
-        return gradeEnrollment.Educational_Institution__c != gradeEnrollment.Education_History__r.hed__Account__c;
+    * @description Handles the logic associated with a Before Update trigger action.
+    * @param  newSObjectsList List of SObjects in updated state.
+    * @param  oldSObjectsList List of SObjects in state before update.
+    **********************************************************************************************************************/
+    @TestVisible
+    private void handleBeforeUpdate(List<SObject> newSObjectsList, List<SObject> oldSObjectsList){
+        Map<Id, Grade_Enrollment__c> oldGradeEnrollmentsById = new Map<Id, Grade_Enrollment__c>((List<Grade_Enrollment__c>)oldSObjectsList);
+        Map<Id,Grade_Enrollment__c> newGradeEnrollmentsById = new Map<Id,Grade_Enrollment__c>((List<Grade_Enrollment__c>)newSObjectsList);
+
+        List<Grade_Enrollment__c> gradeEnrollmentsToUpdate = [SELECT Id,
+                                                                     Educational_Institution__c,
+                                                                     Education_History__r.hed__Account__c  
+                                                              FROM Grade_Enrollment__c
+                                                              WHERE Id IN :newGradeEnrollmentsById.keySet()];
+
+        for (Grade_Enrollment__c gradeEnroll : gradeEnrollmentsToUpdate){
+            Id institutionIdOnGradeEnroll = gradeEnroll.Education_History__r.hed__Account__c;
+
+            Grade_Enrollment__c updatedGradeEnrollInContext = newGradeEnrollmentsById.get(gradeEnroll.Id);
+            Grade_Enrollment__c oldGradeEnroll = oldGradeEnrollmentsById.get(gradeEnroll.Id);
+
+            if (updatedGradeEnrollInContext.Educational_Institution__c != oldGradeEnroll.Educational_Institution__c && 
+                    this.isEducationalInstitutionFieldsPopulated(updatedGradeEnrollInContext, institutionIdOnGradeEnroll) &&
+                    this.hasInstitutionMismatch(updatedGradeEnrollInContext, institutionIdOnGradeEnroll)){
+                    
+                updatedGradeEnrollInContext.addError(Label.GrErInstitutionMismatch);
+            }               
+        }
+    }
+
+    /**********************************************************************************************************************
+    * @description Determines whether the Educational Institution fields on a Grade Enrollment and associated Educational
+    * History record are populated.
+    * @param gradeEnrollment The updated Grade Enrollment record to evaluate.
+    * @param educationHistoryInstitutionId The Id of the Institution specified on the Education History record associated with the Grade Enrollment.
+    * @return True if the Educational Institution fields on both records are populated, False otherwise.
+    **********************************************************************************************************************/
+    @TestVisible 
+    private Boolean isEducationalInstitutionFieldsPopulated(Grade_Enrollment__c gradeEnrollment, Id educationHistoryInstitutionId){
+        return String.isNotBlank(gradeEnrollment.Educational_Institution__c) && String.isNotBlank(educationHistoryInstitutionId);
+    }
+
+    /**********************************************************************************************************************
+    * @description Determines whether the Educational Institution specified on the Education History record matches the
+    * one specified on the related Grade Enrollment record.
+    * @param  gradeEnrollment The Grade Enrollment record to evaluate.
+    * @param educationHistoryInstitutionId The Id of the Institution specified on the Education History record associated with the Grade Enrollment.
+    * @return True if the Educational Institution fields for both records match, False otherwise.
+    **********************************************************************************************************************/
+    @TestVisible
+    private Boolean hasInstitutionMismatch(Grade_Enrollment__c gradeEnrollment, Id educationHistoryInstitutionId){
+        return gradeEnrollment.Educational_Institution__c != educationHistoryInstitutionId;
     } 
 }
