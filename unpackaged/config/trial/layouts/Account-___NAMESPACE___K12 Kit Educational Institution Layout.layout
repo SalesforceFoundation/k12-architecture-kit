@@ -42,25 +42,25 @@
         <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Pre_school__c</field>
+                <field>%%%NAMESPACE%%%Pre_school__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Middle_School__c</field>
+                <field>%%%NAMESPACE%%%Middle_School__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Grade_Levels__c</field>
+                <field>%%%NAMESPACE%%%Grade_Levels__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Elementary_School__c</field>
+                <field>%%%NAMESPACE%%%Elementary_School__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>High_School__c</field>
+                <field>%%%NAMESPACE%%%High_School__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
@@ -273,6 +273,7 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
+        <fields>hed__Account__c</fields>
         <fields>hed__Start_Date__c</fields>
         <fields>hed__End_Date__c</fields>
         <relatedList>hed__Education_History__c.hed__Account__c</relatedList>
@@ -281,11 +282,11 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
-        <fields>Grade_Level__c</fields>
-        <fields>Contact__c</fields>
-        <fields>Status__c</fields>
-        <fields>Term__c</fields>
-        <relatedList>Grade_Enrollment__c.Educational_Institution__c</relatedList>
+        <fields>%%%NAMESPACE%%%Grade_Level__c</fields>
+        <fields>%%%NAMESPACE%%%Contact__c</fields>
+        <fields>%%%NAMESPACE%%%Status__c</fields>
+        <fields>%%%NAMESPACE%%%Term__c</fields>
+        <relatedList>%%%NAMESPACE%%%Grade_Enrollment__c.%%%NAMESPACE%%%Educational_Institution__c</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
