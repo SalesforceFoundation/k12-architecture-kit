@@ -282,6 +282,7 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
+        <fields>%%%NAMESPACE%%%Grade_Level__c</fields>
         <fields>%%%NAMESPACE%%%Education_History__c</fields>
         <fields>%%%NAMESPACE%%%Start_Date__c</fields>
         <fields>%%%NAMESPACE%%%End_Date__c</fields>
