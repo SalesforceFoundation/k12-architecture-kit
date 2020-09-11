@@ -86,7 +86,9 @@ public without sharing class TDTM_DefaultConfig {
                         hed__Asynchronous__c = false,
                         hed__Class__c = EDUHIS_DataInteg_TDTM.class.toString(),
                         hed__Load_Order__c = 1,
-                        hed__Object__c = Education_History__c.SObjectType.getDescribe().getName(), 
+                        hed__Object__c = 'Education_History__c',
+                        //hed__Object__c = Education_History__c.SObjectType.getDescribe().getName(), //TODO: can't deploy without hed__ namespace, but with it, trigger doesn't fire
+                        //hed__Object__c = hed__Education_History__c.SObjectType.getDescribe().getName(), //TODO: can't deploy without hed__ namespace, but with it, trigger doesn't fire
                         hed__Owned_by_Namespace__c = 'k12kit',
                         hed__Trigger_Action__c = 'BeforeUpdate'));
 
