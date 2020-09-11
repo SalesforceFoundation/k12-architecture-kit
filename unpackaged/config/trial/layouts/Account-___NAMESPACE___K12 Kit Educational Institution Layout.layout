@@ -282,6 +282,14 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
+        <fields>%%%NAMESPACE%%%Start_Date__c</fields>
+        <fields>%%%NAMESPACE%%%End_Date__c</fields>
+        <relatedList>%%%NAMESPACE%%%Grade_Enrollment__c.%%%NAMESPACE%%%Educational_Institution__c</relatedList>
+        <sortField>%%%NAMESPACE%%%Start_Date__c</sortField>
+        <sortOrder>Desc</sortOrder>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
         <fields>hed__Course_ID__c</fields>
         <fields>hed__Credit_Hours__c</fields>
         <fields>hed__Description__c</fields>
