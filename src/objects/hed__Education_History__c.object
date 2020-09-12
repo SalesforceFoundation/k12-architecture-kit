@@ -24,9 +24,9 @@
                     <label>Deceased</label>
                 </value>
                 <value>
-                    <fullName>Dropout</fullName>
+                    <fullName>Dropped Out</fullName>
                     <default>false</default>
-                    <label>Dropout</label>
+                    <label>Dropped Out</label>
                 </value>
                 <value>
                     <fullName>Enrolled in a High School Diploma Program</fullName>
@@ -49,9 +49,9 @@
                     <label>Invalid Enrollment</label>
                 </value>
                 <value>
-                    <fullName>No Show</fullName>
+                    <fullName>No-Show</fullName>
                     <default>false</default>
-                    <label>No Show</label>
+                    <label>No-Show</label>
                 </value>
                 <value>
                     <fullName>Reached Maximum Age</fullName>
@@ -73,9 +73,9 @@
     </fields>
     <fields>
         <fullName>School_Enrollment_Status__c</fullName>
-        <description>The status of this student&apos;s enrolllment in this Educational Institution.</description>
+        <description>The status of this student&apos;s enrollment in this Educational Institution.</description>
         <externalId>false</externalId>
-        <inlineHelpText>The status of this student&apos;s enrolllment in this Educational Institution.</inlineHelpText>
+        <inlineHelpText>The status of this student&apos;s enrollment in this Educational Institution.</inlineHelpText>
         <label>School Enrollment Status</label>
         <required>false</required>
         <trackTrending>false</trackTrending>
