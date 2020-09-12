@@ -38,6 +38,16 @@ private class GRER_DataInteg_TEST {
     **********************************************************************************************************/
 
     /*********************************************************************************************************
+    * @description Test to verify that inserting a Grade Enrollment record without an associated Education
+    * History record proceeds without error.
+    *********************************************************************************************************/
+    @isTest 
+    private static void insertGradeEnrollmentNoEducationHistory(){
+        //TODO: start here
+    }
+    
+    
+    /*********************************************************************************************************
     * @description Test to verify that inserting a Grade Enrollment record with an Educational Institution
     * value matching the Educational Institution value on the associated Education History record
     * proceeds without error.
@@ -994,28 +1004,209 @@ private class GRER_DataInteg_TEST {
         }
     }
 
+    /*********************************************************************************************************
+    * @description Test to verify that method run() displays an error message when Grade 
+    * Enrollment records with Education Institutions that do not match the value specified on the associated
+    * Education History records are inserted.
+    *********************************************************************************************************/
     @isTest 
     private static void runAfterInsertMismatch(){
         hed.TDTM_Runnable.Action triggerAction = hed.TDTM_Runnable.Action.AfterInsert;
         Schema.DescribeSObjectResult objResult = Schema.SObjectType.Grade_Enrollment__c;
+
+        hed__Hierarchy_Settings__c hs = hed.UTIL_CustomSettings_API.getSettings();
+        String adminRecordType = hs.hed__Administrative_Account_Record_Type__c;
+
+        List<Grade_Enrollment__c> gradeEnrollmentsList = new List<Grade_Enrollment__c>();
+
+        Account firstAccount = new Account(Id = GRER_DataInteg_TEST.getFakeId(Account.SObjectType), RecordTypeId = adminRecordType, Name = 'Test Account 1');
+        Account secondAccount = new Account(Id = GRER_DataInteg_TEST.getFakeId(Account.SObjectType), RecordTypeId = adminRecordType, Name = 'Test Account 2');
+
+        Contact testContact = new Contact(Id = GRER_DataInteg_TEST.getFakeId(Contact.SObjectType), LastName = 'Testerson');
+
+        hed__Education_History__c testEduHist = new hed__Education_History__c(Id = GRER_DataInteg_TEST.getFakeId(hed__Education_History__c.SObjectType),
+                                                                              hed__Contact__c = testContact.Id,
+                                                                              hed__Account__c = firstAccount.Id);
+        for (Integer i = 0; i < 5; i++){
+            Grade_Enrollment__c gradeEnroll = new Grade_Enrollment__c(Id = GRER_DataInteg_TEST.getFakeId(Grade_Enrollment__c.SObjectType),
+                                                                      Contact__c = testContact.Id,
+                                                                      Educational_Institution__c = secondAccount.Id,
+                                                                      Grade_Level__c = 'Eighth Grade',
+                                                                      Education_History__c = testEduHist.Id
+                                                                     );
+
+            gradeEnrollmentsList.add(gradeEnroll);
+        }
+
+        Test.startTest();
+        GRER_DataInteg_TDTM gradeEnrollTdtm = new GRER_DataInteg_TDTM();
+        List<Exception> exceptionsList = new List<Exception>();
+
+        try{
+            gradeEnrollTdtm.run((List<SObject>)gradeEnrollmentsList, null, triggerAction, objResult);
+        } catch (Exception e){
+            exceptionsList.add(e);
+        }
+        Test.stopTest();
+
+        for (Exception err : exceptionsList){
+            System.assertEquals(Label.GrErInstitutionMismatch, err.getMessage(), 'Inserting Grade Enrollments with mismatching Educational Institution should display error message.');
+        }
     }
 
+    /*********************************************************************************************************
+    * @description Test to verify that method run() successfully processes and insert  Grade 
+    * Enrollment records with Education Institutions that do not match the value specified on the associated
+    * Education History records are inserted.
+    *********************************************************************************************************/
     @isTest 
     private static void runAfterInsertMatching(){
         hed.TDTM_Runnable.Action triggerAction = hed.TDTM_Runnable.Action.AfterInsert;
         Schema.DescribeSObjectResult objResult = Schema.SObjectType.Grade_Enrollment__c;
+
+        hed__Hierarchy_Settings__c hs = hed.UTIL_CustomSettings_API.getSettings();
+        String adminRecordType = hs.hed__Administrative_Account_Record_Type__c;
+
+        List<Grade_Enrollment__c> gradeEnrollmentsList = new List<Grade_Enrollment__c>();
+
+        Account firstAccount = new Account(Id = GRER_DataInteg_TEST.getFakeId(Account.SObjectType), RecordTypeId = adminRecordType, Name = 'Test Account 1');
+
+        Contact testContact = new Contact(Id = GRER_DataInteg_TEST.getFakeId(Contact.SObjectType), LastName = 'Testerson');
+
+        hed__Education_History__c testEduHist = new hed__Education_History__c(Id = GRER_DataInteg_TEST.getFakeId(hed__Education_History__c.SObjectType),
+                                                                              hed__Contact__c = testContact.Id,
+                                                                              hed__Account__c = firstAccount.Id);
+        for (Integer i = 0; i < 5; i++){
+            Grade_Enrollment__c gradeEnroll = new Grade_Enrollment__c(Id = GRER_DataInteg_TEST.getFakeId(Grade_Enrollment__c.SObjectType),
+                                                                      Contact__c = testContact.Id,
+                                                                      Educational_Institution__c = firstAccount.Id,
+                                                                      Grade_Level__c = 'Eighth Grade',
+                                                                      Education_History__c = testEduHist.Id
+                                                                     );
+
+            gradeEnrollmentsList.add(gradeEnroll);
+        }
+
+        Test.startTest();
+        GRER_DataInteg_TDTM gradeEnrollTdtm = new GRER_DataInteg_TDTM();
+        List<Exception> exceptionsList = new List<Exception>();
+
+        try{
+            gradeEnrollTdtm.run((List<SObject>)gradeEnrollmentsList, null, triggerAction, objResult);
+        } catch (Exception e){
+            exceptionsList.add(e);
+        }
+        Test.stopTest();
+
+        System.assertEquals(true, exceptionsList.isEmpty(), 'Inserting Grade Enrollments with matching Educational Institution should not display error messages.');
     }
 
+    /*********************************************************************************************************
+    * @description Test to verify that method run() displays an error message for updates to Grade 
+    * Enrollment records with Education Institution fields that do not match the value specified on the associated
+    * Education History records.
+    *********************************************************************************************************/
     @isTest 
     private static void runBeforeUpdateMismatch(){
         hed.TDTM_Runnable.Action triggerAction = hed.TDTM_Runnable.Action.BeforeUpdate;
         Schema.DescribeSObjectResult objResult = Schema.SObjectType.Grade_Enrollment__c;
+
+        hed__Hierarchy_Settings__c hs = hed.UTIL_CustomSettings_API.getSettings();
+        String adminRecordType = hs.hed__Administrative_Account_Record_Type__c;
+
+        List<Grade_Enrollment__c> newGradeEnrollmentsList = new List<Grade_Enrollment__c>();
+        List<Grade_Enrollment__c> oldGradeEnrollmentsList = new List<Grade_Enrollment__c>();
+
+        Account firstAccount = new Account(Id = GRER_DataInteg_TEST.getFakeId(Account.SObjectType), RecordTypeId = adminRecordType, Name = 'Test Account 1');
+        Account secondAccount = new Account(Id = GRER_DataInteg_TEST.getFakeId(Account.SObjectType), RecordTypeId = adminRecordType, Name = 'Test Account 2');
+
+        Contact testContact = new Contact(Id = GRER_DataInteg_TEST.getFakeId(Contact.SObjectType), LastName = 'Testerson');
+
+        hed__Education_History__c testEduHist = new hed__Education_History__c(Id = GRER_DataInteg_TEST.getFakeId(hed__Education_History__c.SObjectType),
+                                                                              hed__Contact__c = testContact.Id,
+                                                                              hed__Account__c = firstAccount.Id);
+        for (Integer i = 0; i < 5; i++){
+            Grade_Enrollment__c oldGradeEnroll = new Grade_Enrollment__c(Id = GRER_DataInteg_TEST.getFakeId(Grade_Enrollment__c.SObjectType),
+                                                                      Contact__c = testContact.Id,
+                                                                      Educational_Institution__c = firstAccount.Id,
+                                                                      Grade_Level__c = 'Eighth Grade',
+                                                                      Education_History__c = testEduHist.Id
+                                                                     );
+
+            Grade_Enrollment__c newGradeEnroll = oldGradeEnroll.clone(true);
+            newGradeEnroll.Educational_Institution__c = secondAccount.Id;
+
+            oldGradeEnrollmentsList.add(oldGradeEnroll);
+            newGradeEnrollmentsList.add(newGradeEnroll);
+        }
+
+        Test.startTest();
+        GRER_DataInteg_TDTM gradeEnrollTdtm = new GRER_DataInteg_TDTM();
+        List<Exception> exceptionsList = new List<Exception>();
+
+        try{
+            gradeEnrollTdtm.run((List<SObject>)newGradeEnrollmentsList, (List<SObject>)oldGradeEnrollmentsList, triggerAction, objResult);
+        } catch (Exception e){
+            exceptionsList.add(e);
+        }
+        Test.stopTest();
+
+        for (Exception error : exceptionsList){
+            System.assertEquals(Label.GrErInstitutionMismatch, error.getMessage(), 'Inserting Grade Enrollments with mis-matching Educational Institution should display error messages.');
+        }
     }
 
+    /*********************************************************************************************************
+    * @description Test to verify that method run() successfully processes updates to Grade 
+    * Enrollment records when the Education Institution fields match the value specified on the associated
+    * Education History records.
+    *********************************************************************************************************/
     @isTest 
     private static void runBeforeUpdateMatching(){
         hed.TDTM_Runnable.Action triggerAction = hed.TDTM_Runnable.Action.BeforeUpdate;
         Schema.DescribeSObjectResult objResult = Schema.SObjectType.Grade_Enrollment__c;
+
+        hed__Hierarchy_Settings__c hs = hed.UTIL_CustomSettings_API.getSettings();
+        String adminRecordType = hs.hed__Administrative_Account_Record_Type__c;
+
+        List<Grade_Enrollment__c> newGradeEnrollmentsList = new List<Grade_Enrollment__c>();
+        List<Grade_Enrollment__c> oldGradeEnrollmentsList = new List<Grade_Enrollment__c>();
+
+        Account firstAccount = new Account(Id = GRER_DataInteg_TEST.getFakeId(Account.SObjectType), RecordTypeId = adminRecordType, Name = 'Test Account 1');
+
+        Contact testContact = new Contact(Id = GRER_DataInteg_TEST.getFakeId(Contact.SObjectType), LastName = 'Testerson');
+
+        hed__Education_History__c testEduHist = new hed__Education_History__c(Id = GRER_DataInteg_TEST.getFakeId(hed__Education_History__c.SObjectType),
+                                                                              hed__Contact__c = testContact.Id,
+                                                                              hed__Account__c = firstAccount.Id);
+        for (Integer i = 0; i < 5; i++){
+            Grade_Enrollment__c oldGradeEnroll = new Grade_Enrollment__c(Id = GRER_DataInteg_TEST.getFakeId(Grade_Enrollment__c.SObjectType),
+                                                                      Contact__c = testContact.Id,
+                                                                      Educational_Institution__c = null,
+                                                                      Grade_Level__c = 'Eighth Grade',
+                                                                      Education_History__c = testEduHist.Id
+                                                                     );
+
+            Grade_Enrollment__c newGradeEnroll = oldGradeEnroll.clone(true);
+            newGradeEnroll.Educational_Institution__c = firstAccount.Id;
+
+            oldGradeEnrollmentsList.add(oldGradeEnroll);
+            newGradeEnrollmentsList.add(newGradeEnroll);
+        }
+
+        Test.startTest();
+        GRER_DataInteg_TDTM gradeEnrollTdtm = new GRER_DataInteg_TDTM();
+        List<Exception> exceptionsList = new List<Exception>();
+
+        try{
+            gradeEnrollTdtm.run((List<SObject>)newGradeEnrollmentsList, (List<SObject>)oldGradeEnrollmentsList, triggerAction, objResult);
+        } catch (Exception e){
+            exceptionsList.add(e);
+        }
+        Test.stopTest();
+
+        System.assertEquals(true, exceptionsList.isEmpty(), 'Inserting Grade Enrollments with matching Educational Institution should not display error messages.');
+        
     }
 
     /*********************************************************************************************************
