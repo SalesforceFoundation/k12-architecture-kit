@@ -32,24 +32,6 @@
 * @description Tests for GRER_SyncGradeLevel_TDTM class*/
 @isTest
 private class EDUHIS_DataInteg_TEST {
-    @testSetup
-    static void setup() {
-        //Insert EDA Trigger Handlers
-        List<hed.TDTM_Global_API.TdtmToken> edaTokens = hed.TDTM_Global_API.getDefaultTdtmConfig();
-        hed.TDTM_Global_API.setTdtmConfig(edaTokens);
-
-        //Insert K12 trigger handlers
-        STG_InstallScript.setK12kitDefaultTriggerHandlers();
-
-        for (hed.TDTM_Global_API.TdtmToken token : edaTokens){
-            // TODO: How do I disable GRER Integ trigger for testing only?
-
-            System.debug('MK DEBUG: token.className: ' + token.className);
-            if (token.className == 'GRER_DataInteg_TDTM.class'){
-                token.active = false;
-            }
-        }
-    }
 
     /*********************************************************************************************************
     *****************************************FUNCTIONAL TESTS*************************************************
@@ -61,8 +43,6 @@ private class EDUHIS_DataInteg_TEST {
     *********************************************************************************************************/
     @isTest
     public static void updateEducationHistoryNoInstitutionChange() {
-        EDUHIS_DataInteg_TEST.setup();
-
         hed__Hierarchy_Settings__c hs = hed.UTIL_CustomSettings_API.getSettings();
         String adminRecordType = hs.hed__Administrative_Account_Record_Type__c;
 
@@ -103,8 +83,6 @@ private class EDUHIS_DataInteg_TEST {
     *********************************************************************************************************/
     @isTest
     public static void updateEducationHistoryWithoutGradeEnrollments() {
-        EDUHIS_DataInteg_TEST.setup();
-
         hed__Hierarchy_Settings__c hs = hed.UTIL_CustomSettings_API.getSettings();
         String adminRecordType = hs.hed__Administrative_Account_Record_Type__c;
 
@@ -148,8 +126,6 @@ private class EDUHIS_DataInteg_TEST {
     *********************************************************************************************************/
     @isTest
     public static void updateEducationHistoryWithGradeEnrollmentsMatching() {
-        EDUHIS_DataInteg_TEST.setup();
-
         hed__Hierarchy_Settings__c hs = hed.UTIL_CustomSettings_API.getSettings();
         String adminRecordType = hs.hed__Administrative_Account_Record_Type__c;
 
@@ -203,9 +179,7 @@ private class EDUHIS_DataInteg_TEST {
     * with related Grade Enrollments associated with mis-matching Institutions does not update and displays an error.
     *********************************************************************************************************/
     @isTest
-    public static void updateEducationHistoryWithGradeEnrollmentsMismatching() {
-        EDUHIS_DataInteg_TEST.setup();
-        hed__Hierarchy_Settings__c hs = hed.UTIL_CustomSettings_API.getSettings();
+    public static void updateEducationHistoryWithGradeEnrollmentsMismatching() {        hed__Hierarchy_Settings__c hs = hed.UTIL_CustomSettings_API.getSettings();
         String adminRecordType = hs.hed__Administrative_Account_Record_Type__c;
 
         List<Account> accountsList = new List<Account>();
@@ -249,7 +223,6 @@ private class EDUHIS_DataInteg_TEST {
         Test.stopTest();
 
         for(Database.SaveResult sr : results){
-            //System.assertEquals(false, sr.isSuccess(), 'Update on Education History with mismatching Institutions should fail.');
             for (Database.Error err : sr.getErrors()){
                 System.assertEquals(Label.EduHisInstitutionMismatch, err.getMessage(), 'Error message should display for mismatching Educational Institutions.');
             }
@@ -261,9 +234,7 @@ private class EDUHIS_DataInteg_TEST {
     * with related Grade Enrollments associated with different Institutions does update.
     *********************************************************************************************************/
     @isTest
-    public static void updateEducationHistoryWithGradeEnrollmentsBlankInstitutionOnEducationHistory() {
-        EDUHIS_DataInteg_TEST.setup();
-        hed__Hierarchy_Settings__c hs = hed.UTIL_CustomSettings_API.getSettings();
+    public static void updateEducationHistoryWithGradeEnrollmentsBlankInstitutionOnEducationHistory() {        hed__Hierarchy_Settings__c hs = hed.UTIL_CustomSettings_API.getSettings();
         String adminRecordType = hs.hed__Administrative_Account_Record_Type__c;
 
         List<Account> accountsList = new List<Account>();
@@ -316,9 +287,7 @@ private class EDUHIS_DataInteg_TEST {
     * with related Grade Enrollments associated with blank values for Institution does update.
     *********************************************************************************************************/
     @isTest
-    public static void updateEducationHistoryWithGradeEnrollmentsBlankInstitutionOnGradeEnrollment() {
-        EDUHIS_DataInteg_TEST.setup();
-        hed__Hierarchy_Settings__c hs = hed.UTIL_CustomSettings_API.getSettings();
+    public static void updateEducationHistoryWithGradeEnrollmentsBlankInstitutionOnGradeEnrollment() {        hed__Hierarchy_Settings__c hs = hed.UTIL_CustomSettings_API.getSettings();
         String adminRecordType = hs.hed__Administrative_Account_Record_Type__c;
 
         List<Account> accountsList = new List<Account>();
@@ -371,9 +340,7 @@ private class EDUHIS_DataInteg_TEST {
     * with related Grade Enrollments associated with blank values for Institution does update.
     *********************************************************************************************************/
     @isTest
-    public static void updateEducationHistoryWithGradeEnrollmentsBlankInstitutionOnBoth() {
-        EDUHIS_DataInteg_TEST.setup();
-        hed__Hierarchy_Settings__c hs = hed.UTIL_CustomSettings_API.getSettings();
+    public static void updateEducationHistoryWithGradeEnrollmentsBlankInstitutionOnBoth() {        hed__Hierarchy_Settings__c hs = hed.UTIL_CustomSettings_API.getSettings();
         String adminRecordType = hs.hed__Administrative_Account_Record_Type__c;
 
         List<Account> accountsList = new List<Account>();
@@ -942,7 +909,8 @@ private class EDUHIS_DataInteg_TEST {
 
 
     /*********************************************************************************************************
-    * @description Creates fake Ids for given sObject.
+    * @description Generates a fake ID for a specified SObjectType.
+    * @param sot The SObjectType of the fake Id to generate.
     * @return The fake Id.
     **********************************************************************************************************/
     static Integer s_num = 1;

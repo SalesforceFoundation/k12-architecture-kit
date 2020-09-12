@@ -73,6 +73,7 @@ global with sharing class GRER_DataInteg_TDTM extends hed.TDTM_Runnable {
     * @description Handles the logic associated with an After Insert trigger action.
     * @param  newSObjectsList A list of SObjects to be inserted.
     **********************************************************************************************************************/
+    @TestVisible
     private void handleAfterInsert(List<SObject> newSObjectsList){
         Map<Id, Grade_Enrollment__c> newGradeEnrollmentsById = new Map<Id, Grade_Enrollment__c>((List<Grade_Enrollment__c>)newSObjectsList);
 
