@@ -114,19 +114,6 @@ global with sharing class EDUHIS_DataInteg_TDTM extends hed.TDTM_Runnable {
     * @return True if there is a mismatch between the updated Educational Institution Account on the Education History record
     * and at least one of the related Grade Enrollment records; False otherwise.
     **********************************************************************************************************************/
-    // @TestVisible
-    // private Boolean hasInstitutionMismatch(hed__Education_History__c educationHistoryToUpdate, Id updatedAccountId){
-    //     if (!educationHistoryToUpdate.Grade_Enrollments__r.isEmpty()){
-    //         for (Grade_Enrollment__c grEnroll : educationHistoryToUpdate.Grade_Enrollments__r){
-    //             if (grEnroll.Educational_Institution__c != null && updatedAccountId != null && grEnroll.Educational_Institution__c != updatedAccountId){
-    //                 return true;
-    //             }
-    //         }
-    //     }
-
-    //     return false;
-    // }
-
     @TestVisible
     private Boolean hasInstitutionMismatch(List<Grade_Enrollment__c> gradeEnrollmentsList, Id updatedAccountId){
         for (Grade_Enrollment__c grEnroll : gradeEnrollmentsList){
