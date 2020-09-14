@@ -519,7 +519,7 @@ plans:
                     unmanaged: False
                 ui_options:
                     recordtypes:
-                        name: K-12 Architecture Kit - Account and Contact Record Types
+                        name: K-12 Architecture Kit - Account And Contact Record Types
             4:
                 task: install_managed
             5:
@@ -528,9 +528,11 @@ plans:
                     unmanaged: False
                 ui_options:
                     config:
-                        name: K-12 Architecture Kit Metadata and Configuration
+                        name: K-12 Architecture Kit Metadata And Configuration
             6:
                 task: deploy_k12_app
+                ui_options:
+                    name: Deploy K12 Architecture Kit App Tile
                 
                 
 orgs:
