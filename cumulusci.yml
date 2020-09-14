@@ -531,6 +531,8 @@ plans:
                         name: K-12 Architecture Kit Metadata And Configuration
             6:
                 task: deploy_k12_app
+                ui_options:
+                    name: Deploy K12 Architecture Kit App Tile
                 
                 
 orgs:
