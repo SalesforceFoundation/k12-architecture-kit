@@ -289,23 +289,23 @@ flows:
             1: 
                 task: add_application_type_picklist_values
                 ui_options:
-                    name: EDA Application Type Picklst Values
+                    name: EDA - Application Type Picklist Values
             2:
                 task: add_behavior_response_type_values
                 ui_options:
-                    name: EDA Behavior Response Type Picklst Values
+                    name: EDA - Behavior Response Type Picklist Values
             3:
                 task: add_case_category_values
                 ui_options:
-                    name: EDA Case Category Type Picklst Values
+                    name: EDA - Case Category Type Picklist Values
             4:
                 task: add_case_location_values
                 ui_options:
-                    name: EDA Case Location Type Picklist Values
+                    name: EDA - Case Location Type Picklist Values
             5:
                 task: add_behavior_involvement_values
                 ui_options:
-                    name: EDA Behavior Invlovement Role Picklist Values
+                    name: EDA - Behavior Involvement Role Picklist Values
                 
     beta_dependencies:
         steps:
@@ -531,6 +531,7 @@ plans:
                         name: K-12 Architecture Kit Metadata and Configuration
             6:
                 task: deploy_k12_app
+                
                 
 orgs:
     scratch:
