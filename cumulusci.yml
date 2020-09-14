@@ -288,14 +288,24 @@ flows:
         steps:
             1: 
                 task: add_application_type_picklist_values
+                ui_options:
+                    name: K-12 Architecture Kit Add EDA Application Type Picklst Values
             2:
                 task: add_behavior_response_type_values
+                ui_options:
+                    name: K-12 Architecture Kit Add EDA Behavior Response Type Picklst Values
             3:
                 task: add_case_category_values
+                ui_options:
+                    name: K-12 Architecture Kit Add EDA Case Category Type Picklst Values
             4:
                 task: add_case_location_values
+                ui_options:
+                    name:  K-12 Architecture Kit Add EDA Case Location Type Picklist Values
             5:
                 task: add_behavior_involvement_values
+                ui_options:
+                    name:  K-12 Architecture Kit Add EDA Behavior Invlovement Role Picklist Values
                 
     beta_dependencies:
         steps:
