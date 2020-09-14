@@ -36,16 +36,6 @@ private class GRER_DataInteg_TEST {
     /*********************************************************************************************************
     *****************************************FUNCTIONAL TESTS*************************************************
     **********************************************************************************************************/
-
-    /*********************************************************************************************************
-    * @description Test to verify that inserting a Grade Enrollment record without an associated Education
-    * History record proceeds without error.
-    *********************************************************************************************************/
-    @isTest 
-    private static void insertGradeEnrollmentNoEducationHistory(){
-        //TODO: start here
-    }
-    
     
     /*********************************************************************************************************
     * @description Test to verify that inserting a Grade Enrollment record with an Educational Institution
@@ -1210,7 +1200,7 @@ private class GRER_DataInteg_TEST {
     }
 
     /*********************************************************************************************************
-    * @description Generates a fake ID for a specified SObjectType.
+    * @description Helper method to generate a fake ID for a specified SObjectType.
     * @param sot The SObjectType of the fake Id to generate.
     * @return The fake Id.
     **********************************************************************************************************/
