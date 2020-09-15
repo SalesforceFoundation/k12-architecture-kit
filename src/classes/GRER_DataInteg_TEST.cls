@@ -1106,6 +1106,10 @@ private class GRER_DataInteg_TEST {
         System.assertEquals(true, exceptionsList.isEmpty(), 'Inserting Grade Enrollments with matching Educational Institution should not display error messages.');
     }
 
+    /*********************************************************************************************************
+    * @description Test to verify that method handleAfterInsert() does not processes and insert  Grade 
+    * Enrollment records with Education Institutions when performed in a recursive context.
+    *********************************************************************************************************/
     @isTest 
     private static void handleAfterInsertRecursion(){
         hed__Hierarchy_Settings__c hs = hed.UTIL_CustomSettings_API.getSettings();
