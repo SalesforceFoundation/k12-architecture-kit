@@ -89,16 +89,18 @@ global with sharing class EDUHIS_DataInteg_TDTM extends hed.TDTM_Runnable {
         }
         
         for (hed__Education_History__c eduHist : newEdHistById.values()){
-            if (String.isBlank(eduHist.hed__Account__c) == true || gradeEnrollmentByEduHistId.containsKey(eduHist.Id) == false){
+            if (String.isBlank(eduHist.hed__Account__c) == true || 
+                    gradeEnrollmentByEduHistId.containsKey(eduHist.Id) == false ||
+                    String.isBlank(gradeEnrollmentByEduHistId.get(eduHist.Id).Educational_Institution__c)){
                 continue;
             }
 
             hed__Education_History__c oldEduHist = oldEdHistById.get(eduHist.Id);
 
             if (eduHist.hed__Account__c != oldEduHist.hed__Account__c){
-                Grade_Enrollment__c relatedGradeEnrollment = gradeEnrollmentByEduHistId.get(eduHist.Id);
+                //Id relatedGradeEnrollmentInstitutionId = gradeEnrollmentByEduHistId.get(eduHist.Id).Educational_Institution__c;
 
-                if (eduHist.hed__Account__c != relatedGradeEnrollment.Educational_Institution__c){
+                if (eduHist.hed__Account__c != gradeEnrollmentByEduHistId.get(eduHist.Id).Educational_Institution__c){
                     eduHist.addError(Label.EduHisInstitutionMismatch);
                 }
             }
