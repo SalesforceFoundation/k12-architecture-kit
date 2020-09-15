@@ -73,55 +73,45 @@ global with sharing class EDUHIS_DataInteg_TDTM extends hed.TDTM_Runnable {
     **********************************************************************************************************************/
     @TestVisible
     private void handleBeforeUpdate(List<SObject> newSObjectsList, List<SObject> oldSObjectsList){
+        this.checkForGradeEnrollmentEducationalInstitutionMismatch(newSObjectsList, oldSObjectsList);
+    }
+
+    /**********************************************************************************************************************
+    * @description Determines whether the updated non-blank value for Educational Institution Account on an Education 
+    * History record matches the non-blank Educational Institution specified for the related Grade Enrollment record.
+    * @param  newSObjectsList List of SObjects in updated state.
+    * @param  oldSObjectsList List of SObjects in state before update.
+    **********************************************************************************************************************/
+    @TestVisible
+    private void checkForGradeEnrollmentEducationalInstitutionMismatch(List<SObject> newSObjectsList, List<SObject> oldSObjectsList){
         Map<Id, hed__Education_History__c> newEdHistById = new Map<Id, hed__Education_History__c>((List<hed__Education_History__c>)newSObjectsList);
         Map<Id, hed__Education_History__c> oldEdHistById = new Map<Id, hed__Education_History__c>((List<hed__Education_History__c>)oldSObjectsList);
+        Map<Id, Grade_Enrollment__c> gradeEnrollmentByEduHistId = new Map<Id, Grade_Enrollment__c>();
 
-        List<hed__Education_History__c> educationHistoriesToUpdateList = [SELECT Id,
-                                                                                 Name,
-                                                                                 hed__Account__c,
-                                                                                 (SELECT Contact__c, Educational_Institution__c 
-                                                                                 FROM Grade_Enrollments__r)
-                                                                          FROM hed__Education_History__c
-                                                                          WHERE Id IN :newEdHistById.keySet()];
+        List<Grade_Enrollment__c> relatedGradeEnrollmentsList = ([SELECT Id,
+                                                                         Educational_Institution__c,
+                                                                         Education_History__c,
+                                                                         Contact__c
+                                                                 FROM Grade_Enrollment__c
+                                                                 WHERE Education_History__c IN :newEdHistById.keySet()]);
+
+        for(Grade_Enrollment__c gradeEnroll : relatedGradeEnrollmentsList){
+            gradeEnrollmentByEduHistId.put(gradeEnroll.Education_History__c, gradeEnroll);
+        }
         
-        for (hed__Education_History__c eduHist : educationHistoriesToUpdateList){
-            hed__Education_History__c updatedEduHistInContext = newEdHistById.get(eduHist.Id);
+        for (hed__Education_History__c eduHist : newEdHistById.values()){
             hed__Education_History__c oldEduHist = oldEdHistById.get(eduHist.Id);
 
-            if (updatedEduHistInContext.hed__Account__c != oldEduHist.hed__Account__c){
-                if (this.hasChildRecords(eduHist) && this.hasInstitutionMismatch(eduHist.Grade_Enrollments__r, updatedEduHistInContext.hed__Account__c)){
-                    updatedEduHistInContext.addError(Label.EduHisInstitutionMismatch);
+            if (eduHist.hed__Account__c != oldEduHist.hed__Account__c && gradeEnrollmentByEduHistId.containsKey(eduHist.Id)){
+                Grade_Enrollment__c relatedGradeEnrollment = gradeEnrollmentByEduHistId.get(eduHist.Id);
+
+                if (eduHist.hed__Account__c != null && 
+                        relatedGradeEnrollment.Educational_Institution__c != null && 
+                        eduHist.hed__Account__c != relatedGradeEnrollment.Educational_Institution__c){
+
+                    eduHist.addError(Label.EduHisInstitutionMismatch);
                 }
             }
         }
-    }
-
-    /**********************************************************************************************************************
-    * @description Determines whether an Education History record is associated with child records.
-    * @param  educationHistory The Education History record to check for child records.
-    * @return True if the Education History record is associated with child records, False otherwise.
-    **********************************************************************************************************************/
-    @TestVisible
-    private Boolean hasChildRecords(hed__Education_History__c educationHistory) {
-        return ( educationHistory.Grade_Enrollments__r.isEmpty() == false ); 
-    }
-
-    /**********************************************************************************************************************
-    * @description Determines whether the updated Educational Institution Account on an Education History record matches
-    * the Educational Institution specified for all related child Grade Enrollment records.
-    * @param  educationHistoryToUpdate The Education History record being updated.
-    * @param  updatedAccountId The Id of the Account that will be the value for the updated Educational Institution on the Education History record.
-    * @return True if there is a mismatch between the updated Educational Institution Account on the Education History record
-    * and at least one of the related Grade Enrollment records; False otherwise.
-    **********************************************************************************************************************/
-    @TestVisible
-    private Boolean hasInstitutionMismatch(List<Grade_Enrollment__c> gradeEnrollmentsList, Id updatedAccountId){
-        for (Grade_Enrollment__c grEnroll : gradeEnrollmentsList){
-            if (grEnroll.Educational_Institution__c != null && updatedAccountId != null && grEnroll.Educational_Institution__c != updatedAccountId){
-                return true;
-            }
-        }
-
-        return false;
     }
 }

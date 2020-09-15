@@ -939,7 +939,6 @@ private class GRER_DataInteg_TEST {
         Test.stopTest();
 
         System.assertEquals(true, exceptionsList.isEmpty(), 'Inserting Grade Enrollments with matching Educational Institution should not display error messages.');
-        
     }
 
     /*********************************************************************************************************
