@@ -98,8 +98,6 @@ global with sharing class EDUHIS_DataInteg_TDTM extends hed.TDTM_Runnable {
             hed__Education_History__c oldEduHist = oldEdHistById.get(eduHist.Id);
 
             if (eduHist.hed__Account__c != oldEduHist.hed__Account__c){
-                //Id relatedGradeEnrollmentInstitutionId = gradeEnrollmentByEduHistId.get(eduHist.Id).Educational_Institution__c;
-
                 if (eduHist.hed__Account__c != gradeEnrollmentByEduHistId.get(eduHist.Id).Educational_Institution__c){
                     eduHist.addError(Label.EduHisInstitutionMismatch);
                 }
