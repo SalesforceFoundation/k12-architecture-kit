@@ -320,16 +320,27 @@ flows:
         steps:
             1: 
                 task: add_application_type_picklist_values
+                ui_options:
+                    name: K-12 Architecture Kit - Add Application Type Picklist Values
             2:
                 task: add_behavior_response_type_values
+                ui_options:
+                    name: K-12 Architecture Kit - Add Behavior Response Type Picklist Values
             3:
                 task: add_case_category_values
+                ui_options:
+                    name: K-12 Architecture Kit - Add Case Category Type Picklist Values
             4:
                 task: add_case_location_values
+                ui_options:
+                    name: K-12 Architecture Kit - Add Case Location Type Picklist Values
             5:
                 task: add_behavior_involvement_values
             6:
                 task: add_relationship_picklist_values
+                ui_options:
+                    name: K-12 Architecture Kit - Add Behavior Involvement Role Picklist Values
+
                 
     beta_dependencies:
         steps:
@@ -555,6 +566,9 @@ plans:
                         name: K-12 Architecture Kit Metadata and Configuration
             6:
                 task: deploy_k12_app
+                ui_options:
+                    name: Deploy K-12 Architecture Kit App Tile
+                
                 
 orgs:
     scratch:
