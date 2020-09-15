@@ -559,7 +559,7 @@ plans:
     picklists:
         slug: picklists
         title: Install K-12 Architecture Kit picklist values
-        tier: secondary
+        tier: additional
         steps:
             1:
                 flow: add_k12_picklist_values
