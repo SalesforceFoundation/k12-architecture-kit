@@ -29,7 +29,9 @@
 * @date 2019
 * @group Grade Enrollments
 * @group-content ../../ApexDocContent/GradeEnrollments.htm
-* @description Tests for GRER_SyncGradeLevel_TDTM class*/
+* @description Test class for GRER_DataInteg_TDTM class to ensure that updates to the Educational 
+* Institution on a Grade Enrollment record with a related Education History only occurs if the 
+* institutions on both records match. */
 @isTest
 private class GRER_DataInteg_TEST {
     
@@ -1509,7 +1511,7 @@ private class GRER_DataInteg_TEST {
             newGradeEnroll.Educational_Institution__c = secondAccount.Id;
             newGradeEnrollmentsList.add(newGradeEnroll);
         }
-        
+
         GRER_DataInteg_TDTM gradeEnrollTdtm = new GRER_DataInteg_TDTM();
         List<Exception> exceptionsList = new List<Exception>();
 

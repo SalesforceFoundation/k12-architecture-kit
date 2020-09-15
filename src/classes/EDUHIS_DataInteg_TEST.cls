@@ -29,7 +29,9 @@
 * @date 2019
 * @group Grade Enrollments
 * @group-content ../../ApexDocContent/GradeEnrollments.htm
-* @description Tests for GRER_SyncGradeLevel_TDTM class*/
+* @description Test class for EDUHIS_DataInteg_TDTM class to ensure that updates to the Educational 
+* Institution on an Education History record with a related Grade Enrollment only occurs if the 
+* institutions on both records match. */
 @isTest
 private class EDUHIS_DataInteg_TEST {
 
