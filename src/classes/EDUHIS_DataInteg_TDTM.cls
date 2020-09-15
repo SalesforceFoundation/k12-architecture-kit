@@ -33,21 +33,20 @@
 * @group Education History
 * @group-content ../../ApexDocContent/EducationHistory.htm
 * @description Whenever the Educational Institution field on an Education History record is updated with a non-null
-* value, it is compared to the non-null values specified for the 'Educational Institution' field on all related Grade
-* Enrollment records.  The update will be processed only if the Educational Institution fields on all records match,
-* otherwise, an error message will be displayed.
+* value, it is compared to the non-null value specified for the 'Educational Institution' field on the related Grade
+* Enrollment record.  The update will be processed only if the Educational Institution fields are a match, otherwise, 
+* an error message will be displayed.
 */
 global with sharing class EDUHIS_DataInteg_TDTM extends hed.TDTM_Runnable {
     /**********************************************************************************************************************
     * @description Whenever an Educational History record is updated with a change to the assocaited Educational Institution 
-    * Account, the new Educational Institution is compared with each Institution associated with all the related Grade
-    * Enrollments.  If any of the Educational Institutions associated with the related Grade Enrollment records do not match
-    * the updated Institution specified on the Educational History record, the updated is blocked an an error message is
-    * displayed.  Note that blank values for the Educational Institution are not included in the comparison.
-    * @param newList the list of Education History records from trigger new.
-    * @param oldList the list of Education History records from trigger old.
-    * @param triggerAction which trigger event (AfterInsert, AfterUpdate, etc.).
-    * @param objResult the describe for Education History.
+    * Account, the new Educational Institution is compared with the Institution specified on the related Grade Enrollment
+    * record.  If there is a mis-match, the update is blocked an an error message displayed. Note that blank values for 
+    * the Educational Institution are not included in the comparison.
+    * @param newList The list of Education History records from trigger new.
+    * @param oldList The list of Education History records from trigger old.
+    * @param triggerAction The associated trigger event (AfterInsert, AfterUpdate, etc.).
+    * @param objResult The describe for Education History.
     * @return dmlWrapper
     ************************************************************************************************************************/
     global override hed.TDTM_Runnable.DmlWrapper run(List<SObject> newList, List<SObject> oldList,
@@ -60,25 +59,15 @@ global with sharing class EDUHIS_DataInteg_TDTM extends hed.TDTM_Runnable {
         }
 
         if (triggerAction == hed.TDTM_Runnable.Action.BeforeUpdate) {
-            this.handleBeforeUpdate(newList, oldList);
+            this.checkForGradeEnrollmentEducationalInstitutionMismatch(newList, oldList);
         }
 
         return dmlWrapper;
     }
 
     /**********************************************************************************************************************
-    * @description Handles the logic associated with a Before Update trigger action.
-    * @param  newSObjectsList List of SObjects in updated state.
-    * @param  oldSObjectsList List of SObjects in state before update.
-    **********************************************************************************************************************/
-    @TestVisible
-    private void handleBeforeUpdate(List<SObject> newSObjectsList, List<SObject> oldSObjectsList){
-        this.checkForGradeEnrollmentEducationalInstitutionMismatch(newSObjectsList, oldSObjectsList);
-    }
-
-    /**********************************************************************************************************************
-    * @description Determines whether the updated non-blank value for Educational Institution Account on an Education 
-    * History record matches the non-blank Educational Institution specified for the related Grade Enrollment record.
+    * @description Determines whether the updated non-blank value for the Educational Institution Account on an Education 
+    * History record matches the non-blank Educational Institution value specified on the related Grade Enrollment record.
     * @param  newSObjectsList List of SObjects in updated state.
     * @param  oldSObjectsList List of SObjects in state before update.
     **********************************************************************************************************************/
@@ -100,15 +89,16 @@ global with sharing class EDUHIS_DataInteg_TDTM extends hed.TDTM_Runnable {
         }
         
         for (hed__Education_History__c eduHist : newEdHistById.values()){
+            if (String.isBlank(eduHist.hed__Account__c) == true || gradeEnrollmentByEduHistId.containsKey(eduHist.Id) == false){
+                continue;
+            }
+
             hed__Education_History__c oldEduHist = oldEdHistById.get(eduHist.Id);
 
-            if (eduHist.hed__Account__c != oldEduHist.hed__Account__c && gradeEnrollmentByEduHistId.containsKey(eduHist.Id)){
+            if (eduHist.hed__Account__c != oldEduHist.hed__Account__c){
                 Grade_Enrollment__c relatedGradeEnrollment = gradeEnrollmentByEduHistId.get(eduHist.Id);
 
-                if (eduHist.hed__Account__c != null && 
-                        relatedGradeEnrollment.Educational_Institution__c != null && 
-                        eduHist.hed__Account__c != relatedGradeEnrollment.Educational_Institution__c){
-
+                if (eduHist.hed__Account__c != relatedGradeEnrollment.Educational_Institution__c){
                     eduHist.addError(Label.EduHisInstitutionMismatch);
                 }
             }

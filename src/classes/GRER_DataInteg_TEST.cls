@@ -39,7 +39,7 @@ private class GRER_DataInteg_TEST {
     
     /*********************************************************************************************************
     * @description Test to verify that inserting a Grade Enrollment record with an Educational Institution
-    * value matching the Educational Institution value on the associated Education History record
+    * value matching the Educational Institution on the associated Education History record
     * proceeds without error.
     *********************************************************************************************************/
     @isTest 
@@ -47,6 +47,7 @@ private class GRER_DataInteg_TEST {
         hed__Hierarchy_Settings__c hs = hed.UTIL_CustomSettings_API.getSettings();
         String adminRecordType = hs.hed__Administrative_Account_Record_Type__c;
 
+        List<hed__Education_History__c> eduHistList = new List<hed__Education_History__c>();
         List<Grade_Enrollment__c> gradeEnrollmentsList = new List<Grade_Enrollment__c>();
 
         Account firstAccount = new Account(RecordTypeId = adminRecordType, Name = 'Test Account 1');
@@ -55,15 +56,20 @@ private class GRER_DataInteg_TEST {
         Contact testContact = new Contact(LastName = 'Testerson');
         insert testContact;
 
-        hed__Education_History__c testEduHist = new hed__Education_History__c(hed__Contact__c = testContact.Id,
-                                                                              hed__Account__c = firstAccount.Id);
-        insert testEduHist;
-
         for (Integer i = 0; i < 5; i++){
+            hed__Education_History__c testEduHist = new hed__Education_History__c(hed__Contact__c = testContact.Id,
+                                                                                  hed__Account__c = firstAccount.Id);
+
+            eduHistList.add(testEduHist);
+        }
+
+        insert eduHistList;
+
+        for (hed__Education_History__c eduHist : eduHistList){
             Grade_Enrollment__c gradeEnroll = new Grade_Enrollment__c(Contact__c = testContact.Id,
                                                                       Educational_Institution__c = firstAccount.Id,
                                                                       Grade_Level__c = 'Eighth Grade',
-                                                                      Education_History__c = testEduHist.Id
+                                                                      Education_History__c = eduHist.Id
                                                                      );
 
             gradeEnrollmentsList.add(gradeEnroll);
@@ -83,8 +89,7 @@ private class GRER_DataInteg_TEST {
         System.assertEquals(5, gradeEnrollmentResultsList.size(), 'Five Grade Enrollment records should be successfully inserted.');
 
         for (Grade_Enrollment__c gradeEnroll : gradeEnrollmentResultsList){
-            System.assertEquals(testEduHist.Id, gradeEnroll.Education_History__c, 'Grade Enrollment Institution should match the Institution on associated Education History record.');
-            System.assertEquals(true, gradeEnroll.Educational_Institution__c == gradeEnroll.Education_History__r.hed__Account__c, 'Educational Institution on Grade Enrollment and Education History records should match.');
+            System.assertEquals(gradeEnroll.Education_History__r.hed__Account__c, gradeEnroll.Educational_Institution__c, 'Educational Institution on Grade Enrollment and Education History records should match.');
             System.assertEquals(true, String.isNotBlank(gradeEnroll.Educational_Institution__c), 'Educational Institution on Grade Enrollment and Education History records should be populated.');
             System.assertEquals(true, gradeEnroll.Educational_Institution__c == gradeEnroll.Education_History__r.hed__Account__c, 'Educational Institution on Grade Enrollment and Education History should be equal.');
         }
@@ -100,6 +105,7 @@ private class GRER_DataInteg_TEST {
         hed__Hierarchy_Settings__c hs = hed.UTIL_CustomSettings_API.getSettings();
         String adminRecordType = hs.hed__Administrative_Account_Record_Type__c;
 
+        List<hed__Education_History__c> eduHistList = new List<hed__Education_History__c>();
         List<Grade_Enrollment__c> gradeEnrollmentsList = new List<Grade_Enrollment__c>();
         List<Account> testAccountsList = new List<Account>();
 
@@ -113,15 +119,20 @@ private class GRER_DataInteg_TEST {
         Contact testContact = new Contact(LastName = 'Testerson');
         insert testContact;
 
-        hed__Education_History__c testEduHist = new hed__Education_History__c(hed__Contact__c = testContact.Id,
-                                                                              hed__Account__c = firstAccount.Id);
-        insert testEduHist;
-
         for (Integer i = 0; i < 5; i++){
+            hed__Education_History__c testEduHist = new hed__Education_History__c(hed__Contact__c = testContact.Id,
+                                                                                  hed__Account__c = firstAccount.Id);
+
+            eduHistList.add(testEduHist);
+        }
+
+        insert eduHistList;
+
+        for (hed__Education_History__c eduHist : eduHistList){
             Grade_Enrollment__c gradeEnroll = new Grade_Enrollment__c(Contact__c = testContact.Id,
                                                                       Educational_Institution__c = secondAccount.Id,
                                                                       Grade_Level__c = 'Eighth Grade',
-                                                                      Education_History__c = testEduHist.Id
+                                                                      Education_History__c = eduHist.Id
                                                                      );
 
             gradeEnrollmentsList.add(gradeEnroll);
@@ -148,6 +159,7 @@ private class GRER_DataInteg_TEST {
         hed__Hierarchy_Settings__c hs = hed.UTIL_CustomSettings_API.getSettings();
         String adminRecordType = hs.hed__Administrative_Account_Record_Type__c;
 
+        List<hed__Education_History__c> eduHistList = new List<hed__Education_History__c>();
         List<Grade_Enrollment__c> gradeEnrollmentsList = new List<Grade_Enrollment__c>();
 
         Account firstAccount = new Account(RecordTypeId = adminRecordType, Name = 'Test Account 1');
@@ -156,15 +168,20 @@ private class GRER_DataInteg_TEST {
         Contact testContact = new Contact(LastName = 'Testerson');
         insert testContact;
 
-        hed__Education_History__c testEduHist = new hed__Education_History__c(hed__Contact__c = testContact.Id,
-                                                                              hed__Account__c = firstAccount.Id);
-        insert testEduHist;
-
         for (Integer i = 0; i < 5; i++){
+            hed__Education_History__c testEduHist = new hed__Education_History__c(hed__Contact__c = testContact.Id,
+                                                                                  hed__Account__c = firstAccount.Id);
+
+            eduHistList.add(testEduHist);
+        }
+
+        insert eduHistList;
+
+        for (hed__Education_History__c eduHist : eduHistList){
             Grade_Enrollment__c gradeEnroll = new Grade_Enrollment__c(Contact__c = testContact.Id,
                                                                       Educational_Institution__c = null,
                                                                       Grade_Level__c = 'Eighth Grade',
-                                                                      Education_History__c = testEduHist.Id
+                                                                      Education_History__c = eduHist.Id
                                                                      );
 
             gradeEnrollmentsList.add(gradeEnroll);
@@ -184,10 +201,9 @@ private class GRER_DataInteg_TEST {
         System.assertEquals(5, gradeEnrollmentResultsList.size(), 'Five Grade Enrollment records should be successfully inserted.');
 
         for (Grade_Enrollment__c gradeEnroll : gradeEnrollmentResultsList){
-            System.assertEquals(testEduHist.Id, gradeEnroll.Education_History__c, 'Grade Enrollment Institution should match the Institution on associated Education History record.');
             System.assertEquals(true, String.isBlank(gradeEnroll.Educational_Institution__c), 'Grade Enrollment should be inserted with blank value for Institution.');
             System.assertEquals(firstAccount.Id, gradeEnroll.Education_History__r.hed__Account__c, 'Educational Institution on Education History record should be populated.');
-            System.assertEquals(true, gradeEnroll.Educational_Institution__c != gradeEnroll.Education_History__r.hed__Account__c, 'Educational Institution on Grade Enrollment and Education History should not be equal.');
+            System.assertEquals(true, gradeEnroll.Educational_Institution__c != gradeEnroll.Education_History__r.hed__Account__c, 'Educational Institution on Grade Enrollment and Education History should not match.');
         }
     }
 
@@ -201,6 +217,7 @@ private class GRER_DataInteg_TEST {
         hed__Hierarchy_Settings__c hs = hed.UTIL_CustomSettings_API.getSettings();
         String adminRecordType = hs.hed__Administrative_Account_Record_Type__c;
 
+        List<hed__Education_History__c> eduHistList = new List<hed__Education_History__c>();
         List<Grade_Enrollment__c> gradeEnrollmentsList = new List<Grade_Enrollment__c>();
 
         Account firstAccount = new Account(RecordTypeId = adminRecordType, Name = 'Test Account 1');
@@ -209,15 +226,20 @@ private class GRER_DataInteg_TEST {
         Contact testContact = new Contact(LastName = 'Testerson');
         insert testContact;
 
-        hed__Education_History__c testEduHist = new hed__Education_History__c(hed__Contact__c = testContact.Id,
-                                                                              hed__Account__c = null);
-        insert testEduHist;
-
         for (Integer i = 0; i < 5; i++){
+            hed__Education_History__c testEduHist = new hed__Education_History__c(hed__Contact__c = testContact.Id,
+                                                                                  hed__Account__c = null);
+
+            eduHistList.add(testEduHist);
+        }
+
+        insert eduHistList;
+
+        for (hed__Education_History__c eduHist : eduHistList){
             Grade_Enrollment__c gradeEnroll = new Grade_Enrollment__c(Contact__c = testContact.Id,
                                                                       Educational_Institution__c = firstAccount.Id,
                                                                       Grade_Level__c = 'Eighth Grade',
-                                                                      Education_History__c = testEduHist.Id
+                                                                      Education_History__c = eduHist.Id
                                                                      );
 
             gradeEnrollmentsList.add(gradeEnroll);
@@ -237,10 +259,9 @@ private class GRER_DataInteg_TEST {
         System.assertEquals(5, gradeEnrollmentResultsList.size(), 'Five Grade Enrollment records should be successfully inserted.');
 
         for (Grade_Enrollment__c gradeEnroll : gradeEnrollmentResultsList){
-            System.assertEquals(testEduHist.Id, gradeEnroll.Education_History__c, 'Grade Enrollment Institution should match the Institution on associated Education History record.');
             System.assertEquals(true, String.isBlank(gradeEnroll.Education_History__r.hed__Account__c), 'Education History Institution field should remain blank.');
             System.assertEquals(firstAccount.Id, gradeEnroll.Educational_Institution__c, 'Grade Enrollment should be inserted with Institution field populated.');
-            System.assertEquals(true, gradeEnroll.Educational_Institution__c != gradeEnroll.Education_History__r.hed__Account__c, 'Educational Institution on Grade Enrollment and Education History should not be equal.');
+            System.assertEquals(true, gradeEnroll.Educational_Institution__c != gradeEnroll.Education_History__r.hed__Account__c, 'Educational Institution on Grade Enrollment and Education History should not match.');
         }
     }
 
@@ -254,20 +275,26 @@ private class GRER_DataInteg_TEST {
         hed__Hierarchy_Settings__c hs = hed.UTIL_CustomSettings_API.getSettings();
         String adminRecordType = hs.hed__Administrative_Account_Record_Type__c;
 
+        List<hed__Education_History__c> eduHistList = new List<hed__Education_History__c>();
         List<Grade_Enrollment__c> gradeEnrollmentsList = new List<Grade_Enrollment__c>();
 
         Contact testContact = new Contact(LastName = 'Testerson');
         insert testContact;
 
-        hed__Education_History__c testEduHist = new hed__Education_History__c(hed__Contact__c = testContact.Id,
-                                                                              hed__Account__c = null);
-        insert testEduHist;
-
         for (Integer i = 0; i < 5; i++){
+            hed__Education_History__c testEduHist = new hed__Education_History__c(hed__Contact__c = testContact.Id,
+                                                                                  hed__Account__c = null);
+
+            eduHistList.add(testEduHist);
+        }
+
+        insert eduHistList;
+
+        for (hed__Education_History__c eduHist : eduHistList){
             Grade_Enrollment__c gradeEnroll = new Grade_Enrollment__c(Contact__c = testContact.Id,
                                                                       Educational_Institution__c = null,
                                                                       Grade_Level__c = 'Eighth Grade',
-                                                                      Education_History__c = testEduHist.Id
+                                                                      Education_History__c = eduHist.Id
                                                                      );
 
             gradeEnrollmentsList.add(gradeEnroll);
@@ -287,9 +314,8 @@ private class GRER_DataInteg_TEST {
         System.assertEquals(5, gradeEnrollmentResultsList.size(), 'Five Grade Enrollment records should be successfully inserted.');
 
         for (Grade_Enrollment__c gradeEnroll : gradeEnrollmentResultsList){
-            System.assertEquals(testEduHist.Id, gradeEnroll.Education_History__c, 'Grade Enrollment Institution should match the Institution on associated Education History record.');
             System.assertEquals(true, String.isBlank(gradeEnroll.Education_History__r.hed__Account__c), 'Education History Institution field should be blank.');
-            System.assertEquals(true, gradeEnroll.Educational_Institution__c == gradeEnroll.Education_History__r.hed__Account__c, 'Educational Institution on Grade Enrollment and Education History should be equal.');
+            System.assertEquals(gradeEnroll.Education_History__r.hed__Account__c, gradeEnroll.Educational_Institution__c, 'Educational Institution on Grade Enrollment and Education History should match.');
         }
     }
 
@@ -300,32 +326,50 @@ private class GRER_DataInteg_TEST {
     *********************************************************************************************************/
     @isTest 
     private static void updateGradeEnrollmentMatchingInstitution(){
+        GRER_DataInteg_TEST.disableEDUHISDataIntegTrigger();
+
         hed__Hierarchy_Settings__c hs = hed.UTIL_CustomSettings_API.getSettings();
         String adminRecordType = hs.hed__Administrative_Account_Record_Type__c;
 
+        List<Account> accountsList = new List<Account>();
+        List<hed__Education_History__c> eduHistList = new List<hed__Education_History__c>();
         List<Grade_Enrollment__c> gradeEnrollmentsList = new List<Grade_Enrollment__c>();
 
         Contact testContact = new Contact(LastName = 'Testerson');
         insert testContact;
 
         Account firstAccount = new Account(RecordTypeId = adminRecordType, Name = 'Test Account 1');
-        insert firstAccount;
-
-        hed__Education_History__c testEduHist = new hed__Education_History__c(hed__Contact__c = testContact.Id,
-                                                                              hed__Account__c = firstAccount.Id);
-        insert testEduHist;
+        Account secondAccount = new Account(RecordTypeId = adminRecordType, Name = 'Test Account 2');
+        accountsList.add(firstAccount);
+        accountsList.add(secondAccount);
+        insert accountsList;
 
         for (Integer i = 0; i < 5; i++){
+            hed__Education_History__c testEduHist = new hed__Education_History__c(hed__Contact__c = testContact.Id,
+                                                                                  hed__Account__c = null);
+
+            eduHistList.add(testEduHist);
+        }
+
+        insert eduHistList;
+
+        for (hed__Education_History__c eduHist : eduHistList){
             Grade_Enrollment__c gradeEnroll = new Grade_Enrollment__c(Contact__c = testContact.Id,
-                                                                      Educational_Institution__c = null,
+                                                                      Educational_Institution__c = secondAccount.Id,
                                                                       Grade_Level__c = 'Eighth Grade',
-                                                                      Education_History__c = testEduHist.Id
+                                                                      Education_History__c = eduHist.Id
                                                                      );
 
             gradeEnrollmentsList.add(gradeEnroll);
         }
 
         insert gradeEnrollmentsList;
+
+        for (hed__Education_History__c eduHist : eduHistList){
+            eduHist.hed__Account__c = firstAccount.Id;
+        }
+
+        update eduHistList;
 
         for (Grade_Enrollment__c gradeEnroll : gradeEnrollmentsList){
             gradeEnroll.Educational_Institution__c = firstAccount.Id;
@@ -343,9 +387,8 @@ private class GRER_DataInteg_TEST {
                                                                 WHERE Id IN :gradeEnrollmentsList];
 
         for (Grade_Enrollment__c gradeEnroll : gradeEnrollmentResultsList){
-            System.assertEquals(testEduHist.Id, gradeEnroll.Education_History__c, 'Grade Enrollment Institution should match the Institution on associated Education History record.');
             System.assertEquals(firstAccount.Id, gradeEnroll.Educational_Institution__c, 'Education History Institution field on Grade Enrollment should be updated.');
-            System.assertEquals(true, gradeEnroll.Educational_Institution__c == gradeEnroll.Education_History__r.hed__Account__c, 'Educational Institution on Grade Enrollment and Education History should be equal.');
+            System.assertEquals(gradeEnroll.Education_History__r.hed__Account__c, gradeEnroll.Educational_Institution__c, 'Educational Institution on Grade Enrollment and Education History should match.');
         }
     }
 
@@ -359,6 +402,7 @@ private class GRER_DataInteg_TEST {
         hed__Hierarchy_Settings__c hs = hed.UTIL_CustomSettings_API.getSettings();
         String adminRecordType = hs.hed__Administrative_Account_Record_Type__c;
 
+        List<hed__Education_History__c> eduHistList = new List<hed__Education_History__c>();
         List<Grade_Enrollment__c> gradeEnrollmentsList = new List<Grade_Enrollment__c>();
         List<Account> accountsList = new List<Account>();
 
@@ -367,20 +411,24 @@ private class GRER_DataInteg_TEST {
 
         Account firstAccount = new Account(RecordTypeId = adminRecordType, Name = 'Test Account 1');
         Account secondAccount = new Account(RecordTypeId = adminRecordType, Name = 'Test Account 2');
-
         accountsList.add(firstAccount);
         accountsList.add(secondAccount);
         insert accountsList;
 
-        hed__Education_History__c testEduHist = new hed__Education_History__c(hed__Contact__c = testContact.Id,
-                                                                              hed__Account__c = firstAccount.Id);
-        insert testEduHist;
-
         for (Integer i = 0; i < 5; i++){
+            hed__Education_History__c testEduHist = new hed__Education_History__c(hed__Contact__c = testContact.Id,
+                                                                                  hed__Account__c = firstAccount.Id);
+
+            eduHistList.add(testEduHist);
+        }
+
+        insert eduHistList;
+
+        for (hed__Education_History__c eduHist : eduHistList){
             Grade_Enrollment__c gradeEnroll = new Grade_Enrollment__c(Contact__c = testContact.Id,
                                                                       Educational_Institution__c = firstAccount.Id,
                                                                       Grade_Level__c = 'Eighth Grade',
-                                                                      Education_History__c = testEduHist.Id
+                                                                      Education_History__c = eduHist.Id
                                                                      );
 
             gradeEnrollmentsList.add(gradeEnroll);
@@ -413,6 +461,7 @@ private class GRER_DataInteg_TEST {
         hed__Hierarchy_Settings__c hs = hed.UTIL_CustomSettings_API.getSettings();
         String adminRecordType = hs.hed__Administrative_Account_Record_Type__c;
 
+        List<hed__Education_History__c> eduHistList = new List<hed__Education_History__c>();
         List<Grade_Enrollment__c> gradeEnrollmentsList = new List<Grade_Enrollment__c>();
 
         Contact testContact = new Contact(LastName = 'Testerson');
@@ -421,15 +470,20 @@ private class GRER_DataInteg_TEST {
         Account firstAccount = new Account(RecordTypeId = adminRecordType, Name = 'Test Account 1');
         insert firstAccount;
 
-        hed__Education_History__c testEduHist = new hed__Education_History__c(hed__Contact__c = testContact.Id,
-                                                                              hed__Account__c = firstAccount.Id);
-        insert testEduHist;
-
         for (Integer i = 0; i < 5; i++){
+            hed__Education_History__c testEduHist = new hed__Education_History__c(hed__Contact__c = testContact.Id,
+                                                                                  hed__Account__c = firstAccount.Id);
+
+            eduHistList.add(testEduHist);
+        }
+
+        insert eduHistList;
+
+        for (hed__Education_History__c eduHist : eduHistList){
             Grade_Enrollment__c gradeEnroll = new Grade_Enrollment__c(Contact__c = testContact.Id,
                                                                       Educational_Institution__c = firstAccount.Id,
                                                                       Grade_Level__c = 'Eighth Grade',
-                                                                      Education_History__c = testEduHist.Id
+                                                                      Education_History__c = eduHist.Id
                                                                      );
 
             gradeEnrollmentsList.add(gradeEnroll);
@@ -469,6 +523,7 @@ private class GRER_DataInteg_TEST {
         hed__Hierarchy_Settings__c hs = hed.UTIL_CustomSettings_API.getSettings();
         String adminRecordType = hs.hed__Administrative_Account_Record_Type__c;
 
+        List<hed__Education_History__c> eduHistList = new List<hed__Education_History__c>();
         List<Grade_Enrollment__c> gradeEnrollmentsList = new List<Grade_Enrollment__c>();
 
         Contact testContact = new Contact(LastName = 'Testerson');
@@ -477,15 +532,20 @@ private class GRER_DataInteg_TEST {
         Account firstAccount = new Account(RecordTypeId = adminRecordType, Name = 'Test Account 1');
         insert firstAccount;
 
-        hed__Education_History__c testEduHist = new hed__Education_History__c(hed__Contact__c = testContact.Id,
-                                                                              hed__Account__c = null);
-        insert testEduHist;
-
         for (Integer i = 0; i < 5; i++){
+            hed__Education_History__c testEduHist = new hed__Education_History__c(hed__Contact__c = testContact.Id,
+                                                                                  hed__Account__c = null);
+
+            eduHistList.add(testEduHist);
+        }
+
+        insert eduHistList;
+
+        for (hed__Education_History__c eduHist : eduHistList){
             Grade_Enrollment__c gradeEnroll = new Grade_Enrollment__c(Contact__c = testContact.Id,
                                                                       Educational_Institution__c = null,
                                                                       Grade_Level__c = 'Eighth Grade',
-                                                                      Education_History__c = testEduHist.Id
+                                                                      Education_History__c = eduHist.Id
                                                                      );
 
             gradeEnrollmentsList.add(gradeEnroll);
@@ -525,6 +585,7 @@ private class GRER_DataInteg_TEST {
         hed__Hierarchy_Settings__c hs = hed.UTIL_CustomSettings_API.getSettings();
         String adminRecordType = hs.hed__Administrative_Account_Record_Type__c;
 
+        List<hed__Education_History__c> eduHistList = new List<hed__Education_History__c>();
         List<Grade_Enrollment__c> gradeEnrollmentsList = new List<Grade_Enrollment__c>();
 
         Contact testContact = new Contact(LastName = 'Testerson');
@@ -533,15 +594,20 @@ private class GRER_DataInteg_TEST {
         Account firstAccount = new Account(RecordTypeId = adminRecordType, Name = 'Test Account 1');
         insert firstAccount;
 
-        hed__Education_History__c testEduHist = new hed__Education_History__c(hed__Contact__c = testContact.Id,
-                                                                              hed__Account__c = null);
-        insert testEduHist;
-
         for (Integer i = 0; i < 5; i++){
+            hed__Education_History__c testEduHist = new hed__Education_History__c(hed__Contact__c = testContact.Id,
+                                                                                  hed__Account__c = null);
+
+            eduHistList.add(testEduHist);
+        }
+
+        insert eduHistList;
+
+        for (hed__Education_History__c eduHist : eduHistList){
             Grade_Enrollment__c gradeEnroll = new Grade_Enrollment__c(Contact__c = testContact.Id,
                                                                       Educational_Institution__c = firstAccount.Id,
                                                                       Grade_Level__c = 'Eighth Grade',
-                                                                      Education_History__c = testEduHist.Id
+                                                                      Education_History__c = eduHist.Id
                                                                      );
 
             gradeEnrollmentsList.add(gradeEnroll);
@@ -584,31 +650,36 @@ private class GRER_DataInteg_TEST {
         hed__Hierarchy_Settings__c hs = hed.UTIL_CustomSettings_API.getSettings();
         String adminRecordType = hs.hed__Administrative_Account_Record_Type__c;
 
+        List<hed__Education_History__c> educationHistoryList = new List<hed__Education_History__c>();
         List<Grade_Enrollment__c> gradeEnrollmentsList = new List<Grade_Enrollment__c>();
+        Map<Id, hed__Education_History__c> educationHistoryByEnrollmentId = new Map<Id, hed__Education_History__c>();
 
-        Account firstAccount = new Account(Id = GRER_DataInteg_TEST.getFakeId(Account.SObjectType), RecordTypeId = adminRecordType, Name = 'Test Account 1');
-        Account secondAccount = new Account(Id = GRER_DataInteg_TEST.getFakeId(Account.SObjectType), RecordTypeId = adminRecordType, Name = 'Test Account 2');
-
-        Contact testContact = new Contact(Id = GRER_DataInteg_TEST.getFakeId(Contact.SObjectType), LastName = 'Testerson');
-
-        hed__Education_History__c eduHist = new hed__Education_History__c(Id = GRER_DataInteg_TEST.getFakeId(hed__Education_History__c.SObjectType),
-                                                                          hed__Contact__c = testContact.Id,
-                                                                          hed__Account__c = firstAccount.Id);
+        Id fakeFirstAccountId = GRER_DataInteg_TEST.getFakeId(Account.SObjectType);
+        Id fakeSecondAccountId = GRER_DataInteg_TEST.getFakeId(Account.SObjectType);
+        Id fakeContactId = GRER_DataInteg_TEST.getFakeId(Contact.SObjectType);
 
         for (Integer i = 0; i < 5; i++){
-            Grade_Enrollment__c gradeEnroll = new Grade_Enrollment__c(Id = GRER_DataInteg_TEST.getFakeId(Grade_Enrollment__c.SObjectType),
-                                                                      Contact__c = testContact.Id,
-                                                                      Educational_Institution__c = secondAccount.Id,
-                                                                      Grade_Level__c = 'Eighth Grade',
-                                                                      Education_History__c = eduHist.Id);
+            Id fakeEduHistId = GRER_DataInteg_TEST.getFakeId(hed__Education_History__c.SObjectType);
+            hed__Education_History__c eduHist = new hed__Education_History__c(Id = fakeEduHistId,
+                                                                          hed__Contact__c = fakeContactId,
+                                                                          hed__Account__c = fakeFirstAccountId);
+                                                                         
 
+            Id fakeGradeEnrollId = GRER_DataInteg_TEST.getFakeId(Grade_Enrollment__c.SObjectType);
+            Grade_Enrollment__c gradeEnroll = new Grade_Enrollment__c(Id = fakeGradeEnrollId,
+                                                                      Contact__c = fakeContactId,
+                                                                      Educational_Institution__c = fakeSecondAccountId,
+                                                                      Grade_Level__c = 'Eighth Grade',
+                                                                      Education_History__c = fakeEduHistId);
+            
             gradeEnrollmentsList.add(gradeEnroll);
+            educationHistoryByEnrollmentId.put(fakeGradeEnrollId, eduHist);
         }
 
-        Test.startTest();
         GRER_DataInteg_TDTM gradeEnrollTdtm = new GRER_DataInteg_TDTM();
+        Test.startTest();
         for (Grade_Enrollment__c gradeEnroll : gradeEnrollmentsList){
-            System.assertEquals(true, gradeEnrollTdtm.hasInstitutionMismatch(gradeEnroll, eduHist.hed__Account__c), 'Educational Institution on Grade Enrollment and Education History should not match.');
+            System.assertEquals(true, gradeEnrollTdtm.hasInstitutionMismatch(gradeEnroll, educationHistoryByEnrollmentId.get(gradeEnroll.Id)), 'Educational Institution on Grade Enrollment and Education History should not match.');
         }
         Test.stopTest();
     }
@@ -622,210 +693,167 @@ private class GRER_DataInteg_TEST {
         hed__Hierarchy_Settings__c hs = hed.UTIL_CustomSettings_API.getSettings();
         String adminRecordType = hs.hed__Administrative_Account_Record_Type__c;
 
+        List<hed__Education_History__c> educationHistoryList = new List<hed__Education_History__c>();
         List<Grade_Enrollment__c> gradeEnrollmentsList = new List<Grade_Enrollment__c>();
+        Map<Id, hed__Education_History__c> educationHistoryByEnrollmentId = new Map<Id, hed__Education_History__c>();
 
-        Account firstAccount = new Account(Id = GRER_DataInteg_TEST.getFakeId(Account.SObjectType), RecordTypeId = adminRecordType, Name = 'Test Account 1');
-
-        Contact testContact = new Contact(Id = GRER_DataInteg_TEST.getFakeId(Contact.SObjectType), LastName = 'Testerson');
-
-        hed__Education_History__c eduHist = new hed__Education_History__c(Id = GRER_DataInteg_TEST.getFakeId(hed__Education_History__c.SObjectType),
-                                                                hed__Contact__c = testContact.Id,
-                                                                hed__Account__c = firstAccount.Id);
+        Id fakeAccountId = GRER_DataInteg_TEST.getFakeId(Account.SObjectType);
+        Id fakeContactId = GRER_DataInteg_TEST.getFakeId(Contact.SObjectType);
 
         for (Integer i = 0; i < 5; i++){
-            Grade_Enrollment__c gradeEnroll = new Grade_Enrollment__c(Id = GRER_DataInteg_TEST.getFakeId(Grade_Enrollment__c.SObjectType),
-                                                                      Contact__c = testContact.Id,
+            Id fakeEduHistId = GRER_DataInteg_TEST.getFakeId(hed__Education_History__c.SObjectType);
+            hed__Education_History__c eduHist = new hed__Education_History__c(Id = fakeEduHistId,
+                                                                          hed__Contact__c = fakeContactId,
+                                                                          hed__Account__c = fakeAccountId);
+                                                                         
+
+            Id fakeGradeEnrollId = GRER_DataInteg_TEST.getFakeId(Grade_Enrollment__c.SObjectType);
+            Grade_Enrollment__c gradeEnroll = new Grade_Enrollment__c(Id = fakeGradeEnrollId,
+                                                                      Contact__c = fakeContactId,
+                                                                      Educational_Institution__c = fakeAccountId,
+                                                                      Grade_Level__c = 'Eighth Grade',
+                                                                      Education_History__c = fakeEduHistId);
+            
+            gradeEnrollmentsList.add(gradeEnroll);
+            educationHistoryByEnrollmentId.put(fakeGradeEnrollId, eduHist);
+        }
+
+        GRER_DataInteg_TDTM gradeEnrollTdtm = new GRER_DataInteg_TDTM();
+        Test.startTest();
+        for (Grade_Enrollment__c gradeEnroll : gradeEnrollmentsList){
+            System.assertEquals(false, gradeEnrollTdtm.hasInstitutionMismatch(gradeEnroll, educationHistoryByEnrollmentId.get(gradeEnroll.Id)), 'Educational Institution on Grade Enrollment and Education History should match.');
+        }
+        Test.stopTest();
+    }
+
+    /*********************************************************************************************************
+    * @description Test to verify that method mapEducationHistoryByGradeEnrollment() returns a populated 
+    * map containing Education History records mapped by their related Grade Enrollment Id for Grade Enrollments
+    * that are related to an Education History account.
+    *********************************************************************************************************/
+    @isTest 
+    private static void mapEducationHistoryByGradeEnrollmentPositive(){
+        hed__Hierarchy_Settings__c hs = hed.UTIL_CustomSettings_API.getSettings();
+        String adminRecordType = hs.hed__Administrative_Account_Record_Type__c;
+
+        List<hed__Education_History__c> educationHistoryList = new List<hed__Education_History__c>();
+        List<Grade_Enrollment__c> gradeEnrollmentsList = new List<Grade_Enrollment__c>();
+        Map<Id, hed__Education_History__c> eduHistById = new Map<Id, hed__Education_History__c>();
+
+        Contact testContact = new Contact(LastName = 'Testerson');
+        insert testContact;
+
+        Account firstAccount = new Account(RecordTypeId = adminRecordType, Name = 'Test Account 1');
+        insert firstAccount;
+
+        for (Integer i = 0; i < 5; i++){
+            hed__Education_History__c testEduHist = new hed__Education_History__c(hed__Contact__c = testContact.Id,
+                                                                                  hed__Account__c = firstAccount.Id);
+
+            educationHistoryList.add(testEduHist);
+        }
+
+        insert educationHistoryList;
+
+        for (hed__Education_History__c eduHist : educationHistoryList){
+            eduHistById.put(eduHist.Id, eduHist);
+
+            Grade_Enrollment__c gradeEnroll = new Grade_Enrollment__c(Contact__c = testContact.Id,
                                                                       Educational_Institution__c = firstAccount.Id,
                                                                       Grade_Level__c = 'Eighth Grade',
                                                                       Education_History__c = eduHist.Id
                                                                      );
 
             gradeEnrollmentsList.add(gradeEnroll);
-        }
+        }       
+
+        insert gradeEnrollmentsList;
+        
+        GRER_DataInteg_TDTM gradeEnrollTdtm = new GRER_DataInteg_TDTM();
+        Map<Id, hed__Education_History__c> eduHistByGradeEnrollId = new Map<Id, hed__Education_History__c>();
 
         Test.startTest();
-        GRER_DataInteg_TDTM gradeEnrollTdtm = new GRER_DataInteg_TDTM();
-        for (Grade_Enrollment__c gradeEnroll : gradeEnrollmentsList){
-            System.assertEquals(false, gradeEnrollTdtm.hasInstitutionMismatch(gradeEnroll, eduHist.hed__Account__c), 'Educational Institution on Grade Enrollment and Education History should match.');
-        }
+        eduHistByGradeEnrollId = gradeEnrollTdtm.mapEducationHistoryByGradeEnrollment(gradeEnrollmentsList);
         Test.stopTest();
+
+        System.assertEquals(5, eduHistByGradeEnrollId.keySet().size(), 'There should be 5 mappings of Education History by Grade Enrollment.');
+
+        for (Id gradeEnrollId : eduHistByGradeEnrollId.keySet()){
+            hed__Education_History__c relatedEduHistory = eduHistByGradeEnrollId.get(gradeEnrollId);
+            
+            System.assertEquals(true, relatedEduHistory != null, 'Each grade enrollment should be mapped to an education history.');
+            System.assertEquals(eduHistById.get(relatedEduHistory.Id).Id, relatedEduHistory.Id, 'Each Grade Enrollment should be mapped to its corresponding Education History record.');
+        }
     }
 
     /*********************************************************************************************************
-    * @description Test to verify that method isEducationalInstitutionFieldsPopulated() returns true when the
-    * Educational Institution fields on both the Grade Enrollment and Education History records are populated.
+    * @description Test to verify that method mapEducationHistoryByGradeEnrollment() returns an empty populated 
+    * map containing Education History records mapped by their related Grade Enrollment Id for Grade Enrollments
+    * that are not related to an Education History account.
     *********************************************************************************************************/
     @isTest 
-    private static void educationalInstitutionFieldsPopulated(){
+    private static void mapEducationHistoryByGradeEnrollmentNegative(){
         hed__Hierarchy_Settings__c hs = hed.UTIL_CustomSettings_API.getSettings();
         String adminRecordType = hs.hed__Administrative_Account_Record_Type__c;
 
+        List<hed__Education_History__c> educationHistoryList = new List<hed__Education_History__c>();
         List<Grade_Enrollment__c> gradeEnrollmentsList = new List<Grade_Enrollment__c>();
 
-        Account firstAccount = new Account(Id = GRER_DataInteg_TEST.getFakeId(Account.SObjectType), RecordTypeId = adminRecordType, Name = 'Test Account 1');
+        Contact testContact = new Contact(LastName = 'Testerson');
+        insert testContact;
 
-        Contact testContact = new Contact(Id = GRER_DataInteg_TEST.getFakeId(Contact.SObjectType), LastName = 'Testerson');
-
-        hed__Education_History__c eduHist = new hed__Education_History__c(Id = GRER_DataInteg_TEST.getFakeId(hed__Education_History__c.SObjectType),
-                                                                hed__Contact__c = testContact.Id,
-                                                                hed__Account__c = firstAccount.Id);
+        Account firstAccount = new Account(RecordTypeId = adminRecordType, Name = 'Test Account 1');
+        insert firstAccount;
 
         for (Integer i = 0; i < 5; i++){
-            Grade_Enrollment__c gradeEnroll = new Grade_Enrollment__c(Id = GRER_DataInteg_TEST.getFakeId(Grade_Enrollment__c.SObjectType),
-                                                                      Contact__c = testContact.Id,
+            Grade_Enrollment__c gradeEnroll = new Grade_Enrollment__c(Contact__c = testContact.Id,
                                                                       Educational_Institution__c = firstAccount.Id,
                                                                       Grade_Level__c = 'Eighth Grade',
-                                                                      Education_History__c = eduHist.Id
+                                                                      Education_History__c = null
                                                                      );
 
             gradeEnrollmentsList.add(gradeEnroll);
-        }
+        }       
+
+        insert gradeEnrollmentsList;
+        
+        GRER_DataInteg_TDTM gradeEnrollTdtm = new GRER_DataInteg_TDTM();
+        Map<Id, hed__Education_History__c> eduHistByGradeEnrollId = new Map<Id, hed__Education_History__c>();
 
         Test.startTest();
-        GRER_DataInteg_TDTM gradeEnrollTdtm = new GRER_DataInteg_TDTM();
-        for (Grade_Enrollment__c gradeEnroll : gradeEnrollmentsList){
-            System.assertEquals(true, gradeEnrollTdtm.isEducationalInstitutionFieldsPopulated(gradeEnroll, eduHist.hed__Account__c), 'Educational Institution fields on Grade Enrollment and Education History should be populated.');
-        }
+        eduHistByGradeEnrollId = gradeEnrollTdtm.mapEducationHistoryByGradeEnrollment(gradeEnrollmentsList);
         Test.stopTest();
+
+        System.assertEquals(true, eduHistByGradeEnrollId.isEmpty(), 'Each Grade Enrollment should not have a corresponding Education History record.');
     }
 
     /*********************************************************************************************************
-    * @description Test to verify that method isEducationalInstitutionFieldsPopulated() returns false when only
-    * the Educational Institution field on Education History is populated.
+    * @description Test to verify that method checkEducationalInstitutionAgainstEducationHistory() displays  
+    * an error message when Grade Enrollment records with Education Institutions that do not match the value 
+    * specified on the associated Education History records are inserted.
     *********************************************************************************************************/
     @isTest 
-    private static void educationalInstitutionFieldOnEducationHistoryPopulated(){
+    private static void checkEducationalInstitutionAgainstEducationHistoryBeforeInsertWithMismatch(){
         hed__Hierarchy_Settings__c hs = hed.UTIL_CustomSettings_API.getSettings();
         String adminRecordType = hs.hed__Administrative_Account_Record_Type__c;
 
         List<Grade_Enrollment__c> gradeEnrollmentsList = new List<Grade_Enrollment__c>();
 
-        Account firstAccount = new Account(Id = GRER_DataInteg_TEST.getFakeId(Account.SObjectType), RecordTypeId = adminRecordType, Name = 'Test Account 1');
-
-        Contact testContact = new Contact(Id = GRER_DataInteg_TEST.getFakeId(Contact.SObjectType), LastName = 'Testerson');
-
-        hed__Education_History__c eduHist = new hed__Education_History__c(Id = GRER_DataInteg_TEST.getFakeId(hed__Education_History__c.SObjectType),
-                                                                hed__Contact__c = testContact.Id,
-                                                                hed__Account__c = firstAccount.Id);
+        Id fakeFirstAccountId = GRER_DataInteg_TEST.getFakeId(Account.SObjectType);
+        Id fakeSecondAccountId = GRER_DataInteg_TEST.getFakeId(Account.SObjectType);
+        Id fakeContactId = GRER_DataInteg_TEST.getFakeId(Contact.SObjectType);
 
         for (Integer i = 0; i < 5; i++){
+            Id fakeEduHistId = GRER_DataInteg_TEST.getFakeId(hed__Education_History__c.SObjectType);
+            hed__Education_History__c testEduHist = new hed__Education_History__c(Id = fakeEduHistId,
+                                                                                  hed__Contact__c = fakeContactId,
+                                                                                  hed__Account__c = fakeFirstAccountId);
+
             Grade_Enrollment__c gradeEnroll = new Grade_Enrollment__c(Id = GRER_DataInteg_TEST.getFakeId(Grade_Enrollment__c.SObjectType),
-                                                                      Contact__c = testContact.Id,
-                                                                      Educational_Institution__c = null,
+                                                                      Contact__c = fakeContactId,
+                                                                      Educational_Institution__c = fakeSecondAccountId,
                                                                       Grade_Level__c = 'Eighth Grade',
-                                                                      Education_History__c = eduHist.Id
-                                                                     );
-
-            gradeEnrollmentsList.add(gradeEnroll);
-        }
-
-        Test.startTest();
-        GRER_DataInteg_TDTM gradeEnrollTdtm = new GRER_DataInteg_TDTM();
-        for (Grade_Enrollment__c gradeEnroll : gradeEnrollmentsList){
-            System.assertEquals(false, gradeEnrollTdtm.isEducationalInstitutionFieldsPopulated(gradeEnroll, eduHist.hed__Account__c), 'Only the Educational Institution field on Education History should be populated.');
-        }
-        Test.stopTest();
-    }
-
-    /*********************************************************************************************************
-    * @description Test to verify that method isEducationalInstitutionFieldsPopulated() returns false when only
-    * the Educational Institution field on Grade Enrollment is populated.
-    *********************************************************************************************************/
-    @isTest 
-    private static void educationalInstitutionFieldOnGradeEnrollmentPopulated(){
-        hed__Hierarchy_Settings__c hs = hed.UTIL_CustomSettings_API.getSettings();
-        String adminRecordType = hs.hed__Administrative_Account_Record_Type__c;
-
-        List<Grade_Enrollment__c> gradeEnrollmentsList = new List<Grade_Enrollment__c>();
-
-        Account firstAccount = new Account(Id = GRER_DataInteg_TEST.getFakeId(Account.SObjectType), RecordTypeId = adminRecordType, Name = 'Test Account 1');
-
-        Contact testContact = new Contact(Id = GRER_DataInteg_TEST.getFakeId(Contact.SObjectType), LastName = 'Testerson');
-
-        hed__Education_History__c eduHist = new hed__Education_History__c(Id = GRER_DataInteg_TEST.getFakeId(hed__Education_History__c.SObjectType),
-                                                                          hed__Contact__c = testContact.Id,
-                                                                          hed__Account__c = null);
-
-        for (Integer i = 0; i < 5; i++){
-            Grade_Enrollment__c gradeEnroll = new Grade_Enrollment__c(Id = GRER_DataInteg_TEST.getFakeId(Grade_Enrollment__c.SObjectType),
-                                                                      Contact__c = testContact.Id,
-                                                                      Educational_Institution__c = firstAccount.Id,
-                                                                      Grade_Level__c = 'Eighth Grade',
-                                                                      Education_History__c = eduHist.Id
-                                                                     );
-
-            gradeEnrollmentsList.add(gradeEnroll);
-        }
-
-        Test.startTest();
-        GRER_DataInteg_TDTM gradeEnrollTdtm = new GRER_DataInteg_TDTM();
-        for (Grade_Enrollment__c gradeEnroll : gradeEnrollmentsList){
-            System.assertEquals(false, gradeEnrollTdtm.isEducationalInstitutionFieldsPopulated(gradeEnroll, eduHist.hed__Account__c), 'Only the Educational Institution field on Grade Enrollment should be populated.');
-        }
-        Test.stopTest();
-    }
-
-    /*********************************************************************************************************
-    * @description Test to verify that method isEducationalInstitutionFieldsPopulated() returns false when 
-    * the Educational Institution fields on both the Grade Enrollment and Education History records are blank.
-    *********************************************************************************************************/
-    @isTest 
-    private static void educationalInstitutionFieldsNotPopulated(){
-        hed__Hierarchy_Settings__c hs = hed.UTIL_CustomSettings_API.getSettings();
-        String adminRecordType = hs.hed__Administrative_Account_Record_Type__c;
-
-        List<Grade_Enrollment__c> gradeEnrollmentsList = new List<Grade_Enrollment__c>();
-        Contact testContact = new Contact(Id = GRER_DataInteg_TEST.getFakeId(Contact.SObjectType), LastName = 'Testerson');
-
-        hed__Education_History__c eduHist = new hed__Education_History__c(Id = GRER_DataInteg_TEST.getFakeId(hed__Education_History__c.SObjectType),
-                                                                          hed__Contact__c = testContact.Id,
-                                                                          hed__Account__c = null);
-
-        for (Integer i = 0; i < 5; i++){
-            Grade_Enrollment__c gradeEnroll = new Grade_Enrollment__c(Id = GRER_DataInteg_TEST.getFakeId(Grade_Enrollment__c.SObjectType),
-                                                                      Contact__c = testContact.Id,
-                                                                      Educational_Institution__c = null,
-                                                                      Grade_Level__c = 'Eighth Grade',
-                                                                      Education_History__c = eduHist.Id
-                                                                     );
-
-            gradeEnrollmentsList.add(gradeEnroll);
-        }
-
-        Test.startTest();
-        GRER_DataInteg_TDTM gradeEnrollTdtm = new GRER_DataInteg_TDTM();
-        for (Grade_Enrollment__c gradeEnroll : gradeEnrollmentsList){
-            System.assertEquals(false, gradeEnrollTdtm.isEducationalInstitutionFieldsPopulated(gradeEnroll, eduHist.hed__Account__c), 'Educational Institution fields on Grade Enrollment and Education History should be blank.');
-        }
-        Test.stopTest();
-    }
-
-    /*********************************************************************************************************
-    * @description Test to verify that method handleAfterInsert() displays an error message when Grade 
-    * Enrollment records with Education Institutions that do not match the value specified on the associated
-    * Education History records are inserted.
-    *********************************************************************************************************/
-    @isTest 
-    private static void handleAfterInsertWithMismatch(){
-        hed__Hierarchy_Settings__c hs = hed.UTIL_CustomSettings_API.getSettings();
-        String adminRecordType = hs.hed__Administrative_Account_Record_Type__c;
-
-        List<Grade_Enrollment__c> gradeEnrollmentsList = new List<Grade_Enrollment__c>();
-
-        Account firstAccount = new Account(Id = GRER_DataInteg_TEST.getFakeId(Account.SObjectType), RecordTypeId = adminRecordType, Name = 'Test Account 1');
-        Account secondAccount = new Account(Id = GRER_DataInteg_TEST.getFakeId(Account.SObjectType), RecordTypeId = adminRecordType, Name = 'Test Account 2');
-
-        Contact testContact = new Contact(Id = GRER_DataInteg_TEST.getFakeId(Contact.SObjectType), LastName = 'Testerson');
-
-        hed__Education_History__c testEduHist = new hed__Education_History__c(Id = GRER_DataInteg_TEST.getFakeId(hed__Education_History__c.SObjectType),
-                                                                              hed__Contact__c = testContact.Id,
-                                                                              hed__Account__c = firstAccount.Id);
-        for (Integer i = 0; i < 5; i++){
-            Grade_Enrollment__c gradeEnroll = new Grade_Enrollment__c(Id = GRER_DataInteg_TEST.getFakeId(Grade_Enrollment__c.SObjectType),
-                                                                      Contact__c = testContact.Id,
-                                                                      Educational_Institution__c = secondAccount.Id,
-                                                                      Grade_Level__c = 'Eighth Grade',
-                                                                      Education_History__c = testEduHist.Id
+                                                                      Education_History__c = fakeEduHistId
                                                                      );
 
             gradeEnrollmentsList.add(gradeEnroll);
@@ -836,7 +864,7 @@ private class GRER_DataInteg_TEST {
         List<Exception> exceptionsList = new List<Exception>();
 
         try{
-            gradeEnrollTdtm.handleAfterInsert((List<SObject>)gradeEnrollmentsList);
+            gradeEnrollTdtm.checkEducationalInstitutionAgainstEducationHistory((List<SObject>)gradeEnrollmentsList);
         } catch (Exception e){
             exceptionsList.add(e);
         }
@@ -849,30 +877,31 @@ private class GRER_DataInteg_TEST {
     }
 
     /*********************************************************************************************************
-    * @description Test to verify that method handleAfterInsert() successfully processes and insert  Grade 
-    * Enrollment records with Education Institutions that do not match the value specified on the associated
-    * Education History records are inserted.
+    * @description Test to verify that method checkEducationalInstitutionAgainstEducationHistory() processes 
+    * an insert of Grade Enrollment records with Education Institutions that do not match the value specified 
+    * on the associated Education History records are inserted.
     *********************************************************************************************************/
     @isTest 
-    private static void handleAfterInsertWithoutMismatch(){
+    private static void checkEducationalInstitutionAgainstEducationHistoryBeforeInsertWithoutMismatch(){
         hed__Hierarchy_Settings__c hs = hed.UTIL_CustomSettings_API.getSettings();
         String adminRecordType = hs.hed__Administrative_Account_Record_Type__c;
 
         List<Grade_Enrollment__c> gradeEnrollmentsList = new List<Grade_Enrollment__c>();
 
-        Account firstAccount = new Account(Id = GRER_DataInteg_TEST.getFakeId(Account.SObjectType), RecordTypeId = adminRecordType, Name = 'Test Account 1');
+        Id fakeFirstAccountId = GRER_DataInteg_TEST.getFakeId(Account.SObjectType);
+        Id fakeContactId = GRER_DataInteg_TEST.getFakeId(Contact.SObjectType);
 
-        Contact testContact = new Contact(Id = GRER_DataInteg_TEST.getFakeId(Contact.SObjectType), LastName = 'Testerson');
-
-        hed__Education_History__c testEduHist = new hed__Education_History__c(Id = GRER_DataInteg_TEST.getFakeId(hed__Education_History__c.SObjectType),
-                                                                              hed__Contact__c = testContact.Id,
-                                                                              hed__Account__c = firstAccount.Id);
         for (Integer i = 0; i < 5; i++){
+            Id fakeEduHistId = GRER_DataInteg_TEST.getFakeId(hed__Education_History__c.SObjectType);
+            hed__Education_History__c testEduHist = new hed__Education_History__c(Id = fakeEduHistId,
+                                                                                  hed__Contact__c = fakeContactId,
+                                                                                  hed__Account__c = fakeFirstAccountId);
+
             Grade_Enrollment__c gradeEnroll = new Grade_Enrollment__c(Id = GRER_DataInteg_TEST.getFakeId(Grade_Enrollment__c.SObjectType),
-                                                                      Contact__c = testContact.Id,
-                                                                      Educational_Institution__c = firstAccount.Id,
+                                                                      Contact__c = fakeContactId,
+                                                                      Educational_Institution__c = fakeFirstAccountId,
                                                                       Grade_Level__c = 'Eighth Grade',
-                                                                      Education_History__c = testEduHist.Id
+                                                                      Education_History__c = fakeEduHistId
                                                                      );
 
             gradeEnrollmentsList.add(gradeEnroll);
@@ -883,7 +912,7 @@ private class GRER_DataInteg_TEST {
         List<Exception> exceptionsList = new List<Exception>();
 
         try{
-            gradeEnrollTdtm.handleAfterInsert((List<SObject>)gradeEnrollmentsList);
+            gradeEnrollTdtm.checkEducationalInstitutionAgainstEducationHistory((List<SObject>)gradeEnrollmentsList);
         } catch (Exception e){
             exceptionsList.add(e);
         }
@@ -893,35 +922,39 @@ private class GRER_DataInteg_TEST {
     }
 
     /*********************************************************************************************************
-    * @description Test to verify that method handleBeforeUpdate() successfully processes updates to Grade 
-    * Enrollment records when the Education Institution fields match the value specified on the associated
-    * Education History records.
+    * @description Test to verify that method checkEducationalInstitutionAgainstEducationHistory() processes 
+    * updates to Grade Enrollment records when the Education Institution fields match the value specified on 
+    * the associated Education History records.
     *********************************************************************************************************/
     @isTest 
-    private static void handleBeforeUpdateWithoutMismatch(){
+    private static void checkEducationalInstitutionAgainstEducationHistoryBeforeUpdateWithoutMismatch(){
         hed__Hierarchy_Settings__c hs = hed.UTIL_CustomSettings_API.getSettings();
         String adminRecordType = hs.hed__Administrative_Account_Record_Type__c;
 
         List<Grade_Enrollment__c> newGradeEnrollmentsList = new List<Grade_Enrollment__c>();
         List<Grade_Enrollment__c> oldGradeEnrollmentsList = new List<Grade_Enrollment__c>();
 
-        Account firstAccount = new Account(Id = GRER_DataInteg_TEST.getFakeId(Account.SObjectType), RecordTypeId = adminRecordType, Name = 'Test Account 1');
+        Id fakeFirstAccountId = GRER_DataInteg_TEST.getFakeId(Account.SObjectType);
+        Id fakeContactId = GRER_DataInteg_TEST.getFakeId(Contact.SObjectType);
 
-        Contact testContact = new Contact(Id = GRER_DataInteg_TEST.getFakeId(Contact.SObjectType), LastName = 'Testerson');
-
-        hed__Education_History__c testEduHist = new hed__Education_History__c(Id = GRER_DataInteg_TEST.getFakeId(hed__Education_History__c.SObjectType),
-                                                                              hed__Contact__c = testContact.Id,
-                                                                              hed__Account__c = firstAccount.Id);
         for (Integer i = 0; i < 5; i++){
-            Grade_Enrollment__c oldGradeEnroll = new Grade_Enrollment__c(Id = GRER_DataInteg_TEST.getFakeId(Grade_Enrollment__c.SObjectType),
-                                                                      Contact__c = testContact.Id,
+
+            Id fakeEduHistId = GRER_DataInteg_TEST.getFakeId(hed__Education_History__c.SObjectType);
+            Id fakeGradeEnrollId = GRER_DataInteg_TEST.getFakeId(Grade_Enrollment__c.SObjectType);
+            
+            hed__Education_History__c testEduHist = new hed__Education_History__c(Id = fakeEduHistId,
+                                                                                  hed__Contact__c = fakeContactId,
+                                                                                  hed__Account__c = fakeFirstAccountId);
+
+            Grade_Enrollment__c oldGradeEnroll = new Grade_Enrollment__c(Id = fakeGradeEnrollId,
+                                                                      Contact__c = fakeContactId,
                                                                       Educational_Institution__c = null,
                                                                       Grade_Level__c = 'Eighth Grade',
-                                                                      Education_History__c = testEduHist.Id
+                                                                      Education_History__c = fakeEduHistId
                                                                      );
 
             Grade_Enrollment__c newGradeEnroll = oldGradeEnroll.clone(true);
-            newGradeEnroll.Educational_Institution__c = firstAccount.Id;
+            newGradeEnroll.Educational_Institution__c = fakeFirstAccountId;
 
             oldGradeEnrollmentsList.add(oldGradeEnroll);
             newGradeEnrollmentsList.add(newGradeEnroll);
@@ -932,7 +965,7 @@ private class GRER_DataInteg_TEST {
         List<Exception> exceptionsList = new List<Exception>();
 
         try{
-            gradeEnrollTdtm.handleBeforeUpdate((List<SObject>)newGradeEnrollmentsList, (List<SObject>)oldGradeEnrollmentsList);
+            gradeEnrollTdtm.checkEducationalInstitutionAgainstEducationHistory((List<SObject>)newGradeEnrollmentsList, (List<SObject>)oldGradeEnrollmentsList);
         } catch (Exception e){
             exceptionsList.add(e);
         }
@@ -942,36 +975,39 @@ private class GRER_DataInteg_TEST {
     }
 
     /*********************************************************************************************************
-    * @description Test to verify that method handleBeforeUpdate() displays an error message for updates to Grade 
-    * Enrollment records with Education Institution fields that do not match the value specified on the associated
-    * Education History records.
+    * @description Test to verify that method checkEducationalInstitutionAgainstEducationHistory() displays an 
+    * error message for updates to Grade Enrollment records with Education Institution fields that do not match 
+    * the value specified on the associated Education History records.
     *********************************************************************************************************/
     @isTest 
-    private static void handleBeforeUpdateWithMismatch(){
+    private static void checkEducationalInstitutionAgainstEducationHistoryBeforeUpdateWithMismatch(){
         hed__Hierarchy_Settings__c hs = hed.UTIL_CustomSettings_API.getSettings();
         String adminRecordType = hs.hed__Administrative_Account_Record_Type__c;
 
         List<Grade_Enrollment__c> newGradeEnrollmentsList = new List<Grade_Enrollment__c>();
         List<Grade_Enrollment__c> oldGradeEnrollmentsList = new List<Grade_Enrollment__c>();
 
-        Account firstAccount = new Account(Id = GRER_DataInteg_TEST.getFakeId(Account.SObjectType), RecordTypeId = adminRecordType, Name = 'Test Account 1');
-        Account secondAccount = new Account(Id = GRER_DataInteg_TEST.getFakeId(Account.SObjectType), RecordTypeId = adminRecordType, Name = 'Test Account 2');
+        Id fakeFirstAccountId = GRER_DataInteg_TEST.getFakeId(Account.SObjectType);
+        Id fakeSecondAccountId = GRER_DataInteg_TEST.getFakeId(Account.SObjectType);
+        Id fakeContactId = GRER_DataInteg_TEST.getFakeId(Contact.SObjectType);
 
-        Contact testContact = new Contact(Id = GRER_DataInteg_TEST.getFakeId(Contact.SObjectType), LastName = 'Testerson');
-
-        hed__Education_History__c testEduHist = new hed__Education_History__c(Id = GRER_DataInteg_TEST.getFakeId(hed__Education_History__c.SObjectType),
-                                                                              hed__Contact__c = testContact.Id,
-                                                                              hed__Account__c = firstAccount.Id);
         for (Integer i = 0; i < 5; i++){
-            Grade_Enrollment__c oldGradeEnroll = new Grade_Enrollment__c(Id = GRER_DataInteg_TEST.getFakeId(Grade_Enrollment__c.SObjectType),
-                                                                      Contact__c = testContact.Id,
-                                                                      Educational_Institution__c = firstAccount.Id,
+            Id fakeEduHistId = GRER_DataInteg_TEST.getFakeId(hed__Education_History__c.SObjectType);
+            Id fakeGradeEnrollId = GRER_DataInteg_TEST.getFakeId(Grade_Enrollment__c.SObjectType);
+            
+            hed__Education_History__c testEduHist = new hed__Education_History__c(Id = fakeEduHistId,
+                                                                                  hed__Contact__c = fakeContactId,
+                                                                                  hed__Account__c = fakeFirstAccountId);
+
+            Grade_Enrollment__c oldGradeEnroll = new Grade_Enrollment__c(Id = fakeGradeEnrollId,
+                                                                      Contact__c = fakeContactId,
+                                                                      Educational_Institution__c = fakeFirstAccountId,
                                                                       Grade_Level__c = 'Eighth Grade',
-                                                                      Education_History__c = testEduHist.Id
+                                                                      Education_History__c = fakeEduHistId
                                                                      );
 
             Grade_Enrollment__c newGradeEnroll = oldGradeEnroll.clone(true);
-            newGradeEnroll.Educational_Institution__c = secondAccount.Id;
+            newGradeEnroll.Educational_Institution__c = fakeSecondAccountId;
 
             oldGradeEnrollmentsList.add(oldGradeEnroll);
             newGradeEnrollmentsList.add(newGradeEnroll);
@@ -982,7 +1018,7 @@ private class GRER_DataInteg_TEST {
         List<Exception> exceptionsList = new List<Exception>();
 
         try{
-            gradeEnrollTdtm.handleBeforeUpdate((List<SObject>)newGradeEnrollmentsList, (List<SObject>)oldGradeEnrollmentsList);
+            gradeEnrollTdtm.checkEducationalInstitutionAgainstEducationHistory((List<SObject>)newGradeEnrollmentsList, (List<SObject>)oldGradeEnrollmentsList);
         } catch (Exception e){
             exceptionsList.add(e);
         }
@@ -999,29 +1035,34 @@ private class GRER_DataInteg_TEST {
     * Education History records are inserted.
     *********************************************************************************************************/
     @isTest 
-    private static void runAfterInsertMismatch(){
-        hed.TDTM_Runnable.Action triggerAction = hed.TDTM_Runnable.Action.AfterInsert;
+    private static void runBeforeInsertMismatch(){
+        hed.TDTM_Runnable.Action triggerAction = hed.TDTM_Runnable.Action.BeforeInsert;
         Schema.DescribeSObjectResult objResult = Schema.SObjectType.Grade_Enrollment__c;
 
         hed__Hierarchy_Settings__c hs = hed.UTIL_CustomSettings_API.getSettings();
         String adminRecordType = hs.hed__Administrative_Account_Record_Type__c;
 
+        List<hed__Education_History__c> eduHistList = new List<hed__Education_History__c>();
         List<Grade_Enrollment__c> gradeEnrollmentsList = new List<Grade_Enrollment__c>();
 
-        Account firstAccount = new Account(Id = GRER_DataInteg_TEST.getFakeId(Account.SObjectType), RecordTypeId = adminRecordType, Name = 'Test Account 1');
-        Account secondAccount = new Account(Id = GRER_DataInteg_TEST.getFakeId(Account.SObjectType), RecordTypeId = adminRecordType, Name = 'Test Account 2');
+        Id fakeContactId = GRER_DataInteg_TEST.getFakeId(Contact.SObjectType);
+        Id fakeFirstAccountId = GRER_DataInteg_TEST.getFakeId(Account.SObjectType);
+        Id fakeSecondAccountId = GRER_DataInteg_TEST.getFakeId(Account.SObjectType);
 
-        Contact testContact = new Contact(Id = GRER_DataInteg_TEST.getFakeId(Contact.SObjectType), LastName = 'Testerson');
-
-        hed__Education_History__c testEduHist = new hed__Education_History__c(Id = GRER_DataInteg_TEST.getFakeId(hed__Education_History__c.SObjectType),
-                                                                              hed__Contact__c = testContact.Id,
-                                                                              hed__Account__c = firstAccount.Id);
         for (Integer i = 0; i < 5; i++){
-            Grade_Enrollment__c gradeEnroll = new Grade_Enrollment__c(Id = GRER_DataInteg_TEST.getFakeId(Grade_Enrollment__c.SObjectType),
-                                                                      Contact__c = testContact.Id,
-                                                                      Educational_Institution__c = secondAccount.Id,
+            Id fakeEduHistId = GRER_DataInteg_TEST.getFakeId(hed__Education_History__c.SObjectType);
+            Id fakeGradeEnrollId = GRER_DataInteg_TEST.getFakeId(Grade_Enrollment__c.SObjectType);
+            
+            hed__Education_History__c testEduHist = new hed__Education_History__c(Id = fakeEduHistId,
+                                                                                  hed__Contact__c = fakeContactId,
+                                                                                  hed__Account__c = fakeFirstAccountId);
+
+
+            Grade_Enrollment__c gradeEnroll = new Grade_Enrollment__c(Id = fakeGradeEnrollId,
+                                                                      Contact__c = fakeContactId,
+                                                                      Educational_Institution__c = fakeSecondAccountId,
                                                                       Grade_Level__c = 'Eighth Grade',
-                                                                      Education_History__c = testEduHist.Id
+                                                                      Education_History__c = fakeEduHistId
                                                                      );
 
             gradeEnrollmentsList.add(gradeEnroll);
@@ -1049,28 +1090,33 @@ private class GRER_DataInteg_TEST {
     * Education History records are inserted.
     *********************************************************************************************************/
     @isTest 
-    private static void runAfterInsertMatching(){
-        hed.TDTM_Runnable.Action triggerAction = hed.TDTM_Runnable.Action.AfterInsert;
+    private static void runBeforeInsertMatching(){
+        hed.TDTM_Runnable.Action triggerAction = hed.TDTM_Runnable.Action.BeforeInsert;
         Schema.DescribeSObjectResult objResult = Schema.SObjectType.Grade_Enrollment__c;
 
         hed__Hierarchy_Settings__c hs = hed.UTIL_CustomSettings_API.getSettings();
         String adminRecordType = hs.hed__Administrative_Account_Record_Type__c;
 
+        List<hed__Education_History__c> educationHistoryList = new List<hed__Education_History__c>();
         List<Grade_Enrollment__c> gradeEnrollmentsList = new List<Grade_Enrollment__c>();
 
-        Account firstAccount = new Account(Id = GRER_DataInteg_TEST.getFakeId(Account.SObjectType), RecordTypeId = adminRecordType, Name = 'Test Account 1');
+        Id fakeFirstAccountId = GRER_DataInteg_TEST.getFakeId(Account.SObjectType);
+        Id fakeSecondAccountId = GRER_DataInteg_TEST.getFakeId(Account.SObjectType);
+        Id fakeContactId = GRER_DataInteg_TEST.getFakeId(Contact.SObjectType);
 
-        Contact testContact = new Contact(Id = GRER_DataInteg_TEST.getFakeId(Contact.SObjectType), LastName = 'Testerson');
-
-        hed__Education_History__c testEduHist = new hed__Education_History__c(Id = GRER_DataInteg_TEST.getFakeId(hed__Education_History__c.SObjectType),
-                                                                              hed__Contact__c = testContact.Id,
-                                                                              hed__Account__c = firstAccount.Id);
         for (Integer i = 0; i < 5; i++){
-            Grade_Enrollment__c gradeEnroll = new Grade_Enrollment__c(Id = GRER_DataInteg_TEST.getFakeId(Grade_Enrollment__c.SObjectType),
-                                                                      Contact__c = testContact.Id,
-                                                                      Educational_Institution__c = firstAccount.Id,
+            Id fakeEduHistId = GRER_DataInteg_TEST.getFakeId(hed__Education_History__c.SObjectType);
+            Id fakeGradeEnrollId = GRER_DataInteg_TEST.getFakeId(Grade_Enrollment__c.SObjectType);
+
+            hed__Education_History__c testEduHist = new hed__Education_History__c(Id = fakeEduHistId,
+                                                                                  hed__Contact__c = fakeContactId,
+                                                                                  hed__Account__c = fakeFirstAccountId);
+
+            Grade_Enrollment__c gradeEnroll = new Grade_Enrollment__c(Id = fakeGradeEnrollId,
+                                                                      Contact__c = fakeContactId,
+                                                                      Educational_Institution__c = fakeFirstAccountId,
                                                                       Grade_Level__c = 'Eighth Grade',
-                                                                      Education_History__c = testEduHist.Id
+                                                                      Education_History__c = fakeEduHistId
                                                                      );
 
             gradeEnrollmentsList.add(gradeEnroll);
@@ -1106,24 +1152,28 @@ private class GRER_DataInteg_TEST {
         List<Grade_Enrollment__c> newGradeEnrollmentsList = new List<Grade_Enrollment__c>();
         List<Grade_Enrollment__c> oldGradeEnrollmentsList = new List<Grade_Enrollment__c>();
 
-        Account firstAccount = new Account(Id = GRER_DataInteg_TEST.getFakeId(Account.SObjectType), RecordTypeId = adminRecordType, Name = 'Test Account 1');
-        Account secondAccount = new Account(Id = GRER_DataInteg_TEST.getFakeId(Account.SObjectType), RecordTypeId = adminRecordType, Name = 'Test Account 2');
+        Id fakeFirstAccountId = GRER_DataInteg_TEST.getFakeId(Account.SObjectType);
+        Id fakeSecondAccountId = GRER_DataInteg_TEST.getFakeId(Account.SObjectType);
+        Id fakeContactId = GRER_DataInteg_TEST.getFakeId(Contact.SObjectType);
 
-        Contact testContact = new Contact(Id = GRER_DataInteg_TEST.getFakeId(Contact.SObjectType), LastName = 'Testerson');
-
-        hed__Education_History__c testEduHist = new hed__Education_History__c(Id = GRER_DataInteg_TEST.getFakeId(hed__Education_History__c.SObjectType),
-                                                                              hed__Contact__c = testContact.Id,
-                                                                              hed__Account__c = firstAccount.Id);
         for (Integer i = 0; i < 5; i++){
-            Grade_Enrollment__c oldGradeEnroll = new Grade_Enrollment__c(Id = GRER_DataInteg_TEST.getFakeId(Grade_Enrollment__c.SObjectType),
-                                                                      Contact__c = testContact.Id,
-                                                                      Educational_Institution__c = firstAccount.Id,
-                                                                      Grade_Level__c = 'Eighth Grade',
-                                                                      Education_History__c = testEduHist.Id
-                                                                     );
+            Id fakeEduHistId = GRER_DataInteg_TEST.getFakeId(hed__Education_History__c.SObjectType);
+            hed__Education_History__c testEduHist = new hed__Education_History__c(Id = fakeEduHistId,
+                                                                                  hed__Contact__c = fakeContactId,
+                                                                                  hed__Account__c = fakeFirstAccountId);
 
-            Grade_Enrollment__c newGradeEnroll = oldGradeEnroll.clone(true);
-            newGradeEnroll.Educational_Institution__c = secondAccount.Id;
+            Id fakeGradeEnrollId = GRER_DataInteg_TEST.getFakeId(Grade_Enrollment__c.SObjectType);
+
+            Grade_Enrollment__c oldGradeEnroll = new Grade_Enrollment__c(Id = fakeGradeEnrollId,
+                                                                         Contact__c = fakeContactId,
+                                                                         Educational_Institution__c = fakeFirstAccountId,
+                                                                         Grade_Level__c = 'Eighth Grade',
+                                                                         Education_History__c = fakeEduHistId
+                                                                        );
+
+            Grade_Enrollment__c newGradeEnroll = oldGradeEnroll.clone(false);
+            newGradeEnroll.Id = fakeGradeEnrollId;
+            newGradeEnroll.Educational_Institution__c = fakeSecondAccountId;
 
             oldGradeEnrollmentsList.add(oldGradeEnroll);
             newGradeEnrollmentsList.add(newGradeEnroll);
@@ -1161,23 +1211,27 @@ private class GRER_DataInteg_TEST {
         List<Grade_Enrollment__c> newGradeEnrollmentsList = new List<Grade_Enrollment__c>();
         List<Grade_Enrollment__c> oldGradeEnrollmentsList = new List<Grade_Enrollment__c>();
 
-        Account firstAccount = new Account(Id = GRER_DataInteg_TEST.getFakeId(Account.SObjectType), RecordTypeId = adminRecordType, Name = 'Test Account 1');
+        Id fakeFirstAccountId = GRER_DataInteg_TEST.getFakeId(Account.SObjectType);
+        Id fakeSecondAccountId = GRER_DataInteg_TEST.getFakeId(Account.SObjectType);
+        Id fakeContactId = GRER_DataInteg_TEST.getFakeId(Contact.SObjectType);
 
-        Contact testContact = new Contact(Id = GRER_DataInteg_TEST.getFakeId(Contact.SObjectType), LastName = 'Testerson');
-
-        hed__Education_History__c testEduHist = new hed__Education_History__c(Id = GRER_DataInteg_TEST.getFakeId(hed__Education_History__c.SObjectType),
-                                                                              hed__Contact__c = testContact.Id,
-                                                                              hed__Account__c = firstAccount.Id);
         for (Integer i = 0; i < 5; i++){
-            Grade_Enrollment__c oldGradeEnroll = new Grade_Enrollment__c(Id = GRER_DataInteg_TEST.getFakeId(Grade_Enrollment__c.SObjectType),
-                                                                      Contact__c = testContact.Id,
+            Id fakeEduHistId = GRER_DataInteg_TEST.getFakeId(hed__Education_History__c.SObjectType);
+            Id fakeGradeEnrollId = GRER_DataInteg_TEST.getFakeId(Grade_Enrollment__c.SObjectType);
+            
+            hed__Education_History__c testEduHist = new hed__Education_History__c(Id = fakeEduHistId,
+                                                                                hed__Contact__c = fakeContactId,
+                                                                                hed__Account__c = fakeFirstAccountId);
+
+            Grade_Enrollment__c oldGradeEnroll = new Grade_Enrollment__c(Id = fakeGradeEnrollId,
+                                                                      Contact__c = fakeContactId,
                                                                       Educational_Institution__c = null,
                                                                       Grade_Level__c = 'Eighth Grade',
-                                                                      Education_History__c = testEduHist.Id
+                                                                      Education_History__c = fakeEduHistId
                                                                      );
 
             Grade_Enrollment__c newGradeEnroll = oldGradeEnroll.clone(true);
-            newGradeEnroll.Educational_Institution__c = firstAccount.Id;
+            newGradeEnroll.Educational_Institution__c = fakeFirstAccountId;
 
             oldGradeEnrollmentsList.add(oldGradeEnroll);
             newGradeEnrollmentsList.add(newGradeEnroll);
@@ -1199,6 +1253,30 @@ private class GRER_DataInteg_TEST {
     }
 
     /*********************************************************************************************************
+    * @description Test to verify that method run() does not result in errors when null SObject lists are 
+    * provided as parameters.
+    *********************************************************************************************************/
+    @isTest 
+    private static void runWithNullLists(){
+        hed.TDTM_Runnable.Action triggerAction = hed.TDTM_Runnable.Action.BeforeInsert;
+        Schema.DescribeSObjectResult objResult = Schema.SObjectType.Grade_Enrollment__c;
+
+        Test.startTest();
+        GRER_DataInteg_TDTM gradeEnrollTdtm = new GRER_DataInteg_TDTM();
+        List<Exception> exceptionsList = new List<Exception>();
+
+        try{
+            gradeEnrollTdtm.run(null, null, triggerAction, objResult);
+        } catch (Exception e){
+            exceptionsList.add(e);
+        }
+        Test.stopTest();
+
+        System.assertEquals(true, exceptionsList.isEmpty(), 'Execution with null lists should not display error messages.');
+
+    }
+
+    /*********************************************************************************************************
     * @description Helper method to generate a fake ID for a specified SObjectType.
     * @param sot The SObjectType of the fake Id to generate.
     * @return The fake Id.
@@ -1208,6 +1286,25 @@ private class GRER_DataInteg_TEST {
         String result = String.valueOf(s_num++);
         return sot.getDescribe().getKeyPrefix() +
            '0'.repeat(12-result.length()) + result;
+    }
+
+    /*********************************************************************************************************
+    * @description Helper method to disable insert and update triggers on Education History EDUHIS_DataInteg_TDTM
+    * class to prevent collisions with Grade Enrollment trigger testing.
+    **********************************************************************************************************/
+    private static void disableEDUHISDataIntegTrigger() {
+        //Insert HEDA Trigger Handlers
+        List<hed.TDTM_Global_API.TdtmToken> hedaTokens = hed.TDTM_Global_API.getDefaultTdtmConfig();
+        hed.TDTM_Global_API.setTdtmConfig(hedaTokens);
+
+        //Insert K12 trigger handlers
+        STG_InstallScript.setK12kitDefaultTriggerHandlers();
+
+        for (hed.TDTM_Global_API.TdtmToken tdtmToken : hed.TDTM_Global_API.getTdtmConfig()){
+            if (tdtmToken.className == 'EDUHIS_DataInteg_TDTM'){
+                tdtmToken.active = false;
+            }
+        }
     }
 
 }
