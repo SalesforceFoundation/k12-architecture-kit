@@ -60,6 +60,8 @@
         <members>hed__Behavior_Response__c-%%%NAMESPACE%%%K12 Kit Positive Behavior Response Layout</members>
         <members>hed__Education_History__c-%%%NAMESPACE%%%K12 Kit Education History Layout</members>
         <members>Case-%%%NAMESPACE%%%K12 Kit Positive Behavior Layout</members>
+        <members>Contact-%%%NAMESPACE%%%K12 Kit Student Layout</members>
+        <members>Account-%%%NAMESPACE%%%K12 Kit Educational Institution Layout</members>
         <name>Layout</name>
     </types>
     <types>
