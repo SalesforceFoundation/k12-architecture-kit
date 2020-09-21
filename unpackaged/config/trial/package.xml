@@ -63,6 +63,7 @@
         <members>Contact-%%%NAMESPACE%%%K12 Kit Student Layout</members>
         <members>Account-%%%NAMESPACE%%%K12 Kit Educational Institution Layout</members>
         <members>%%%NAMESPACE%%%Grade_Enrollment__c-%%%NAMESPACE%%%K12 Kit Grade Enrollment Layout</members>
+
         <name>Layout</name>
     </types>
     <types>
