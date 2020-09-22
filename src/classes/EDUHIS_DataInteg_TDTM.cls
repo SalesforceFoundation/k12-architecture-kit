@@ -75,6 +75,17 @@ global with sharing class EDUHIS_DataInteg_TDTM extends hed.TDTM_Runnable {
     private void checkForGradeEnrollmentEducationalInstitutionMismatch(List<SObject> newSObjectsList, List<SObject> oldSObjectsList){
         Map<Id, hed__Education_History__c> newEdHistById = new Map<Id, hed__Education_History__c>((List<hed__Education_History__c>)newSObjectsList);
         Map<Id, hed__Education_History__c> oldEdHistById = new Map<Id, hed__Education_History__c>((List<hed__Education_History__c>)oldSObjectsList);
+
+        Set<Id> relevantEducationHistIdsSet = new Set<Id>();
+
+        for (hed__Education_History__c eduHist : newEdHistById.values()){
+            if (String.isBlank(eduHist.hed__Account__c) == true || eduHist.hed__Account__c == oldEdHistById.get(eduHist.Id).hed__Account__c){
+                continue;
+            }
+
+            relevantEducationHistIdsSet.add(eduHist.Id);
+        }
+
         Map<Id, Grade_Enrollment__c> gradeEnrollmentByEduHistId = new Map<Id, Grade_Enrollment__c>();
 
         List<Grade_Enrollment__c> relatedGradeEnrollmentsList = ([SELECT Id,
@@ -82,26 +93,17 @@ global with sharing class EDUHIS_DataInteg_TDTM extends hed.TDTM_Runnable {
                                                                          Education_History__c,
                                                                          Contact__c
                                                                  FROM Grade_Enrollment__c
-                                                                 WHERE Education_History__c IN :newEdHistById.keySet()]);
+                                                                 WHERE Education_History__c != null
+                                                                 AND Education_History__c IN :relevantEducationHistIdsSet]);
 
         for(Grade_Enrollment__c gradeEnroll : relatedGradeEnrollmentsList){
-            gradeEnrollmentByEduHistId.put(gradeEnroll.Education_History__c, gradeEnroll);
-        }
-        
-        for (hed__Education_History__c eduHist : newEdHistById.values()){
-            if (String.isBlank(eduHist.hed__Account__c) == true || 
-                    gradeEnrollmentByEduHistId.containsKey(eduHist.Id) == false ||
-                    String.isBlank(gradeEnrollmentByEduHistId.get(eduHist.Id).Educational_Institution__c)){
+            hed__Education_History__c eduHistInContext = newEdHistById.get(gradeEnroll.Education_History__c);
+
+            if (eduHistInContext.hed__Account__c == gradeEnroll.Educational_Institution__c){
                 continue;
             }
 
-            hed__Education_History__c oldEduHist = oldEdHistById.get(eduHist.Id);
-
-            if (eduHist.hed__Account__c != oldEduHist.hed__Account__c){
-                if (eduHist.hed__Account__c != gradeEnrollmentByEduHistId.get(eduHist.Id).Educational_Institution__c){
-                    eduHist.addError(Label.EduHisInstitutionMismatch);
-                }
-            }
+            eduHistInContext.addError(Label.EduHisInstitutionMismatch);
         }
     }
 }
