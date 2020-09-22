@@ -441,11 +441,11 @@ private class EDUHIS_DataInteg_TEST {
         EDUHIS_DataInteg_TDTM eduHisTdtm = new EDUHIS_DataInteg_TDTM();
 
         Test.startTest();
-        List<Exception> exceptionsList = new List<Exception>();
+        List<DmlException> exceptionsList = new List<DmlException>();
 
         try{
             eduHisTdtm.checkForGradeEnrollmentEducationalInstitutionMismatch(newSObjectsList, oldSObjectsList);
-        } catch (Exception e){
+        } catch (DmlException e){
             exceptionsList.add(e);
         }
         Test.stopTest();
@@ -512,17 +512,17 @@ private class EDUHIS_DataInteg_TEST {
         EDUHIS_DataInteg_TDTM eduHisTdtm = new EDUHIS_DataInteg_TDTM();
 
         Test.startTest();
-        List<Exception> exceptionsList = new List<Exception>();
+        List<DmlException> exceptionsList = new List<DmlException>();
 
         try{
             eduHisTdtm.checkForGradeEnrollmentEducationalInstitutionMismatch(newSObjectsList, oldSObjectsList);
-        } catch (Exception e){
+        } catch (DmlException e){
             exceptionsList.add(e);
         }
         Test.stopTest();
 
-        for (Exception error : exceptionsList){
-            System.assertEquals(Label.EduHisInstitutionMismatch, error.getMessage(), 'Mis-matching values for Education Institution on Education History and Grade Enrollment should display error message.');
+        for (DmlException dmlException : exceptionsList){
+            System.assertEquals(Label.EduHisInstitutionMismatch, dmlException.getMessage(), 'Mis-matching values for Education Institution on Education History and Grade Enrollment should display error message.');
         }    
     }
 
@@ -585,11 +585,11 @@ private class EDUHIS_DataInteg_TEST {
         EDUHIS_DataInteg_TDTM eduHisTdtm = new EDUHIS_DataInteg_TDTM();
 
         Test.startTest();
-        List<Exception> exceptionsList = new List<Exception>();
+        List<DmlException> exceptionsList = new List<DmlException>();
 
         try{
             eduHisTdtm.checkForGradeEnrollmentEducationalInstitutionMismatch(newSObjectsList, oldSObjectsList);
-        } catch (Exception e){
+        } catch (DmlException e){
             exceptionsList.add(e);
         }
         Test.stopTest();
@@ -660,7 +660,7 @@ private class EDUHIS_DataInteg_TEST {
         Test.startTest();
         try {
             eduHisTdtm.run(newSObjectsList, oldSObjectsList, triggerAction, objResult);
-        } catch (Exception e){
+        } catch (DmlException e){
             System.assertEquals(Label.EduHisInstitutionMismatch, e.getMessage(), 'Updates with mismatching Education Institution for Education History and Grade Enrollment should display an error.');
         }
         Test.stopTest();
@@ -727,11 +727,11 @@ private class EDUHIS_DataInteg_TEST {
         EDUHIS_DataInteg_TDTM eduHisTdtm = new EDUHIS_DataInteg_TDTM();
 
         Test.startTest();
-        List<Exception> exceptionsList = new List<Exception>();
+        List<DmlException> exceptionsList = new List<DmlException>();
 
         try{
             eduHisTdtm.run(newSObjectsList, oldSObjectsList, triggerAction, objResult);
-        } catch (Exception e){
+        } catch (DmlException e){
             exceptionsList.add(e);
         }
         Test.stopTest();
@@ -763,16 +763,16 @@ private class EDUHIS_DataInteg_TEST {
 
         Test.startTest();
         EDUHIS_DataInteg_TDTM eduHisTdtm = new EDUHIS_DataInteg_TDTM();
-        List<Exception> exceptionsList = new List<Exception>();
+        List<DmlException> exceptionsList = new List<DmlException>();
 
         try{
             eduHisTdtm.run(null, null, triggerAction, objResult);
-        } catch (Exception e){
+        } catch (DmlException e){
             exceptionsList.add(e);
         }
         Test.stopTest();
 
-        System.assertEquals(true, exceptionsList.isEmpty(), 'Execution with null lists should not display error messages.');
+        System.assertEquals(true, exceptionsList.isEmpty(), 'Execution caused by a null list should not display an error message.');
 
     }
 }
