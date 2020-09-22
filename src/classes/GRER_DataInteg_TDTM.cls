@@ -54,18 +54,20 @@ global with sharing class GRER_DataInteg_TDTM extends hed.TDTM_Runnable {
         hed.TDTM_Runnable.DmlWrapper dmlWrapper = new hed.TDTM_Runnable.DmlWrapper();
 
         if (newList == null || newList.isEmpty() == true){
-            return dmlWrapper;
+            return null;
         }
 
         if (triggerAction == hed.TDTM_Runnable.Action.AfterInsert){
             this.handleAfterInsert(newList);
+            return null;
         }
 
         if (triggerAction == hed.TDTM_Runnable.Action.BeforeUpdate) {
             this.handleBeforeUpdate(newList, oldList);
+            return null;
         }
 
-        return dmlWrapper;
+        return null;
     }
 
     /**********************************************************************************************************************
