@@ -490,13 +490,18 @@ private class EDUHIS_DataInteg_TEST {
         insert educationHistoryList;
 
         for (hed__Education_History__c eduHist : educationHistoryList){
-            Grade_Enrollment__c gradeEnroll = new Grade_Enrollment__c(Contact__c = testContact.Id,
-                                                                      Educational_Institution__c = secondAccount.Id,
-                                                                      Grade_Level__c = 'Eighth Grade',
-                                                                      Education_History__c = eduHist.Id
-                                                                     );
+            Grade_Enrollment__c gradeEnrollMatching = new Grade_Enrollment__c(Contact__c = testContact.Id,
+                                                                              Educational_Institution__c = firstAccount.Id,
+                                                                              Grade_Level__c = 'Eighth Grade',
+                                                                              Education_History__c = eduHist.Id);
 
-            gradeEnrollmentsList.add(gradeEnroll);
+            Grade_Enrollment__c gradeEnrollMishMatching = new Grade_Enrollment__c(Contact__c = testContact.Id,
+                                                                                  Educational_Institution__c = secondAccount.Id,
+                                                                                  Grade_Level__c = 'Eighth Grade',
+                                                                                  Education_History__c = eduHist.Id);
+
+            gradeEnrollmentsList.add(gradeEnrollMatching);
+            gradeEnrollmentsList.add(gradeEnrollMishMatching);
         }
 
         insert gradeEnrollmentsList;
@@ -512,17 +517,14 @@ private class EDUHIS_DataInteg_TEST {
         EDUHIS_DataInteg_TDTM eduHisTdtm = new EDUHIS_DataInteg_TDTM();
 
         Test.startTest();
-        List<DmlException> exceptionsList = new List<DmlException>();
-
-        try{
-            eduHisTdtm.checkForGradeEnrollmentEducationalInstitutionMismatch(newSObjectsList, oldSObjectsList);
-        } catch (DmlException e){
-            exceptionsList.add(e);
-        }
+        eduHisTdtm.checkForGradeEnrollmentEducationalInstitutionMismatch(newSObjectsList, oldSObjectsList); // does not throw exception because not in trigger context
         Test.stopTest();
 
-        for (DmlException dmlException : exceptionsList){
-            System.assertEquals(Label.EduHisInstitutionMismatch, dmlException.getMessage(), 'Mis-matching values for Education Institution on Education History and Grade Enrollment should display error message.');
+        ApexPages.Message[] errorMessages = ApexPages.getMessages();
+        System.assertEquals(true, errorMessages.isEmpty() == false, 'Mismatching Educational Institutions should result in error.'); 
+        
+        for (ApexPages.Message msg : errorMessages){
+            System.assertEquals(Label.EduHisInstitutionMismatch, msg.getSummary(), 'Mis-matching values for Education Institution on Education History and Grade Enrollment should display error message.');
         }    
     }
 
