@@ -39,6 +39,19 @@ private class EDUHIS_DataInteg_TEST {
     *****************************************FUNCTIONAL TESTS*************************************************
     **********************************************************************************************************/
 
+    /**********************************************************************************************************
+    * @description Setup configuration for all tests cases.  Loads EDA and K12 triggers.
+    **********************************************************************************************************/ 
+    @testSetup
+    private static void testSetup() {
+        //Insert EDA Trigger Handlers
+        List<hed.TDTM_Global_API.TdtmToken> edaTokens = hed.TDTM_Global_API.getDefaultTdtmConfig();
+        hed.TDTM_Global_API.setTdtmConfig(edaTokens);
+
+        //Insert K12 trigger handlers
+        STG_InstallScript.setK12kitDefaultTriggerHandlers();
+    }
+
     /*********************************************************************************************************
     * @description Tests to verify that updating an Education History record with no change to the 
     * Educational Institution field does not execute.
@@ -70,10 +83,20 @@ private class EDUHIS_DataInteg_TEST {
         insert educationHistoryList;
 
         Test.startTest();
-        update educationHistoryList;
+        Database.SaveResult[] results = Database.update(educationHistoryList, false);
         Test.stopTest();
 
-        for (hed__Education_History__c eduHist : educationHistoryList){
+        for (Database.SaveResult sr : results){
+            System.assertEquals(true, sr.isSuccess(), 'Education History update should succeed.');
+            System.assertEquals(true, sr.getErrors().isEmpty(), 'Update for Education History should have no errors.');
+        }
+
+        List<hed__Education_History__c> educationHistoryResultsList = [SELECT Id,
+                                                                              hed__Account__c
+                                                                       FROM hed__Education_History__c
+                                                                       WHERE Id IN: educationHistoryList];
+
+        for (hed__Education_History__c eduHist : educationHistoryResultsList){
             System.assertEquals(firstAccount.Id, eduHist.hed__Account__c, 'Educational Institution should not change for Education History.');
         }
     }
@@ -114,10 +137,20 @@ private class EDUHIS_DataInteg_TEST {
         }
 
         Test.startTest();
-        update educationHistoryList;
+        Database.SaveResult[] results = Database.update(educationHistoryList, false);
         Test.stopTest();
 
-        for (hed__Education_History__c eduHist : educationHistoryList){
+        for (Database.SaveResult sr : results){
+            System.assertEquals(true, sr.isSuccess(), 'Education History update should succeed.');
+            System.assertEquals(true, sr.getErrors().isEmpty(), 'Update for Education History should have no errors.');
+        }
+
+        List<hed__Education_History__c> educationHistoryResultsList = [SELECT Id,
+                                                                              hed__Account__c
+                                                                       FROM hed__Education_History__c
+                                                                       WHERE Id IN: educationHistoryList];
+
+        for (hed__Education_History__c eduHist : educationHistoryResultsList){
             System.assertEquals(secondAccount.Id, eduHist.hed__Account__c, 'Educational Institution should update for Education History with no Grade Enrollments');
         }
     }
@@ -152,7 +185,8 @@ private class EDUHIS_DataInteg_TEST {
         for (hed__Education_History__c eduHist : educationHistoryList){
             Grade_Enrollment__c gradeEnroll = new Grade_Enrollment__c(Contact__c = testContact.Id,
                                                                       Educational_Institution__c = firstAccount.Id,
-                                                                      Grade_Level__c = 'Eighth Grade'
+                                                                      Grade_Level__c = 'Eighth Grade',
+                                                                      Education_History__c = eduHist.Id
                                                                      );
 
             gradeEnrollmentsList.add(gradeEnroll);
@@ -162,10 +196,20 @@ private class EDUHIS_DataInteg_TEST {
         insert gradeEnrollmentsList;
 
         Test.startTest();
-        update educationHistoryList;
+        Database.SaveResult[] results = Database.update(educationHistoryList, false);
         Test.stopTest();
 
-        for (hed__Education_History__c eduHist : educationHistoryList){
+        for (Database.SaveResult sr : results){
+            System.assertEquals(true, sr.isSuccess(), 'Education History update should succeed.');
+            System.assertEquals(true, sr.getErrors().isEmpty(), 'Update for Education History should have no errors.');
+        }
+
+        List<hed__Education_History__c> educationHistoryResultsList = [SELECT Id,
+                                                                              hed__Account__c
+                                                                       FROM hed__Education_History__c
+                                                                       WHERE Id IN: educationHistoryList];
+
+        for (hed__Education_History__c eduHist : educationHistoryResultsList){
             System.assertEquals(firstAccount.Id, eduHist.hed__Account__c, 'Matching Educational Institution should update for Education History with Grade Enrollment.');
         }
     }
@@ -203,11 +247,10 @@ private class EDUHIS_DataInteg_TEST {
         insert educationHistoryList;
 
         for (hed__Education_History__c eduHist : educationHistoryList){
-            eduHist.hed__Account__c = secondAccount.Id;
-
             Grade_Enrollment__c gradeEnroll = new Grade_Enrollment__c(Contact__c = testContact.Id,
                                                                       Educational_Institution__c = firstAccount.Id,
-                                                                      Grade_Level__c = 'Eighth Grade'
+                                                                      Grade_Level__c = 'Eighth Grade',
+                                                                      Education_History__c = eduHist.Id
                                                                      );
 
             gradeEnrollmentsList.add(gradeEnroll);
@@ -221,9 +264,19 @@ private class EDUHIS_DataInteg_TEST {
         Test.stopTest();
 
         for (Database.SaveResult sr : results){
+            System.assertEquals(false, sr.isSuccess(), 'Education History update should fail.');
             for (Database.Error err : sr.getErrors()){
-                System.assertEquals(Label.EduHisInstitutionMismatch, err.getMessage(), 'Inserting Education History with mismatched Institution should display error message.');
+                System.assertEquals(Label.EduHisInstitutionMismatch, err.getMessage(), 'Updating Education History with mismatched Institution should display error message.');
             }
+        }
+
+        List<hed__Education_History__c> educationHistoryResultsList = [SELECT Id,
+                                                                              hed__Account__c
+                                                                       FROM hed__Education_History__c
+                                                                       WHERE Id IN: educationHistoryList];
+
+        for (hed__Education_History__c eduHist : educationHistoryResultsList){
+            System.assertEquals(firstAccount.Id, eduHist.hed__Account__c, 'Educational Institution on Education History should not update.');
         }
     }
     /*********************************************************************************************************
@@ -269,10 +322,20 @@ private class EDUHIS_DataInteg_TEST {
         Test.startTest();
         Database.SaveResult[] results = Database.update(educationHistoryList, false);
         Test.stopTest();
-               
-        for (hed__Education_History__c eduHist : educationHistoryList){
+
+        for (Database.SaveResult sr : results){
+            System.assertEquals(true, sr.isSuccess(), 'Education History update should succeed.');
+            System.assertEquals(true, sr.getErrors().isEmpty(), 'Updating Education History with mismatched Institution for null value should not display error message.');
+        }
+
+        List<hed__Education_History__c> educationHistoryResultsList = [SELECT Id,
+                                                                              hed__Account__c
+                                                                       FROM hed__Education_History__c
+                                                                       WHERE Id IN: educationHistoryList];
+
+        for (hed__Education_History__c eduHist : educationHistoryResultsList){
             System.assertEquals(true, String.isBlank(eduHist.hed__Account__c), 'Educational Institution on Education History should update to blank value.');
-        } 
+        }
     }
 
     /*********************************************************************************************************
@@ -323,10 +386,20 @@ private class EDUHIS_DataInteg_TEST {
         Test.startTest();
         Database.SaveResult[] results = Database.update(educationHistoryList, false);
         Test.stopTest();
-               
-        for (hed__Education_History__c eduHist : educationHistoryList){
+
+        for (Database.SaveResult sr : results){
+            System.assertEquals(true, sr.isSuccess(), 'Education History update should succeed.');
+            System.assertEquals(true, sr.getErrors().isEmpty(), 'Updating Education History with mismatched Institution for null value should not display error message.');
+        }
+
+        List<hed__Education_History__c> educationHistoryResultsList = [SELECT Id,
+                                                                              hed__Account__c
+                                                                       FROM hed__Education_History__c
+                                                                       WHERE Id IN: educationHistoryList];
+
+        for (hed__Education_History__c eduHist : educationHistoryResultsList){
             System.assertEquals(secondAccount.Id, eduHist.hed__Account__c, 'Educational Institution on Education History should update with blank institution on associated grade enrollment.');
-        } 
+        }
     }
 
     /*********************************************************************************************************
@@ -372,10 +445,20 @@ private class EDUHIS_DataInteg_TEST {
         Test.startTest();
         Database.SaveResult[] results = Database.update(educationHistoryList, false);
         Test.stopTest();
-               
-        for (hed__Education_History__c eduHist : educationHistoryList){
+
+        for (Database.SaveResult sr : results){
+            System.assertEquals(true, sr.isSuccess(), 'Education History update should succeed.');
+            System.assertEquals(true, sr.getErrors().isEmpty(), 'Updating Education History with mismatched Institution for null value should not display error message.');
+        }
+
+        List<hed__Education_History__c> educationHistoryResultsList = [SELECT Id,
+                                                                              hed__Account__c
+                                                                       FROM hed__Education_History__c
+                                                                       WHERE Id IN: educationHistoryList];
+
+        for (hed__Education_History__c eduHist : educationHistoryResultsList){
             System.assertEquals(true, String.isBlank(eduHist.hed__Account__c), 'Educational Institution on Education History should clear with blank institution on associated grade enrollment.');
-        } 
+        }
     }
 
     /*********************************************************************************************************
@@ -446,11 +529,13 @@ private class EDUHIS_DataInteg_TEST {
         EDUHIS_DataInteg_TDTM eduHisTdtm = new EDUHIS_DataInteg_TDTM();
 
         Test.startTest();
-        eduHisTdtm.checkForGradeEnrollmentEducationalInstitutionMismatch(newSObjectsList, oldSObjectsList);
+        List<hed__Education_History__c> eduHistoryWithErrorsList = new List<hed__Education_History__c>();
+        eduHistoryWithErrorsList = eduHisTdtm.checkForGradeEnrollmentEducationalInstitutionMismatch(newSObjectsList, oldSObjectsList);
         Test.stopTest();
 
         ApexPages.Message[] errorMessages = ApexPages.getMessages();
         System.assertEquals(true, errorMessages.isEmpty(), 'Matching Educational Institutions should not result in error.'); 
+        System.assertEquals(true, eduHistoryWithErrorsList.isEmpty(), 'There should be no Education History records with errors.');
     }
 
     /*********************************************************************************************************
@@ -460,6 +545,9 @@ private class EDUHIS_DataInteg_TEST {
     *********************************************************************************************************/
     @isTest 
     private static void checkForMismatchFound(){
+
+        EDUHIS_DataInteg_TEST.disableGradeEnrollDataIntegTrigger();
+
         hed__Hierarchy_Settings__c hs = hed.UTIL_CustomSettings_API.getSettings();
         String adminRecordType = hs.hed__Administrative_Account_Record_Type__c;
 
@@ -517,14 +605,16 @@ private class EDUHIS_DataInteg_TEST {
         EDUHIS_DataInteg_TDTM eduHisTdtm = new EDUHIS_DataInteg_TDTM();
 
         Test.startTest();
-        eduHisTdtm.checkForGradeEnrollmentEducationalInstitutionMismatch(newSObjectsList, oldSObjectsList); // does not throw exception because not in trigger context
+        List<hed__Education_History__c> eduHistoryWithErrorsList = new List<hed__Education_History__c>();
+        eduHistoryWithErrorsList = eduHisTdtm.checkForGradeEnrollmentEducationalInstitutionMismatch(newSObjectsList, oldSObjectsList); 
         Test.stopTest();
 
         ApexPages.Message[] errorMessages = ApexPages.getMessages();
         System.assertEquals(false, errorMessages.isEmpty(), 'Mismatching Educational Institutions should result in error.'); 
+        System.assertEquals(5, eduHistoryWithErrorsList.size(), 'All 5 Education History records should be associated with an error.');
         
         for (ApexPages.Message msg : errorMessages){
-            System.assertEquals(Label.EduHisInstitutionMismatch, msg.getSummary(), 'Mis-matching values for Education Institution on Education History and Grade Enrollment should display error message.');
+            System.assertEquals(Label.EduHisInstitutionMismatch, msg.getSummary(), 'Mis-matching values for Education Institution on Education History and Grade Enrollment should display a mismatched Institution error.');
         }    
     }
 
@@ -587,11 +677,13 @@ private class EDUHIS_DataInteg_TEST {
         EDUHIS_DataInteg_TDTM eduHisTdtm = new EDUHIS_DataInteg_TDTM();
 
         Test.startTest();
-        eduHisTdtm.checkForGradeEnrollmentEducationalInstitutionMismatch(newSObjectsList, oldSObjectsList);
+        List<hed__Education_History__c> eduHistoryWithErrorsList = new List<hed__Education_History__c>();
+        eduHistoryWithErrorsList = eduHisTdtm.checkForGradeEnrollmentEducationalInstitutionMismatch(newSObjectsList, oldSObjectsList);
         Test.stopTest();
 
         ApexPages.Message[] errorMessages = ApexPages.getMessages();
         System.assertEquals(true, errorMessages.isEmpty(), 'Mismatching Educational Institutions with null values should not result in error.'); 
+        System.assertEquals(true, eduHistoryWithErrorsList.isEmpty(), 'None of the Education History records should be associated with an error.');
     }
 
     /*********************************************************************************************************
@@ -685,6 +777,9 @@ private class EDUHIS_DataInteg_TEST {
     *********************************************************************************************************/
     @isTest 
     private static void runWithNoUpdateMismatching(){
+
+        EDUHIS_DataInteg_TEST.disableGradeEnrollDataIntegTrigger();
+
         hed.TDTM_Runnable.Action triggerAction = hed.TDTM_Runnable.Action.BeforeUpdate;
         Schema.DescribeSObjectResult objResult = Schema.SObjectType.hed__Education_History__c;
 
@@ -742,10 +837,6 @@ private class EDUHIS_DataInteg_TEST {
         }
 
         EDUHIS_DataInteg_TDTM eduHisTdtm = new EDUHIS_DataInteg_TDTM();
-
-        Test.startTest();
-        List<DmlException> exceptionsList = new List<DmlException>();
-
         Test.startTest();
         eduHisTdtm.run(newSObjectsList, oldSObjectsList, triggerAction, objResult);
         Test.stopTest();
@@ -772,5 +863,20 @@ private class EDUHIS_DataInteg_TEST {
         Test.startTest();
         System.assertEquals(null, eduHisTdtm.run(null, null, triggerAction, objResult), 'Execution caused by null lists should return null.');
         Test.stopTest();
+
+        ApexPages.Message[] errorMessages = ApexPages.getMessages();
+        System.assertEquals(true, errorMessages.isEmpty(), 'Execution of rung with null lists should not result in errors.'); 
+    }
+
+    /**********************************************************************************************************
+    * @description Disables the Grade Enrollments Data Integrity triggers to prevent conflicts and allow 
+    * thorough testing of Education History trigger functionality.
+    **********************************************************************************************************/
+    private static void disableGradeEnrollDataIntegTrigger(){
+        for (hed.TDTM_Global_API.TdtmToken tdtmToken : hed.TDTM_Global_API.getTdtmConfig()){
+            if (tdtmToken.className == 'GRER_DataInteg_TDTM'){
+                tdtmToken.active = false;
+            }
+        }
     }
 }

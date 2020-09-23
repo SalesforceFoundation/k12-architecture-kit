@@ -51,15 +51,15 @@ global with sharing class EDUHIS_DataInteg_TDTM extends hed.TDTM_Runnable {
     ************************************************************************************************************************/
     global override hed.TDTM_Runnable.DmlWrapper run(List<SObject> newList, List<SObject> oldList,
         hed.TDTM_Runnable.Action triggerAction, Schema.DescribeSObjectResult objResult) {
-
         hed.TDTM_Runnable.DmlWrapper dmlWrapper = new hed.TDTM_Runnable.DmlWrapper();
-
+        
         if (newList == null || newList.isEmpty() == true){
             return null;
         }
 
         if (triggerAction == hed.TDTM_Runnable.Action.BeforeUpdate) {
-            this.checkForGradeEnrollmentEducationalInstitutionMismatch(newList, oldList);
+            List<hed__Education_History__c> eduHistoryWithErrorsList = new List<hed__Education_History__c>();
+            eduHistoryWithErrorsList = this.checkForGradeEnrollmentEducationalInstitutionMismatch(newList, oldList);
             return null;
         }
 
@@ -73,11 +73,12 @@ global with sharing class EDUHIS_DataInteg_TDTM extends hed.TDTM_Runnable {
     * @param  oldSObjectsList List of SObjects in state before update.
     **********************************************************************************************************************/
     @TestVisible
-    private void checkForGradeEnrollmentEducationalInstitutionMismatch(List<SObject> newSObjectsList, List<SObject> oldSObjectsList){
+    private List<hed__Education_History__c> checkForGradeEnrollmentEducationalInstitutionMismatch(List<SObject> newSObjectsList, List<SObject> oldSObjectsList){
         Map<Id, hed__Education_History__c> newEdHistById = new Map<Id, hed__Education_History__c>((List<hed__Education_History__c>)newSObjectsList);
         Map<Id, hed__Education_History__c> oldEdHistById = new Map<Id, hed__Education_History__c>((List<hed__Education_History__c>)oldSObjectsList);
 
         Set<Id> relevantEducationHistIdsSet = new Set<Id>();
+        List<hed__Education_History__c> eduHistoryWithErrorsList = new List<hed__Education_History__c>();
 
         for (hed__Education_History__c eduHist : newEdHistById.values()){
             if (String.isBlank(eduHist.hed__Account__c) == true || eduHist.hed__Account__c == oldEdHistById.get(eduHist.Id).hed__Account__c){
@@ -87,14 +88,13 @@ global with sharing class EDUHIS_DataInteg_TDTM extends hed.TDTM_Runnable {
             relevantEducationHistIdsSet.add(eduHist.Id);
         }
 
-        Map<Id, Grade_Enrollment__c> gradeEnrollmentByEduHistId = new Map<Id, Grade_Enrollment__c>();
-
         List<Grade_Enrollment__c> relatedGradeEnrollmentsList = ([SELECT Id,
                                                                          Educational_Institution__c,
                                                                          Education_History__c,
                                                                          Contact__c
                                                                  FROM Grade_Enrollment__c
                                                                  WHERE Education_History__c != null
+                                                                 AND Educational_Institution__c != null
                                                                  AND Education_History__c IN :relevantEducationHistIdsSet]);
 
         for(Grade_Enrollment__c gradeEnroll : relatedGradeEnrollmentsList){
@@ -104,7 +104,10 @@ global with sharing class EDUHIS_DataInteg_TDTM extends hed.TDTM_Runnable {
                 continue;
             }
 
+            eduHistoryWithErrorsList.add(eduHistInContext);
             eduHistInContext.addError(Label.EduHisInstitutionMismatch);
         }
+
+        return eduHistoryWithErrorsList;
     }
 }

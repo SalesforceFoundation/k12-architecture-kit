@@ -52,18 +52,19 @@ global with sharing class GRER_DataInteg_TDTM extends hed.TDTM_Runnable {
         hed.TDTM_Runnable.Action triggerAction, Schema.DescribeSObjectResult objResult) {
 
         hed.TDTM_Runnable.DmlWrapper dmlWrapper = new hed.TDTM_Runnable.DmlWrapper();
+        List<Grade_Enrollment__c> gradeEnrollmentsWithErrorsList = new List<Grade_Enrollment__c>();
 
         if (newList == null || newList.isEmpty() == true){
             return null;
         }
 
         if (triggerAction == hed.TDTM_Runnable.Action.AfterInsert){
-            this.handleAfterInsert(newList);
+            gradeEnrollmentsWithErrorsList = this.handleAfterInsert(newList);
             return null;
         }
 
         if (triggerAction == hed.TDTM_Runnable.Action.BeforeUpdate) {
-            this.handleBeforeUpdate(newList, oldList);
+            gradeEnrollmentsWithErrorsList = this.handleBeforeUpdate(newList, oldList);
             return null;
         }
 
@@ -75,14 +76,18 @@ global with sharing class GRER_DataInteg_TDTM extends hed.TDTM_Runnable {
     * @param  newSObjectsList A list of SObjects to be inserted.
     **********************************************************************************************************************/
     @TestVisible
-    private void handleAfterInsert(List<SObject> newSObjectsList){
+    private List<Grade_Enrollment__c> handleAfterInsert(List<SObject> newSObjectsList){
         if (this.isInsertRecursion() == true){
-            return;
+            return null;
         }
 
+        List<Grade_Enrollment__c> gradeEnrollmentsWithErrorsList = new List<Grade_Enrollment__c>();
+
         this.setInsertRecursion();
-        this.checkEducationalInstitutionAgainstEducationHistory(newSObjectsList);
+        gradeEnrollmentsWithErrorsList = this.checkEducationalInstitutionAgainstEducationHistory(newSObjectsList);
         this.unsetInsertRecursion();
+
+        return gradeEnrollmentsWithErrorsList;
     }
 
     /**********************************************************************************************************************
@@ -91,8 +96,11 @@ global with sharing class GRER_DataInteg_TDTM extends hed.TDTM_Runnable {
     * @param  oldSObjectsList List of SObjects in state before update.
     **********************************************************************************************************************/
     @TestVisible
-    private void handleBeforeUpdate(List<SObject> newSObjectsList, List<SObject> oldSObjectsList){
-        this.checkEducationalInstitutionAgainstEducationHistory(newSObjectsList, oldSObjectsList);
+    private List<Grade_Enrollment__c> handleBeforeUpdate(List<SObject> newSObjectsList, List<SObject> oldSObjectsList){
+        List<Grade_Enrollment__c> gradeEnrollmentsWithErrorsList = new List<Grade_Enrollment__c>();
+
+        gradeEnrollmentsWithErrorsList = this.checkEducationalInstitutionAgainstEducationHistory(newSObjectsList, oldSObjectsList);
+        return gradeEnrollmentsWithErrorsList;
     }
 
     /**********************************************************************************************************************
@@ -101,8 +109,9 @@ global with sharing class GRER_DataInteg_TDTM extends hed.TDTM_Runnable {
     * @param  newSObjectsList List of SObjects to insert.
     **********************************************************************************************************************/
     @TestVisible
-    private void checkEducationalInstitutionAgainstEducationHistory(List<SObject> newSObjectsList){
+    private List<Grade_Enrollment__c> checkEducationalInstitutionAgainstEducationHistory(List<SObject> newSObjectsList){
         List<Grade_Enrollment__c> gradeEnrollmentsToProcessList = (List<Grade_Enrollment__c>)newSObjectsList;
+        List<Grade_Enrollment__c> gradeEnrollmentsWithErrorsList = new List<Grade_Enrollment__c>();
 
         Map<Id, Grade_Enrollment__c> gradeEnrollmentsById = new Map<Id, Grade_Enrollment__c>([SELECT Id, 
                                                                                                      Education_History__c,
@@ -117,9 +126,12 @@ global with sharing class GRER_DataInteg_TDTM extends hed.TDTM_Runnable {
             }
 
             if (gradeEnroll.Educational_Institution__c != gradeEnrollmentsById.get(gradeEnroll.Id).Education_History__r.hed__Account__c){
+                gradeEnrollmentsWithErrorsList.add(gradeEnroll);
                 gradeEnroll.addError(Label.GrErInstitutionMismatch);
             } 
         }
+
+        return gradeEnrollmentsWithErrorsList;
     }
 
     /**********************************************************************************************************************
@@ -129,9 +141,11 @@ global with sharing class GRER_DataInteg_TDTM extends hed.TDTM_Runnable {
     * @param  oldSObjectsList List of SObjects to update in state prior to update.
     **********************************************************************************************************************/
     @TestVisible
-    private void checkEducationalInstitutionAgainstEducationHistory(List<SObject> newSObjectsList, List<SObject> oldSObjectsList){
+    private List<Grade_Enrollment__c> checkEducationalInstitutionAgainstEducationHistory(List<SObject> newSObjectsList, List<SObject> oldSObjectsList){
         Map<Id, Grade_Enrollment__c> oldGradeEnrollmentsById = new Map<Id, Grade_Enrollment__c>((List<Grade_Enrollment__c>)oldSObjectsList);
         Map<Id,Grade_Enrollment__c> newGradeEnrollmentsById = new Map<Id,Grade_Enrollment__c>((List<Grade_Enrollment__c>)newSObjectsList);
+
+        List<Grade_Enrollment__c> gradeEnrollmentsWithErrorsList = new List<Grade_Enrollment__c>();
 
         Map<Id, Grade_Enrollment__c> gradeEnrollmentsById = new Map<Id, Grade_Enrollment__c>([SELECT Id, 
                                                                                                      Education_History__c,
@@ -149,10 +163,13 @@ global with sharing class GRER_DataInteg_TDTM extends hed.TDTM_Runnable {
 
             if (gradeEnroll.Educational_Institution__c != oldGradeEnroll.Educational_Institution__c){
                 if (gradeEnroll.Educational_Institution__c != gradeEnrollmentsById.get(gradeEnroll.Id).Education_History__r.hed__Account__c){
+                    gradeEnrollmentsWithErrorsList.add(gradeEnroll);
                     gradeEnroll.addError(Label.GrErInstitutionMismatch);
                 }               
             }
         }
+
+        return gradeEnrollmentsWithErrorsList;
     }
 
     /*******************************************************************************************************
