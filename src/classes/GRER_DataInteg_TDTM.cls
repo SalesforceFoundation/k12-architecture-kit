@@ -77,15 +77,8 @@ global with sharing class GRER_DataInteg_TDTM extends hed.TDTM_Runnable {
     **********************************************************************************************************************/
     @TestVisible
     private List<Grade_Enrollment__c> handleAfterInsert(List<SObject> newSObjectsList){
-        if (this.isInsertRecursion() == true){
-            return null;
-        }
-
         List<Grade_Enrollment__c> gradeEnrollmentsWithErrorsList = new List<Grade_Enrollment__c>();
-
-        this.setInsertRecursion();
         gradeEnrollmentsWithErrorsList = this.checkEducationalInstitutionAgainstEducationHistory(newSObjectsList);
-        this.unsetInsertRecursion();
 
         return gradeEnrollmentsWithErrorsList;
     }
@@ -97,8 +90,10 @@ global with sharing class GRER_DataInteg_TDTM extends hed.TDTM_Runnable {
     **********************************************************************************************************************/
     @TestVisible
     private List<Grade_Enrollment__c> handleBeforeUpdate(List<SObject> newSObjectsList, List<SObject> oldSObjectsList){
-        List<Grade_Enrollment__c> gradeEnrollmentsWithErrorsList = new List<Grade_Enrollment__c>();
+        Map<Id,Grade_Enrollment__c> newGradeEnrollmentsById = new Map<Id,Grade_Enrollment__c>((List<Grade_Enrollment__c>)newSObjectsList);
+        Map<Id,Grade_Enrollment__c> oldGradeEnrollmentsById = new Map<Id,Grade_Enrollment__c>((List<Grade_Enrollment__c>)oldSObjectsList);
 
+        List<Grade_Enrollment__c> gradeEnrollmentsWithErrorsList = new List<Grade_Enrollment__c>();
         gradeEnrollmentsWithErrorsList = this.checkEducationalInstitutionAgainstEducationHistory(newSObjectsList, oldSObjectsList);
         return gradeEnrollmentsWithErrorsList;
     }
@@ -110,25 +105,36 @@ global with sharing class GRER_DataInteg_TDTM extends hed.TDTM_Runnable {
     **********************************************************************************************************************/
     @TestVisible
     private List<Grade_Enrollment__c> checkEducationalInstitutionAgainstEducationHistory(List<SObject> newSObjectsList){
-        List<Grade_Enrollment__c> gradeEnrollmentsToProcessList = (List<Grade_Enrollment__c>)newSObjectsList;
+        Map<Id, Grade_Enrollment__c> gradeEnrollmentsById = new Map<Id, Grade_Enrollment__c>((List<Grade_Enrollment__c>)newSObjectsList);
+
+        Set<Id> relevantGradeEnrollIdsSet = new Set<Id>();
         List<Grade_Enrollment__c> gradeEnrollmentsWithErrorsList = new List<Grade_Enrollment__c>();
 
-        Map<Id, Grade_Enrollment__c> gradeEnrollmentsById = new Map<Id, Grade_Enrollment__c>([SELECT Id, 
-                                                                                                     Education_History__c,
-                                                                                                     Education_History__r.hed__Account__c,
-                                                                                                     Educational_Institution__c
-                                                                                             FROM Grade_Enrollment__c
-                                                                                             WHERE Id IN :gradeEnrollmentsToProcessList]);
+        for (Grade_Enrollment__c gradeEnroll : gradeEnrollmentsById.values()){
+            if (String.isBlank(gradeEnroll.Educational_Institution__c) == true){
+                continue;
+            }
+            relevantGradeEnrollIdsSet.add(gradeEnroll.Id);
+        }
 
-        for (Grade_Enrollment__c gradeEnroll : gradeEnrollmentsToProcessList){
-            if (String.isBlank(gradeEnroll.Educational_Institution__c) == true || String.isBlank(gradeEnrollmentsById.get(gradeEnroll.Id).Education_History__r.hed__Account__c) == true){
+        List<Grade_Enrollment__c> relevantGradeEnrollmentsList = [SELECT Id, 
+                                                                         Education_History__c,
+                                                                         Education_History__r.hed__Account__c,
+                                                                         Educational_Institution__c
+                                                                  FROM Grade_Enrollment__c
+                                                                  WHERE Educational_Institution__c != null 
+                                                                  AND Education_History__r.hed__Account__c != null
+                                                                  AND Id IN :relevantGradeEnrollIdsSet];
+
+        for (Grade_Enrollment__c gradeEnroll : relevantGradeEnrollmentsList){
+            Grade_Enrollment__c gradeEnrollInContext = gradeEnrollmentsById.get(gradeEnroll.Id);
+
+            if (gradeEnrollInContext.Educational_Institution__c == gradeEnroll.Education_History__r.hed__Account__c){
                 continue;
             }
 
-            if (gradeEnroll.Educational_Institution__c != gradeEnrollmentsById.get(gradeEnroll.Id).Education_History__r.hed__Account__c){
-                gradeEnrollmentsWithErrorsList.add(gradeEnroll);
-                gradeEnroll.addError(Label.GrErInstitutionMismatch);
-            } 
+            gradeEnrollmentsWithErrorsList.add(gradeEnrollInContext);
+            gradeEnrollInContext.addError(Label.GrErInstitutionMismatch);
         }
 
         return gradeEnrollmentsWithErrorsList;
@@ -146,54 +152,38 @@ global with sharing class GRER_DataInteg_TDTM extends hed.TDTM_Runnable {
         Map<Id,Grade_Enrollment__c> newGradeEnrollmentsById = new Map<Id,Grade_Enrollment__c>((List<Grade_Enrollment__c>)newSObjectsList);
 
         List<Grade_Enrollment__c> gradeEnrollmentsWithErrorsList = new List<Grade_Enrollment__c>();
-
-        Map<Id, Grade_Enrollment__c> gradeEnrollmentsById = new Map<Id, Grade_Enrollment__c>([SELECT Id, 
-                                                                                                     Education_History__c,
-                                                                                                     Education_History__r.hed__Account__c,
-                                                                                                     Educational_Institution__c
-                                                                                             FROM Grade_Enrollment__c
-                                                                                             WHERE Id IN :newGradeEnrollmentsById.keySet()]);
-
+        Set<Id> relevantGradeEnrollIdsSet = new Set<Id>();
+        
         for (Grade_Enrollment__c gradeEnroll : newGradeEnrollmentsById.values()){
-            if (String.isBlank(gradeEnroll.Educational_Institution__c) == true || String.isBlank(gradeEnrollmentsById.get(gradeEnroll.Id).Education_History__r.hed__Account__c) == true){
+            Grade_Enrollment__c oldGradeEnroll = oldGradeEnrollmentsById.get(gradeEnroll.Id);
+
+            if (String.isBlank(gradeEnroll.Educational_Institution__c)  == true || gradeEnroll.Educational_Institution__c == oldGradeEnroll.Educational_Institution__c){
+                continue;
+            }
+            relevantGradeEnrollIdsSet.add(gradeEnroll.Id);
+        }
+
+        List<Grade_Enrollment__c> relevantGradeEnrollmentsList = [SELECT Id, 
+                                                                         Education_History__c,
+                                                                         Education_History__r.hed__Account__c,
+                                                                         Educational_Institution__c
+                                                                  FROM Grade_Enrollment__c
+                                                                  WHERE Educational_Institution__c != null 
+                                                                  AND Education_History__r.hed__Account__c != null
+                                                                  AND Id IN :relevantGradeEnrollIdsSet];
+
+        for (Grade_Enrollment__c gradeEnroll : relevantGradeEnrollmentsList){
+
+            Grade_Enrollment__c gradeEnrollInContext = newGradeEnrollmentsById.get(gradeEnroll.Id);
+
+            if (gradeEnroll.Educational_Institution__c == gradeEnrollInContext.Education_History__r.hed__Account__c){
                 continue;
             }
 
-            Grade_Enrollment__c oldGradeEnroll = oldGradeEnrollmentsById.get(gradeEnroll.Id);
-
-            if (gradeEnroll.Educational_Institution__c != oldGradeEnroll.Educational_Institution__c){
-                if (gradeEnroll.Educational_Institution__c != gradeEnrollmentsById.get(gradeEnroll.Id).Education_History__r.hed__Account__c){
-                    gradeEnrollmentsWithErrorsList.add(gradeEnroll);
-                    gradeEnroll.addError(Label.GrErInstitutionMismatch);
-                }               
-            }
+            gradeEnrollmentsWithErrorsList.add(gradeEnrollInContext);
+            gradeEnrollInContext.addError(Label.GrErInstitutionMismatch);
         }
 
         return gradeEnrollmentsWithErrorsList;
-    }
-
-    /*******************************************************************************************************
-    * @description Determines whether current context is associated with an insert recursion.
-    * @return True if After Insert recursion flag for GRER_DataInteg_TDTM_After_Insert is set, False otherwise.
-    *******************************************************************************************************/ 
-    @TestVisible
-    private Boolean isInsertRecursion(){
-        return TDTM_ProcessControl.getRecursionFlag(TDTM_ProcessControl.registeredTrigger.GRER_DataInteg_TDTM_After_Insert);
-    }
-
-    /*******************************************************************************************************
-    * @description Sets the After Insert recursion flag for GRER_DataInteg_TDTM_After_Insert.
-    *******************************************************************************************************/ 
-    @TestVisible
-    private void setInsertRecursion(){
-        TDTM_ProcessControl.setRecursionFlag(TDTM_ProcessControl.registeredTrigger.GRER_DataInteg_TDTM_After_Insert, true);
-    }
-
-    /*******************************************************************************************************
-    * @description Clears the After Insert recursion flag for GRER_DataInteg_TDTM_After_Insert.
-    *******************************************************************************************************/ 
-    @TestVisible
-    private void unsetInsertRecursion(){
-        TDTM_ProcessControl.setRecursionFlag(TDTM_ProcessControl.registeredTrigger.GRER_DataInteg_TDTM_After_Insert, false);
     }
 }
