@@ -71,7 +71,8 @@ global with sharing class EDUHIS_DataInteg_TDTM extends hed.TDTM_Runnable {
     * History record matches the non-blank Educational Institution value specified on the related Grade Enrollment record.
     * @param  newSObjectsList List of SObjects in updated state.
     * @param  oldSObjectsList List of SObjects in state before update.
-    **********************************************************************************************************************/
+    * @return A list of Education History records with errors.
+    **********************************************************************************************************************/ 
     @TestVisible
     private List<hed__Education_History__c> checkForGradeEnrollmentEducationalInstitutionMismatch(List<SObject> newSObjectsList, List<SObject> oldSObjectsList){
         Map<Id, hed__Education_History__c> newEdHistById = new Map<Id, hed__Education_History__c>((List<hed__Education_History__c>)newSObjectsList);

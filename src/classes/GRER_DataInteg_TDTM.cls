@@ -74,6 +74,7 @@ global with sharing class GRER_DataInteg_TDTM extends hed.TDTM_Runnable {
     /**********************************************************************************************************************
     * @description Handles the logic associated with an After Insert trigger action.
     * @param  newSObjectsList A list of SObjects to be inserted.
+    * @return A list of Grade Enrollment records with errors.
     **********************************************************************************************************************/
     @TestVisible
     private List<Grade_Enrollment__c> handleAfterInsert(List<SObject> newSObjectsList){
@@ -87,6 +88,7 @@ global with sharing class GRER_DataInteg_TDTM extends hed.TDTM_Runnable {
     * @description Handles the logic associated with a Before Update trigger action.
     * @param  newSObjectsList List of SObjects in updated state.
     * @param  oldSObjectsList List of SObjects in state before update.
+    * @return A list of Grade Enrollment records with errors.
     **********************************************************************************************************************/
     @TestVisible
     private List<Grade_Enrollment__c> handleBeforeUpdate(List<SObject> newSObjectsList, List<SObject> oldSObjectsList){
@@ -102,6 +104,7 @@ global with sharing class GRER_DataInteg_TDTM extends hed.TDTM_Runnable {
     * @description Verifies that the Educational Institution specified on a Grade Enrollment record matches the value set
     * on the associated Education History record before insertion.
     * @param  newSObjectsList List of SObjects to insert.
+    * @return A list of Grade Enrollment records with errors.
     **********************************************************************************************************************/
     @TestVisible
     private List<Grade_Enrollment__c> checkEducationalInstitutionAgainstEducationHistory(List<SObject> newSObjectsList){
@@ -145,6 +148,7 @@ global with sharing class GRER_DataInteg_TDTM extends hed.TDTM_Runnable {
     * the value set on the associated Education History record before update.
     * @param  newSObjectsList List of SObjects to update.
     * @param  oldSObjectsList List of SObjects to update in state prior to update.
+    * @return A list of Grade Enrollment records with errors.
     **********************************************************************************************************************/
     @TestVisible
     private List<Grade_Enrollment__c> checkEducationalInstitutionAgainstEducationHistory(List<SObject> newSObjectsList, List<SObject> oldSObjectsList){
