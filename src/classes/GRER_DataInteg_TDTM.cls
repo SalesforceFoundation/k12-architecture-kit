@@ -63,8 +63,8 @@ global with sharing class GRER_DataInteg_TDTM extends hed.TDTM_Runnable {
             return null;
         }
 
-        if (triggerAction == hed.TDTM_Runnable.Action.BeforeUpdate) {
-            gradeEnrollmentsWithErrorsList = this.handleBeforeUpdate(newList, oldList);
+        if (triggerAction == hed.TDTM_Runnable.Action.AfterUpdate) {
+            gradeEnrollmentsWithErrorsList = this.handleAfterUpdate(newList, oldList);
             return null;
         }
 
@@ -91,7 +91,8 @@ global with sharing class GRER_DataInteg_TDTM extends hed.TDTM_Runnable {
     * @return A list of Grade Enrollment records with errors.
     **********************************************************************************************************************/
     @TestVisible
-    private List<Grade_Enrollment__c> handleBeforeUpdate(List<SObject> newSObjectsList, List<SObject> oldSObjectsList){
+    private List<Grade_Enrollment__c> handleAfterUpdate(List<SObject> newSObjectsList, List<SObject> oldSObjectsList){
+        System.debug('MK DEBUG: executing Before Update');
         Map<Id,Grade_Enrollment__c> newGradeEnrollmentsById = new Map<Id,Grade_Enrollment__c>((List<Grade_Enrollment__c>)newSObjectsList);
         Map<Id,Grade_Enrollment__c> oldGradeEnrollmentsById = new Map<Id,Grade_Enrollment__c>((List<Grade_Enrollment__c>)oldSObjectsList);
 
@@ -160,10 +161,15 @@ global with sharing class GRER_DataInteg_TDTM extends hed.TDTM_Runnable {
         
         for (Grade_Enrollment__c gradeEnroll : newGradeEnrollmentsById.values()){
             Grade_Enrollment__c oldGradeEnroll = oldGradeEnrollmentsById.get(gradeEnroll.Id);
-
-            if (String.isBlank(gradeEnroll.Educational_Institution__c)  == true || gradeEnroll.Educational_Institution__c == oldGradeEnroll.Educational_Institution__c){
+            
+            if (String.isBlank(gradeEnroll.Educational_Institution__c) == true || String.isBlank(gradeEnroll.Education_History__c) == true){
+                continue;
+            }  
+            
+            if (gradeEnroll.Educational_Institution__c == oldGradeEnroll.Educational_Institution__c && gradeEnroll.Education_History__c == oldGradeEnroll.Education_History__c ){
                 continue;
             }
+
             relevantGradeEnrollIdsSet.add(gradeEnroll.Id);
         }
 
@@ -173,14 +179,14 @@ global with sharing class GRER_DataInteg_TDTM extends hed.TDTM_Runnable {
                                                                          Educational_Institution__c
                                                                   FROM Grade_Enrollment__c
                                                                   WHERE Educational_Institution__c != null 
+                                                                  AND Education_History__c != null
                                                                   AND Education_History__r.hed__Account__c != null
                                                                   AND Id IN :relevantGradeEnrollIdsSet];
 
         for (Grade_Enrollment__c gradeEnroll : relevantGradeEnrollmentsList){
-
             Grade_Enrollment__c gradeEnrollInContext = newGradeEnrollmentsById.get(gradeEnroll.Id);
 
-            if (gradeEnroll.Educational_Institution__c == gradeEnrollInContext.Education_History__r.hed__Account__c){
+            if (gradeEnrollInContext.Educational_Institution__c == gradeEnroll.Education_History__r.hed__Account__c){
                 continue;
             }
 
