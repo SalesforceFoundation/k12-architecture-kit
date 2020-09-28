@@ -934,7 +934,7 @@ private class EDUHIS_DataInteg_TEST {
     **********************************************************************************************************/
     private static void disableGradeEnrollDataIntegTrigger(){
         for (hed.TDTM_Global_API.TdtmToken tdtmToken : hed.TDTM_Global_API.getTdtmConfig()){
-            if (tdtmToken.className == 'GRER_DataInteg_TDTM'){
+            if (tdtmToken.className == UTIL_Namespace.StrTokenNSPrefixDotNotation('GRER_DataInteg_TDTM')){
                 tdtmToken.active = false;
             }
         }

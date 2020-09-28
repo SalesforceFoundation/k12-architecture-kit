@@ -1481,7 +1481,7 @@ private class GRER_DataInteg_TEST {
     **********************************************************************************************************/
     private static void disableEducationHistoryDataIntegTrigger(){
         for (hed.TDTM_Global_API.TdtmToken tdtmToken : hed.TDTM_Global_API.getTdtmConfig()){
-            if (tdtmToken.className == 'EDUHIS_DataInteg_TDTM'){
+            if (tdtmToken.className == UTIL_Namespace.StrTokenNSPrefixDotNotation('EDUHIS_DataInteg_TDTM')){
                 tdtmToken.active = false;
             }
         }
