@@ -79,7 +79,7 @@ global with sharing class EDUHIS_DataInteg_TDTM extends hed.TDTM_Runnable {
         Map<Id, hed__Education_History__c> oldEdHistById = new Map<Id, hed__Education_History__c>((List<hed__Education_History__c>)oldSObjectsList);
 
         Set<Id> relevantEducationHistIdsSet = new Set<Id>();
-        List<hed__Education_History__c> eduHistoryWithErrorsList = new List<hed__Education_History__c>();
+        Map<Id,hed__Education_History__c> eduHistorybyIdWithErrors = new Map<Id,hed__Education_History__c>();
 
         for (hed__Education_History__c eduHist : newEdHistById.values()){
             if (String.isBlank(eduHist.hed__Account__c) == true || eduHist.hed__Account__c == oldEdHistById.get(eduHist.Id).hed__Account__c){
@@ -105,10 +105,10 @@ global with sharing class EDUHIS_DataInteg_TDTM extends hed.TDTM_Runnable {
                 continue;
             }
 
-            eduHistoryWithErrorsList.add(eduHistInContext);
+            eduHistorybyIdWithErrors.put(eduHistInContext.Id,eduHistInContext);
             eduHistInContext.addError(Label.EduHisInstitutionMismatch);
         }
 
-        return eduHistoryWithErrorsList;
+        return eduHistorybyIdWithErrors.values();
     }
 }

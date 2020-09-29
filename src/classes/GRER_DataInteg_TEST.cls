@@ -709,12 +709,12 @@ private class GRER_DataInteg_TEST {
     **********************************************************************************************************/
 
     /*********************************************************************************************************
-    * @description Test to verify that method handleBeforeUpdate() successfully processes updates to Grade 
+    * @description Test to verify that method handleAfterUpdate() successfully processes updates to Grade 
     * Enrollment records when the Education Institution fields match the value specified on the associated
     * Education History records.
     *********************************************************************************************************/
     @isTest 
-    private static void handleBeforeUpdateWithoutMismatch(){
+    private static void handleAfterUpdateWithoutMismatch(){
         hed__Hierarchy_Settings__c hs = hed.UTIL_CustomSettings_API.getSettings();
         String adminRecordType = hs.hed__Administrative_Account_Record_Type__c;
 
@@ -764,19 +764,19 @@ private class GRER_DataInteg_TEST {
         List<Grade_Enrollment__c> gradeEnrollWithErrorList = new List<Grade_Enrollment__c>();
         
         Test.startTest();
-        gradeEnrollWithErrorList = gradeEnrollTdtm.handleBeforeUpdate((List<SObject>)newGradeEnrollmentsList, (List<SObject>)oldGradeEnrollmentsList);
+        gradeEnrollWithErrorList = gradeEnrollTdtm.handleAfterUpdate((List<SObject>)newGradeEnrollmentsList, (List<SObject>)oldGradeEnrollmentsList);
         Test.stopTest();
 
         System.assertEquals(true, gradeEnrollWithErrorList.isEmpty(), 'Updates with matching Education Institution for Education History and Grade Enrollment should not display an error.'); 
     }
 
     /*********************************************************************************************************
-    * @description Test to verify that method handleBeforeUpdate() displays an error message for updates to Grade 
+    * @description Test to verify that method handleAfterUpdate() displays an error message for updates to Grade 
     * Enrollment records with Education Institution fields that do not match the value specified on the associated
     * Education History records.
     *********************************************************************************************************/
     @isTest 
-    private static void handleBeforeUpdateWithMismatch(){
+    private static void handleAfterUpdateWithMismatch(){
         hed__Hierarchy_Settings__c hs = hed.UTIL_CustomSettings_API.getSettings();
         String adminRecordType = hs.hed__Administrative_Account_Record_Type__c;
 
@@ -827,7 +827,7 @@ private class GRER_DataInteg_TEST {
 
         Test.startTest();
         try{
-            gradeEnrollTdtm.handleBeforeUpdate((List<SObject>)newGradeEnrollmentsList, (List<SObject>)oldGradeEnrollmentsList);
+            gradeEnrollTdtm.handleAfterUpdate((List<SObject>)newGradeEnrollmentsList, (List<SObject>)oldGradeEnrollmentsList);
         } catch (DmlException e){
             System.assertEquals(true, e.getMessage().contains(Label.GrErInstitutionMismatch), 'Updating Grade Enrollments with mismatching Educational Institution should display error message.');
         }
@@ -1481,7 +1481,7 @@ private class GRER_DataInteg_TEST {
     **********************************************************************************************************/
     private static void disableEducationHistoryDataIntegTrigger(){
         for (hed.TDTM_Global_API.TdtmToken tdtmToken : hed.TDTM_Global_API.getTdtmConfig()){
-            if (tdtmToken.className == 'EDUHIS_DataInteg_TDTM'){
+            if (tdtmToken.className == UTIL_Namespace.StrTokenNSPrefixDotNotation('EDUHIS_DataInteg_TDTM')){
                 tdtmToken.active = false;
             }
         }

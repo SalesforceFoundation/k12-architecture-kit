@@ -612,11 +612,11 @@ private class EDUHIS_DataInteg_TEST {
 
         for (hed__Education_History__c eduHist : educationHistoryList){
             Grade_Enrollment__c gradeEnrollMatching = new Grade_Enrollment__c(Contact__c = testContact.Id,
-                                                                              Educational_Institution__c = firstAccount.Id,
+                                                                              Educational_Institution__c = secondAccount.Id,
                                                                               Grade_Level__c = 'Eighth Grade',
                                                                               Education_History__c = eduHist.Id);
 
-            Grade_Enrollment__c gradeEnrollMisMatching = new Grade_Enrollment__c(Contact__c = testContact.Id,
+            Grade_Enrollment__c gradeEnrollMatching2 = new Grade_Enrollment__c(Contact__c = testContact.Id,
                                                                                   Educational_Institution__c = secondAccount.Id,
                                                                                   Grade_Level__c = 'Eighth Grade',
                                                                                   Education_History__c = eduHist.Id);
@@ -627,7 +627,7 @@ private class EDUHIS_DataInteg_TEST {
                                                                           Education_History__c = eduHist.Id);
 
             gradeEnrollmentsList.add(gradeEnrollMatching);
-            gradeEnrollmentsList.add(gradeEnrollMisMatching);
+            gradeEnrollmentsList.add(gradeEnrollMatching2);
             gradeEnrollmentsList.add(gradeEnrollNull);
         }
 
@@ -702,7 +702,7 @@ private class EDUHIS_DataInteg_TEST {
                                                                       Education_History__c = eduHist.Id);
 
             Grade_Enrollment__c gradeEnroll2 = new Grade_Enrollment__c(Contact__c = testContact.Id,
-                                                                     Educational_Institution__c = secondAccount.Id,
+                                                                     Educational_Institution__c = firstAccount.Id,
                                                                      Grade_Level__c = 'Eighth Grade',
                                                                      Education_History__c = eduHist.Id);
 
@@ -872,8 +872,8 @@ private class EDUHIS_DataInteg_TEST {
                                                                               Grade_Level__c = 'Eighth Grade',
                                                                               Education_History__c = eduHist.Id);
 
-            Grade_Enrollment__c gradeEnrollMismatching = new Grade_Enrollment__c(Contact__c = testContact.Id,
-                                                                                 Educational_Institution__c = firstAccount.Id,
+            Grade_Enrollment__c gradeEnrollMatching2 = new Grade_Enrollment__c(Contact__c = testContact.Id,
+                                                                                 Educational_Institution__c = secondAccount.Id,
                                                                                  Grade_Level__c = 'Eighth Grade',
                                                                                  Education_History__c = eduHist.Id);
 
@@ -882,18 +882,18 @@ private class EDUHIS_DataInteg_TEST {
                                                                           Grade_Level__c = 'Eighth Grade',
                                                                           Education_History__c = eduHist.Id);
             gradeEnrollmentsList.add(gradeEnrollMatching);
-            gradeEnrollmentsList.add(gradeEnrollMismatching);
+            gradeEnrollmentsList.add(gradeEnrollMatching2);
             gradeEnrollmentsList.add(gradeEnrollNull);
         }
 
         insert gradeEnrollmentsList;
 
         for (hed__Education_History__c newEdHist : educationHistoryList){
-            newSObjectsList.add((SObject)newEdHist);
-
             hed__Education_History__c oldEdHist = newEdHist.clone(true);
-            oldEdHist.hed__Account__c = firstAccount.Id;
             oldSObjectsList.add((SObject)oldEdHist);
+
+            newEdHist.hed__Account__c = firstAccount.Id;
+            newSObjectsList.add((SObject)newEdHist);
         }
 
         EDUHIS_DataInteg_TDTM eduHisTdtm = new EDUHIS_DataInteg_TDTM();
@@ -934,7 +934,7 @@ private class EDUHIS_DataInteg_TEST {
     **********************************************************************************************************/
     private static void disableGradeEnrollDataIntegTrigger(){
         for (hed.TDTM_Global_API.TdtmToken tdtmToken : hed.TDTM_Global_API.getTdtmConfig()){
-            if (tdtmToken.className == 'GRER_DataInteg_TDTM'){
+            if (tdtmToken.className == UTIL_Namespace.StrTokenNSPrefixDotNotation('GRER_DataInteg_TDTM')){
                 tdtmToken.active = false;
             }
         }
