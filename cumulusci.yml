@@ -21,6 +21,18 @@ sources:
         release: latest
 
 tasks:
+    
+    create_reciprocal_relationships:
+        class_path: cumulusci.tasks.apex.anon.AnonymousApexTask
+        options:
+            apex: >
+                delete [SELECT Id From hed__Relationship_Lookup__c]; // three times 
+                delete [SELECT Id From hed__Relationship_Lookup__c]; // to ensure it 
+                delete [SELECT Id From hed__Relationship_Lookup__c]; // properly inserts
+                hed.STG_InstallScript.insertRelationshipLookups();   // strange behavior observed
+                                                                     // with Jace Bryan and Matthew Blanski
+        
+
     add_application_type_picklist_values:
         description: Adds additional picklist values to the Type field.
         class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
@@ -526,6 +538,8 @@ flows:
                 task: deploy_trial_config
                 options:
                     unmanaged: False
+            6:
+                task: create_reciprocal_relationships
 
     upgraded_org:
         description: Simulate an existing org. Used to test the state of a customer's org after a push upgrade.
