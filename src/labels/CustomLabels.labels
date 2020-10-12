@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
     <labels>
+        <fullName>EduHisInstitutionMismatch</fullName>
+        <categories>Education History</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Error when institutions on Education History and Grade Enrollment don’t match</shortDescription>
+        <value>We can't save this record because the Education Institution specified on this Education History doesn't match the Education Institution on the Grade Enrollment record related to this Contact.</value>
+    </labels>
+    <labels>
+        <fullName>GrErInstitutionMismatch</fullName>
+        <categories>Grade Enrollments</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Error when institutions on Grade Enrollment and Education History don’t match</shortDescription>
+        <value>We can't save this record because the Education Institution specified on this Grade Enrollment doesn’t match the Education Institution on the Education History record related to this Contact.</value>
+    </labels>
+    <labels>
         <fullName>MultipleCurrentGradeEnrollmentsError</fullName>
         <categories>Grade Enrollments</categories>
         <language>en_US</language>

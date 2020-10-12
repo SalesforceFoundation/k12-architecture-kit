@@ -393,7 +393,7 @@ flows:
                    managed: True
                    namespace: hed
             6:
-                task: github_parent_to_children
+                task: github_automerge_feature
 
     config_managed:
         #description: Configure an org for use as a dev org after package metadata is deployed
