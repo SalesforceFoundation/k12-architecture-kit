@@ -21,7 +21,6 @@ sources:
         release: latest
 
 tasks:
-
     add_application_type_picklist_values:
         description: Adds additional picklist values to the Type field.
         class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
@@ -259,7 +258,7 @@ tasks:
                 delete [SELECT Id From hed__Affl_Mappings__c];
                 hed.STG_InstallScript.insertMappings();
                 
-    create_reciprocal_relationships:
+    correct_reciprocal_relationships:
         class_path: cumulusci.tasks.apex.anon.AnonymousApexTask
         options:
             apex: >
@@ -341,7 +340,7 @@ tasks:
                     - SendEmail
 
     update_admin_profile:
-        #description: Retrieves, edits, and redeploys the Admin.profile with full FLS perms for all objects/fields
+        description: Retrieves, edits, and redeploys the Admin.profile with full FLS perms for all objects/fields
         class_path: tasks.salesforce.UpdateAdminProfile
 
 flows:
@@ -365,10 +364,12 @@ flows:
                     name: K-12 Architecture Kit - Add Case Location Type Picklist Values
             5:
                 task: add_behavior_involvement_values
+                ui_options:
+                    name: K-12 Architecture Kit - Add Behavior Involvement Role Picklist Values
             6:
                 task: add_relationship_picklist_values
                 ui_options:
-                    name: K-12 Architecture Kit - Add Behavior Involvement Role Picklist Values
+                    name: K-12 Architecture Kit - Add Relationship Type Picklist Values
             7:
                 task: add_contact_gender_picklist_values
                 ui_options:
@@ -396,7 +397,7 @@ flows:
                 task: github_automerge_feature
 
     config_managed:
-        #description: Configure an org for use as a dev org after package metadata is deployed
+        description: Configure an org for use as a dev org after package metadata is deployed
         steps:
             3:
                 task: deploy_k12_kit_settings
@@ -434,7 +435,7 @@ flows:
                 task: deploy_pre
 
     dev_org:
-        #description: Set up an org as a development environment for unmanaged metadata
+        description: Set up an org as a development environment for unmanaged metadata
         steps:
             1:
                 flow: beta_dependencies
@@ -454,7 +455,7 @@ flows:
                 task: snapshot_changes
 
     dev_org_namespaced:
-        #description: Set up a namespaced scratch org as a development environment for unmanaged metadata
+        description: Set up a namespaced scratch org as a development environment for unmanaged metadata
         steps:
             1:
                 flow: beta_dependencies
@@ -506,7 +507,7 @@ flows:
                     unmanaged: False
 
     qa_org:
-        #description: Set up an org as a QA environment for unmanaged metadata
+        description: Set up an org as a QA environment for unmanaged metadata
         steps:
             1:
                 flow: beta_dependencies
@@ -542,7 +543,7 @@ flows:
                 options:
                     unmanaged: False
             6:
-                task: create_reciprocal_relationships
+                task: correct_reciprocal_relationships
             7:
                 task: correct_affiliation_mappings
 
