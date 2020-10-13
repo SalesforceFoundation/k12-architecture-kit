@@ -544,7 +544,7 @@ flows:
             6:
                 task: create_reciprocal_relationships
             7:
-                task: create_aff
+                task: correct_affiliation_mappings
 
     upgraded_org:
         description: Simulate an existing org. Used to test the state of a customer's org after a push upgrade.
