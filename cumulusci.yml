@@ -246,9 +246,6 @@ tasks:
             entries:
                 - fullName: "Decline to State"
                   label: "Decline to State"
-                - fullName: "None"
-                  label: "None"
-                  add_before: "Female"
             record_types: 
                 - "Faculty"
                 - "Guardian"
