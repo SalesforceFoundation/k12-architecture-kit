@@ -205,6 +205,66 @@ tasks:
                   label: "Participant"
                   add_before: "Perpetrator"
 
+    add_relationship_picklist_values:
+        description: Adds additional picklist values to the Type field on the Relationship object.
+        class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
+        group: 'K-12: Metadata'
+        options:
+            picklists: hed__Relationship__c.hed__Type__c
+            entries:
+                - fullName: "Guardian"
+                  label: "Guardian"
+                - fullName: "Dependent"
+                  label: "Dependent"
+                - fullName: "Stepfather"
+                  label: "Stepfather"
+                - fullName: "Stepmother"
+                  label: "Stepmother"
+                - fullName: "Stepparent"
+                  label: "Stepparent"
+                - fullName: "Stepdaughter"
+                  label: "Stepdaughter"
+                - fullName: "Stepson"
+                  label: "Stepson"
+                - fullName: "Stepchild"
+                  label: "Stepchild"
+                - fullName: "Foster Parent"
+                  label: "Foster Parent"
+                - fullName: "Foster Daughter"
+                  label: "Foster Daughter"
+                - fullName: "Foster Son"
+                  label: "Foster Son"
+                - fullName: "Foster Child"
+                  label: "Foster Child"
+
+    add_contact_gender_picklist_values:
+        description: Adds additional picklist and record values to the gender field on the Contact object.
+        class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
+        group: 'K-12: Metadata'
+        options:
+            picklists: Contact.hed__Gender__c
+            entries:
+                - fullName: "Decline to State"
+                  label: "Decline to State"
+            record_types: 
+                - "Faculty"
+                - "Guardian"
+                - "Student"
+
+    correct_affiliation_mappings:
+        class_path: cumulusci.tasks.apex.anon.AnonymousApexTask
+        options:
+            apex: >
+                delete [SELECT Id From hed__Affl_Mappings__c];
+                hed.STG_InstallScript.insertMappings();
+                
+    correct_reciprocal_relationships:
+        class_path: cumulusci.tasks.apex.anon.AnonymousApexTask
+        options:
+            apex: >
+                delete [SELECT Id From hed__Relationship_Lookup__c]; 
+                hed.STG_InstallScript.insertRelationshipLookups();
+
     deploy_k12_kit_settings:
         description: Configure the default K-12 Architecture Kit Settings
         class_path: cumulusci.tasks.apex.anon.AnonymousApexTask
@@ -280,7 +340,7 @@ tasks:
                     - SendEmail
 
     update_admin_profile:
-        #description: Retrieves, edits, and redeploys the Admin.profile with full FLS perms for all objects/fields
+        description: Retrieves, edits, and redeploys the Admin.profile with full FLS perms for all objects/fields
         class_path: tasks.salesforce.UpdateAdminProfile
 
 flows:
@@ -306,6 +366,15 @@ flows:
                 task: add_behavior_involvement_values
                 ui_options:
                     name: K-12 Architecture Kit - Add Behavior Involvement Role Picklist Values
+            6:
+                task: add_relationship_picklist_values
+                ui_options:
+                    name: K-12 Architecture Kit - Add Relationship Type Picklist Values
+            7:
+                task: add_contact_gender_picklist_values
+                ui_options:
+                    name: K-12 Architecture Kit - Add Contact Gender Picklist and RecordType Values
+
                 
     beta_dependencies:
         steps:
@@ -328,7 +397,7 @@ flows:
                 task: github_automerge_feature
 
     config_managed:
-        #description: Configure an org for use as a dev org after package metadata is deployed
+        description: Configure an org for use as a dev org after package metadata is deployed
         steps:
             3:
                 task: deploy_k12_kit_settings
@@ -366,7 +435,7 @@ flows:
                 task: deploy_pre
 
     dev_org:
-        #description: Set up an org as a development environment for unmanaged metadata
+        description: Set up an org as a development environment for unmanaged metadata
         steps:
             1:
                 flow: beta_dependencies
@@ -386,7 +455,7 @@ flows:
                 task: snapshot_changes
 
     dev_org_namespaced:
-        #description: Set up a namespaced scratch org as a development environment for unmanaged metadata
+        description: Set up a namespaced scratch org as a development environment for unmanaged metadata
         steps:
             1:
                 flow: beta_dependencies
@@ -438,7 +507,7 @@ flows:
                     unmanaged: False
 
     qa_org:
-        #description: Set up an org as a QA environment for unmanaged metadata
+        description: Set up an org as a QA environment for unmanaged metadata
         steps:
             1:
                 flow: beta_dependencies
@@ -473,6 +542,10 @@ flows:
                 task: deploy_trial_config
                 options:
                     unmanaged: False
+            6:
+                task: correct_reciprocal_relationships
+            7:
+                task: correct_affiliation_mappings
 
     upgraded_org:
         description: Simulate an existing org. Used to test the state of a customer's org after a push upgrade.
