@@ -147,6 +147,17 @@
         <name>Layout</name>
     </types>
     <types>
+        <members>LogACall</members>
+        <members>NewCase</members>
+        <members>NewContact</members>
+        <members>NewEvent</members>
+        <members>NewLead</members>
+        <members>NewNote</members>
+        <members>NewTask</members>
+        <members>SendEmail</members>
+        <name>QuickAction</name>
+    </types>
+    <types>
         <members>ca</members>
         <members>es</members>
         <members>fr</members>
