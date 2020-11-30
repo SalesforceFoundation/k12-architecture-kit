@@ -7,7 +7,7 @@ project:
         namespace: k12kit
         install_class: STG_InstallScript
     git:
-        default_branch: master
+        default_branch: main
         prefix_feature: feature
         prefix_beta: beta/
         prefix_release: release/
