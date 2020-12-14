@@ -446,7 +446,7 @@ flows:
         description: Set up a namespaced scratch org as a development environment for unmanaged metadata
         steps:
             1:
-                flow: beta_dependencies
+                flow: dependencies
             2:
                 flow: deploy_unmanaged
             3:
@@ -460,7 +460,7 @@ flows:
         description: Simulates an K12 installation for a new customer. Installs the latest beta and dependencies.
         steps:
             1:
-                flow: beta_dependencies
+                flow: dependencies
             2:
                 task: install_managed_beta
             3:
