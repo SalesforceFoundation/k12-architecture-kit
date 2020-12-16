@@ -7,7 +7,7 @@ project:
         namespace: k12kit
         install_class: STG_InstallScript
     git:
-        default_branch: master
+        default_branch: main
         prefix_feature: feature
         prefix_beta: beta/
         prefix_release: release/
@@ -18,6 +18,11 @@ project:
 sources:
     latest_release:
         github: https://github.com/SalesforceFoundation/k12-architecture-kit
+        release: latest
+
+sources:
+    eda:
+        github: https://github.com/SalesforceFoundation/EDA
         release: latest
 
 tasks:
@@ -236,6 +241,18 @@ tasks:
                   label: "Foster Son"
                 - fullName: "Foster Child"
                   label: "Foster Child"
+                - fullName: "Parent's Sibling"
+                  label: "Parent's Sibling"
+                  add_before: "Cousin"
+                - fullName: "Niece"
+                  label: "Niece"
+                  add_before: "Cousin"
+                - fullName: "Nephew"
+                  label: "Nephew"
+                  add_before: "Cousin"
+                - fullName: "Sibling's Child"
+                  label: "Sibiling's Child"
+                  add_before: "Cousin"
 
     add_contact_gender_picklist_values:
         description: Adds additional picklist and record values to the gender field on the Contact object.
