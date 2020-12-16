@@ -19,8 +19,11 @@ sources:
     latest_release:
         github: https://github.com/SalesforceFoundation/k12-architecture-kit
         release: latest
+    eda:
+        github: https://github.com/SalesforceFoundation/EDA
+        release: latest
 
-tasks:
+tasks:   
     add_application_type_picklist_values:
         description: Adds additional picklist values to the Type field.
         class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
@@ -179,7 +182,12 @@ tasks:
                 - fullName: "Walking to or from School"
                   label: "Walking to or from School"
                   add_before: "Other"
-
+                  
+    add_citizenship_status_values:
+        description: Runs an EDA task that adds additioanl picklist value to hed__Citizenship_Status__c field. 
+        steps:
+            1. task: eda:add_citizenship_status_values
+            
     add_behavior_involvement_values:
         description: Adds additional picklist values to the Role field.
         class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
@@ -538,13 +546,15 @@ flows:
                 flow: config_managed
             4:
                 task: enable_course_connections
-            5:
+            5: 
+                task: add_citizenship_status_values
+            6:
                 task: deploy_trial_config
                 options:
                     unmanaged: False
-            6:
-                task: correct_reciprocal_relationships
             7:
+                task: correct_reciprocal_relationships
+            8:
                 task: correct_affiliation_mappings
 
     upgraded_org:
