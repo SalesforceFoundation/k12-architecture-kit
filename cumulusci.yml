@@ -23,7 +23,7 @@ sources:
         github: https://github.com/SalesforceFoundation/EDA
         release: latest
 
-tasks:   
+tasks:
     add_application_type_picklist_values:
         description: Adds additional picklist values to the Type field.
         class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
