@@ -547,7 +547,7 @@ flows:
             4:
                 task: enable_course_connections
             5: 
-                task: add_citizenship_status_values
+                task: eda:add_citizenship_status_values
             6:
                 task: deploy_trial_config
                 options:
