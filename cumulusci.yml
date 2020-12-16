@@ -182,12 +182,6 @@ tasks:
                 - fullName: "Walking to or from School"
                   label: "Walking to or from School"
                   add_before: "Other"
-                  
-    add_citizenship_status_values:
-        description: Runs an EDA task that adds additioanl picklist value to hed__Citizenship_Status__c field. 
-        steps:
-            1. task: eda:add_citizenship_status_values
-            
     add_behavior_involvement_values:
         description: Adds additional picklist values to the Role field.
         class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
