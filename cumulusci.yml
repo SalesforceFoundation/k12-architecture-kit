@@ -254,7 +254,6 @@ tasks:
                   label: "Sibiling's Child"
                   add_before: "Cousin"
 
-
     add_contact_gender_picklist_values:
         description: Adds additional picklist and record values to the gender field on the Contact object.
         class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
