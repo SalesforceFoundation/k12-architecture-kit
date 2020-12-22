@@ -326,7 +326,11 @@ tasks:
         options:
             apex:
                 STG_InstallScript.setK12kitDefaultTriggerHandlers();
-        
+
+    github_release_notes:
+        options:
+            trial_info: "`TBD`"
+
     retrieve_postinstall_config:
         description: Retrieves the current changes in a scratch org into unpackaged/post/config
         class_path: cumulusci.tasks.salesforce.sourcetracking.RetrieveChanges
