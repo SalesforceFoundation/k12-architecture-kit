@@ -8,7 +8,7 @@ project:
         install_class: STG_InstallScript
     git:
         default_branch: master
-        prefix_feature: feature
+        prefix_feature: feature/
         prefix_beta: beta/
         prefix_release: release/
         repo_url: https://github.com/SalesforceFoundation/k12-architecture-kit
@@ -461,6 +461,9 @@ flows:
         steps:
             1:
                 flow: dependencies
+                options:
+                    update_dependencies:
+                        include_beta: True
             2:
                 task: install_managed_beta
             3:
