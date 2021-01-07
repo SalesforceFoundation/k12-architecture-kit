@@ -1,13 +1,13 @@
 {
-  "orgName": "K12 - Prerelease Beta Test Org",
-  "edition": "Enterprise",
-  "instance": "CS46",
-  "settings": {
-    "chatterSettings": {
-      "enableChatter": true
-    },
-    "lightningExperienceSettings": {
-      "enableS1DesktopEnabled": true
+    "orgName": "K12 - Prerelease Beta Test Org",
+    "edition": "Enterprise",
+    "instance": "CS46",
+    "settings": {
+        "chatterSettings": {
+            "enableChatter": true
+        },
+        "lightningExperienceSettings": {
+            "enableS1DesktopEnabled": true
+        }
     }
-  }
 }
