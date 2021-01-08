@@ -14,15 +14,7 @@ project:
         repo_url: https://github.com/SalesforceFoundation/k12-architecture-kit
     dependencies:
         - github: 'https://github.com/SalesforceFoundation/EDA'
-
-sources:
-    latest_release:
-        github: https://github.com/SalesforceFoundation/k12-architecture-kit
-        release: latest
-    eda:
-        github: https://github.com/SalesforceFoundation/EDA
-        release: latest
-
+        
 sources:
     eda:
         github: https://github.com/SalesforceFoundation/EDA
