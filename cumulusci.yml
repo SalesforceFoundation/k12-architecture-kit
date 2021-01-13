@@ -3,7 +3,7 @@ project:
     name: Athena
     package:
         name: K-12 Architecture Kit
-        api_version: '48.0'
+        api_version: "48.0"
         namespace: k12kit
         install_class: STG_InstallScript
     git:
@@ -13,23 +13,21 @@ project:
         prefix_release: release/
         repo_url: https://github.com/SalesforceFoundation/k12-architecture-kit
     dependencies:
-        - github: 'https://github.com/SalesforceFoundation/EDA'
-
-sources:
-    latest_release:
-        github: https://github.com/SalesforceFoundation/k12-architecture-kit
-        release: latest
+        - github: "https://github.com/SalesforceFoundation/EDA"
 
 sources:
     eda:
         github: https://github.com/SalesforceFoundation/EDA
+        release: latest
+    latest_release:
+        github: https://github.com/SalesforceFoundation/k12-architecture-kit
         release: latest
 
 tasks:
     add_application_type_picklist_values:
         description: Adds additional picklist values to the Type field.
         class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
-        group: 'K-12: Metadata'
+        group: "K-12: Metadata"
         options:
             picklists: hed__Application__c.hed__Application_Type__c
             entries:
@@ -43,11 +41,10 @@ tasks:
                   label: "Elementary School"
                   add_before: "Graduate"
 
-
     add_behavior_response_type_values:
         description: Adds additional picklist values to the Type field.
         class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
-        group: 'K-12: Metadata'
+        group: "K-12: Metadata"
         options:
             picklists: hed__Behavior_Response__c.hed__Type__c
             entries:
@@ -84,7 +81,7 @@ tasks:
     add_case_category_values:
         description: Adds additional picklist values to the Category field.
         class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
-        group: 'K-12: Metadata'
+        group: "K-12: Metadata"
         options:
             picklists: Case.hed__Category__c
             entries:
@@ -117,11 +114,11 @@ tasks:
                 - fullName: "Verbal Recognition"
                   label: "Verbal Recognition"
                   add_before: "Other"
-    
-    add_case_location_values: 
+
+    add_case_location_values:
         description: Adds additional picklist values to the Location field.
         class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
-        group: 'K-12: Metadata'
+        group: "K-12: Metadata"
         options:
             picklists: Case.hed__Location__c
             entries:
@@ -138,7 +135,7 @@ tasks:
                   add_before: "Off Campus"
                 - fullName: "Athletic Field or Playground"
                   label: "Athletic Field or Playground"
-                  add_before: "Off Campus" 
+                  add_before: "Off Campus"
                 - fullName: "Auditorium"
                   label: "Auditorium"
                   add_before: "Off Campus"
@@ -188,7 +185,7 @@ tasks:
     add_behavior_involvement_values:
         description: Adds additional picklist values to the Role field.
         class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
-        group: 'K-12: Metadata'
+        group: "K-12: Metadata"
         options:
             picklists: hed__Behavior_Involvement__c.hed__Role__c
             entries:
@@ -213,7 +210,7 @@ tasks:
     add_relationship_picklist_values:
         description: Adds additional picklist values to the Type field on the Relationship object.
         class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
-        group: 'K-12: Metadata'
+        group: "K-12: Metadata"
         options:
             picklists: hed__Relationship__c.hed__Type__c
             entries:
@@ -257,13 +254,13 @@ tasks:
     add_contact_gender_picklist_values:
         description: Adds additional picklist and record values to the gender field on the Contact object.
         class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
-        group: 'K-12: Metadata'
+        group: "K-12: Metadata"
         options:
             picklists: Contact.hed__Gender__c
             entries:
                 - fullName: "Decline to State"
                   label: "Decline to State"
-            record_types: 
+            record_types:
                 - "Faculty"
                 - "Guardian"
                 - "Student"
@@ -274,7 +271,7 @@ tasks:
             apex: >
                 delete [SELECT Id From hed__Affl_Mappings__c];
                 hed.STG_InstallScript.insertMappings();
-                
+
     correct_reciprocal_relationships:
         class_path: cumulusci.tasks.apex.anon.AnonymousApexTask
         options:
@@ -285,7 +282,7 @@ tasks:
     deploy_k12_kit_settings:
         description: Configure the default K-12 Architecture Kit Settings
         class_path: cumulusci.tasks.apex.anon.AnonymousApexTask
-        group: 'K-12: Custom Settings'
+        group: "K-12: Custom Settings"
         options:
             path: scripts/configure_k12_kit.cls
             apex: initializeK12KitSettings();
@@ -293,7 +290,7 @@ tasks:
     deploy_k12_app:
         description: Deploys the K12 Kit App for those who use the installer rather than the trial
         class_path: cumulusci.tasks.salesforce.Deploy
-        group: 'K-12: Installer Tasks'
+        group: "K-12: Installer Tasks"
         ui_options:
             name: Deploy K12 Architecture Kit app tile
         options:
@@ -302,7 +299,7 @@ tasks:
     deploy_trial_config:
         description: Deploys metadata and configuration for TSOs.
         class_path: cumulusci.tasks.salesforce.Deploy
-        group: 'K-12: Trial'
+        group: "K-12: Trial"
         ui_options:
             name: Deploy Trial Metadata
         options:
@@ -312,7 +309,7 @@ tasks:
     enable_course_connections:
         description: Enables course connections and sets default record types
         class_path: cumulusci.tasks.apex.anon.AnonymousApexTask
-        group: 'K-12: Custom Settings'
+        group: "K-12: Custom Settings"
         options:
             path: scripts/configure_k12_kit.cls
             apex: enableCourseConnections();
@@ -320,10 +317,9 @@ tasks:
     execute_install_apex:
         description: Runs most of the install script methods from STG_InstallScript class
         class_path: cumulusci.tasks.apex.anon.AnonymousApexTask
-        group: 'K-12: Custom Settings'
+        group: "K-12: Custom Settings"
         options:
-            apex:
-                STG_InstallScript.setK12kitDefaultTriggerHandlers();
+            apex: STG_InstallScript.setK12kitDefaultTriggerHandlers();
 
     github_release_notes:
         options:
@@ -367,7 +363,7 @@ tasks:
 flows:
     add_k12_picklist_values:
         steps:
-            1: 
+            1:
                 task: add_application_type_picklist_values
                 ui_options:
                     name: K-12 Architecture Kit - Add Application Type Picklist Values
@@ -435,8 +431,8 @@ flows:
     
     dependencies:
         steps:
-            2: 
-                task: None 
+            2:
+                task: None
             3:
                 flow: add_k12_picklist_values
             4:
@@ -496,7 +492,7 @@ flows:
                 
     trial_org:
         description: Deploy trial configuration to an org.
-        group: 'K-12: Trial'
+        group: "K-12: Trial"
         steps:
             1:
                 flow: dependencies
@@ -529,7 +525,7 @@ flows:
             5:
                 task: install_managed_beta
             6:
-                task: snapshot_changes  
+                task: snapshot_changes
 
     customer_org:
         steps:
