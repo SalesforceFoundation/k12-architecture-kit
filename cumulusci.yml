@@ -398,11 +398,11 @@ flows:
                 flow: dependencies
                 options:
                     update_dependencies:
-                        include_beta: True    
+                        include_beta: True
             2:
                 flow: deploy_unmanaged
             3:
-                flow: config_apextest                
+                flow: config_apextest
             4:
                 task: run_tests
                 options:
@@ -428,7 +428,7 @@ flows:
                 task: deploy_trial_config
             6:
                 task: update_admin_profile
-    
+
     dependencies:
         steps:
             2:
@@ -448,7 +448,7 @@ flows:
                 task: deploy_k12_kit_settings
             4:
                 task: execute_install_apex
-    
+
     config_dev:
         steps:
             3:
@@ -489,7 +489,7 @@ flows:
                 task: enable_course_connections
             5:
                 task: deploy_trial_config
-                
+
     trial_org:
         description: Deploy trial configuration to an org.
         group: "K-12: Trial"
