@@ -392,15 +392,6 @@ flows:
                 ui_options:
                     name: K-12 Architecture Kit - Add Contact Gender Picklist and RecordType Values
 
-    beta_dependencies:
-        steps:
-            2:
-                task: None
-            3:
-                flow: add_k12_picklist_values
-            4:
-                task: deploy_pre
-
     ci_feature_eda:
         steps:
             1:
