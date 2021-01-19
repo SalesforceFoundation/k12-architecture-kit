@@ -1,4 +1,4 @@
-minimum_cumulusci_version: 3.13.0
+minimum_cumulusci_version: 3.23.0
 project:
     name: Athena
     package:
@@ -8,7 +8,7 @@ project:
         install_class: STG_InstallScript
     git:
         default_branch: main
-        prefix_feature: feature
+        prefix_feature: feature/
         prefix_beta: beta/
         prefix_release: release/
         repo_url: https://github.com/SalesforceFoundation/k12-architecture-kit
@@ -391,28 +391,24 @@ flows:
                 ui_options:
                     name: K-12 Architecture Kit - Add Contact Gender Picklist and RecordType Values
 
-    beta_dependencies:
+    ci_feature_eda:
         steps:
+            1:
+                flow: dependencies
+                options:
+                    update_dependencies:
+                        include_beta: True
             2:
-                task: None
+                flow: deploy_unmanaged
             3:
-                flow: add_k12_picklist_values
+                flow: config_apextest
             4:
-                task: deploy_pre
-
-    ci_feature_beta_deps:
-        description: When run, the latest version (including betas) of Cumulus and EDA are installed, and all tests are run.
-        steps:
-            5:
                 task: run_tests
                 options:
                     managed: True
                     namespace: hed
-            6:
-                task: github_automerge_feature
 
     config_managed:
-        description: Configure an org for use as a dev org after package metadata is deployed
         steps:
             3:
                 task: deploy_k12_kit_settings
@@ -423,22 +419,14 @@ flows:
                 flow: None
             2:
                 task: deploy_post
-                options:
-                    unmanaged: False
             3:
                 task: deploy_k12_kit_settings
             4:
                 task: enable_course_connections
-                options:
-                    managed: True
             5:
                 task: deploy_trial_config
-                options:
-                    unmanaged: False
             6:
                 task: update_admin_profile
-                options:
-                    managed: True
 
     dependencies:
         steps:
@@ -449,67 +437,49 @@ flows:
             4:
                 task: deploy_pre
 
-    dev_org:
-        description: Set up an org as a development environment for unmanaged metadata
+    config_unmanaged:
         steps:
             1:
-                flow: beta_dependencies
-            2:
-                flow: deploy_unmanaged
-            3:
-                flow: config_dev
-            4:
                 task: enable_course_connections
-            5:
+            2:
                 task: deploy_trial_config
-            6:
+            3:
                 task: deploy_k12_kit_settings
-            7:
+            4:
                 task: execute_install_apex
-            8:
-                task: snapshot_changes
+
+    config_dev:
+        steps:
+            3:
+                flow: config_unmanaged
+
+    config_qa:
+        steps:
+            3:
+                flow: config_unmanaged
 
     dev_org_namespaced:
         description: Set up a namespaced scratch org as a development environment for unmanaged metadata
         steps:
             1:
-                flow: beta_dependencies
+                flow: dependencies
             2:
                 flow: deploy_unmanaged
             3:
                 flow: config_dev
             4:
-                task: enable_course_connections
-                options:
-                    namespaced: True
-            5:
-                task: deploy_trial_config
-                options:
-                    namespaced_org: True
-            6:
-                task: deploy_k12_kit_settings
-            7:
-                task: execute_install_apex
+                flow: config_unmanaged
             8:
-                task: snapshot_changes
-
-    install_beta:
-        description: Install and configure the latest beta version
-        steps:
-            1:
-                flow: beta_dependencies
-            2:
-                task: install_managed_beta
-            3:
-                flow: config_managed
-            4:
                 task: snapshot_changes
 
     net_new_org:
         description: Simulates an K12 installation for a new customer. Installs the latest beta and dependencies.
         steps:
             1:
-                flow: beta_dependencies
+                flow: dependencies
+                options:
+                    update_dependencies:
+                        include_beta: True
             2:
                 task: install_managed_beta
             3:
@@ -518,28 +488,6 @@ flows:
                 task: enable_course_connections
             5:
                 task: deploy_trial_config
-                options:
-                    unmanaged: False
-
-    qa_org:
-        description: Set up an org as a QA environment for unmanaged metadata
-        steps:
-            1:
-                flow: beta_dependencies
-            2:
-                flow: deploy_unmanaged
-            3:
-                flow: config_qa
-            4:
-                task: enable_course_connections
-            5:
-                task: deploy_trial_config
-            6:
-                task: deploy_k12_kit_settings
-            7:
-                task: execute_install_apex
-            8:
-                task: snapshot_changes
 
     trial_org:
         description: Deploy trial configuration to an org.
@@ -557,8 +505,6 @@ flows:
                 task: eda:add_citizenship_status_values
             6:
                 task: deploy_trial_config
-                options:
-                    unmanaged: False
             7:
                 task: correct_reciprocal_relationships
             8:
@@ -582,11 +528,7 @@ flows:
             6:
                 task: snapshot_changes
 
-plans:
-    install:
-        slug: install
-        title: Install K-12 Architecture Kit
-        tier: primary
+    customer_org:
         steps:
             1:
                 task: update_dependencies
@@ -623,6 +565,15 @@ plans:
                 task: deploy_k12_app
                 ui_options:
                     name: Deploy K-12 Architecture Kit App Tile
+
+plans:
+    install:
+        slug: install
+        title: Install K-12 Architecture Kit
+        tier: primary
+        steps:
+            1:
+                flow: customer_org
 
 orgs:
     scratch:
