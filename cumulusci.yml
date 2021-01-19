@@ -13,8 +13,8 @@ project:
         prefix_release: release/
         repo_url: https://github.com/SalesforceFoundation/k12-architecture-kit
     dependencies:
-        - github: 'https://github.com/SalesforceFoundation/EDA'
-        
+        - github: "https://github.com/SalesforceFoundation/EDA"
+
 sources:
     eda:
         github: https://github.com/SalesforceFoundation/EDA
@@ -501,7 +501,7 @@ flows:
                 flow: config_managed
             4:
                 task: enable_course_connections
-            5: 
+            5:
                 task: eda:add_citizenship_status_values
             6:
                 task: deploy_trial_config
