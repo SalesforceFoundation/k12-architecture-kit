@@ -1,21 +1,24 @@
-minimum_cumulusci_version: 3.13.0
+minimum_cumulusci_version: 3.23.0
 project:
     name: Athena
     package:
         name: K-12 Architecture Kit
-        api_version: '48.0'
+        api_version: "48.0"
         namespace: k12kit
         install_class: STG_InstallScript
     git:
-        default_branch: master
-        prefix_feature: feature
+        default_branch: main
+        prefix_feature: feature/
         prefix_beta: beta/
         prefix_release: release/
         repo_url: https://github.com/SalesforceFoundation/k12-architecture-kit
     dependencies:
-        - github: 'https://github.com/SalesforceFoundation/EDA'
+        - github: "https://github.com/SalesforceFoundation/EDA"
 
 sources:
+    eda:
+        github: https://github.com/SalesforceFoundation/EDA
+        release: latest
     latest_release:
         github: https://github.com/SalesforceFoundation/k12-architecture-kit
         release: latest
@@ -24,7 +27,7 @@ tasks:
     add_application_type_picklist_values:
         description: Adds additional picklist values to the Type field.
         class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
-        group: 'K-12: Metadata'
+        group: "K-12: Metadata"
         options:
             picklists: hed__Application__c.hed__Application_Type__c
             entries:
@@ -38,11 +41,10 @@ tasks:
                   label: "Elementary School"
                   add_before: "Graduate"
 
-
     add_behavior_response_type_values:
         description: Adds additional picklist values to the Type field.
         class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
-        group: 'K-12: Metadata'
+        group: "K-12: Metadata"
         options:
             picklists: hed__Behavior_Response__c.hed__Type__c
             entries:
@@ -79,7 +81,7 @@ tasks:
     add_case_category_values:
         description: Adds additional picklist values to the Category field.
         class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
-        group: 'K-12: Metadata'
+        group: "K-12: Metadata"
         options:
             picklists: Case.hed__Category__c
             entries:
@@ -112,11 +114,11 @@ tasks:
                 - fullName: "Verbal Recognition"
                   label: "Verbal Recognition"
                   add_before: "Other"
-    
-    add_case_location_values: 
+
+    add_case_location_values:
         description: Adds additional picklist values to the Location field.
         class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
-        group: 'K-12: Metadata'
+        group: "K-12: Metadata"
         options:
             picklists: Case.hed__Location__c
             entries:
@@ -133,7 +135,7 @@ tasks:
                   add_before: "Off Campus"
                 - fullName: "Athletic Field or Playground"
                   label: "Athletic Field or Playground"
-                  add_before: "Off Campus" 
+                  add_before: "Off Campus"
                 - fullName: "Auditorium"
                   label: "Auditorium"
                   add_before: "Off Campus"
@@ -179,11 +181,10 @@ tasks:
                 - fullName: "Walking to or from School"
                   label: "Walking to or from School"
                   add_before: "Other"
-
     add_behavior_involvement_values:
         description: Adds additional picklist values to the Role field.
         class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
-        group: 'K-12: Metadata'
+        group: "K-12: Metadata"
         options:
             picklists: hed__Behavior_Involvement__c.hed__Role__c
             entries:
@@ -236,11 +237,51 @@ tasks:
                   label: "Foster Son"
                 - fullName: "Foster Child"
                   label: "Foster Child"
+                - fullName: "Parent's Sibling"
+                  label: "Parent's Sibling"
+                  add_before: "Cousin"
+                - fullName: "Niece"
+                  label: "Niece"
+                  add_before: "Cousin"
+                - fullName: "Nephew"
+                  label: "Nephew"
+                  add_before: "Cousin"
+                - fullName: "Sibling's Child"
+                  label: "Sibiling's Child"
+                  add_before: "Cousin"
+
+    add_contact_gender_picklist_values:
+        description: Adds additional picklist and record values to the gender field on the Contact object.
+        class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
+        group: "K-12: Metadata"
+        options:
+            picklists: Contact.hed__Gender__c
+            entries:
+                - fullName: "Decline to State"
+                  label: "Decline to State"
+            record_types:
+                - "Faculty"
+                - "Guardian"
+                - "Student"
+
+    correct_affiliation_mappings:
+        class_path: cumulusci.tasks.apex.anon.AnonymousApexTask
+        options:
+            apex: >
+                delete [SELECT Id From hed__Affl_Mappings__c];
+                hed.STG_InstallScript.insertMappings();
+
+    correct_reciprocal_relationships:
+        class_path: cumulusci.tasks.apex.anon.AnonymousApexTask
+        options:
+            apex: >
+                delete [SELECT Id From hed__Relationship_Lookup__c]; 
+                hed.STG_InstallScript.insertRelationshipLookups();
 
     deploy_k12_kit_settings:
         description: Configure the default K-12 Architecture Kit Settings
         class_path: cumulusci.tasks.apex.anon.AnonymousApexTask
-        group: 'K-12: Custom Settings'
+        group: "K-12: Custom Settings"
         options:
             path: scripts/configure_k12_kit.cls
             apex: initializeK12KitSettings();
@@ -248,7 +289,7 @@ tasks:
     deploy_k12_app:
         description: Deploys the K12 Kit App for those who use the installer rather than the trial
         class_path: cumulusci.tasks.salesforce.Deploy
-        group: 'K-12: Installer Tasks'
+        group: "K-12: Installer Tasks"
         ui_options:
             name: Deploy K12 Architecture Kit app tile
         options:
@@ -257,7 +298,7 @@ tasks:
     deploy_trial_config:
         description: Deploys metadata and configuration for TSOs.
         class_path: cumulusci.tasks.salesforce.Deploy
-        group: 'K-12: Trial'
+        group: "K-12: Trial"
         ui_options:
             name: Deploy Trial Metadata
         options:
@@ -267,7 +308,7 @@ tasks:
     enable_course_connections:
         description: Enables course connections and sets default record types
         class_path: cumulusci.tasks.apex.anon.AnonymousApexTask
-        group: 'K-12: Custom Settings'
+        group: "K-12: Custom Settings"
         options:
             path: scripts/configure_k12_kit.cls
             apex: enableCourseConnections();
@@ -275,11 +316,14 @@ tasks:
     execute_install_apex:
         description: Runs most of the install script methods from STG_InstallScript class
         class_path: cumulusci.tasks.apex.anon.AnonymousApexTask
-        group: 'K-12: Custom Settings'
+        group: "K-12: Custom Settings"
         options:
-            apex:
-                STG_InstallScript.setK12kitDefaultTriggerHandlers();
-        
+            apex: STG_InstallScript.setK12kitDefaultTriggerHandlers();
+
+    github_release_notes:
+        options:
+            trial_info: "`TBD`"
+
     retrieve_postinstall_config:
         description: Retrieves the current changes in a scratch org into unpackaged/post/config
         class_path: cumulusci.tasks.salesforce.sourcetracking.RetrieveChanges
@@ -312,47 +356,58 @@ tasks:
                     - SendEmail
 
     update_admin_profile:
-        #description: Retrieves, edits, and redeploys the Admin.profile with full FLS perms for all objects/fields
+        description: Retrieves, edits, and redeploys the Admin.profile with full FLS perms for all objects/fields
         class_path: tasks.salesforce.UpdateAdminProfile
 
 flows:
     add_k12_picklist_values:
         steps:
-            1: 
+            1:
                 task: add_application_type_picklist_values
+                ui_options:
+                    name: K-12 Architecture Kit - Add Application Type Picklist Values
             2:
                 task: add_behavior_response_type_values
+                ui_options:
+                    name: K-12 Architecture Kit - Add Behavior Response Type Picklist Values
             3:
                 task: add_case_category_values
+                ui_options:
+                    name: K-12 Architecture Kit - Add Case Category Type Picklist Values
             4:
                 task: add_case_location_values
+                ui_options:
+                    name: K-12 Architecture Kit - Add Case Location Type Picklist Values
             5:
                 task: add_behavior_involvement_values
+                ui_options:
+                    name: K-12 Architecture Kit - Add Behavior Involvement Role Picklist Values
             6:
                 task: add_relationship_picklist_values
-                
-    beta_dependencies:
-        steps:
-            2: 
-                task: None 
-            3:
-                flow: add_k12_picklist_values
-            4:
-                task: deploy_pre
+                ui_options:
+                    name: K-12 Architecture Kit - Add Relationship Type Picklist Values
+            7:
+                task: add_contact_gender_picklist_values
+                ui_options:
+                    name: K-12 Architecture Kit - Add Contact Gender Picklist and RecordType Values
 
-    ci_feature_beta_deps:
-        description: When run, the latest version (including betas) of Cumulus and EDA are installed, and all tests are run.
         steps:
-            5:
+            1:
+                flow: dependencies
+                options:
+                    update_dependencies:
+                        include_beta: True
+            2:
+                flow: deploy_unmanaged
+            3:
+                flow: config_apextest
+            4:
                 task: run_tests
                 options:
-                   managed: True
-                   namespace: hed
-            6:
-                task: github_parent_to_children
+                    managed: True
+                    namespace: hed
 
     config_managed:
-        #description: Configure an org for use as a dev org after package metadata is deployed
         steps:
             3:
                 task: deploy_k12_kit_settings
@@ -363,93 +418,67 @@ flows:
                 flow: None
             2:
                 task: deploy_post
-                options:
-                    unmanaged: False
             3:
                 task: deploy_k12_kit_settings
             4:
                 task: enable_course_connections
-                options:
-                    managed: True
             5:
                 task: deploy_trial_config
-                options:
-                    unmanaged: False
             6:
                 task: update_admin_profile
-                options:
-                    managed: True
-    
+
     dependencies:
         steps:
-            2: 
-                task: None 
+            2:
+                task: None
             3:
                 flow: add_k12_picklist_values
             4:
                 task: deploy_pre
 
-    dev_org:
-        #description: Set up an org as a development environment for unmanaged metadata
+    config_unmanaged:
         steps:
             1:
-                flow: beta_dependencies
-            2:
-                flow: deploy_unmanaged
-            3:
-                flow: config_dev
-            4:
                 task: enable_course_connections
-            5:
+            2:
                 task: deploy_trial_config
-            6:
+            3:
                 task: deploy_k12_kit_settings
-            7:
+            4:
                 task: execute_install_apex
-            8:
-                task: snapshot_changes
+
+    config_dev:
+        steps:
+            3:
+                flow: config_unmanaged
+
+    config_qa:
+        steps:
+            3:
+                flow: config_unmanaged
 
     dev_org_namespaced:
-        #description: Set up a namespaced scratch org as a development environment for unmanaged metadata
+        description: Set up a namespaced scratch org as a development environment for unmanaged metadata
         steps:
             1:
-                flow: beta_dependencies
+                flow: dependencies
             2:
                 flow: deploy_unmanaged
             3:
                 flow: config_dev
             4:
-                task: enable_course_connections
-                options:
-                    namespaced: True
-            5:
-                task: deploy_trial_config
-                options:
-                    namespaced_org: True
-            6:
-                task: deploy_k12_kit_settings
-            7:
-                task: execute_install_apex
+                flow: config_unmanaged
             8:
-                task: snapshot_changes
-
-    install_beta:
-        description: Install and configure the latest beta version
-        steps:
-            1:
-                flow: beta_dependencies
-            2:
-                task: install_managed_beta
-            3:
-                flow: config_managed
-            4:
                 task: snapshot_changes
 
     net_new_org:
         description: Simulates an K12 installation for a new customer. Installs the latest beta and dependencies.
         steps:
             1:
-                flow: beta_dependencies
+                flow: dependencies
+                options:
+                    update_dependencies:
+                        include_beta: True
             2:
                 task: install_managed_beta
             3:
@@ -458,32 +487,10 @@ flows:
                 task: enable_course_connections
             5:
                 task: deploy_trial_config
-                options:
-                    unmanaged: False
 
-    qa_org:
-        #description: Set up an org as a QA environment for unmanaged metadata
-        steps:
-            1:
-                flow: beta_dependencies
-            2:
-                flow: deploy_unmanaged
-            3:
-                flow: config_qa
-            4:
-                task: enable_course_connections
-            5:
-                task: deploy_trial_config
-            6:
-                task: deploy_k12_kit_settings
-            7:
-                task: execute_install_apex
-            8:
-                task: snapshot_changes
-                
     trial_org:
         description: Deploy trial configuration to an org.
-        group: 'K-12: Trial'
+        group: "K-12: Trial"
         steps:
             1:
                 flow: dependencies
@@ -494,9 +501,13 @@ flows:
             4:
                 task: enable_course_connections
             5:
+                task: eda:add_citizenship_status_values
+            6:
                 task: deploy_trial_config
-                options:
-                    unmanaged: False
+            7:
+                task: correct_reciprocal_relationships
+            8:
+                task: correct_affiliation_mappings
 
     upgraded_org:
         description: Simulate an existing org. Used to test the state of a customer's org after a push upgrade.
@@ -514,13 +525,9 @@ flows:
             5:
                 task: install_managed_beta
             6:
-                task: snapshot_changes  
+                task: snapshot_changes
 
-plans:
-    install:
-        slug: install
-        title: Install K-12 Architecture Kit
-        tier: primary
+    customer_org:
         steps:
             1:
                 task: update_dependencies
@@ -562,8 +569,19 @@ plans:
         tier: additional
         steps:
             1:
-                flow: add_k12_picklist_values
-        
+                flow: add_k12_picklist_values    
+                ui_options:
+                    name: Deploy K-12 Architecture Kit App Tile
+
+plans:
+    install:
+        slug: install
+        title: Install K-12 Architecture Kit
+        tier: primary
+        steps:
+            1:
+                flow: customer_org
+
 orgs:
     scratch:
         dev_namespaced:

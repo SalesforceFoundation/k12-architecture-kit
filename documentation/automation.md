@@ -2,31 +2,31 @@
 
 **Table of Contents**
 
-- [K-12 Automation Inventory](#k-12-automation-inventory)
-    - [Key Workflows](#key-workflows)
-    - [Unpackaged Metadata](#unpackaged-metadata)
-    - [Utility Tasks and Flows](#utility-tasks-and-flows)
-        - [`add_picklist_values`](#addpicklistvalues)
-            - [Basic Usage](#basic-usage)
-                - [Task Documentation](#task-documentation)
-            - [Examples](#examples)
-                - [Basic Example](#basic-example)
-                - [Basic Example With Sorting](#basic-example-with-sorting)
-                - [Basic Example With Other Last](#basic-example-with-other-last)
-                - [Including Record Types](#including-record-types)
-                - [Including Multiple Record Types](#including-multiple-record-types)
-                - [Adding Multiple Values](#adding-multiple-values)
-                - [Sorting Alphabetically, With Other Last](#sorting-alphabetically-with-other-last)
-            - [Limitations](#limitations)
-    - [Trialforce Source Org (TSO) Updates](#trialforce-source-org-tso-updates)
-        - [How is the TSO updated during a release?](#how-is-the-tso-updated-during-a-release)
-        - [How do I access the trial experience?](#how-do-i-access-the-trial-experience)
-        - [What needs to go in `unpackaged/config/trial` versus `unpackaged/{pre,post}`?](#what-needs-to-go-in-unpackagedconfigtrial-versus-unpackagedprepost)
+-   [K-12 Automation Inventory](#k-12-automation-inventory)
+    -   [Key Workflows](#key-workflows)
+    -   [Unpackaged Metadata](#unpackaged-metadata)
+    -   [Utility Tasks and Flows](#utility-tasks-and-flows)
+        -   [`add_picklist_values`](#addpicklistvalues)
+            -   [Basic Usage](#basic-usage)
+                -   [Task Documentation](#task-documentation)
+            -   [Examples](#examples)
+                -   [Basic Example](#basic-example)
+                -   [Basic Example With Sorting](#basic-example-with-sorting)
+                -   [Basic Example With Other Last](#basic-example-with-other-last)
+                -   [Including Record Types](#including-record-types)
+                -   [Including Multiple Record Types](#including-multiple-record-types)
+                -   [Adding Multiple Values](#adding-multiple-values)
+                -   [Sorting Alphabetically, With Other Last](#sorting-alphabetically-with-other-last)
+            -   [Limitations](#limitations)
+    -   [Trialforce Source Org (TSO) Updates](#trialforce-source-org-tso-updates)
+        -   [How is the TSO updated during a release?](#how-is-the-tso-updated-during-a-release)
+        -   [How do I access the trial experience?](#how-do-i-access-the-trial-experience)
+        -   [What needs to go in `unpackaged/config/trial` versus `unpackaged/{pre,post}`?](#what-needs-to-go-in-unpackagedconfigtrial-versus-unpackagedprepost)
 
 ## Key Workflows
 
 | Workflow                     | Flow                 | Org Type         | Managed | Namespace |
-|------------------------------|----------------------|------------------|---------|-----------|
+| ---------------------------- | -------------------- | ---------------- | ------- | --------- |
 | Development                  | `dev_org`            | `dev`            |         |           |
 | Development (Namespaced)     | `dev_org_namespaced` | `dev_namespaced` |         | ✔         |
 | QA                           | `qa_org`             | `dev`            |         |           |
@@ -49,7 +49,7 @@ unpackaged/config
 Each directory is used as follows:
 
 | Directory          | Purpose                      | Deploy task           | Retrieve task |
-|--------------------|------------------------------|-----------------------|---------------|
+| ------------------ | ---------------------------- | --------------------- | ------------- |
 | `config/installer` | Sets `K12Kit` App as default | `deploy_k12_app`      |               |
 | `config/trial`     | Unmanaged TSO configuration  | `deploy_trial_config` |               |
 
@@ -92,4 +92,4 @@ The short answer, two kinds of metadata go in `unpackaged/config/trial`:
 1. **Managed components that aren't upgradeable.** Example: Adding a picklist value to a `CustomField`. We don't need to include it in pre/post-install config since we're assuming that the newly added value will be included as part of the installation.
 2. **Unmanaged components that are trial-only.** Example: A custom report that is intended for the TSO only.
 
-It isn't necessary to include things in both `unpackaged/config/trial` and `unpackaged/{pre,post}` folders, as the latter are run against the TSO at each release. 
+It isn't necessary to include things in both `unpackaged/config/trial` and `unpackaged/{pre,post}` folders, as the latter are run against the TSO at each release.

@@ -4,6 +4,10 @@
     <types>
         <members>CON_CurrentGradeLevel_TDTM</members>
         <members>CON_CurrentGradeLevel_TEST</members>
+        <members>EDUHIS_DataInteg_TDTM</members>
+        <members>EDUHIS_DataInteg_TEST</members>
+        <members>GRER_DataInteg_TDTM</members>
+        <members>GRER_DataInteg_TEST</members>
         <members>GRER_SyncGradeLevel_TDTM</members>
         <members>GRER_SyncGradeLevel_TEST</members>
         <members>STG_InstallScript</members>
@@ -49,6 +53,8 @@
         <name>CustomField</name>
     </types>
     <types>
+        <members>EduHisInstitutionMismatch</members>
+        <members>GrErInstitutionMismatch</members>
         <members>MultipleCurrentGradeEnrollmentsError</members>
         <name>CustomLabel</name>
     </types>
@@ -139,6 +145,17 @@
         <members>hed__Test__c-K12 Kit Test Layout</members>
         <members>hed__Time_Block__c-K12 Kit Time Block Layout</members>
         <name>Layout</name>
+    </types>
+    <types>
+        <members>LogACall</members>
+        <members>NewCase</members>
+        <members>NewContact</members>
+        <members>NewEvent</members>
+        <members>NewLead</members>
+        <members>NewNote</members>
+        <members>NewTask</members>
+        <members>SendEmail</members>
+        <name>QuickAction</name>
     </types>
     <types>
         <members>ca</members>

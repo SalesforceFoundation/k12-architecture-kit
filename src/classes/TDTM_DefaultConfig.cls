@@ -62,6 +62,15 @@ public without sharing class TDTM_DefaultConfig {
                         hed__Object__c = Grade_Enrollment__c.SObjectType.getDescribe().getName(),
                         hed__Owned_by_Namespace__c = 'k12kit',
                         hed__Trigger_Action__c = 'AfterInsert;AfterUpdate;AfterDelete'));
+        
+        handlers.add(new hed__Trigger_Handler__c(
+                        hed__Active__c = true,
+                        hed__Asynchronous__c = false,
+                        hed__Class__c = GRER_DataInteg_TDTM.class.toString(),
+                        hed__Load_Order__c = 1,
+                        hed__Object__c = Grade_Enrollment__c.SObjectType.getDescribe().getName(),
+                        hed__Owned_by_Namespace__c = 'k12kit',
+                        hed__Trigger_Action__c = 'AfterInsert;AfterUpdate'));
 
         handlers.add(new hed__Trigger_Handler__c(
                         hed__Active__c = true,
@@ -70,7 +79,17 @@ public without sharing class TDTM_DefaultConfig {
                         hed__Load_Order__c = 1,
                         hed__Object__c = Contact.SObjectType.getDescribe().getName(),
                         hed__Owned_by_Namespace__c = 'k12kit',
-                        hed__Trigger_Action__c = 'AfterInsert;AfterUpdate'));                
+                        hed__Trigger_Action__c = 'AfterInsert;AfterUpdate')); 
+                        
+        handlers.add(new hed__Trigger_Handler__c(
+                        hed__Active__c = true,
+                        hed__Asynchronous__c = false,
+                        hed__Class__c = EDUHIS_DataInteg_TDTM.class.toString(),
+                        hed__Load_Order__c = 1,
+                        hed__Object__c = 'Education_History__c',
+                        hed__Owned_by_Namespace__c = 'k12kit',
+                        hed__Trigger_Action__c = 'BeforeUpdate'));
+
         return handlers;
     }
 }

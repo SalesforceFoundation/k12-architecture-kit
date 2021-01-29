@@ -1,12 +1,12 @@
 {
-  "orgName": "K12 - Beta Test Org",
-  "edition": "Enterprise",
-  "settings": {
-    "chatterSettings": {
-      "enableChatter": true
-    },
-    "lightningExperienceSettings": {
-      "enableS1DesktopEnabled": true
+    "orgName": "K12 - Beta Test Org",
+    "edition": "Enterprise",
+    "settings": {
+        "chatterSettings": {
+            "enableChatter": true
+        },
+        "lightningExperienceSettings": {
+            "enableS1DesktopEnabled": true
+        }
     }
-  }
 }
