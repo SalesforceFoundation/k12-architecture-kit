@@ -209,7 +209,7 @@ tasks:
     add_relationship_picklist_values:
         description: Adds additional picklist values to the Type field on the Relationship object.
         class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
-        group: 'K-12: Metadata'
+        group: "K-12: Metadata"
         options:
             picklists: hed__Relationship__c.hed__Type__c
             entries:
@@ -390,7 +390,7 @@ flows:
                 task: add_contact_gender_picklist_values
                 ui_options:
                     name: K-12 Architecture Kit - Add Contact Gender Picklist and RecordType Values
-
+    ci_feature_eda:
         steps:
             1:
                 flow: dependencies
@@ -569,7 +569,7 @@ flows:
         tier: additional
         steps:
             1:
-                flow: add_k12_picklist_values    
+                flow: add_k12_picklist_values
                 ui_options:
                     name: Deploy K-12 Architecture Kit App Tile
 
