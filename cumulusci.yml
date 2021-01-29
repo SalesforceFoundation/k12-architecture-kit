@@ -181,7 +181,6 @@ tasks:
                 - fullName: "Walking to or from School"
                   label: "Walking to or from School"
                   add_before: "Other"
-
     add_behavior_involvement_values:
         description: Adds additional picklist values to the Role field.
         class_path: cumulusci.tasks.metadata_etl.picklists.AddPicklistEntries
@@ -513,10 +512,12 @@ flows:
                             settings.put('hed__Faculty_RecType__c', rtInfosByDeveloperName.get('Faculty').getRecordTypeId());
                             upsert settings;
             5:
-                task: deploy_trial_config
+                task: eda:add_citizenship_status_values
             6:
-                task: correct_reciprocal_relationships
+                task: deploy_trial_config
             7:
+                task: correct_reciprocal_relationships
+            8:
                 task: correct_affiliation_mappings
 
     upgraded_org:
