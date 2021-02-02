@@ -68,7 +68,6 @@
             <actionType>QuickAction</actionType>
             <sortOrder>1</sortOrder>
         </platformActionListItems>
-        
         <platformActionListItems>
             <actionName>NewEvent</actionName>
             <actionType>QuickAction</actionType>
@@ -123,7 +122,7 @@
             <actionName>Delete</actionName>
             <actionType>StandardButton</actionType>
             <sortOrder>12</sortOrder>
-        </platformActionListItems>        
+        </platformActionListItems>
     </platformActionList>
     <relatedLists>
         <relatedList>RelatedNoteList</relatedList>

@@ -6,7 +6,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Error when institutions on Education History and Grade Enrollment don’t match</shortDescription>
-        <value>We can't save this record because the Education Institution specified on this Education History doesn't match the Education Institution on the Grade Enrollment record related to this Contact.</value>
+        <value>We can&apos;t save this record because the Education Institution specified on this Education History doesn&apos;t match the Education Institution on the Grade Enrollment record related to this Contact.</value>
     </labels>
     <labels>
         <fullName>GrErInstitutionMismatch</fullName>
@@ -14,7 +14,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Error when institutions on Grade Enrollment and Education History don’t match</shortDescription>
-        <value>We can't save this record because the Education Institution specified on this Grade Enrollment doesn’t match the Education Institution on the Education History record related to this Contact.</value>
+        <value>We can&apos;t save this record because the Education Institution specified on this Grade Enrollment doesn’t match the Education Institution on the Education History record related to this Contact.</value>
     </labels>
     <labels>
         <fullName>MultipleCurrentGradeEnrollmentsError</fullName>

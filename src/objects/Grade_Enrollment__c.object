@@ -52,6 +52,7 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>Private</externalSharingModel>
     <fields>
         <fullName>Contact__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
@@ -62,7 +63,6 @@
         <referenceTo>Contact</referenceTo>
         <relationshipName>Grade_Enrollments</relationshipName>
         <required>false</required>
-        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -90,7 +90,6 @@
         <referenceTo>Account</referenceTo>
         <relationshipName>Grade_Enrollments</relationshipName>
         <required>false</required>
-        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -101,7 +100,6 @@
         <inlineHelpText>The End Date for this Grade Level enrollment.</inlineHelpText>
         <label>End Date</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Date</type>
     </fields>
@@ -112,7 +110,6 @@
         <inlineHelpText>The reason a student enrolled in this Grade Level.</inlineHelpText>
         <label>Entry Reason</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -154,7 +151,6 @@
         <inlineHelpText>The reason a student exited this Grade Level.</inlineHelpText>
         <label>Exit Reason</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -206,7 +202,6 @@
         <inlineHelpText>The Grade Level for this enrollment.</inlineHelpText>
         <label>Grade Level</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -221,7 +216,6 @@
         <inlineHelpText>The date this Grade Level enrollment is expected to start or has started.</inlineHelpText>
         <label>Start Date</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Date</type>
     </fields>
@@ -232,7 +226,6 @@
         <inlineHelpText>The status of this Grade Level enrollment.</inlineHelpText>
         <label>Status</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -263,7 +256,6 @@
         <relationshipLabel>Grade Enrollments</relationshipLabel>
         <relationshipName>Grade_Enrollments</relationshipName>
         <required>false</required>
-        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -271,7 +263,6 @@
     <nameField>
         <displayFormat>GRN-{0000}</displayFormat>
         <label>Grade Enrollment Name</label>
-        <trackHistory>false</trackHistory>
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Grade Enrollments</pluralLabel>
