@@ -1,3 +1,8 @@
+//Runs install apex scripts for unmanaged contexts
+public static void executeInstallApex() {
+    %%%NAMESPACE_DOT%%%STG_InstallScript.setK12kitDefaultTriggerHandlers();
+}
+
 //set the configuration for K-12 Architecture Kit
 //once K-12 has a managed package, this code should move
 public static void initializeK12KitSettings() {
