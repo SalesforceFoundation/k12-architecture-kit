@@ -16,14 +16,14 @@ public class ArbitraryInstallContext implements InstallContext {
     }
 }
 
-//Runs install apex scripts for unmanaged contexts
+//Runs install apex scripts for any context
 public static void executeInstallApex() {
     ArbitraryInstallContext installContext = new ArbitraryInstallContext();
     %%%NAMESPACE_DOT%%%STG_InstallScript install = new %%%NAMESPACE_DOT%%%STG_InstallScript();
     install.onInstall(installContext);
 }
 
-//Runs install apex scripts for unmanaged contexts
+//Runs EDA install apex scripts for any context
 public static void executeEDAInstallApex() {
     ArbitraryInstallContext installContext = new ArbitraryInstallContext();
     hed.STG_InstallScript install = new hed.STG_InstallScript();
