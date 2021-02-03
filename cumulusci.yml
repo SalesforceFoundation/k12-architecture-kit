@@ -431,6 +431,9 @@ flows:
                 task: deploy_trial_config
                 when: "'k12kit' in org_config.installed_packages"
             6:
+                task: deploy_k12_app
+                when: "'k12kit' in org_config.installed_packages"
+            7:
                 task: update_admin_profile
                 when: "'k12kit' in org_config.installed_packages"
 
