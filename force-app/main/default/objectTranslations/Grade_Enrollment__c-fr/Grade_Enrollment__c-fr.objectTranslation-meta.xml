@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- Grade Enrollment --></value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value><!-- Grade Enrollments --></value>
+    </caseValues>
+    <gender><!-- Masculine --></gender>
+    <layouts>
+        <layout>K12 Kit Grade Enrollment Layout</layout>
+        <sections>
+            <label><!-- Additional Enrollment Information --></label>
+            <section>Additional Enrollment Information</section>
+        </sections>
+        <sections>
+            <label><!-- Grade Enrollment Details --></label>
+            <section>Grade Enrollment Details</section>
+        </sections>
+        <sections>
+            <label><!-- System Information --></label>
+            <section>System Information</section>
+        </sections>
+    </layouts>
+    <nameFieldLabel><!-- Grade Enrollment Name --></nameFieldLabel>
+    <startsWith><!-- Consonant --></startsWith>
+</CustomObjectTranslation>

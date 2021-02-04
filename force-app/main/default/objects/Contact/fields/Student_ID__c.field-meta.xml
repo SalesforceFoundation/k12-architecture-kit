@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Student_ID__c</fullName>
+    <caseSensitive>false</caseSensitive>
+    <description>ID that you can use to manage student information. Typically formatted as a unique alphanumeric value.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>ID that you can use to manage student information. Typically formatted as a unique alphanumeric value.</inlineHelpText>
+    <label>Student ID</label>
+    <length>60</length>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Text</type>
+    <unique>true</unique>
+</CustomField>

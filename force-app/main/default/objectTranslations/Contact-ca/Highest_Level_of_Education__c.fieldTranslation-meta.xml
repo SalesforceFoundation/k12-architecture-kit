@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The highest level of education completed by a Contact. --></help>
+    <label><!-- Highest Level of Education --></label>
+    <name>Highest_Level_of_Education__c</name>
+    <picklistValues>
+        <masterLabel>Associate&apos;s Degree</masterLabel>
+        <translation><!-- Associate&apos;s Degree --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Bachelor&apos;s Degree</masterLabel>
+        <translation><!-- Bachelor&apos;s Degree --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Doctorate</masterLabel>
+        <translation><!-- Doctorate --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>High School Diploma</masterLabel>
+        <translation><!-- High School Diploma --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Master&apos;s Degree</masterLabel>
+        <translation><!-- Master&apos;s Degree --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Some College No Degree</masterLabel>
+        <translation><!-- Some College No Degree --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

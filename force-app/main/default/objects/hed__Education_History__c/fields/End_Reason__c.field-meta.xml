@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>End_Reason__c</fullName>
+    <description>The reason the student left this Educational Institution.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The reason the student left this Educational Institution.</inlineHelpText>
+    <label>End Reason</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Completed</fullName>
+                <default>false</default>
+                <label>Completed</label>
+            </value>
+            <value>
+                <fullName>Deceased</fullName>
+                <default>false</default>
+                <label>Deceased</label>
+            </value>
+            <value>
+                <fullName>Dropped Out</fullName>
+                <default>false</default>
+                <label>Dropped Out</label>
+            </value>
+            <value>
+                <fullName>Enrolled in a High School Diploma Program</fullName>
+                <default>false</default>
+                <label>Enrolled in a High School Diploma Program</label>
+            </value>
+            <value>
+                <fullName>Expelled</fullName>
+                <default>false</default>
+                <label>Expelled</label>
+            </value>
+            <value>
+                <fullName>Graduated</fullName>
+                <default>false</default>
+                <label>Graduated</label>
+            </value>
+            <value>
+                <fullName>Invalid Enrollment</fullName>
+                <default>false</default>
+                <label>Invalid Enrollment</label>
+            </value>
+            <value>
+                <fullName>No-Show</fullName>
+                <default>false</default>
+                <label>No-Show</label>
+            </value>
+            <value>
+                <fullName>Reached Maximum Age</fullName>
+                <default>false</default>
+                <label>Reached Maximum Age</label>
+            </value>
+            <value>
+                <fullName>Transferred</fullName>
+                <default>false</default>
+                <label>Transferred</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>
