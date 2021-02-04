@@ -318,7 +318,8 @@ tasks:
         class_path: cumulusci.tasks.apex.anon.AnonymousApexTask
         group: "K-12: Custom Settings"
         options:
-            apex: STG_InstallScript.setK12kitDefaultTriggerHandlers();
+            path: scripts/configure_k12_kit.cls
+            apex: executeInstallApex();
 
     github_release_notes:
         options:
@@ -419,14 +420,22 @@ flows:
                 flow: None
             2:
                 task: deploy_post
+                when: "'k12kit' in org_config.installed_packages"
             3:
                 task: deploy_k12_kit_settings
+                when: "'k12kit' in org_config.installed_packages"
             4:
                 task: enable_course_connections
+                when: "'k12kit' in org_config.installed_packages"
             5:
                 task: deploy_trial_config
+                when: "'k12kit' in org_config.installed_packages"
             6:
+                task: deploy_k12_app
+                when: "'k12kit' in org_config.installed_packages"
+            7:
                 task: update_admin_profile
+                when: "'k12kit' in org_config.installed_packages"
 
     dependencies:
         steps:
@@ -441,12 +450,16 @@ flows:
         steps:
             1:
                 task: enable_course_connections
+                when: "'k12kit' not in org_config.installed_packages"
             2:
                 task: deploy_trial_config
+                when: "'k12kit' not in org_config.installed_packages"
             3:
                 task: deploy_k12_kit_settings
+                when: "'k12kit' not in org_config.installed_packages"
             4:
                 task: execute_install_apex
+                when: "'k12kit' not in org_config.installed_packages"
 
     config_dev:
         steps:
@@ -457,6 +470,8 @@ flows:
         steps:
             3:
                 flow: config_unmanaged
+            4:
+                flow: config_regression
 
     dev_org_namespaced:
         description: Set up a namespaced scratch org as a development environment for unmanaged metadata
