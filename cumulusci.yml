@@ -313,13 +313,13 @@ tasks:
             path: scripts/configure_k12_kit.cls
             apex: enableCourseConnections();
 
-    execute_install_apex:
+    execute_k12_install_apex:
         description: Runs most of the install script methods from STG_InstallScript class
         class_path: cumulusci.tasks.apex.anon.AnonymousApexTask
         group: "K-12: Custom Settings"
         options:
             path: scripts/configure_k12_kit.cls
-            apex: executeInstallApex();
+            apex: executeK12InstallApex();
 
     execute_eda_install_apex:
         description: Runs most of the install script methods from the EDA STG_InstallScript class
@@ -424,7 +424,11 @@ flows:
             2:
                 task: execute_eda_install_apex
             3:
-                task: execute_install_apex
+                task: execute_k12_install_apex
+            4:
+                flow: config_unmanaged
+            5:
+                flow: config_regression
 
     config_managed:
         steps:
@@ -466,7 +470,7 @@ flows:
     config_unmanaged:
         steps:
             1:
-                task: execute_install_apex
+                task: execute_k12_install_apex
                 when: "'k12kit' not in org_config.installed_packages"
             2:
                 task: enable_course_connections
@@ -525,12 +529,6 @@ flows:
         steps:
             2:
                 flow: config_2gp
-            3:
-                task: None
-            4:
-                flow: config_qa
-            5:
-                task: snapshot_changes
 
     trial_org:
         description: Deploy trial configuration to an org.
