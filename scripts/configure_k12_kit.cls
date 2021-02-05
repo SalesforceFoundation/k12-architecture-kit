@@ -1,4 +1,4 @@
-//Runs install apex scripts for unmanaged contexts
+//Runs install apex scripts for K12
 public static void executeInstallApex() {
     %%%NAMESPACE_DOT%%%STG_InstallScript.setK12kitDefaultTriggerHandlers();
 }
