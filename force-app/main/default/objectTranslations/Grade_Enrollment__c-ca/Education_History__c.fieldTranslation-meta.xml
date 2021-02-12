@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The Education History record related to this Grade Enrollment. --></help>
+    <label><!-- Education History --></label>
+    <name>Education_History__c</name>
+    <relationshipLabel><!-- Grade Enrollments --></relationshipLabel>
+</CustomFieldTranslation>

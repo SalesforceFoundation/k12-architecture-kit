@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- The status of this student&apos;s enrollment in this Educational Institution. --></help>
+    <label><!-- School Enrollment Status --></label>
+    <name>School_Enrollment_Status__c</name>
+    <picklistValues>
+        <masterLabel>Current</masterLabel>
+        <translation><!-- Current --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Former</masterLabel>
+        <translation><!-- Former --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Pre-Registered</masterLabel>
+        <translation><!-- Pre-Registered --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

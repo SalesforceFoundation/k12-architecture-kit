@@ -14,6 +14,7 @@ project:
         repo_url: https://github.com/SalesforceFoundation/k12-architecture-kit
     dependencies:
         - github: "https://github.com/SalesforceFoundation/EDA"
+    source_format: sfdx
 
 sources:
     eda:
@@ -482,8 +483,6 @@ flows:
                 flow: deploy_unmanaged
             3:
                 flow: config_dev
-            4:
-                flow: config_unmanaged
             8:
                 task: snapshot_changes
 
@@ -600,5 +599,7 @@ orgs:
         prerelease_namespaced:
             config_file: orgs/prerelease.json
             namespaced: True
+        regression:
+            config_file: orgs/regression.json
         trial:
             config_file: orgs/trial.json
