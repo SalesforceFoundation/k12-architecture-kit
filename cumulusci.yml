@@ -313,13 +313,21 @@ tasks:
             path: scripts/configure_k12_kit.cls
             apex: enableCourseConnections();
 
-    execute_install_apex:
-        description: Runs most of the install script methods from STG_InstallScript class
+    execute_k12_install_apex:
+        description: Runs most of the install script methods from the STG_InstallScript class
         class_path: cumulusci.tasks.apex.anon.AnonymousApexTask
         group: "K-12: Custom Settings"
         options:
             path: scripts/configure_k12_kit.cls
-            apex: executeInstallApex();
+            apex: executeK12InstallApex();
+
+    execute_eda_install_apex:
+        description: Runs most of the install script methods from the EDA STG_InstallScript class
+        class_path: cumulusci.tasks.apex.anon.AnonymousApexTask
+        group: "K-12: Custom Settings"
+        options:
+            path: scripts/configure_k12_kit.cls
+            apex: executeEDAInstallApex();
 
     github_release_notes:
         options:
@@ -409,6 +417,19 @@ flows:
                     managed: True
                     namespace: hed
 
+    config_2gp:
+        steps:
+            1:
+                task: update_admin_profile
+            2:
+                task: execute_eda_install_apex
+            3:
+                task: execute_k12_install_apex
+            4:
+                flow: config_unmanaged
+            5:
+                flow: config_regression
+
     config_managed:
         steps:
             3:
@@ -449,16 +470,16 @@ flows:
     config_unmanaged:
         steps:
             1:
-                task: enable_course_connections
+                task: execute_k12_install_apex
                 when: "'k12kit' not in org_config.installed_packages"
             2:
-                task: deploy_trial_config
+                task: enable_course_connections
                 when: "'k12kit' not in org_config.installed_packages"
             3:
-                task: deploy_k12_kit_settings
+                task: deploy_trial_config
                 when: "'k12kit' not in org_config.installed_packages"
             4:
-                task: execute_install_apex
+                task: deploy_k12_kit_settings
                 when: "'k12kit' not in org_config.installed_packages"
 
     config_dev:
@@ -503,6 +524,11 @@ flows:
                 task: enable_course_connections
             5:
                 task: deploy_trial_config
+
+    qa_org_2gp:
+        steps:
+            2:
+                flow: config_2gp
 
     trial_org:
         description: Deploy trial configuration to an org.
@@ -600,5 +626,7 @@ orgs:
         prerelease_namespaced:
             config_file: orgs/prerelease.json
             namespaced: True
+        regression:
+            config_file: orgs/regression.json
         trial:
             config_file: orgs/trial.json
