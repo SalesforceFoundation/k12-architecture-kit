@@ -314,7 +314,7 @@ tasks:
             apex: enableCourseConnections();
 
     execute_k12_install_apex:
-        description: Runs most of the install script methods from STG_InstallScript class
+        description: Runs most of the install script methods from the STG_InstallScript class
         class_path: cumulusci.tasks.apex.anon.AnonymousApexTask
         group: "K-12: Custom Settings"
         options:
