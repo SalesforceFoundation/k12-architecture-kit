@@ -1,6 +1,33 @@
-//Runs install apex scripts for unmanaged contexts
-public static void executeInstallApex() {
-    %%%NAMESPACE_DOT%%%STG_InstallScript.setK12kitDefaultTriggerHandlers();
+public class ArbitraryInstallContext implements InstallContext {
+    public ID organizationId(){
+        return UserInfo.getOrganizationId();
+    }
+    public ID installerId(){
+        return UserInfo.getUserId();
+    }
+    public Boolean isUpgrade(){
+        return false;
+    }
+    public Boolean isPush(){
+        return true;
+    }
+    public Version previousVersion(){
+        return null;
+    }
+}
+
+//Runs install apex scripts for any context
+public static void executeK12InstallApex() {
+    ArbitraryInstallContext installContext = new ArbitraryInstallContext();
+    %%%NAMESPACE_DOT%%%STG_InstallScript install = new %%%NAMESPACE_DOT%%%STG_InstallScript();
+    install.onInstall(installContext);
+}
+
+//Runs EDA install apex scripts for any context
+public static void executeEDAInstallApex() {
+    ArbitraryInstallContext installContext = new ArbitraryInstallContext();
+    hed.STG_InstallScript install = new hed.STG_InstallScript();
+    install.onInstall(installContext);
 }
 
 //set the configuration for K-12 Architecture Kit
