@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Elementary_School__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Indicates that this Educational Institution provides elementary school services and curriculum.</description>
+    <externalId>false</externalId>
+    <label>Elementary School</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Checkbox</type>
+</CustomField>

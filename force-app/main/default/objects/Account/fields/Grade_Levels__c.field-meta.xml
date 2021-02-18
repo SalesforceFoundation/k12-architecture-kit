@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Grade_Levels__c</fullName>
+    <description>The Grade Levels currently offered by this school.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The Grade Levels currently offered by this school.</inlineHelpText>
+    <label>Grade Levels</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>Grade_Levels</valueSetName>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

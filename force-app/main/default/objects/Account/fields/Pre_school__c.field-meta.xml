@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Pre_school__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Indicates that this Educational Institution provides Pre-K services and curriculum.</description>
+    <externalId>false</externalId>
+    <label>Pre-school</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Exit_Reason__c</fullName>
+    <description>The reason a student exited this Grade Level.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The reason a student exited this Grade Level.</inlineHelpText>
+    <label>Exit Reason</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Deceased</fullName>
+                <default>false</default>
+                <label>Deceased</label>
+            </value>
+            <value>
+                <fullName>Expelled</fullName>
+                <default>false</default>
+                <label>Expelled</label>
+            </value>
+            <value>
+                <fullName>No Show</fullName>
+                <default>false</default>
+                <label>No-Show</label>
+            </value>
+            <value>
+                <fullName>Promoted</fullName>
+                <default>false</default>
+                <label>Promoted</label>
+            </value>
+            <value>
+                <fullName>Skipped Grade</fullName>
+                <default>false</default>
+                <label>Skipped Grade</label>
+            </value>
+            <value>
+                <fullName>Transferred Out</fullName>
+                <default>false</default>
+                <label>Transferred Out</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>
