@@ -4,13 +4,32 @@ The Salesforce K-12 Architecture Kit provides a K-12 education-specific platform
 
 K-12 Architecture Kit is built from industry-wide best practices used across education institutions and the Salesforce ecosystem and we welcome feedback and contributions for the project. See below for more information on how to get involved.
 
-### Try it out
+## Try it out
 
 You can install the K-12 Architecture Kit utilizing our custom application installer into any Developer Edition, Sandbox or Enterprise Edition Salesforce org.
 
 * <a href="https://install.salesforce.org/products/k12" target="_blank">K-12 Architecture Kit Installer</a>
 
-### Resources
+## For contributors
+
+### How to use Prettier
+
+Run `yarn install` to install development dependencies
+
+To reinstall, simply remove node_modules folder and run `yarn install` again.
+
+The following packages will be installed:
+
+* prettier
+* prettier-plugin-apex
+
+We store Prettier options in `.prettierrc.yml` and Prettier ignores in `.prettierignore`.
+
+For more information about Prettier uses, please go to <a href="https://prettier.io/docs/en/index.html" target="_blank">Prettier Doc</a>.
+
+For more information about Prettier Apex plugin, please go to <a href="https://github.com/dangmai/prettier-plugin-apex" target="_blank">prettier-plugin-apex repo</a>.
+
+## Resources
 
 * <a href="http://developer.salesforce.org/EDA/ApexDocumentation/" target="_blank">K-12 Architecture Kit ApexDoc code documentation</a>
 * <a href="https://salesforce.quip.com/cAJzAnydf6gp" target="_blank">EDA Data Dictionary</a>
