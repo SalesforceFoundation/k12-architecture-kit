@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Indicates that the Contact is allowed to receive information protected by HIPPA and other privacy laws, regulations, and policies. --></help>
+    <label><!-- HIPPA Approved --></label>
+    <name>HIPPA_Approved__c</name>
+</CustomFieldTranslation>
