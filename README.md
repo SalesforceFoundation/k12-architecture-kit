@@ -1,38 +1,29 @@
 # K-12 Architecture Kit
 
-The Salesforce K-12 Architecture Kit provides a K-12 education-specific platform for growth for organizations utilizing Salesforce. K-12 Architecture Kit adds unmanaged meta data to Salesforce's Education Data Architecture (EDA) managed package to give K-12 Educational Institution users a familiar nomenclature and data model for many education applications. In addition, Education developers and administrators can utilize EDA's advanced trigger management capabilities, robust error handling and pluggable framework to better manage and coordinate the data in their Salesforce instance.
+K-12 Architecture Kit from Salesforce.org provides an education-specific platform for K-12 educational institutions building out a CRM. K-12 Architecture Kit adds unmanaged metadata to Salesforce's Education Data Architecture (EDA) managed package to give K-12 educational institution users a familiar nomenclature and data model for common education applications. Also, education developers and administrators can use EDA's advanced trigger management capabilities, robust error handling, and extensible framework to better manage and coordinate their data in Salesforce.
 
-K-12 Architecture Kit is built from industry-wide best practices used across education institutions and the Salesforce ecosystem and we welcome feedback and contributions for the project. See below for more information on how to get involved.
+K-12 Architecture Kit is built upon industry-wide best practices from across educational institutions and the Salesforce ecosystem. We welcome your feedback and contributions to K-12 Architecture Kit.
 
-## Try it out
+## Get K-12 Architecture Kit
 
-You can install the K-12 Architecture Kit utilizing our custom application installer into any Developer Edition, Sandbox or Enterprise Edition Salesforce org.
+The easiest way to get started with K-12 Architecture Kit is to sign up for a <a href="https://www.salesforce.org/trial/k12/" target="_blank">trial</a>. If you need to install K-12 Architecture Kit in an existing org, use the <a href="https://install.salesforce.org/products/k12" target="_blank">K-12 Architecture Kit installer</a>. See <a href="https://powerofus.force.com/s/article/K12-Install-K12" target="_blank">Install K-12 Architecture Kit</a> for more information.
 
-* <a href="https://install.salesforce.org/products/k12" target="_blank">K-12 Architecture Kit Installer</a>
+## Contribute Code Using Prettier
 
-## For contributors
-
-### How to use Prettier
-
-Run `yarn install` to install development dependencies
-
-To reinstall, simply remove node_modules folder and run `yarn install` again.
-
-The following packages will be installed:
+Use Prettier to format code to contribute to K-12 Architecture Kit. To get started with Prettier, in a command-line interface, run `yarn install` to install these packages.
 
 * prettier
 * prettier-plugin-apex
 
-We store Prettier options in `.prettierrc.yml` and Prettier ignores in `.prettierignore`.
+If you encounter errors, remove the node_modules folder and run `yarn install` again.
 
-For more information about Prettier uses, please go to <a href="https://prettier.io/docs/en/index.html" target="_blank">Prettier Doc</a>.
+You can customize Prettier files in .prettierrc.yml and specify code that Prettier will ignore in .prettierignore.
 
-For more information about Prettier Apex plugin, please go to <a href="https://github.com/dangmai/prettier-plugin-apex" target="_blank">prettier-plugin-apex repo</a>.
+## Learn More
 
-## Resources
-
-* <a href="http://developer.salesforce.org/EDA/ApexDocumentation/" target="_blank">K-12 Architecture Kit ApexDoc code documentation</a>
-* <a href="https://salesforce.quip.com/cAJzAnydf6gp" target="_blank">EDA Data Dictionary</a>
+* To learn about EDA objects and fields, see <a href="https://powerofus.force.com/s/article/EDA-Data-Dictionary" target="_blank">EDA Data Dictionary</a>
+* To learn about Prettier, see <a href="https://prettier.io/docs/en/index.html" target="_blank">What is Prettier</a>?
+* To learn about the Prettier Apex plugin, see the <a href="https://github.com/dangmai/prettier-plugin-apex" target="_blank">prettier-plugin-apex repository</a> in GitHub.
 
 ## Meta
 
