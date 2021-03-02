@@ -540,7 +540,17 @@ flows:
             3:
                 flow: config_managed
             4:
-                task: enable_course_connections
+                flow: eda:eda_settings
+                options:
+                    execute_enable_course_connections:
+                        apex: >
+                            Schema.DescribeSObjectResult courseEnrollmentSchema = Schema.SObjectType.hed__Course_Enrollment__c;
+                            Map<String,Schema.RecordTypeInfo> rtInfosByDeveloperName = courseEnrollmentSchema.getRecordTypeInfosByDeveloperName();
+                            hed__Hierarchy_Settings__c settings = hed__Hierarchy_Settings__c.getOrgDefaults();
+                            settings.put('hed__Enable_Course_Connections__c', true);
+                            settings.put('hed__Student_RecType__c', rtInfosByDeveloperName.get('Student').getRecordTypeId());
+                            settings.put('hed__Faculty_RecType__c', rtInfosByDeveloperName.get('Faculty').getRecordTypeId());
+                            upsert settings;
             5:
                 task: eda:add_citizenship_status_values
             6:
