@@ -38,3 +38,6 @@ IlluminatedCloud
 *.DS_Store
 .AppleDouble
 .LSOverrideVk
+
+# Dependency directories
+node_modules/ 
