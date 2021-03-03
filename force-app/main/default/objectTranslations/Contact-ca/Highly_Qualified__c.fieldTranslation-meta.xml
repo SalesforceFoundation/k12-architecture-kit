@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <help><!-- Indicates that a teacher is classified as highly qualified as defined by state guidelines. --></help>
+    <label><!-- Highly Qualified --></label>
+    <name>Highly_Qualified__c</name>
+</CustomFieldTranslation>

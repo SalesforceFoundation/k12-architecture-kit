@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Educational_Institution__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>The school this student is enrolled in.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>The school this student is enrolled in.</inlineHelpText>
+    <label>Educational Institution</label>
+    <referenceTo>Account</referenceTo>
+    <relationshipName>Grade_Enrollments</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>
