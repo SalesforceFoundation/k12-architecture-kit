@@ -41,7 +41,7 @@ If you encounter errors, remove the node_modules folder and run `yarn install` a
 ## Learn More
 
 * <a href="https://powerofus.force.com/" target="_blank">Ask questions or get help</a>
-* <a href="https://github.com/SalesforceFoundation/k12-architecture-kit/issues/new" target="_blank">Log a confirmed Issue</a> or <a href="https://powerofus.force.com/hub-ideas" target="_blank">Feature Request</a>
+* <a href="https://powerofus.force.com/hub-ideas" target="_blank">Feature Request</a>
 * <a href="https://powerofus.force.com/s/article/K12-Documentation" target="_blank">User Documentation</a>
 * Check out existing <a href="https://github.com/SalesforceFoundation/k12-architecture-kit/labels/bug" target="_blank">bugs</a> and <a href="https://trailblazers.salesforce.com/search?keywords=k-12" target="_blank">feature and enhancement requests</a>
 * <a href="https://github.com/SalesforceFoundation/k12-architecture-kit/releases" target="_blank">Release Notes and Beta Releases</a>
