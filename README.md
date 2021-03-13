@@ -1,6 +1,6 @@
 # K-12 Architecture Kit
 
-K-12 Architecture Kit from Salesforce.org provides an education-specific platform for K-12 educational institutions building out a CRM. K-12 Architecture Kit adds unmanaged metadata to Salesforce's Education Data Architecture (EDA) managed package to give K-12 educational institution users a familiar nomenclature and data model for common education applications. Also, education developers and administrators can use EDA's advanced trigger management capabilities, robust error handling, and extensible framework to better manage and coordinate their data in Salesforce.
+K-12 Architecture Kit from Salesforce.org provides an education-specific platform for K-12 educational institutions building a CRM. K-12 Architecture Kit adds unmanaged metadata to Salesforce's Education Data Architecture (EDA) managed package to give K-12 educational institution users a familiar nomenclature and data model for common education applications. Also, education developers and administrators can use EDA's advanced trigger management capabilities, robust error handling, and extensible framework to better manage and coordinate their data in Salesforce.
 
 K-12 Architecture Kit is built upon industry-wide best practices from across educational institutions and the Salesforce ecosystem. We welcome your feedback and contributions to K-12 Architecture Kit.
 
@@ -8,22 +8,43 @@ K-12 Architecture Kit is built upon industry-wide best practices from across edu
 
 The easiest way to get started with K-12 Architecture Kit is to sign up for a <a href="https://www.salesforce.org/trial/k12/" target="_blank">trial</a>. If you need to install K-12 Architecture Kit in an existing org, use the <a href="https://install.salesforce.org/products/k12" target="_blank">K-12 Architecture Kit installer</a>. See <a href="https://powerofus.force.com/s/article/K12-Install-K12" target="_blank">Install K-12 Architecture Kit</a> for more information.
 
-## Contribute Code Using Prettier
+## Contribute to K-12 Architecture Kit
 
-Use Prettier to format code to contribute to K-12 Architecture Kit. To get started with Prettier, in a command-line interface, run `yarn install` to install these packages.
+Use a code formatter, like Prettier, to ensure that code you contribute to EDA is formatted consistent with the EDA code base. 
 
-* prettier
-* prettier-plugin-apex
+### Install a package manager
+
+Make sure `yarn` is installed on your local machine. For more information, check <a href="https://classic.yarnpkg.com/en/docs/install/#mac-stableA" target="_blank">yarn installation</a>.
+
+### Install dependency packages
+
+Use a CLI to install dependency packages in your local repo:
+
+```
+yarn install
+```
+
+If you’re using Prettier, these dependency packages will be installed to your local repo: prettier, prettier-plugin-apex, husky, and lint-staged.
+
+### Configure your code formatter
+
+Configure your code formatter, as needed. For example, customize Prettier configurations in `prettierrc.yml` or specify code for Prettier to ignore in `.prettierignore`.
+
+### Bypass pre-commit hook
+
+Pre-commit hooks help ensure the quality of code, but if you need to bypass them, append `--no-verify` to git commit or use a similar commit option for your GUI clients.
+
+### Troubleshoot errors
 
 If you encounter errors, remove the node_modules folder and run `yarn install` again.
 
-You can customize Prettier files in .prettierrc.yml and specify code that Prettier will ignore in .prettierignore.
-
 ## Learn More
 
-* To learn about EDA objects and fields, see <a href="https://powerofus.force.com/s/article/EDA-Data-Dictionary" target="_blank">EDA Data Dictionary</a>.
-* To learn about Prettier, see <a href="https://prettier.io/docs/en/index.html" target="_blank">What is Prettier?</a>
-* To learn about the Prettier Apex plugin, see the <a href="https://github.com/dangmai/prettier-plugin-apex" target="_blank">prettier-plugin-apex repository</a> in GitHub.
+* <a href="https://powerofus.force.com/" target="_blank">Ask questions or get help</a>
+* <a href="https://powerofus.force.com/hub-ideas" target="_blank">Feature Request</a>
+* <a href="https://powerofus.force.com/s/article/K12-Documentation" target="_blank">User Documentation</a>
+* Check out existing <a href="https://github.com/SalesforceFoundation/k12-architecture-kit/labels/bug" target="_blank">bugs</a> and <a href="https://trailblazers.salesforce.com/search?keywords=k-12" target="_blank">feature and enhancement requests</a>
+* <a href="https://github.com/SalesforceFoundation/k12-architecture-kit/releases" target="_blank">Release Notes and Beta Releases</a>
 
 ## Meta
 
