@@ -14,6 +14,8 @@ project:
         repo_url: https://github.com/SalesforceFoundation/k12-architecture-kit
     dependencies:
         - github: "https://github.com/SalesforceFoundation/EDA"
+    dependency_resolutions:
+        preproduction: include_beta
     source_format: sfdx
 
 sources:
