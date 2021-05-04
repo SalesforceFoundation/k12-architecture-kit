@@ -1,0 +1,100 @@
+{
+    "product": {
+        "title": {
+            "message": "K-12 Architecture Kit",
+            "description": "name of product"
+        },
+        "short_description": {
+            "message": "A Custom Solution for K-12 Schools and Districts",
+            "description": "tagline of product"
+        },
+        "description": {
+            "message": "## Welcome to the K-12 Architecture Kit installer!\r\n\r\nFor installation details, see the [K-12 Architecture Kit Documentation](https://powerofus.force.com/s/article/K12-Documentation).\r\n\r\nIMPORTANT: Salesforce does not recommend installing directly in production organizations. Instead, install in one of your free sandbox environments, or a developer organization first.",
+            "description": "shown on product detail page (markdown)"
+        },
+        "click_through_agreement": {
+            "message": "K-12 Kit is an application that runs on the Education Data Architecture technology (\u201cEDA\u201d). In order to get started with K-12 Kit, you must have installed EDA. If you do not currently have EDA, the installer will automatically install EDA into your org with K-12 Kit. Both K-12 Kit and EDA are open-source solutions licensed by Salesforce.org (\u201cSFDO\u201d) under the BSD-3 Clause License, found at https://opensource.org/licenses/BSD-3-Clause. ANY MASTER SUBSCRIPTION AGREEMENT YOU OR YOUR ENTITY MAY HAVE WITH SFDO DOES NOT APPLY TO YOUR USE OF K-12 KIT OR EDA. BOTH K-12 KIT AND EDA ARE PROVIDED \u201cAS IS\u201d AND AS AVAILABLE, AND SFDO MAKES NO WARRANTY OF ANY KIND REGARDING K-12 KIT OR EDA, WHETHER EXPRESS, IMPLIED, STATUTORY OR OTHERWISE, INCLUDING, BUT NOT LIMITED TO, ANY IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, FREEDOM FROM DEFECTS OR NON-INFRINGEMENT, TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW.\r\n\r\nSFDO WILL HAVE NO LIABILITY ARISING OUT OF OR RELATED TO YOUR USE OF K-12 KIT OR EDA FOR ANY DIRECT DAMAGES OR FOR ANY LOST PROFITS, REVENUES, GOODWILL OR INDIRECT, SPECIAL, INCIDENTAL, CONSEQUENTIAL, EXEMPLARY, COVER, BUSINESS INTERRUPTION OR PUNITIVE DAMAGES, WHETHER AN ACTION IS IN CONTRACT OR TORT AND REGARDLESS OF THE THEORY OF LIABILITY, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES OR IF A REMEDY OTHERWISE FAILS OF ITS ESSENTIAL PURPOSE. THE FOREGOING DISCLAIMER WILL NOT APPLY TO THE EXTENT PROHIBITED BY LAW. SFDO DISCLAIMS ALL LIABILITY AND INDEMNIFICATION OBLIGATIONS FOR ANY HARM OR DAMAGES CAUSED BY ANY THIRD-PARTY HOSTING PROVIDERS.",
+            "description": "legal text shown in modal dialog"
+        },
+        "error_message": {
+            "message": "If you experience an issue with the installation, please post in the [Power of Us Hub] (https://powerofus.force.com/s/topic/0TO1E000000LZ2aWAG/k12-kit).",
+            "description": "shown after failed installation (markdown)"
+        }
+    },
+    "plan:install": {
+        "title": {
+            "message": "Install K-12 Architecture Kit",
+            "description": "title of installation plan"
+        }
+    },
+    "steps": {
+        "EDA - Account Record Types": {
+            "message": "EDA - Account Record Types",
+            "description": "title of installation step"
+        },
+        "EDA - Contact Key Affiliation Fields": {
+            "message": "EDA - Contact Key Affiliation Fields",
+            "description": "title of installation step"
+        },
+        "Install {product} {version}": {
+            "message": "Install {product} {version}",
+            "description": "title of installation step"
+        },
+        "EDA - Deploy Case Behavior Record Types": {
+            "message": "EDA - Deploy Case Behavior Record Types",
+            "description": "title of installation step"
+        },
+        "EDA - Deploy Course Connection Record Types": {
+            "message": "EDA - Deploy Course Connection Record Types",
+            "description": "title of installation step"
+        },
+        "EDA - Facility Display Name Formula Field": {
+            "message": "EDA - Facility Display Name Formula Field",
+            "description": "title of installation step"
+        },
+        "EDA - Health Check": {
+            "message": "EDA - Health Check",
+            "description": "title of installation step"
+        },
+        "K-12 Architecture Kit - Add Application Type Picklist Values": {
+            "message": "K-12 Architecture Kit - Add Application Type Picklist Values",
+            "description": "title of installation step"
+        },
+        "K-12 Architecture Kit - Add Behavior Response Type Picklist Values": {
+            "message": "K-12 Architecture Kit - Add Behavior Response Type Picklist Values",
+            "description": "title of installation step"
+        },
+        "K-12 Architecture Kit - Add Case Category Type Picklist Values": {
+            "message": "K-12 Architecture Kit - Add Case Category Type Picklist Values",
+            "description": "title of installation step"
+        },
+        "K-12 Architecture Kit - Add Case Location Type Picklist Values": {
+            "message": "K-12 Architecture Kit - Add Case Location Type Picklist Values",
+            "description": "title of installation step"
+        },
+        "K-12 Architecture Kit - Add Behavior Involvement Role Picklist Values": {
+            "message": "K-12 Architecture Kit - Add Behavior Involvement Role Picklist Values",
+            "description": "title of installation step"
+        },
+        "K-12 Architecture Kit - Add Relationship Type Picklist Values": {
+            "message": "K-12 Architecture Kit - Add Relationship Type Picklist Values",
+            "description": "title of installation step"
+        },
+        "K-12 Architecture Kit - Add Contact Gender Picklist and RecordType Values": {
+            "message": "K-12 Architecture Kit - Add Contact Gender Picklist and RecordType Values",
+            "description": "title of installation step"
+        },
+        "K-12 Architecture Kit - Account and Contact Record Types": {
+            "message": "K-12 Architecture Kit - Account and Contact Record Types",
+            "description": "title of installation step"
+        },
+        "K-12 Architecture Kit Metadata and Configuration": {
+            "message": "K-12 Architecture Kit Metadata and Configuration",
+            "description": "title of installation step"
+        },
+        "Deploy K-12 Architecture Kit App Tile": {
+            "message": "Deploy K-12 Architecture Kit App Tile",
+            "description": "title of installation step"
+        }
+    }
+}
