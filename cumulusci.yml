@@ -15,7 +15,8 @@ project:
     dependencies:
         - github: "https://github.com/SalesforceFoundation/EDA"
     dependency_resolutions:
-        preproduction: include_beta
+        #preproduction: include_beta
+        preproduction: commit_status
     source_format: sfdx
 
 sources:
@@ -633,6 +634,13 @@ plans:
         slug: install
         title: Install K-12 Architecture Kit
         tier: primary
+        checks:
+            - when: "not tasks.check_my_domain_active()"
+              action: error
+              message: "Please enable My Domain in your org prior to installing."
+            - when: "not tasks.check_chatter_enabled()"
+              action: error
+              message: "Please enable Chatter in your org prior to installing."
         steps:
             1:
                 flow: customer_org
