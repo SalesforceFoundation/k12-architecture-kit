@@ -95,6 +95,10 @@
         "Deploy K-12 Architecture Kit App Tile": {
             "message": "Deploy K-12 Architecture Kit App Tile",
             "description": "title of installation step"
+        },
+        "EDA - Education Data Architecture App": {
+            "message": "EDA - Education Data Architecture App",
+            "description": "title of installation step"
         }
     },
     "checks": {
