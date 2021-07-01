@@ -594,9 +594,9 @@ flows:
                     5:
                         name: EDA - Deploy Course Connection Record Types
                     6:
-                        name: EDA - Facility Display Name Formula Field
+                        name: EDA - Education Data Architecture App
                     7:
-                        name: EDA - Health Check
+                        name: EDA - Facility Display Name Formula Field
 
             2:
                 flow: add_k12_picklist_values
