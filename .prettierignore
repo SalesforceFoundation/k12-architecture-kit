@@ -25,3 +25,5 @@ README.md
 *.robot
 *.pdf
 
+# Dependency directories
+node_modules/ 
