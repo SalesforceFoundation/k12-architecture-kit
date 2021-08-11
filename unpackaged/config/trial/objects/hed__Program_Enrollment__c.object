@@ -47,5 +47,4 @@
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Program Enrollments</pluralLabel>
-    <sharingModel>ReadWrite</sharingModel>
 </CustomObject>

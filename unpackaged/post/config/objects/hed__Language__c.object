@@ -16,5 +16,4 @@
         <type>Text</type>
     </nameField>
     <pluralLabel>Languages</pluralLabel>
-    <sharingModel>ReadWrite</sharingModel>
 </CustomObject>

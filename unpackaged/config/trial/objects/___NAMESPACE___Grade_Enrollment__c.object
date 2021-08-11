@@ -211,6 +211,5 @@
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>flexipage</type>
     </actionOverrides>
-    <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>

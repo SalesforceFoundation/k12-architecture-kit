@@ -54,6 +54,5 @@
         <searchResultsAdditionalFields>hed__Score__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>hed__Percentile__c</searchResultsAdditionalFields>
     </searchLayouts>
-    <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>

@@ -28,5 +28,4 @@
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Attendance Events</pluralLabel>
-    <sharingModel>ReadWrite</sharingModel>
 </CustomObject>

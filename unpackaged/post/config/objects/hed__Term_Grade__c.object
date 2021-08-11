@@ -40,5 +40,4 @@
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Term Grades</pluralLabel>
-    <sharingModel>ReadWrite</sharingModel>
 </CustomObject>
