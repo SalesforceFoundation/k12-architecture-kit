@@ -1,62 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
-        <members>Account.K12_Household_Compact_Layout</members>
-        <members>Account.hed__HEDA_Account_Compact_Layout</members>
-        <members>Case.K12_Case_Compact_Layout</members>
-        <members>Contact.K12_Faculty_Contact_Compact_Layout</members>
-        <members>Contact.K12_Guardian_Contact_Compact_Layout</members>
-        <members>Contact.K12_Student_Contact_Compact_Layout</members>
-        <members>Contact.hed__HEDA_Contact_Compact_Layout</members>
-        <members>hed__Affiliation__c.hed__HEDA_Affiliation_Compact_Layout</members>
-        <members>hed__Application__c.K12_Application_Compact_Layout</members>
-        <members>hed__Attendance_Event__c.K12_Attendance_Event_Compact_Layout</members>
-        <members>hed__Attribute__c.K12_Credential_Compact_Layout</members>
-        <members>hed__Attribute__c.K12_Student_Characteristic_Compact_Layout</members>
-        <members>hed__Behavior_Involvement__c.K12_Behavior_Involvement_Compact_Layout</members>
-        <members>hed__Behavior_Response__c.K12_Behavior_Response_Compact_Layout</members>
-        <members>hed__Contact_Language__c.hed__HEDA_Contact_Language_Compact_Layout</members>
-        <members>hed__Course_Enrollment__c.K12_Faculty_Course_Connection_Compact_Layout</members>
-        <members>hed__Course_Enrollment__c.K12_Student_Course_Connection_Compact_Layout</members>
-        <members>hed__Course_Enrollment__c.hed__HEDA_Course_Enrollment_Compact_Layout</members>
-        <members>hed__Course_Offering_Schedule__c.K12_Course_Offering_Schedule_Compact_Layout</members>
-        <members>hed__Course__c.hed__HEDA_Course_Compact_Layout</members>
-        <members>hed__Education_History__c.K12_Education_History_Compact_Layout</members>
-        <members>hed__Facility__c.K12_Facility_Compact_Layout</members>
-        <members>hed__Facility__c.hed__HEDA_Facility_Compact_Layout</members>
-        <members>hed__Plan_Requirement__c.hed__HEDA_Plan_Requirement_Compact_Layout</members>
-        <members>hed__Program_Enrollment__c.K12_Program_Enrollment_Compact_Layout</members>
-        <members>hed__Program_Enrollment__c.hed__HEDA_Program_Enrollment_Compact_Layout</members>
-        <members>hed__Program_Plan__c.K12_Program_Plan_Compact_Layout</members>
-        <members>hed__Program_Plan__c.hed__HEDA_Program_Plan_Compact_Layout</members>
-        <members>hed__Relationship__c.K12_Relationship_Compact_Layout</members>
-        <members>hed__Relationship__c.hed__HEDA_Relationship_Compact_Layout</members>
-        <members>hed__Term_Grade__c.K12_Term_Grade_Compact_Layout</members>
-        <members>hed__Term__c.hed__HEDA_Term_Compact_Layout</members>
-        <members>hed__Test__c.K12_Test_Compact_Layout</members>
-        <members>hed__Test_Score__c.K12_Test_Score_Compact_Layout</members>
-        <members>hed__Time_Block__c.K12_Time_Block_Compact_Layout</members>
-        <name>CompactLayout</name>
-    </types>
-    <types>
         <members>k12_architecture_kit_1_lines_2</members>
         <name>ContentAsset</name>
     </types>
     <types>
         <members>*</members>
         <name>CustomApplication</name>
-    </types>
-    <types>
-        <members>%%%NAMESPACE%%%Grade_Enrollment__c.Grade_Number__c</members>
-        <name>CustomField</name>
-    </types>
-    <types>
-        <members>*</members>
-        <name>CustomObject</name>
-    </types>
-    <types>
-        <members>*</members>
-        <name>CustomObjectTranslation</name>
     </types>
     <types>
         <members>Sample_Dashboards</members>
@@ -68,65 +18,9 @@
         <name>FlexiPage</name>
     </types>
     <types>
-        <members>Account.K12_All_Academic_Departments</members>
-        <members>Account.K12_All_Academic_Programs</members>
-        <members>Account.K12_All_Educational_Institutions</members>
-        <members>Account.K12_All_Households</members>
-        <members>Case.K12_All_Incident_Cases</members>
-        <members>Case.K12_All_Positive_Behavior_Cases</members>
-        <members>Contact.K12_All_Faculty</members>
-        <members>Contact.K12_All_Guardians</members>
-        <members>Contact.K12_All_Students</members>
-        <members>%%%NAMESPACE%%%Grade_Enrollment__c.K_12_All_Grade_Enrollments</members>
-        <members>hed__Affiliation__c.K12_All_Affiliations</members>
-        <members>hed__Application__c.K_12_All_Applications</members>
-        <members>hed__Attribute__c.K_12_All_Student_Characteristics</members>
-        <members>hed__Attribute__c.K_12_All_Credentials</members>
-        <members>hed__Behavior_Involvement__c.K12_All_Incident_Involvements</members>
-        <members>hed__Behavior_Involvement__c.K12_All_Positive_Behavior_Involvements</members>
-        <members>hed__Behavior_Response__c.K12_All_Incident_Responses</members>
-        <members>hed__Behavior_Response__c.K12_All_Positive_Behavior_Responses</members>
-        <members>hed__Contact_Language__c.K12_All_Contact_Languages</members>
-        <members>hed__Course_Enrollment__c.K12_All_Course_Connections</members>
-        <members>hed__Course_Enrollment__c.K12_All_Faculty_Course_Connections</members>
-        <members>hed__Course_Enrollment__c.K12_All_Student_Course_Connections</members>
-        <members>hed__Course_Enrollment__c.K12_Students_Current_Course_Connections</members>
-        <members>hed__Course_Offering_Schedule__c.K12_All_Course_Offering_Schedules</members>
-        <members>hed__Course_Offering__c.K12_All_Course_Offerings</members>
-        <members>hed__Course__c.K12_All_Courses</members>
-        <members>hed__Education_History__c.K12_All_Education_Histories</members>
-        <members>hed__Facility__c.K12_All_Facilities</members>
-        <members>hed__Plan_Requirement__c.K12_All_Plan_Requirements</members>
-        <members>hed__Program_Enrollment__c.K12_All_Program_Enrollments</members>
-        <members>hed__Program_Plan__c.K12_All_Program_Plans</members>
-        <members>hed__Relationship__c.K_12_All_Relationships</members>
-        <members>hed__Term_Grade__c.K12_All_Term_Grades</members>
-        <members>hed__Term__c.K12_All_Terms</members>
-        <members>hed__Test__c.K_12_All_Tests</members>
-        <members>hed__Test_Score__c.K_12_All_Test_Scores</members>
-        <members>hed__Time_Block__c.K12_All_Time_Blocks</members>
-        <name>ListView</name>
-    </types>
-    <types>
         <members>*</members>
         <name>Profile</name>
-    </types>
-    <types>
-        <members>Account.HH_Account</members>
-        <members>Case.Positive_Behavior</members>
-        <members>Contact.Faculty</members>
-        <members>Contact.Guardian</members>
-        <members>Contact.Student</members>
-        <members>hed__Attribute__c.hed__Credential</members>
-        <members>hed__Attribute__c.hed__Student_Characteristic</members>
-        <members>hed__Behavior_Involvement__c.Incident_Involvement</members>
-        <members>hed__Behavior_Involvement__c.Positive_Behavior_Involvement</members>
-        <members>hed__Behavior_Response__c.Incident_Response</members>
-        <members>hed__Behavior_Response__c.Positive_Behavior_Response</members>
-        <members>hed__Course_Enrollment__c.Faculty</members>
-        <members>hed__Course_Enrollment__c.Student</members>
-        <name>RecordType</name>
-    </types>
+    </types>   
     <types>
         <members>unfiled$public/Course_Offering_Roster</members>
         <members>unfiled$public/Faculty_Grouped_by_School</members>
