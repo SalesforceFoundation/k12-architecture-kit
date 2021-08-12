@@ -52,20 +52,12 @@
     </types>
     <types>
         <members>*</members>
-        <name>CustomObject</name>
-    </types>
-    <types>
-        <members>*</members>
         <name>CustomObjectTranslation</name>
     </types>
     <types>
         <members>Sample_Dashboards</members>
         <members>Sample_Dashboards/fPczBaMKgApKGhzefAcauJRBijCZvI</members>
         <name>Dashboard</name>
-    </types>
-    <types>
-        <members>*</members>
-        <name>FlexiPage</name>
     </types>
     <types>
         <members>Account.K12_All_Academic_Departments</members>
