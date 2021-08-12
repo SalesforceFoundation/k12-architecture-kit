@@ -47,14 +47,6 @@
         <name>CustomApplication</name>
     </types>
     <types>
-        <members>%%%NAMESPACE%%%Grade_Enrollment__c.Grade_Number__c</members>
-        <name>CustomField</name>
-    </types>
-    <types>
-        <members>*</members>
-        <name>CustomObjectTranslation</name>
-    </types>
-    <types>
         <members>Sample_Dashboards</members>
         <members>Sample_Dashboards/fPczBaMKgApKGhzefAcauJRBijCZvI</members>
         <name>Dashboard</name>
