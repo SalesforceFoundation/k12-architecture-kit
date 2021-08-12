@@ -48,4 +48,5 @@
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Education History</pluralLabel>
+    <sharingModel>ReadWrite</sharingModel>
 </CustomObject>

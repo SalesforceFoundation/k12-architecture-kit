@@ -20,4 +20,5 @@
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Addresses</pluralLabel>
+    <sharingModel>ReadWrite</sharingModel>
 </CustomObject>

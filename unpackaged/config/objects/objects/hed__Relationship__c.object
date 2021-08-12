@@ -51,4 +51,5 @@
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Relationships</pluralLabel>
+    <sharingModel>ReadWrite</sharingModel>
 </CustomObject>

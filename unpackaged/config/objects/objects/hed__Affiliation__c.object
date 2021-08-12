@@ -40,4 +40,5 @@
         <trackHistory>false</trackHistory>
         <type>AutoNumber</type>
     </nameField>
+    <sharingModel>ReadWrite</sharingModel>
 </CustomObject>

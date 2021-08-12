@@ -35,4 +35,5 @@
         <type>Text</type>
     </nameField>
     <pluralLabel>Plan Requirements</pluralLabel>
+    <sharingModel>ReadWrite</sharingModel>
 </CustomObject>

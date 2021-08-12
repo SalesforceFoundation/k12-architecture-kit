@@ -125,4 +125,5 @@
     </nameField>
     <pluralLabel>Course Connections</pluralLabel>
     <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
 </CustomObject>

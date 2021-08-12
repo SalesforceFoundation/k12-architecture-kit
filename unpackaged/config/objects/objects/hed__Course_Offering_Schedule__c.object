@@ -37,4 +37,5 @@
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Course Offering Schedules</pluralLabel>
+    <sharingModel>ReadWrite</sharingModel>
 </CustomObject>

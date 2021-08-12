@@ -83,4 +83,5 @@
         <type>Text</type>
     </nameField>
     <pluralLabel>Attributes</pluralLabel>
+    <sharingModel>ReadWrite</sharingModel>
 </CustomObject>

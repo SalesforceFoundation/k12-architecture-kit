@@ -85,4 +85,5 @@
         <searchResultsAdditionalFields>hed__Type__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>hed__Status__c</searchResultsAdditionalFields>
     </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
 </CustomObject>

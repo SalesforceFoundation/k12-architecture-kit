@@ -59,5 +59,6 @@
         <searchResultsAdditionalFields>hed__Term__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>hed__Application_Status__c</searchResultsAdditionalFields>
     </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>
