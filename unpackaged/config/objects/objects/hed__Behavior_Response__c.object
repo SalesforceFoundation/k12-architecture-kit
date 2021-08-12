@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>K12_Behavior_Response_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <compactLayoutAssignment>K12_Behavior_Response_Compact_Layout</compactLayoutAssignment>
+    <compactLayouts>
+        <fullName>K12_Behavior_Response_Compact_Layout</fullName>
+        <fields>hed__Contact__c</fields>
+        <fields>RECORDTYPEID</fields>
+        <fields>hed__Type__c</fields>
+        <fields>hed__Status__c</fields>
+        <label>K12 Behavior Response Compact Layout</label>
+    </compactLayouts>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>Stores information about the response to a behavior event.</description>
+    <enableActivities>true</enableActivities>
+    <enableReports>true</enableReports>
+    <label>Behavior Response</label>
+    <nameField>
+        <displayFormat>BR-{0000}</displayFormat>
+        <label>Behavior Response Name</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Behavior Responses</pluralLabel>
+    <listViews>
+        <fullName>K12_All_Positive_Behavior_Responses</fullName>
+        <columns>NAME</columns>
+        <columns>hed__Contact__c</columns>
+        <columns>hed__Type__c</columns>
+        <columns>hed__Description__c</columns>
+        <columns>hed__Behavior_Involvement__c</columns>
+        <columns>hed__Start_Date__c</columns>
+        <columns>hed__End_Date__c</columns>
+        <columns>hed__Status__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>hed__Behavior_Response__c.Positive_Behavior_Response</value>
+        </filters>
+        <label>K-12 All Positive Behavior Responses</label>
+    </listViews>
+    <listViews>
+        <fullName>K12_All_Incident_Responses</fullName>
+        <columns>NAME</columns>
+        <columns>hed__Contact__c</columns>
+        <columns>hed__Type__c</columns>
+        <columns>hed__Description__c</columns>
+        <columns>hed__Behavior_Involvement__c</columns>
+        <columns>hed__Start_Date__c</columns>
+        <columns>hed__End_Date__c</columns>
+        <columns>hed__Status__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>hed__Behavior_Response__c.Incident_Response</value>
+        </filters>
+        <label>K-12 All Incident Responses</label>
+    </listViews>
+    <recordTypes>
+        <fullName>Incident_Response</fullName>
+        <active>true</active>
+        <description>Stores information about the response to an Incident Involvement.</description>
+        <label>Incident Response</label>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Positive_Behavior_Response</fullName>
+        <active>true</active>
+        <description>Stores information about the response to a Positive Behavior Involvement.</description>
+        <label>Positive Behavior Response</label>
+    </recordTypes>
+    <searchLayouts>
+        <searchResultsAdditionalFields>NAME</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>RECORDTYPE</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>hed__Behavior_Involvement__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>hed__Contact__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>hed__Type__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>hed__Status__c</searchResultsAdditionalFields>
+    </searchLayouts>
+</CustomObject>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>K12_Attribute_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <compactLayouts>
+        <fullName>K12_Credential_Compact_Layout</fullName>
+        <fields>Name</fields>
+        <fields>RecordTypeId</fields>
+        <fields>hed__Contact__c</fields>
+        <fields>hed__Attribute_Type__c</fields>
+        <fields>hed__Subject_Area__c</fields>
+        <fields>%%%NAMESPACE%%%Grade_Level__c</fields>
+        <label>K12 Credential Compact Layout</label>
+    </compactLayouts>
+    <compactLayouts>
+        <fullName>K12_Student_Characteristic_Compact_Layout</fullName>
+        <fields>Name</fields>
+        <fields>RecordTypeId</fields>
+        <fields>hed__Contact__c</fields>
+        <fields>hed__Attribute_Type__c</fields>
+        <label>K12 Student Characteristic Compact Layout</label>
+    </compactLayouts>
+    <listViews>
+        <fullName>K_12_All_Student_Characteristics</fullName>
+        <columns>NAME</columns>
+        <columns>hed__Attribute_Type__c</columns>
+        <columns>hed__Contact__c</columns>
+        <columns>hed__Start_Date__c</columns>
+        <columns>hed__End_Date__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>hed__Attribute__c.hed__Student_Characteristic</value>
+        </filters>
+        <label>K-12 All Student Characteristics</label>
+    </listViews>
+    <listViews>
+        <fullName>K_12_All_Credentials</fullName>
+        <columns>NAME</columns>
+        <columns>hed__Attribute_Type__c</columns>
+        <columns>hed__Subject_Area__c</columns>
+        <columns>%%%NAMESPACE%%%Grade_Level__c</columns>
+        <columns>hed__Start_Date__c</columns>
+        <columns>hed__End_Date__c</columns>
+        <columns>hed__Expired__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>hed__Attribute__c.hed__Credential</value>
+        </filters>
+        <label>K-12 All Credentials</label>
+    </listViews>
+    <recordTypes>
+        <fullName>hed__Credential</fullName>
+        <active>true</active>
+        <compactLayoutAssignment>K12_Credential_Compact_Layout</compactLayoutAssignment>
+        <description>Allows educational institutions to track licenses, certifications, or endorsements earned by staff or students.</description>
+        <label>Credential</label>
+    </recordTypes>
+    <recordTypes>
+        <fullName>hed__Student_Characteristic</fullName>
+        <active>true</active>
+        <compactLayoutAssignment>K12_Student_Characteristic_Compact_Layout</compactLayoutAssignment>
+        <description>Allows educational institutions to track important student characteristics that might affect students' education.</description>
+        <label>Student Characteristic</label>
+    </recordTypes>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>A characteristic of or a credential held by the associated Contact. For example, an Attribute record with a Credential record type can indicate that a faculty member has a Multiple Subject Teaching Credential.</description>
+    <enableActivities>true</enableActivities>
+    <enableReports>true</enableReports>
+    <label>Attribute</label>
+    <nameField>
+        <label>Attribute Name</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Attributes</pluralLabel>
+</CustomObject>

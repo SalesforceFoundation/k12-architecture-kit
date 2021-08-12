@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <allowInChatterGroups>true</allowInChatterGroups>
+    <compactLayoutAssignment>K12_Grade_Enrollment_Compact_Layout</compactLayoutAssignment>
+    <compactLayouts>
+        <fullName>K12_Grade_Enrollment_Compact_Layout</fullName>
+        <fields>Name</fields>
+        <fields>%%%NAMESPACE%%%Contact__c</fields>
+        <fields>%%%NAMESPACE%%%Grade_Level__c</fields>
+        <fields>%%%NAMESPACE%%%Status__c</fields>
+        <fields>%%%NAMESPACE%%%Start_Date__c</fields>
+        <fields>%%%NAMESPACE%%%End_Date__c</fields>
+        <label>K12 Grade Enrollment Compact Layout</label>
+    </compactLayouts>
+    <listViews>
+        <fullName>K_12_All_Grade_Enrollments</fullName>
+        <columns>NAME</columns>
+        <columns>%%%NAMESPACE%%%Contact__c</columns>
+        <columns>%%%NAMESPACE%%%Grade_Level__c</columns>
+        <columns>%%%NAMESPACE%%%Status__c</columns>
+        <columns>%%%NAMESPACE%%%Start_Date__c</columns>
+        <columns>%%%NAMESPACE%%%End_Date__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>K-12 All Grade Enrollments</label>
+    </listViews>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>A student's enrollment in a particular grade at a given educational institution.</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Grade_Number__c</fullName>
+        <description>The selected Grade Level reflected as a numerical value.</description>
+        <externalId>false</externalId>
+        <formula>CASE(TEXT(%%%NAMESPACE%%%Grade_Level__c),
+    &quot;Infant/Toddler&quot;, -4,
+    &quot;Preschool&quot;, -3,
+    &quot;Prekindergarten&quot;, -2,
+    &quot;Transitional Kindergarten&quot;, -1,
+    &quot;Kindergarten&quot;, 0,
+    &quot;First Grade&quot;, 1,
+    &quot;Second Grade&quot;, 2,
+    &quot;Third Grade&quot;, 3,
+    &quot;Fourth Grade&quot;, 4,
+    &quot;Fifth Grade&quot;, 5,
+    &quot;Sixth Grade&quot;, 6,
+    &quot;Seventh Grade&quot;, 7,
+    &quot;Eighth Grade&quot;, 8,
+    &quot;Ninth Grade&quot;, 9,
+    &quot;Tenth Grade&quot;, 10,
+    &quot;Eleventh Grade&quot;, 11,
+    &quot;Twelfth Grade&quot;, 12,
+    NULL)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>The selected Grade Level reflected as a numerical value.</inlineHelpText>
+        <label>Grade Number</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <label>Grade Enrollment</label>
+    <nameField>
+        <displayFormat>GRN-{0000}</displayFormat>
+        <label>Grade Enrollment Name</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Grade Enrollments</pluralLabel>
+    <searchLayouts>
+        <searchResultsAdditionalFields>%%%NAMESPACE%%%Contact__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>%%%NAMESPACE%%%Grade_Level__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>%%%NAMESPACE%%%Status__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>%%%NAMESPACE%%%Start_Date__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>%%%NAMESPACE%%%End_Date__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>K12_Grade_Enrollment_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>flexipage</type>
+    </actionOverrides>
+    <visibility>Public</visibility>
+</CustomObject>
