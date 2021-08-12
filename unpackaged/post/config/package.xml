@@ -56,65 +56,9 @@
         <name>FlexiPage</name>
     </types>
     <types>
-        <members>Account.K12_All_Academic_Departments</members>
-        <members>Account.K12_All_Academic_Programs</members>
-        <members>Account.K12_All_Educational_Institutions</members>
-        <members>Account.K12_All_Households</members>
-        <members>Case.K12_All_Incident_Cases</members>
-        <members>Case.K12_All_Positive_Behavior_Cases</members>
-        <members>Contact.K12_All_Faculty</members>
-        <members>Contact.K12_All_Guardians</members>
-        <members>Contact.K12_All_Students</members>
-        <members>%%%NAMESPACE%%%Grade_Enrollment__c.K_12_All_Grade_Enrollments</members>
-        <members>hed__Affiliation__c.K12_All_Affiliations</members>
-        <members>hed__Application__c.K_12_All_Applications</members>
-        <members>hed__Attribute__c.K_12_All_Student_Characteristics</members>
-        <members>hed__Attribute__c.K_12_All_Credentials</members>
-        <members>hed__Behavior_Involvement__c.K12_All_Incident_Involvements</members>
-        <members>hed__Behavior_Involvement__c.K12_All_Positive_Behavior_Involvements</members>
-        <members>hed__Behavior_Response__c.K12_All_Incident_Responses</members>
-        <members>hed__Behavior_Response__c.K12_All_Positive_Behavior_Responses</members>
-        <members>hed__Contact_Language__c.K12_All_Contact_Languages</members>
-        <members>hed__Course_Enrollment__c.K12_All_Course_Connections</members>
-        <members>hed__Course_Enrollment__c.K12_All_Faculty_Course_Connections</members>
-        <members>hed__Course_Enrollment__c.K12_All_Student_Course_Connections</members>
-        <members>hed__Course_Enrollment__c.K12_Students_Current_Course_Connections</members>
-        <members>hed__Course_Offering_Schedule__c.K12_All_Course_Offering_Schedules</members>
-        <members>hed__Course_Offering__c.K12_All_Course_Offerings</members>
-        <members>hed__Course__c.K12_All_Courses</members>
-        <members>hed__Education_History__c.K12_All_Education_Histories</members>
-        <members>hed__Facility__c.K12_All_Facilities</members>
-        <members>hed__Plan_Requirement__c.K12_All_Plan_Requirements</members>
-        <members>hed__Program_Enrollment__c.K12_All_Program_Enrollments</members>
-        <members>hed__Program_Plan__c.K12_All_Program_Plans</members>
-        <members>hed__Relationship__c.K_12_All_Relationships</members>
-        <members>hed__Term_Grade__c.K12_All_Term_Grades</members>
-        <members>hed__Term__c.K12_All_Terms</members>
-        <members>hed__Test__c.K_12_All_Tests</members>
-        <members>hed__Test_Score__c.K_12_All_Test_Scores</members>
-        <members>hed__Time_Block__c.K12_All_Time_Blocks</members>
-        <name>ListView</name>
-    </types>
-    <types>
         <members>*</members>
         <name>Profile</name>
-    </types>
-    <types>
-        <members>Account.HH_Account</members>
-        <members>Case.Positive_Behavior</members>
-        <members>Contact.Faculty</members>
-        <members>Contact.Guardian</members>
-        <members>Contact.Student</members>
-        <members>hed__Attribute__c.hed__Credential</members>
-        <members>hed__Attribute__c.hed__Student_Characteristic</members>
-        <members>hed__Behavior_Involvement__c.Incident_Involvement</members>
-        <members>hed__Behavior_Involvement__c.Positive_Behavior_Involvement</members>
-        <members>hed__Behavior_Response__c.Incident_Response</members>
-        <members>hed__Behavior_Response__c.Positive_Behavior_Response</members>
-        <members>hed__Course_Enrollment__c.Faculty</members>
-        <members>hed__Course_Enrollment__c.Student</members>
-        <name>RecordType</name>
-    </types>
+    </types>   
     <types>
         <members>unfiled$public/Course_Offering_Roster</members>
         <members>unfiled$public/Faculty_Grouped_by_School</members>
