@@ -48,5 +48,4 @@
         <type>Text</type>
     </nameField>
     <pluralLabel>Program Plans</pluralLabel>
-    <sharingModel>ReadWrite</sharingModel>
 </CustomObject>

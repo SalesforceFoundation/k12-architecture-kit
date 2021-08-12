@@ -77,5 +77,4 @@
         <searchResultsAdditionalFields>hed__Role__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>hed__Case__c</searchResultsAdditionalFields>
     </searchLayouts>
-    <sharingModel>ReadWrite</sharingModel>
 </CustomObject>

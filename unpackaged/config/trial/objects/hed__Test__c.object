@@ -49,6 +49,5 @@
         <searchResultsAdditionalFields>hed__Test_Type__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>hed__Test_Date__c</searchResultsAdditionalFields>
     </searchLayouts>
-    <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>

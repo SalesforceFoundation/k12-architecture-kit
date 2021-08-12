@@ -50,5 +50,4 @@
         <type>Text</type>
     </nameField>
     <pluralLabel>Facilities</pluralLabel>
-    <sharingModel>ReadWrite</sharingModel>
 </CustomObject>
