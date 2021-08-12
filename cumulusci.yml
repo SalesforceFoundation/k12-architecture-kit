@@ -630,6 +630,8 @@ flows:
                 task: deploy_unpackaged_objects
                 ui_options:
                     name: Deploy K-12 Architecture Kit Unpackaged Objects
+                    is_required: False
+                    is_recommended: False
             7:
                 task: deploy_k12_app
                 ui_options:
