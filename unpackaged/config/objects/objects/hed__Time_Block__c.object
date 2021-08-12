@@ -36,5 +36,4 @@
         <type>Text</type>
     </nameField>
     <pluralLabel>Time Blocks</pluralLabel>
-    <sharingModel>ReadWrite</sharingModel>
 </CustomObject>

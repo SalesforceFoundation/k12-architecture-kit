@@ -3,31 +3,34 @@
     <actionOverrides>
         <actionName>View</actionName>
         <comment>Action override created by Lightning App Builder during activation.</comment>
-        <content>K12_Test_Record_Page</content>
+        <content>K12_Test_Score_Record_Page</content>
         <formFactor>Large</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
     </actionOverrides>
-    <compactLayoutAssignment>K12_Test_Compact_Layout</compactLayoutAssignment>
+    <compactLayoutAssignment>K12_Test_Score_Compact_Layout</compactLayoutAssignment>
     <compactLayouts>
-        <fullName>K12_Test_Compact_Layout</fullName>
+        <fullName>K12_Test_Score_Compact_Layout</fullName>
         <fields>NAME</fields>
-        <fields>hed__Contact__c</fields>
         <fields>hed__Test_Type__c</fields>
-        <fields>hed__Test_Date__c</fields>
-        <label>K12 Test Compact Layout</label>
+        <fields>hed__Subject_Area__c</fields>
+        <fields>hed__Score__c</fields>
+        <fields>hed__Percentile__c</fields>
+        <label>K12 Test Score Compact Layout</label>
     </compactLayouts>
     <listViews>
-        <fullName>K_12_All_Tests</fullName>
+        <fullName>K_12_All_Test_Scores</fullName>
         <columns>NAME</columns>
-        <columns>hed__Contact__c</columns>
         <columns>hed__Test_Type__c</columns>
-        <columns>hed__Test_Date__c</columns>
+        <columns>hed__Test__c</columns>
+        <columns>hed__Subject_Area__c</columns>
+        <columns>hed__Score__c</columns>
+        <columns>hed__Percentile__c</columns>
         <filterScope>Everything</filterScope>
-        <label>K-12 All Tests</label>
+        <label>K-12 All Test Scores</label>
     </listViews>
     <deploymentStatus>Deployed</deploymentStatus>
-    <description>An instance of a student taking a test.</description>
+    <description>The score on a section of a specific test or a composite score.</description>
     <enableActivities>true</enableActivities>
     <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>
@@ -36,19 +39,20 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <label>Test</label>
+    <label>Test Score</label>
     <nameField>
-        <displayFormat>TST-{0000}</displayFormat>
-        <label>Test Name</label>
+        <displayFormat>SCR-{0000}</displayFormat>
+        <label>Test Score Name</label>
         <type>AutoNumber</type>
     </nameField>
-    <pluralLabel>Tests</pluralLabel>
+    <pluralLabel>Test Scores</pluralLabel>
     <searchLayouts>
         <searchResultsAdditionalFields>NAME</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>hed__Contact__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>hed__Test_Type__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>hed__Test_Date__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>hed__Test__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>hed__Subject_Area__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>hed__Score__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>hed__Percentile__c</searchResultsAdditionalFields>
     </searchLayouts>
-    <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>
