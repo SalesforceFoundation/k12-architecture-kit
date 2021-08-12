@@ -299,6 +299,15 @@ tasks:
         options:
             path: unpackaged/config/installer
 
+    deploy_unpackaged_objects:
+        description: Deploys the K12 Kit Unpackaged Objects
+        class_path: cumulusci.tasks.salesforce.Deploy
+        group: "K-12: Installer Tasks"
+        ui_options:
+            name: Deploy K12 Architecture Kit Unpackaged Objects
+        options:
+            path: unpackaged/config/objects
+
     deploy_trial_config:
         description: Deploys metadata and configuration for TSOs.
         class_path: cumulusci.tasks.salesforce.Deploy
@@ -618,6 +627,12 @@ flows:
                     config:
                         name: K-12 Architecture Kit Metadata and Configuration
             6:
+                task: deploy_unpackaged_objects
+                ui_options:
+                    name: Deploy K-12 Architecture Kit Unpackaged Objects
+                    is_required: False
+                    is_recommended: False
+            7:
                 task: deploy_k12_app
                 ui_options:
                     name: Deploy K-12 Architecture Kit App Tile

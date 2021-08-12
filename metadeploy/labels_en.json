@@ -99,6 +99,10 @@
         "EDA - Education Data Architecture App": {
             "message": "EDA - Education Data Architecture App",
             "description": "title of installation step"
+        },
+        "Deploy K-12 Architecture Kit Unpackaged Objects": {
+            "message": "Deploy K-12 Architecture Kit Unpackaged Objects",
+            "description": "title of installation step"
         }
     },
     "checks": {
