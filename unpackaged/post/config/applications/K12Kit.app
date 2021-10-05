@@ -30,7 +30,7 @@
     <tabs>hed__Program_Plan__c</tabs>
     <tabs>standard-Dashboard</tabs>
     <tabs>standard-report</tabs>
-    <tabs>hed__HEDA_Settings</tabs>
+    <tabs>hed__Education_Cloud_Settings</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>K_12_UtilityBar</utilityBar>
 </CustomApplication>

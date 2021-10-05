@@ -15,7 +15,8 @@ project:
     dependencies:
         - github: "https://github.com/SalesforceFoundation/EDA"
     dependency_resolutions:
-        preproduction: include_beta
+        #preproduction: include_beta
+        preproduction: commit_status
     source_format: sfdx
 
 sources:
@@ -297,6 +298,15 @@ tasks:
             name: Deploy K12 Architecture Kit app tile
         options:
             path: unpackaged/config/installer
+
+    deploy_unpackaged_objects:
+        description: Deploys the K12 Kit Unpackaged Objects
+        class_path: cumulusci.tasks.salesforce.Deploy
+        group: "K-12: Installer Tasks"
+        ui_options:
+            name: Deploy K12 Architecture Kit Unpackaged Objects
+        options:
+            path: unpackaged/config/objects
 
     deploy_trial_config:
         description: Deploys metadata and configuration for TSOs.
@@ -594,9 +604,9 @@ flows:
                     5:
                         name: EDA - Deploy Course Connection Record Types
                     6:
-                        name: EDA - Facility Display Name Formula Field
+                        name: EDA - Education Data Architecture App
                     7:
-                        name: EDA - Health Check
+                        name: EDA - Facility Display Name Formula Field
 
             2:
                 flow: add_k12_picklist_values
@@ -617,6 +627,12 @@ flows:
                     config:
                         name: K-12 Architecture Kit Metadata and Configuration
             6:
+                task: deploy_unpackaged_objects
+                ui_options:
+                    name: Deploy K-12 Architecture Kit Unpackaged Objects
+                    is_required: False
+                    is_recommended: False
+            7:
                 task: deploy_k12_app
                 ui_options:
                     name: Deploy K-12 Architecture Kit App Tile
@@ -626,9 +642,33 @@ plans:
         slug: install
         title: Install K-12 Architecture Kit
         tier: primary
+        checks:
+            - when: "not tasks.check_my_domain_active()"
+              action: error
+              message: "Please enable My Domain in your org prior to installing."
+            - when: "not tasks.check_chatter_enabled()"
+              action: error
+              message: "Please enable Chatter in your org prior to installing."
         steps:
             1:
                 flow: customer_org
+    upgrade:
+        slug: upgrade
+        title: Product Upgrade
+        tier: additional
+        is_listed: False
+        preflight_message: "This installer upgrades this package and any required dependencies to the latest version in your org. This installer isn't supported and has risks. Please don't run this installer unless you're aware of its specific use cases and considerations."
+        post_install_message: "Installation complete and package is on the latest version."
+        steps:
+            1:
+                task: update_dependencies
+                options:
+                    security_type: PUSH
+                    packages_only: True
+            2:
+                task: install_managed
+                options:
+                    security_type: PUSH
 
 orgs:
     scratch:
