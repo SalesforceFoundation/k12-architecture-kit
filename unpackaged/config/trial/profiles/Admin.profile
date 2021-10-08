@@ -101,6 +101,17 @@
         <recordType>hed__Attribute__c.hed__Student_Characteristic</recordType>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>hed__Attribute__c-EDA Credential Layout</layout>
+        <recordType>hed__Attribute__c.hed__Credential</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>hed__Attribute__c-hed__EDA Student Characteristic Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>hed__Attribute__c-hed__EDA Student Characteristic Layout</layout>
+        <recordType>hed__Attribute__c.hed__Student_Characteristic</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>hed__Behavior_Involvement__c-%%%NAMESPACE%%%K12 Kit Behavior Involvement Layout</layout>
         <recordType>hed__Behavior_Involvement__c.Incident_Involvement</recordType>
     </layoutAssignments>
@@ -159,6 +170,21 @@
     </layoutAssignments>
     <layoutAssignments>
         <layout>hed__Course__c-%%%NAMESPACE%%%K12 Kit Course Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>hed__Credential__c-hed__Credential Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>hed__Credential__c-hed__EDA Credential Layout</layout>
+        <recordType>hed__Credential__c.hed__Badge</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>hed__Credential__c-hed__EDA Credential Layout</layout>
+        <recordType>hed__Credential__c.hed__Certification</recordType>
+    </layoutAssignments>
+    <layoutAssignments>
+        <layout>hed__Credential__c-hed__EDA Credential Layout</layout>
+        <recordType>hed__Credential__c.hed__License</recordType>
     </layoutAssignments>
     <layoutAssignments>
         <layout>hed__Education_History__c-%%%NAMESPACE%%%K12 Kit Education History Layout</layout>
@@ -224,6 +250,46 @@
     <recordTypeVisibilities> 
         <default>false</default>
         <recordType>hed__Behavior_Response__c.Positive_Behavior_Response</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>hed__Academic_Certification__c.hed__Certificate</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>true</default>
+        <recordType>hed__Academic_Certification__c.hed__Degree</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>hed__Academic_Certification__c.hed__Diploma</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>true</default>
+        <recordType>hed__Attribute__c.hed__Credential</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>hed__Attribute__c.hed__Student_Characteristic</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>hed__Credential__c.hed__Badge</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>true</default>
+        <recordType>hed__Credential__c.hed__Certification</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <default>false</default>
+        <recordType>hed__Credential__c.hed__License</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
     <tabVisibilities>
