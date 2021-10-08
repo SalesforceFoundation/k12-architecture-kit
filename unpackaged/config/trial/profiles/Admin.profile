@@ -101,7 +101,7 @@
         <recordType>hed__Attribute__c.hed__Student_Characteristic</recordType>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>hed__Attribute__c-EDA Credential Layout</layout>
+        <layout>hed__Attribute__c-hed__EDA Credential Layout</layout>
         <recordType>hed__Attribute__c.hed__Credential</recordType>
     </layoutAssignments>
     <layoutAssignments>
