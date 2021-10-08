@@ -93,22 +93,14 @@
         <layout>hed__Attendance_Event__c-%%%NAMESPACE%%%K12 Kit Attendance Event Layout</layout>
     </layoutAssignments>
     <layoutAssignments>
+        <layout>hed__Attribute__c-hed__EDA Student Characteristic Layout</layout>
+    </layoutAssignments>
+    <layoutAssignments>
         <layout>hed__Attribute__c-%%%NAMESPACE%%%K12 Kit Credential Layout</layout>
         <recordType>hed__Attribute__c.hed__Credential</recordType>
     </layoutAssignments>
     <layoutAssignments>
         <layout>hed__Attribute__c-%%%NAMESPACE%%%K12 Kit Student Characteristic Layout</layout>
-        <recordType>hed__Attribute__c.hed__Student_Characteristic</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>hed__Attribute__c-hed__EDA Credential Layout</layout>
-        <recordType>hed__Attribute__c.hed__Credential</recordType>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>hed__Attribute__c-hed__EDA Student Characteristic Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
-        <layout>hed__Attribute__c-hed__EDA Student Characteristic Layout</layout>
         <recordType>hed__Attribute__c.hed__Student_Characteristic</recordType>
     </layoutAssignments>
     <layoutAssignments>
