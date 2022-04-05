@@ -9,7 +9,7 @@
             "description": "tagline of product"
         },
         "description": {
-            "message": "## Welcome to the K-12 Architecture Kit installer!\r\n\r\nFor installation details, see the [K-12 Architecture Kit Documentation](https://powerofus.force.com/s/article/K12-Documentation).\r\n\r\nIMPORTANT: Salesforce does not recommend installing directly in production organizations. Instead, install in one of your free sandbox environments, or a developer organization first.",
+            "message": "## Welcome to the K-12 Architecture Kit installer!\r\n\r\nFor installation details, go to the [K-12 Architecture Kit Documentation](https://powerofus.force.com/K12_Documentation). Visit the [Sector: K-12 Education group](https://trailhead.salesforce.com/en/trailblazer-community/groups/0F94S000000kHi7SAE) for any questions about K-12 Architecture Kit.\r\n\r\nIMPORTANT: Salesforce does not recommend installing directly in production organizations. Instead, install in one of your free sandbox environments, or a developer organization first.",
             "description": "shown on product detail page (markdown)"
         },
         "click_through_agreement": {
@@ -17,7 +17,7 @@
             "description": "legal text shown in modal dialog"
         },
         "error_message": {
-            "message": "If you experience an issue with the installation, please post in the [Power of Us Hub] (https://powerofus.force.com/s/topic/0TO1E000000LZ2aWAG/k12-kit).",
+            "message": "If you experience an issue with the installation, post in the [Sector: K-12 Education group](https://powerofus.force.com/K12_Community).",
             "description": "shown after failed installation (markdown)"
         }
     },
