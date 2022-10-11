@@ -1,5 +1,5 @@
-**Note: FOR INTERNAL USE ONLY. For support questions, please use the EDA Chatter group in [The Power of Us Hub](https://powerofus.force.com).
-For feature requests, please use the Ideas tab in [The Power of Us Hub](https://powerofus.force.com).**
+**Note: FOR INTERNAL USE ONLY. For support questions, please use the EDA Chatter group in The Power of Us Hub.
+For feature requests, please use the Ideas tab in The Power of Us Hub.**
 
 * **Do you want to request a *feature* or report a *bug*?**
 
