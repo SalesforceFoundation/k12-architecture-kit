@@ -1,4 +1,4 @@
-**Note: FOR INTERNAL USE ONLY. For support questions, please use the K-12 [Sector: K-12 Education group](https://trailhead.salesforce.com/trailblazer-community/groups/0F94S000000kHi7SAE?tab=discussion).
+**Note: FOR INTERNAL USE ONLY. For support questions, please use the [Sector: K-12 Education group](https://trailhead.salesforce.com/trailblazer-community/groups/0F94S000000kHi7SAE?tab=discussion) group in Trailblazer Community.
 
 * **Do you want to request a *feature* or report a *bug*?**
 

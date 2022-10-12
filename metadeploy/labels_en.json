@@ -17,7 +17,7 @@
             "description": "legal text shown in modal dialog"
         },
         "error_message": {
-            "message": "If you experience an issue with the installation, post in the Sector: K-12 Education group.",
+            "message": "If you experience an issue with the installation, post in the [Sector: K-12 Education group](https://trailhead.salesforce.com/trailblazer-community/groups/0F94S000000kHi7SAE?tab=discussion).",
             "description": "shown after failed installation (markdown)"
         }
     },
