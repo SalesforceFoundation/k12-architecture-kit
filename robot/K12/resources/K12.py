@@ -1,13 +1,9 @@
-import datetime
 import logging
-import pytz
-import time
 import warnings
 
 from robot.libraries.BuiltIn import RobotNotRunningError
 from cumulusci.robotframework.utils import selenium_retry,capture_screenshot_on_error
 from robot.libraries.BuiltIn import BuiltIn
-from datetime import datetime
 
 from locators_54 import K12_lex_locators as locators_54
 
@@ -129,7 +125,7 @@ class K12(object):
             return ''        
 
     def verify_household_settings(self):
-        """" Check the proper settings are selected for Household settings """
+        """ Check the proper settings are selected for Household settings """
         household_account_locator = K12_lex_locators["eda_settings"]["household_account"]
         administrative_name_format_locator = K12_lex_locators["eda_settings"]["administrative_name_format"]        
         
