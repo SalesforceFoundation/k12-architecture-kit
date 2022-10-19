@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation
-...    Application review owner can be changed and new owner can submit a recommendation
+...    Verify K12 settings are configured properly
 Resource        robot/K12/resources/K12.robot
 
 Library         cumulusci.robotframework.PageObjects
@@ -9,7 +9,7 @@ Suite Setup     Open test browser
 Suite Teardown  close browser
 
 *** Test Cases ***
-Verify that K-12 Architecture Kit exists
+Verify that K-12 Architecture Kit application exists
     [tags]  Test case: T-5227526
     [Documentation]     Verify the K-12 Architecture Kit exists in launcher
     Select app launcher         K-12 Architecture Kit
