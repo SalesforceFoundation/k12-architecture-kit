@@ -99,199 +99,53 @@ class K12(object):
         self.selenium.set_focus_to_element(locator_search_term)
         self.salesforce._jsclick(locator_search_term)
 
-    def close_all_tabs(self):
-        """ Gets the count of the tabs that are open and closes them all """
-        locator = K12_lex_locators["close_tab"]
-        count = int(self.selenium.get_element_count(locator))
-        for i in range(count):
-            self.selenium.wait_until_element_is_visible(locator)
-            self.selenium.get_webelement(locator).click()
-
-    def click_new_button(self):
-        """ Clicks on New button on a list view """
-        locator = K12_lex_locators["new_button"]
-        self.selenium.get_webelement(locator).click()
-
-    def click_save_button(self):
-        """ Clicks on Save button on a form """
-        locator_save = K12_lex_locators["save_button"]
-        self.selenium.get_webelement(locator_save).click()
-
-    def click_cancel_button(self):
-        """ Clicks on Cancel button on a form """
-        locator_cancel = K12_lex_locators["cancel_button"]
-        self.selenium.get_webelement(locator_cancel).click()
-
-    def click_save_and_verify_toast_message(self,value):
-        """ Clicks on save button on form and verifies the toast message"""
-
-        locator = K12_lex_locators["save_button"]
-        self.selenium.get_webelement(locator).click()
-        time.sleep(2)
-        self.verify_toast_message(value)
-
-    def click_save_and_verify_validation_error_message(self,value,error_location=None):
-        """Clicks on save button on form and verifies the validation error message. A validation error can display either
-           inline(below a field) or as a pop up message at bottom of form. If it's inline pass in 'inline' in test
-           else don't pass in any argument.Required argument: error message. Optional argument: inline(if error is inline error)"""
-
-        locator = K12_lex_locators["save_button"]
-        self.selenium.get_webelement(locator).click()
-        self.verify_validation_error_message(value,error_location)
-
-    def verify_toast_message(self,value):
-        """Verifies that toast contains specified value"""
-        locator=K12_lex_locators["toast_message"]
-        self.selenium.wait_until_element_is_visible(locator)
-        msg=self.selenium.get_webelement(locator).text
-        if value in msg:
-            print(f"Toast message verified: {msg}")
+    def go_to_education_cloud_settings(self):
+        """ Navigates to the Education Cloud Settings Page"""
+        url = self.cumulusci.org.lightning_base_url
+        namespace=self.get_eda_namespace_prefix()
+        if namespace=="hed__":
+            url = "{}/lightning/cmp/{}EDASettingsContainer".format(url,namespace)
         else:
-            raise Exception("Expected Toast message not found on page")
+            url = "{}/lightning/cmp/c__EDASettingsContainer".format(url)
+        self.selenium.go_to(url)
+        self.salesforce.wait_until_loading_is_complete()  
 
-    def verify_validation_error_message(self,value,error_location=None):
-        """Verifies validation error message that displays on a form. A validation error can display either inline(below a field) or
-           as a pop up message at bottom of form. If it's inline pass in 'inline' in test else don't pass in any argument.
-           Required argument: error message. Optional argument: inline(if error is inline error)"""
-
-        if error_location=="inline":
-            locator=K12_lex_locators["inline_validation_error_message"].format(value)
-        else:
-            locator=K12_lex_locators["validation_error_message"].format(value)
-
-        self.selenium.wait_until_page_contains_element(locator)
-        msg=self.selenium.get_webelement(locator).text
-
-        if not value in msg:
-            raise Exception(f"Expected validation error message '{value}' not found on page. Actual message: '{msg}'")
-
-    def format_all(self, loc, value):
-        """ Formats the given locator with the value for all {} occurrences """
-        count = loc.count('{')
-
-        if count == 1:
-            return loc.format(value)
-        elif count == 2:
-            return loc.format(value, value)
-        elif count == 3:
-            return loc.format(value, value, value)
-
-    def select_xpath(self, loc, value):
-        """ Selects the correct xpath by checking if it exists on the page
-            from the given list of locator possibilities
-        """
-        locators = K12_lex_locators[loc].values()
-        for i in locators:
-            locator = self.format_all(i, value)
-            if self._check_if_element_exists(locator):
-                return locator
-
-        assert "Button with the provided locator not found"
-
-    def populate_placeholder_applications(self, loc, value):
-        """ Populates placeholder element with a value
-            Finds the placeholder element, inputs value
-            and waits for the suggestion and clicks on it
-        """
-        xpath_lookup = K12_lex_locators["input_placeholder"].format(loc)
-        field = self.selenium.get_webelement(xpath_lookup)
-        self.selenium.driver.execute_script("arguments[0].click()", field)
-        field.send_keys(value)
-        xpath_value = self.select_xpath("placeholder_lookup", value)
-        self.selenium.click_element(xpath_value)
+    def get_eda_namespace_prefix(self):
+        """ Returns the EDA namespace value if the target org is a managed org else returns blank value """
+        if not hasattr(self.cumulusci, '_describe_result'):
+            self.cumulusci._describe_result = self.cumulusci.sf.describe()
+        objects = self.cumulusci._describe_result['sobjects']
+        level_object = [o for o in objects if o['label'] == 'Program Plan'][0]
+        return self._get_namespace_prefix(level_object['name'])        
 
     def _get_namespace_prefix(self, name):
-        """ This is a helper function to capture the randa namespace prefix of the target org """
+        """" This is a helper function to capture the EDA namespace prefix of the target org """
         parts = name.split('__')
         if parts[-1] == 'c':
             parts = parts[:-1]
         if len(parts) > 1:
             return parts[0] + '__'
         else:
-            return ''
+            return ''        
 
-    def get_randa_namespace_prefix(self):
-        """ Returns the randa namespace value if the target org is a managed org else returns blank value """
-        if not hasattr(self.cumulusci, '_describe_result'):
-            self.cumulusci._describe_result = self.cumulusci.sf.describe()
-        objects = self.cumulusci._describe_result['sobjects']
-        level_object = [o for o in objects if o['label'] == 'Application Review'][0]
-        return self._get_namespace_prefix(level_object['name'])
-
-    def remove_leading_zeroes_datetime(self,date_format,date_value):
-        """This converts the given raw date value which is in string format to date format
-            and then removes the leading zeros in the month,date, and hour Eg: input date format "%Y-%m-%d"
-        """
-        raw_date_value = datetime.datetime.strptime(str(date_value), date_format)
-        date_info = '{dt.month}/{dt.day}/{dt.year}'.format(dt = raw_date_value)
-        return date_info
-
-    def convert_time_to_UTC_timezone(self, my_time,time_format):
-        """ Converts the given datetime to UTC timezone
-            my_time should be in the format %Y-%m-%d %H:%M:%S.
-            It then returns value back in format passed in(ex. %Y-%m-%d) for test that check to see if
-            date contains date value(ex. should contain <date from db>  <converted date>). Arguments required:
-            time(ex. current date in format of %Y-%m-%d %H:%M:%S), format expected in return(ex.%Y-%m-%d)
-        """
-        my_time_format = datetime.strptime(my_time, "%Y-%m-%d %H:%M:%S")
-        my_time_local = pytz.timezone("America/Los_Angeles").localize(my_time_format, is_dst=None)
-
-        my_time_utc = my_time_local.astimezone(pytz.utc)
-        return datetime.strftime(my_time_utc, time_format)
-
-    def click_form_edit_button(self):
-        """Clicks on Edit button on a record's form"""
-
-        locator = K12_lex_locators["edit_button"]
-        self.selenium.wait_until_page_contains_element(locator)
-        self.salesforce._jsclick(locator)
-
-    def check_and_dismiss_in_app_guidance(self,prompt_header,button_text):
-        """Checks on page if in-app guidance is present by checking the in-app guidance prompt header text.
-           If present then it will click the 'Got It' button to dismiss and continue with test. Use this keyword
-           after going to any page that will be displaying the in-app guidance(currently only on the Application Review page).
-           Arguments required: Prompt header text and button text"""
-
-        locator_prompt = K12_lex_locators["in_app_guidance_prompt"].format(prompt_header)
-        locator_button = K12_lex_locators["in_app_guidance_got_it_button"].format(button_text)
-
-        time.sleep(5)
-        if not self._check_if_element_exists(locator_prompt):
-            return
-        else:
-            for i in range(3):
-                i += 1
-                self.selenium.wait_until_element_is_visible(locator_button)
-                self.salesforce._jsclick(locator_button)
-                time.sleep(1) # This is needed to give time for prompt to close.
-                if not self._check_if_element_exists(locator_prompt):
-                    break
-
-    def pick_start_date(self):
-        """Clicks on either End or Start date field depending on argument passed in and then clicks on Today
-           to populate the date field with today's date.
-        """
-        locator_is_open = K12_lex_locators["date_picker_is_open"]
-        locator_today = K12_lex_locators["date_picker_value"]
-        locator = K12_lex_locators["date_picker_field"]
-
-        self.selenium.set_focus_to_element(locator)
-        self.salesforce._jsclick(locator)
-        self.selenium.wait_until_element_is_visible(locator_is_open)
-        self.selenium.set_focus_to_element(locator_today)
-        self.selenium.get_webelement(locator_today).click()
-
-    def go_to_tab(self, value):
-        """ Navigates to the given tab name in salesforce so it can log into community
-            :param value can be custom objects contact name/Walk-In/Appointment of the tab
-        """
-        locator = K12_lex_locators["tab"].format(value)
-        self.selenium.page_should_contain_element(
-            locator,
-            message=f"'{value}' contact tab with locator '{locator}' is not available on the page")
-        self.selenium.click_element(locator)
+    def verify_household_settings(self):
+        """" Check the proper settings are selected for Household settings """
+        household_account_locator = K12_lex_locators["eda_settings"]["household_account"]
+        administrative_name_format_locator = K12_lex_locators["eda_settings"]["administrative_name_format"]        
+        
+        self.selenium.wait_until_page_contains_element(
+            household_account_locator,
+            error=f"The error message '{household_account_locator}' is not available on the EDA settings page"
+        )
+        self.selenium.wait_until_page_contains_element(
+            administrative_name_format_locator,
+            error=f"The error message '{administrative_name_format_locator}' is not available on the EDA settings page"
+        )        
+                
 
     def _scroll_into_view(self,locator):
         """Workaround for fixing scroll into view error caused by latest version of Chromdriver. Use whenever srolling element into view"""
         element = self.selenium.get_webelement(locator)
         self.selenium.driver.execute_script("arguments[0].scrollIntoView({behavior: 'auto', block: 'center', inline: 'center'})", element)
+
+   
