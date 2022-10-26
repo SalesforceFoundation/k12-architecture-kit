@@ -11,7 +11,7 @@ Suite Teardown  close browser
 *** Test Cases ***
 Verify that K-12 Architecture Kit application exists
     [tags]  Test case: T-5227526
-    [Documentation]     Verify the K-12 Architecture Kit exists in launcher
+    [Documentation]     Verify the K-12 Architecture Kit exists in app launcher
     Select app launcher         K-12 Architecture Kit
 
 Verify the K-12 Architecture Kit settings
