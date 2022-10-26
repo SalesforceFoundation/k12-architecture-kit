@@ -381,6 +381,28 @@ tasks:
         description: Retrieves, edits, and redeploys the Admin.profile with full FLS perms for all objects/fields
         class_path: tasks.salesforce.UpdateAdminProfile
 
+    robot:
+        # description: Runs a Robot Framework test from a .robot file.
+        options:
+            suites: robot/K12/tests/browsers/
+            options:
+                outputdir: robot/K12/results
+
+    robot_testdoc:
+        # description: Generates html documentation of your Robot test suite and writes to tests/test_suite.
+        options:
+            path: robot/K12/tests/browsers/
+            output: robot/K12/doc/K12_tests.html
+
+    robot_libdoc:
+        # description: Generates documentation for project keyword files.
+        options:
+            output: robot/K12/doc/Keywords.html
+            path:
+                - robot/K12/resources/*PageObject.py
+                - robot/K12/resources/K12.py
+                - robot/K12/resources/K12.robot
+
 flows:
     add_k12_picklist_values:
         steps:
