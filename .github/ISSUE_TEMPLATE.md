@@ -1,5 +1,4 @@
-**Note: FOR INTERNAL USE ONLY. For support questions, please use the EDA Chatter group in [The Power of Us Hub](https://powerofus.force.com).
-For feature requests, please use the Ideas tab in [The Power of Us Hub](https://powerofus.force.com).**
+**Note: FOR INTERNAL USE ONLY. For support questions, please use the [Sector: K-12 Education group](https://trailhead.salesforce.com/trailblazer-community/groups/0F94S000000kHi7SAE?tab=discussion) group in Trailblazer Community.
 
 * **Do you want to request a *feature* or report a *bug*?**
 
