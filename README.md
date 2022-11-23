@@ -6,7 +6,7 @@ K-12 Architecture Kit is built upon industry-wide best practices from across edu
 
 ## Get K-12 Architecture Kit
 
-The easiest way to get started with K-12 Architecture Kit is to sign up for a <a href="https://www.salesforce.org/trial/k12/" target="_blank">trial</a>. If you need to install K-12 Architecture Kit in an existing org, use the <a href="https://install.salesforce.org/products/k12" target="_blank">K-12 Architecture Kit installer</a>. See <a href="https://powerofus.force.com/s/article/K12-Install-and-Configure" target="_blank">Install K-12 Architecture Kit</a> for more information.
+The easiest way to get started with K-12 Architecture Kit is to sign up for a <a href="https://www.salesforce.org/trial/k12/" target="_blank">trial</a>. If you need to install K-12 Architecture Kit in an existing org, use the <a href="https://install.salesforce.org/products/k12" target="_blank">K-12 Architecture Kit installer</a>. See the K-12 Architecture Kit documentation for more information.
 
 ## Contribute to K-12 Architecture Kit
 
@@ -40,11 +40,11 @@ If you encounter errors, remove the node_modules folder and run `yarn install` a
 
 ## Learn More
 
-* <a href="https://powerofus.force.com/" target="_blank">Ask questions or get help</a>
-* <a href="https://powerofus.force.com/hub-ideas" target="_blank">Feature Request</a>
-* <a href="https://powerofus.force.com/K12_Documentation" target="_blank">User Documentation</a>
+* <a href="https://trailhead.salesforce.com/trailblazer-community/groups/0F94S000000kHi7SAE" target="_blank">Ask questions or get help</a>
+* <a href="https://trailhead.salesforce.com/trailblazer-community/groups/0F94S000000kHi7SAE" target="_blank">Feature Request</a>
+* <a href="https://help.salesforce.com/s/articleView?id=sfdo.K12_Architecture_Kit.htm" target="_blank">User Documentation</a>
 * Check out existing <a href="https://github.com/SalesforceFoundation/k12-architecture-kit/labels/bug" target="_blank">bugs</a> and <a href="https://trailblazers.salesforce.com/search?keywords=k-12" target="_blank">feature and enhancement requests</a>
-* <a href="https://github.com/SalesforceFoundation/k12-architecture-kit/releases" target="_blank">Release Notes and Beta Releases</a>
+* <a href="https://trailhead.salesforce.com/trailblazer-community/groups/0F94S000000kHOcSAM" target="_blank">Release Notes and Beta Releases</a>
 
 ## Meta
 
