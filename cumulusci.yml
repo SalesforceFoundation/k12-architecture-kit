@@ -15,8 +15,6 @@ project:
     dependencies:
         - github: "https://github.com/SalesforceFoundation/EDA"
     dependency_resolutions:
-        #preproduction: include_beta
-        preproduction: commit_status
     source_format: sfdx
 
 sources:
